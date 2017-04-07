@@ -1,13 +1,15 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "Toads",
+  "version": "0.1",
+  "description": "Greatest Minds in Human History conspiring for Global Domination",
+  "author": "MindsInc",
+  "license": "MIT",
   "engines": {
     "node": ">=6.4.0"
   },
   "scripts": {
+    "npm dev": "webpack -d",
+    "npm start": "nodemon start server/index.js"
   },
   "dependencies": {
   },
