@@ -4,10 +4,10 @@
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Matt Schmitz
+  - Benicio Pedido
+  - Sam Zoll
+  - Michael Burton
 
 ## Table of Contents
 
@@ -27,9 +27,8 @@
 
 - Node 6.4.x
 - Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Express 4.x
+- Webpack 2.x
 
 ## Development
 
