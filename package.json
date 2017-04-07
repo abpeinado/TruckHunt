@@ -2,7 +2,7 @@
   "name": "thesis",
   "version": "1.0.0",
   "description": "hr73toads",
-  "main": ".eslintrc.js",
+  "main": "server.js",
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
@@ -11,8 +11,6 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jquery": "^3.2.1",
-    "lint": "eslint client server",
-    "lint-fix": "eslint client server",
     "mysql": "^2.13.0",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
@@ -35,13 +33,16 @@
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "lint": "eslint client server",
+    "lint-fix": "eslint client server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/burt23/hrsf73-thesis.git"
   },
-  "author": "mike, sam, benicio, matt",
+  "keywords": [],
+  "author": "sam, benicio, matt, bicheal murton",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/burt23/hrsf73-thesis/issues"

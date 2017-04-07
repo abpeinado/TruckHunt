@@ -30,3 +30,6 @@ bower_components/
 
 #bundle files
 src/client/public/bundle.js
+
+#ds store
+.DS_Store
