@@ -27,8 +27,8 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "no-console": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "import/extensions": "off"
   },
-
   "allow": ["warn", "error", "log"]
 };
