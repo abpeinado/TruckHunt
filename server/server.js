@@ -8,7 +8,7 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 app.use(bodyParser.json());
-console.log(__dirname);
+
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 app.get('/home', (req, res) => {
