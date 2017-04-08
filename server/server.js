@@ -15,8 +15,8 @@ app.get('/home', (req, res) => {
   res.send('hello world from home');
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Express Service live and listening on: ${port}`);
 });
 
-module.exports = app;
+module.exports = server;
