@@ -26,3 +26,7 @@ deployment:
     branch: master
     heroku:
       appname: tutelarytoads
+  staging:
+    branch: staging
+    heroku:
+      appname: tutelarytoads-staging
