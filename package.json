@@ -14,7 +14,7 @@
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
     "build": "webpack",
-    "postinstall": "",
+    "postinstall": "npm run build",
     "dinosaur": "eslint client server"
   },
   "dependencies": {
