@@ -1,18 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={}
+    this.state = {};
   }
 
-  render(){
-    return(
-      <h1 style={{'textAlign':'center', 'fontSize':'12em', 'color':'#ffffff'}}>Hello World</h1>
-    )
+  render() {
+    return (
+      <h1 style={{ textAlign: 'center', fontSize: '12em', color: '#ffffff' }}>Hello World</h1>
+    );
   }
 }
 
-render(<App/>, document.getElementById('app'));
+render(<App />, document.getElementById('app'));
 
