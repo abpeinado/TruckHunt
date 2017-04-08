@@ -29,7 +29,7 @@ node_modules/
 bower_components/
 
 #bundle files
-src/client/public/bundle.js
+client/public/bundle.js
 
 #ds store
 .DS_Store
