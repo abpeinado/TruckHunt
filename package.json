@@ -9,7 +9,7 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "test": "jest",
+    "test": "kill $ps aux | grep nodemon | awk '{print $2}' && jest && npm run start-dev",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
@@ -29,12 +29,12 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.6.0",
     "underscore": "^1.8.3",
-    "webpack": "^2.3.3", 
+    "webpack": "^2.3.3",
     "babel-core": "^6.24.0",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
-    "babel-preset-react": "^6.23.0" 
+    "babel-preset-react": "^6.23.0"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",

@@ -1,29 +1,34 @@
 const request = require('supertest');
-const app = require('../server/server.js');
-// const fs = require('fs');
-// const path = require('path');
+const server = require('../server/server.js');
 
-// // helper function that can be used to log a http response to a file
-// let logRes = (res, fileName) => {
-//   fs.writeFile(path.join(__dirname, fileName), JSON.stringify(res), (err) => {
-//     if (err) {
-//       console.log('error in server.test.js', err);
-//     }
-//     // console.log('file written')
-//   });
-// };
+// Wrapping all tests inside of a describe statement
+describe('server tests', () => {
+  // Will need to reference this for future tests
+  // Declare all testing variables
+  // let db;
+  // let tables;
 
-describe('Server end points', () => {
-  test('returns 200 from "/" ', () => {
-    request(app)
+  // Clear tables before each new test, clean slate
+  // let clearTables = (connection, tables, done) => {
+  // };
+
+  // Declaring before each statement
+  beforeEach((done) => {
+    done();
+  });
+
+  // Delclaring after each statement
+  afterEach(() => {
+    server.close();
+  });
+
+  // Declaring server tests
+  describe('basic server test', () => {
+    it('responds to /', (done) => {
+      request(server)
       .get('/')
-      .expect(200)
-      .end((err) => { // change to err, res to get full status
-        if (err) {
-          throw err;
-        }
-        // logRes(res, '/testlog.js');
-      });
+      .expect(200, done);
+    });
   });
 });
 

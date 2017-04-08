@@ -1,23 +1,9 @@
-version: 2
-jobs:
-  build:
-    working-directory: ~/circulate
-    docker:
-      -image: python: 3.6.0
-    steps:
-      - checkout
-      - run: echo 'hello world'
-
-# version: 2
-# jobs:
-#   build:
-#     working-directory: ~/circulate
-#     docker:
-#       -image: python: 3.6.0
-#       environment:
-#         FLASK_CONFIG: testing
-#         TEST_DATABASE_URL:
-#     steps:
-#       - checkout
-#       - run: echo 'hello world'
-
+deployment:
+  prod:
+    branch: master
+    heroku:
+      appname: tutelarytoads
+  staging:
+    branch: staging
+    heroku:
+      appname: tutelarytoads-staging
