@@ -14,8 +14,7 @@
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
     "build": "webpack -p",
-    "lint": "eslint client server",
-    "lint-fix": "eslint client server"
+    "lint": "eslint client server"
   },
   "main": "server.js",
   "dependencies": {
