@@ -19,3 +19,4 @@ app.listen(port, () => {
   console.log(`Express Service live and listening on: ${port}`);
 });
 
+module.exports = app;

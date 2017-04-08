@@ -2,7 +2,7 @@
   "name": "thesis",
   "version": "1.0.0",
   "description": "hr73toads",
-  "author": "sam, benicio, matt, mike",
+  "author": "sam, benicio, matt, bichael murton",
   "license": "ISC",
   "engines": {
     "node": "6.10.2",
@@ -31,6 +31,7 @@
     "underscore": "^1.8.3",
     "webpack": "^2.3.3", 
     "babel-core": "^6.24.0",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0" 
@@ -43,6 +44,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "supertest": "^3.0.0"
   }
 }
