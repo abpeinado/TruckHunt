@@ -1,5 +1,3 @@
-'strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -11,8 +9,9 @@ app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-app.get('/home', (req, res) => {
-  res.send('hello world from home');
+app.post('/foodTrucks', (req, res) => {
+  console.log(req.body);
+  res.send('data received');
 });
 
 app.get('/truckSignup', (req, res) => {
