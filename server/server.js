@@ -16,5 +16,5 @@ app.get('/home', (req, res) => {
 });
 
 app.listen(port, () => {
-// console.log(`Express Service live and listening on: ${port}`);
+  console.log(`Express Service live and listening on: ${port}`);
 });
