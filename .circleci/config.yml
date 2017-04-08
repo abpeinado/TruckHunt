@@ -1,12 +1,12 @@
-version: 2
-jobs:
-  build:
-    working-directory: ~/circulate
-    docker:
-      -image: python: 3.6.0
-    steps:
-      - checkout
-      - run: echo 'hello world'
+# version: 2
+# jobs:
+#   build:
+#     working-directory: ~/circulate
+#     docker:
+#       -image: python: 3.6.0
+#     steps:
+#       - checkout
+#       - run: echo 'hello world'
 
 # version: 2
 # jobs:
@@ -21,3 +21,8 @@ jobs:
 #       - checkout
 #       - run: echo 'hello world'
 
+deployment:
+  prod:
+    branch: master
+    heroku:
+      appname: tutelarytoads
