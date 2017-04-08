@@ -25,5 +25,7 @@ module.exports = {
   // http://eslint.org/docs/rules/
   "rules": {
     "comma-dangle": ["error", "never"]
-  }
+  },
+  "allow": ["warn", "error", "log"]
+
 };
