@@ -25,7 +25,7 @@ module.exports = {
   // http://eslint.org/docs/rules/
   "rules": {
     "comma-dangle": ["error", "never"],
-    "no-console": "off",
+    "no-console": "off"
   },
 
   "allow": ["warn", "error", "log"]
