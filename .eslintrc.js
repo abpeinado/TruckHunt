@@ -28,7 +28,8 @@ module.exports = {
     "no-console": "off",
     "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "no-console": "off"
   },
   "allow": ["warn", "error", "log"]
 };
