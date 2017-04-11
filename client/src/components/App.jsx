@@ -13,6 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1 style={{ textAlign: 'center', fontSize: '12em', color: '#ffffff' }}>Hello World</h1>
         <Header />
         <TruckList />
         <Map />
