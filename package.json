@@ -33,11 +33,14 @@
     "react": "^15.5.1",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-test-renderer": "^15.4.2",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "underscore": "^1.8.3",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
@@ -52,6 +55,7 @@
     "react-addons-test-utils": "^15.5.0",
     "react-test-renderer": "^15.5.3",
     "redux-devtools": "^3.3.2",
+    "redux-devtools-extension": "^2.13.0",
     "supertest": "^3.0.0"
   }
 }
