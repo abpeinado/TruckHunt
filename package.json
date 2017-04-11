@@ -13,6 +13,7 @@
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
+    "resnap": "jest --updateSnapshot",
     "build": "webpack",
     "postinstall": "npm run build",
     "lint": "eslint client server"

@@ -1,1 +1,1 @@
-// 'truck owner?' link, part of header
+// Signup page for truck owners
