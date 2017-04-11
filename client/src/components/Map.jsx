@@ -1,13 +1,12 @@
 import React from 'react';
 
-
-const Map = () => {
-
+export default function Map() {
   return (
-    <div>Map</div>
-  )
-};
-
-export default Map;
-
-// Map view on hom page
+    <div className="mainMap">
+      <iframe
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAXLEBPlNpPG_7Cx6WdXEszZ6woRdwQdnw
+          &q=Hack+Reactor,San+Francisco+CA"
+      />
+    </div>
+  );
+}
