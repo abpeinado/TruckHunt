@@ -1,6 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
-import renderer from 'react-test-renderer';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,9 +8,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <h1 style={{ textAlign: 'center', fontSize: '12em', color: '#ffffff' }}>Hello World</h1>
+      <div>
+        <h1 style={{ textAlign: 'center', fontSize: '12em', color: '#ffffff' }}>Hello World</h1>
+      </div>
     );
   }
 }
 
 export default App;
+
+// should contain:
+//   -Header
+//   -Map
+//   -TruckList
