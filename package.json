@@ -9,7 +9,8 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "test": "kill $ps aux | grep nodemon | awk '{print $2}' && jest && npm run start-dev",
+    "test": "jest",
+    "test-dev": "kill $ps aux | grep nodemon | awk '{print $2}' && jest && npm run start-dev",
     "react-dev": "webpack -d --watch",
     "start-dev": "nodemon server/server.js",
     "start": "node server/server.js",
