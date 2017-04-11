@@ -19,8 +19,10 @@ describe('App Components Test', () => {
   //   expect(tree).toMatchSnapshot();
   // });
 
-  test('app has hello world text', () => {
+  test('app contains header and trucklist', () => {
     const app = shallow(<App />);
-    expect(app.text()).toEqual('Hello World');
+    expect(app.text()).toContain('<Header');
+    expect(app.text()).toContain('<TruckList');
   });
+
 });
