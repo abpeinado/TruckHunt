@@ -1,3 +1,4 @@
+version: 1
 machine:
   node:
     version: 6.10.2
@@ -10,3 +11,4 @@ deployment:
     branch: staging
     heroku:
       appname: tutelarytoads-staging
+
