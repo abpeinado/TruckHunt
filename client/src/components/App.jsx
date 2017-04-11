@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header.jsx';
-import Map from './MainMap.jsx';
+import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
 
 
@@ -15,7 +15,7 @@ class App extends React.Component {
       <div>
         <Header />
         <TruckList />
-        <Map />
+        <MainMap />
       </div>
     );
   }
