@@ -16,3 +16,8 @@ class App extends React.Component {
 }
 
 export default App;
+
+// should contain:
+//   -Header
+//   -Map
+//   -TruckList
