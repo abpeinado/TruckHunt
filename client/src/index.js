@@ -1,6 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-import App from './components/app.jsx';
+import App from './components/App.jsx';
+import configureStore from './store/configureStore.js';
 
-render(<App />, document.getElementById('app'));
+// can pass in an initialState here if necessary:
+const store = configureStore();
 
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
