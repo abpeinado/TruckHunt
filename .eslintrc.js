@@ -46,4 +46,3 @@ module.exports = {
   },
   "allow": ["warn", "error", "log"]
 };
-    // "react/jsx-filename-extension": "off",
