@@ -1,11 +1,8 @@
 import React from 'react';
-import { Row, Col, Grid } from 'react-bootstrap';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
 import Signup from './OwnerSignup.jsx';
-import { Col } from 'react-bootstrap';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -22,19 +19,11 @@ class App extends React.Component {
       );
     }
     return (
-      <Grid>
-        <Row>
-          <Header />
-        </Row>
-        <Row >
-          <Col md={9}>
-            <TruckList />
-          </Col>
-          <Col md={3}>
-            <MainMap />
-          </Col>
-        </Row>
-      </Grid>
+      <div>
+        <Header />
+        <TruckList />
+        <MainMap />
+      </div>
     );
   }
 }

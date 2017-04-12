@@ -29,7 +29,29 @@ input {
   padding: 1em;
 }
 
-.img-logo {
-  height: 75px;
-  width: 125px;
+
+.navbar-form.navbar-right {
+  padding-top: 1em;
 }
+
+.container {
+  min-height: 6em;
+}
+
+.logo-inline {
+  display: flex;
+}
+
+.logo-img {
+  max-height: 50px;
+}
+
+.logo-text {
+  margin-top: auto;
+  font-size: 2.4em;
+}
+
+/*
+.NavbarStyled {
+  min-height: 6em;
+}*/
