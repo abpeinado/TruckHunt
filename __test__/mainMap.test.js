@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import Map from '../client/src/components/Map.jsx';
+import Map from '../client/src/components/MainMap.jsx';
 
 describe('Map Components Test', () => {
   test('Map has className mainMap', () => {
