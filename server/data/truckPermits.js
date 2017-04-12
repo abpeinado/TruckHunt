@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // url: https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat
 // API ENDPOINT https://data.sfgov.org/resource/6a9r-agq8.json
 

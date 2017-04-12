@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+
 class TruckInfoSummary extends React.Component {
   constructor(props) {
     super(props);
@@ -36,3 +37,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(TruckInfoSummary);
+

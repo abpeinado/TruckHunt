@@ -12,4 +12,5 @@ const TruckInfoLeftPane = () => {
   );
 };
 
+
 export default TruckInfoLeftPane;

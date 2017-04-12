@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // url https://data.sfgov.org/Economy-and-Community/Mobile-Food-Schedule/jjew-r69b#
 // API ENDPOINT https://data.sfgov.org/resource/bbb8-hzi6.json
 // FIELDS:

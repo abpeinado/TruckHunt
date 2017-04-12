@@ -19,10 +19,11 @@ class TruckList extends Component {
     }
     return (
       <Col className={'TruckListClass'} xs={12} md={8}>
+        TruckList
         <ListGroup>
           {this.props.truckList.map((item, i) =>
             <TruckListItem restaurant={item} key={i} />
-          )}
+        )}
         </ListGroup>
       </Col>
     );

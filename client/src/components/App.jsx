@@ -1,38 +1,64 @@
-import React from 'react';
-import Header from './Header.jsx';
-import MainMap from './MainMap.jsx';
-import TruckList from './TruckList.jsx';
-import OwnerSignup from './OwnerSignup.jsx';
-import TruckInfo from './TruckInfo.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      wantsOwnerSignup: false,
-      wantsTruckInfo: false
-    };
-  }
+// import React from 'react';
+// import Header from './Header.jsx';
+// import MainMap from './MainMap.jsx';
+// import TruckList from './TruckList.jsx';
+// import OwnerSignup from './OwnerSignup.jsx';
+// import TruckInfo from './TruckInfo.jsx';
 
-  render() {
-    if (this.state.wantsOwnerSignup) {
-      return (
-        <OwnerSignup />
-      );
-    }
-    if (this.state.wantsTruckInfo) {
-      return (
-        <TruckInfo />
-      );
-    }
-    return (
-      <div>
-        <Header />
-        <TruckList />
-        <MainMap />
-      </div>
-    );
-  }
-}
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       wantsOwnerSignup: false,
+//       wantsTruckInfo: false
+//     };
+//   }
 
-export default App;
+//   render() {
+//     if (this.state.wantsOwnerSignup) {
+//       return (
+//         <OwnerSignup />
+//       );
+//     }
+//     if (this.state.wantsTruckInfo) {
+//       return (
+//         <TruckInfo />
+//       );
+//     }
+//     return (
+//       <div>
+//         <Header />
+//         <TruckList />
+//         <MainMap />
+//       </div>
+//     );
+//   }
+// }
+
+// import React from 'react';
+// import ConsumerHomepage from './ConsumerHomepage.jsx';
+// // import MainMap from './MainMap.jsx';
+// // import TruckList from './TruckList.jsx';
+// // import OwnerSignup from './OwnerSignup.jsx';
+// // import TruckInfo from './TruckInfo.jsx';
+
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//     };
+//   }
+
+//   render() {
+
+
+//     return (
+//       <div>
+//         <ConsumerHomepage />
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;

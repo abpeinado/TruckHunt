@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const truckData = require('./truckListData.js');
 const requesthandler = require('./requestHandler.js');
+const orderingData = require('./incomingOrdersData.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -32,6 +33,10 @@ app.get('/trucklist', (req, res) => {
 
 app.get('/truckInfo', (req, res) => {
   res.send(truckData.truckList.trucks[0]);
+});
+
+app.get('/vendorIncomingOrder', (req, res) => {
+  res.send(orderingData.VendorOrders.order);
 });
 
 const server = app.listen(port, () => {
