@@ -12,17 +12,17 @@ class TruckList extends Component {
 
   render() {
     if (this.props.truckListHasErrored) {
-      return <p>Sorry! There was an error loading today\'s trucks!</p>;
+      return <p>Sorry! There was an error loading today's trucks!</p>;
     }
     if (this.props.truckListIsLoading) {
       return <p>Loading…</p>;
     }
     return (
-     <Col className={'TruckListClass'} xs={12} md={8}>
+      <Col className={'TruckListClass'} xs={12} md={8}>
         TruckList
         <ListGroup>
-        {this.props.truckList.map((item, i) =>
-          <TruckListItem restaurant={item} key={i} />
+          {this.props.truckList.map((item, i) =>
+            <TruckListItem restaurant={item} key={i} />
         )}
         </ListGroup>
       </Col>

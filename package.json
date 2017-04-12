@@ -17,7 +17,7 @@
     "resnap": "jest --updateSnapshot",
     "build": "webpack",
     "postinstall": "npm run build",
-    "lint": "eslint client server"
+    "lint": "eslint --ext .js --ext .jsx client server"
   },
   "dependencies": {
     "babel-core": "^6.24.0",

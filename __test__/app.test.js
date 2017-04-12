@@ -28,8 +28,6 @@ describe('App Components Test', () => {
   //     <Provider store={store}>
   //       <App />
   //     </Provider>);
-
-  //   console.log('WHAT THE F ----------------------->', app);
   // });
 });
 
