@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 // import renderer from 'react-test-renderer';
 import App from '../client/src/components/App';
@@ -19,11 +19,10 @@ describe('App Components Test', () => {
   //   expect(tree).toMatchSnapshot();
   // });
 
-  test('app contains header and trucklist', () => {
-    const app = shallow(<App />);
-    expect(app.text()).toContain('<Header');
-    expect(app.text()).toContain('<TruckList');
-
-    // expect(app.text()).toContain('<Header /><Map /><TruckList />');
+  test('app contains header, trucklist and mainmap', () => {
+    const app = mount(<App />);
+    expect(app.find('Header')).toBeDefined();
+    expect(app.find('MainMap')).toBeDefined();
+    expect(app.find('TruckList')).toBeDefined();
   });
 });
