@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { items, itemsHasErrored, itemsIsLoading } from './truckListReducers.js';
+import { truckList, truckListHasErrored, truckListIsLoading } from './truckListReducers.js';
 
 export default combineReducers({
-  items,
-  itemsHasErrored,
-  itemsIsLoading
+  truckList,
+  truckListHasErrored,
+  truckListIsLoading
 });

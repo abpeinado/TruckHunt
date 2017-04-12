@@ -4,6 +4,8 @@ import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
 import Signup from './OwnerSignup.jsx';
+import { Col } from 'react-bootstrap';
+
 
 class App extends React.Component {
   constructor(props) {

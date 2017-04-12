@@ -1,43 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { truckListFetchData } from '../actions/truckListActions.js';
 import { Col, ListGroup } from 'react-bootstrap';
 import TruckListItem from './TruckListItem.jsx';
-// on homepage, contains TruckListItems
 
+class TruckList extends Component {
 
-const TruckList = () => {
-  const truckData = [
-    {
-      name: 'Los Pollos Hermanos',
-      genre: 'Mexican',
-      description: 'This is a great little mexican joint',
-      rating: '4/5',
-      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'
-    },
-    {
-      name: 'Sush Tush',
-      genre: 'Japanese',
-      description: 'This is a great sushi shop',
-      rating: '3/5',
-      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'
-    },
-    {
-      name: 'Royal with Cheese',
-      genre: 'American',
-      description: 'Famous for the Marsellus Wallace"s Wife Burger',
-      rating: '5/5',
-      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'
-    }];
+  componentDidMount() {
+    this.props.truckListFetchData('/truckList');
+  }
 
-  return (
-    <Col className={'TruckListClass'} xs={12} md={8}>
-      TruckList
-      <ListGroup>
-        {truckData.map((item, i) =>
+  render() {
+    console.log('WHAT IS THIS', this.props.truckList);
+
+    if (this.props.truckListHasErrored) {
+      return <p>Sorry! There was an error loading today's trucks!</p>;
+    }
+    if (this.props.truckListIsLoading) {
+      return <p>Loading…</p>;
+    }
+    return (
+     <Col className={'TruckListClass'} xs={12} md={8}>
+        TruckList
+        <ListGroup>
+        {this.props.truckList.map((item, i) =>
           <TruckListItem restaurant={item} key={i} />
-      )}
-      </ListGroup>
-    </Col>
-  );
+        )}
+        </ListGroup>
+      </Col>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    truckList: state.truckList,
+    truckListHasErrored: state.truckListHasErrored,
+    truckListIsLoading: state.truckListIsLoading
+  };
 };
 
-export default TruckList;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    truckListFetchData: (url) => dispatch(truckListFetchData(url))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TruckList);
