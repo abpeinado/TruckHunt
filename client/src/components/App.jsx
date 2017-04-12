@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
+import { Col } from 'react-bootstrap';
+
 
 
 class App extends React.Component {
@@ -15,7 +17,10 @@ class App extends React.Component {
       <div>
         <Header />
         <TruckList />
-        <MainMap />
+        <Col xs={12} md={4}>
+          Map
+          <MainMap />
+        </Col>
       </div>
     );
   }
