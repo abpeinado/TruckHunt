@@ -8,8 +8,11 @@ html {
   min-height: 140px;
 }
 
-span.trucklist-group.list-group-item {
+
+span.trucklist-group.list-group-item{
   background-color: rgba(255, 255, 255, 0.36);
+  margin-bottom: inherit;
+  border-radius: .5em;
 }
 
 .trucklist-rating {

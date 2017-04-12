@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { truckListFetchData } from '../actions/truckListActions.js';
 import { Col, ListGroup } from 'react-bootstrap';
+import { truckListFetchData } from '../actions/truckListActions.js';
 import TruckListItem from './TruckListItem.jsx';
 
 class TruckList extends Component {
@@ -11,10 +11,8 @@ class TruckList extends Component {
   }
 
   render() {
-    console.log('WHAT IS THIS', this.props.truckList);
-
     if (this.props.truckListHasErrored) {
-      return <p>Sorry! There was an error loading today's trucks!</p>;
+      return <p>Sorry! There was an error loading today\'s trucks!</p>;
     }
     if (this.props.truckListIsLoading) {
       return <p>Loading…</p>;
