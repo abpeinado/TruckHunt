@@ -88,6 +88,7 @@ class OwnerSignup extends React.Component {
       });
     } else {
       // TODO: conditional render passwords don't match
+      // ALSO: error handling for incorrect login
       console.log('inside handleSubmit, passwords do not match');
     }
   }
