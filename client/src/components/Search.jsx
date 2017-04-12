@@ -43,11 +43,11 @@ class Search extends Component {
           <FormControl bsSize="large" type="text" placeholder="Search" onChange={this.handleChange} />
         </FormGroup>
         {' '}
-        <Button bsSize="large" type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>
-        Find Trucks!</Button>
+        <Button bsSize="large" type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>Find Trucks!</Button>
       </Navbar.Form>
     );
   }
 }
 
 export default Search;
+
