@@ -1,12 +1,24 @@
-import React from 'react';
 
+import React, { Component } from 'react';
+import { Navbar } from 'react-bootstrap';
+import Logo from './Logo.jsx';
+import Search from './Search.jsx';
 
-const Header = () => {
-
-  return (
-   <h1>Fuego Foods</h1>
-  );
-};
+class Header extends Component {
+  render() {
+    return (
+      <Navbar>
+        <Navbar.Header>
+          <Logo />
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Search />
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
+}
 
 export default Header;
 

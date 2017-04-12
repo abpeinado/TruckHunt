@@ -1,3 +1,4 @@
+
 html {
   font-family: 'Patua One', cursive;
   background-color: #7d64d6;
@@ -25,3 +26,7 @@ input {
   padding: 1em;
 }
 
+.img-logo {
+  height: 75px;
+  width: 125px;
+}

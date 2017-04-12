@@ -32,8 +32,8 @@ const TruckList = () => {
     <Col className={'TruckListClass'} xs={12} md={8}>
       TruckList
       <ListGroup>
-      {truckData.map((item, i) =>
-        <TruckListItem restaurant={item} key={i} />
+        {truckData.map((item, i) =>
+          <TruckListItem restaurant={item} key={i} />
       )}
       </ListGroup>
     </Col>
