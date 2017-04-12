@@ -21,15 +21,28 @@ module.exports = {
     "jsx-a11y",
     "import"
   ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   // Add custom rules here
   // http://eslint.org/docs/rules/
   "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "comma-dangle": ["error", "never"],
     "no-console": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/jsx-filename-extension": "off",
     "import/extensions": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "max-len": "off",
+    "class-methods-use-this": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-array-index-key": "off",
+    "arrow-body-style": "off",
+    "arrow-parens": "off"
   },
   "allow": ["warn", "error", "log"]
 };

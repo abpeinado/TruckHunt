@@ -1,16 +1,17 @@
 import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from '../client/src/store/configureStore.js';
 import React from 'react';
 import TruckList from '../client/src/components/TruckList';
 
 describe('App Components Test', () => {
+  const store = configureStore();
 
   test('find trucklistclass', () => {
-    const TruckListWrapper = shallow(<TruckList />);
-    expect(TruckListWrapper.find('TruckListWrapper.node.props.className').exists()).toEqual(false);
-  });
-
-  test('list has data to map', () => {
-    const TruckListWrapper = shallow(<TruckList />);
-    expect(TruckListWrapper.find('TruckListWrapper.node.props.className').exists()).toEqual(false);
+    const TruckListWrapper = shallow(
+      <Provider store={store}>
+        <TruckList />
+      </Provider>);
+    expect(TruckListWrapper.find('TruckListClass')).toBeDefined();
   });
 });

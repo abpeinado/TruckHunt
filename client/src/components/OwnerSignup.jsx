@@ -12,6 +12,7 @@ class OwnerSignup extends React.Component {
       lastName: '',
       email: ''
     };
+    this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleVerifyChange = this.handleVerifyChange.bind(this);
