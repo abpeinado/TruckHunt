@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 class Cart extends React.Component {
   constructor(props) {
@@ -8,9 +9,11 @@ class Cart extends React.Component {
 
   render() {
     return (
-      <div>
-        Cart!
-      </div>
+      <Col md={4} className="cart">
+        <Row>
+          <h4 className="cart-title"> Cart! </h4>
+        </Row>
+      </Col>
     );
   }
 }
