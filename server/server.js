@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const truckData = require('./truckListData.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -16,6 +17,10 @@ app.post('/foodTrucks', (req, res) => {
 
 app.get('/truckSignup', (req, res) => {
   res.send('hello from truckSignup');
+});
+
+app.get('/trucklist', (req, res) => {
+  res.send(truckData.truckList.trucks);
 });
 
 const server = app.listen(port, () => {

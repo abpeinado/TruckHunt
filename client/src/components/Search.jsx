@@ -40,10 +40,10 @@ class Search extends Component {
     return (
       <Navbar.Form pullRight>
         <FormGroup>
-          <FormControl type="text" placeholder="Search" onChange={this.handleChange} />
+          <FormControl bsSize="large" type="text" placeholder="Search" onChange={this.handleChange} />
         </FormGroup>
         {' '}
-        <Button type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>
+        <Button bsSize="large" type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>
         Find Trucks!</Button>
       </Navbar.Form>
     );

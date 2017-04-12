@@ -7,15 +7,17 @@ import Search from './Search.jsx';
 class Header extends Component {
   render() {
     return (
-      <Navbar>
-        <Navbar.Header>
-          <Logo />
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Search />
-        </Navbar.Collapse>
-      </Navbar>
+      <div className='NavbarStyled'>
+        <Navbar>
+          <Navbar.Header>
+            <Logo />
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Search />
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
     );
   }
 }
