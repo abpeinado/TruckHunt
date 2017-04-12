@@ -1,11 +1,7 @@
 import React from 'react';
 import { Col, Label, ListGroupItem } from 'react-bootstrap';
 
-// on homepage, contains TruckListItems
-
 class TruckListItem extends React.Component {
-
-
   render () {
     const info = this.props.restaurant;
     return (
@@ -31,11 +27,3 @@ class TruckListItem extends React.Component {
 }
 
 export default TruckListItem;
-
-// Part of TruckList
-// Contains:
-//   -truckListItemDescription
-//   -TruckListItemRating
-
-// (will also have an image, though for now I don't see a good
-// reason to make that a seperate react component)
