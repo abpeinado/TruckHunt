@@ -19,8 +19,8 @@ class OwnerSignup extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-
   }
+
   handlePhotoUpload() {
     console.log('inside photo upload handler');
   }
@@ -88,6 +88,7 @@ class OwnerSignup extends React.Component {
       });
     } else {
       // TODO: conditional render passwords don't match
+      // ALSO: error handling for incorrect login
       console.log('inside handleSubmit, passwords do not match');
     }
   }
