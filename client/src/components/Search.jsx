@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
 
 class Search extends Component {
   constructor(props) {
@@ -37,13 +38,14 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <p>Enter Address To Find Fuego Trucks Near You</p>
-        <input type="text" onChange={this.handleChange} />
-        <button type="button" onClick={() => this.findFoodTrucks(this.state.address)}>
-          Find Trucks!
-        </button>
-      </div>
+      <Navbar.Form pullRight>
+        <FormGroup>
+          <FormControl type="text" placeholder="Search" onChange={this.handleChange} />
+        </FormGroup>
+        {' '}
+        <Button type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>
+        Find Trucks!</Button>
+      </Navbar.Form>
     );
   }
 }

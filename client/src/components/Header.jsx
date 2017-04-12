@@ -1,16 +1,21 @@
 
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { Navbar } from 'react-bootstrap';
 import Logo from './Logo.jsx';
 import Search from './Search.jsx';
 
 class Header extends Component {
   render() {
     return (
-      <div>
-        <Logo />
-        <Search />
-      </div>
+      <Navbar>
+        <Navbar.Header>
+          <Logo />
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Search />
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
