@@ -23,6 +23,10 @@ app.get('/trucklist', (req, res) => {
   res.send(truckData.truckList.trucks);
 });
 
+app.get('/truckInfo', (req, res) => {
+  res.send(truckData.truckList.trucks[0]);
+});
+
 const server = app.listen(port, () => {
   console.log(`Express Service live and listening on: ${port}`);
 });
