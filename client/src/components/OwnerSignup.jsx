@@ -97,6 +97,9 @@ class OwnerSignup extends React.Component {
       <div className="formWrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="signupInput">
+            <input type="text" value="JOIN THE HUNT" />
+          </div>
+          <div className="signupInput">
             <input type="text" placeholder="email" value={this.state.email} onChange={this.handleEmailChange} />
           </div>
           <div className="signupInput">
@@ -115,7 +118,7 @@ class OwnerSignup extends React.Component {
             <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} />
           </div>
           <div className="signupInput">
-            <input type="text" placeholder="Photo Upload" onClick={this.handlePhotoUpload} />
+            <input type="text" value="Photo Upload" onClick={this.handlePhotoUpload} />
           </div>
           <div className="submitButton">
             <input type="submit" value="Submit" />
