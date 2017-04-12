@@ -1,4 +1,3 @@
-// Signup page for truck owners
 import React from 'react';
 
 class UserLogin extends React.Component {
@@ -49,7 +48,7 @@ class UserLogin extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="formWrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="loginInput">
             <input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange} />
@@ -63,4 +62,4 @@ class UserLogin extends React.Component {
   }
 }
 
-export default UserLogin.jsx;
+export default UserLogin;
