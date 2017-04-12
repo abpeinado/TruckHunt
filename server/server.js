@@ -15,6 +15,10 @@ app.get('/home', (req, res) => {
   res.send('hello world from home');
 });
 
+app.get('/truckSignup', (req, res) => {
+  res.send('hello from truckSignup');
+});
+
 const server = app.listen(port, () => {
   console.log(`Express Service live and listening on: ${port}`);
 });

@@ -15,3 +15,13 @@ span.trucklist-group.list-group-item {
   padding-top: 3em;
   text-align: center;
 }
+
+.formWrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+input {
+  padding: 1em;
+}
+
