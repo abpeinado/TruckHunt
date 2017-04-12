@@ -3,18 +3,12 @@ html {
   background-color: #7d64d6;
 }
 
-/*
-.TruckListClass {
-  background-color: rgba(0, 0, 0, 0.36)
-}*/
-
 .trucklist-group {
   min-height: 140px;
 }
 
-span.trucklist-group.list-group-item{
-
-    background-color: rgba(255, 255, 255, 0.36);
+span.trucklist-group.list-group-item {
+  background-color: rgba(255, 255, 255, 0.36);
 }
 
 .trucklist-rating {
