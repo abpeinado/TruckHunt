@@ -2,7 +2,7 @@
 import React from 'react';
 // import { signup } from ''
 import { connect } from 'react-redux';
-import { signup } from '../actions/signupActions.js';
+import { signupFetch } from '../actions/signupActions.js';
 
 class OwnerSignup extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class OwnerSignup extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
   }
 
   handlePhotoUpload(event) {
@@ -42,15 +41,15 @@ class OwnerSignup extends React.Component {
     });
   }
 
-  handleVerifyChange(event) {
-    this.setState({
-      verify: event.target.value
-    });
-  }
-
   handleEmailChange(event) {
     this.setState({
       email: event.target.value
+    });
+  }
+
+  handleVerifyChange(event) {
+    this.setState({
+      verify: event.target.value
     });
   }
 
@@ -68,7 +67,7 @@ class OwnerSignup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    event.stopPropagation();
+    // event.stopPropagation();
 
     const user = this.state.username;
     const pass = this.state.password;
@@ -98,7 +97,7 @@ class OwnerSignup extends React.Component {
     if (pass === verify) {
       console.log('inside handleSubmit, passwords match');
       // dispatch fetch function saved in redux
-      this.props.signup(userInfo);
+      this.props.signupFetch(userInfo);
       this.setState({
         username: '',
         password: '',
@@ -112,6 +111,22 @@ class OwnerSignup extends React.Component {
   }
 
   render() {
+    if (this.props.signupError) {
+      return (
+        <h1>ERROR</h1>
+      );
+    }
+    if (this.props.signupLoading) {
+      return (
+        <h1>Loading...</h1>
+      );
+    }
+    console.log('SIGNUP ', this.props.signupSuccess);
+    if (this.props.signupSuccess === true) {
+      return (
+        <h1>SUCCESS</h1>
+      );
+    }
     return (
       <div className="formWrapper">
         <form onSubmit={this.handleSubmit}>
@@ -148,11 +163,18 @@ class OwnerSignup extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    signup: (info) => dispatch(signup(info))
+    signupSuccess: state.signupSuccess,
+    signupError: state.signupError,
+    signupLoading: state.signupLoading
   };
 };
 
-export default connect(null, mapDispatchToProps)(OwnerSignup);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signupFetch: (info) => dispatch(signupFetch(info))
+  };
+};
 
+export default connect(mapStateToProps, mapDispatchToProps)(OwnerSignup);

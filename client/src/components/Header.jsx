@@ -32,9 +32,6 @@ class Header extends Component {
                 <Search />
               </NavItem>
             </Nav>
-            <Nav pullRight>
-              <Button eventKey={1} href="#" onClick={this.handleWantsSignup}>Login/Signup</Button>
-            </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>

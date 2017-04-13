@@ -1,10 +1,3 @@
-export function wantsSignup(bool) {
-  return {
-    type: 'WANTS_SIGNUP',
-    wantsSignup: bool
-  };
-}
-
 export function signupError(bool) {
   return {
     type: 'SIGNUP_ERROR',
@@ -19,14 +12,15 @@ export function signupLoading(bool) {
   };
 }
 
-export function signupSuccess(response) {
+export function signupSuccess(bool) {
+  console.log('asd;flkjasd;lfkjas;ldkfja;slkdfjas;ldkfj', bool);
   return {
     type: 'SIGNUP_SUCCESS',
-    signupSuccess: response
+    signupSuccess: bool
   };
 }
 
-export function signup(userInfo) {
+export function signupFetch(userInfo) {
   const init = {
     method: 'POST',
     headers: {
@@ -42,11 +36,12 @@ export function signup(userInfo) {
     fetch('/truckSignup', init)
       .then((response) => {
         dispatch(signupLoading(false));
-        dispatch(signupSuccess(true));
+        console.log('got it', response);
         return response;
       })
       .then(response => response.json())
-      .then(response => dispatch(signupSuccess(response)))
+      .then(response => console.log('ars;elkjasl;dfkj', response))
+      .then(response => dispatch(signupSuccess(true)))
       .catch(() => dispatch(signupError(true)));
   };
 }

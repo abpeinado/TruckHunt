@@ -23,7 +23,7 @@ app.post('/search', requesthandler.search);
 app.post('/truckSignup', (req, res) => {
   const userInfo = req.body.userInfo;
   console.log('yyyeeeehaww', userInfo);
-  res.send('hello from truckSignup');
+  res.send(true);
 });
 
 app.get('/trucklist', (req, res) => {

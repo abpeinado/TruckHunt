@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import { truckList, truckListHasErrored, truckListIsLoading } from './truckListReducers.js';
+import { truckInfo, truckInfoHasErrored, truckInfoIsLoading } from './truckInfoReducers.js';
+import { wantsSignup, signupError, signupLoading, signupSuccess, signup } from './signupReducers.js';
 
 export default combineReducers({
   truckList,
@@ -7,5 +9,10 @@ export default combineReducers({
   truckListIsLoading,
   truckInfo,
   truckInfoHasErrored,
-  truckInfoIsLoading
+  truckInfoIsLoading,
+  signup,
+  signupSuccess,
+  signupError,
+  signupLoading,
+  wantsSignup
 });
