@@ -1,21 +1,51 @@
 import React from 'react';
 import { Row, Grid } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
 import Cart from './Cart.jsx';
+import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
-const TruckInfo = () => {
-  return (
-    <Grid>
-      <Row>
-        <Header />
-      </Row>
-      <Row >
-        <TruckInfoLeftPane />
-        <Cart />
-      </Row>
-    </Grid>
-  );
+class TruckInfo extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchTruckInfo('');
+  }
+
+  render() {
+    const { truckInfoHasErrored, truckInfoIsLoading, truckInfo } = this.props;
+    if (truckInfoHasErrored) {
+      return <p>Sorry! There was an error loading this trucks info</p>;
+    }
+    if (truckInfoIsLoading || Object.keys(truckInfo).length === 0) {
+      return <p>Loading…</p>;
+    }
+    return (
+      <Grid>
+        <Row>
+          <Header />
+        </Row>
+        <Row >
+          <TruckInfoLeftPane />
+          <Cart />
+        </Row>
+      </Grid>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    truckInfo: state.truckInfo,
+    truckInfoHasErrored: state.truckInfoHasErrored,
+    truckInfoIsLoading: state.truckInfoIsLoading
+  };
 };
 
-export default TruckInfo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTruckInfo: (truckID) => dispatch(truckInfoFetchData(truckID))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TruckInfo);

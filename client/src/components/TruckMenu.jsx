@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import TruckMenuGroup from './TruckMenuGroup.jsx';
 
 class TruckMenu extends React.Component {
@@ -9,16 +10,23 @@ class TruckMenu extends React.Component {
   }
 
   render() {
+    // console.log('this.props.menu', this.props.menu)
     return (
       <Row>
         <Col md={12}>
-          <TruckMenuGroup />
-          <TruckMenuGroup />
-          <TruckMenuGroup />
+          {this.props.menu.map((menuGroup, i) =>
+            <TruckMenuGroup menuGroup={menuGroup} key={i} />
+          )}
         </Col>
       </Row>
     );
   }
 }
 
-export default TruckMenu;
+const mapStateToProps = (state) => {
+  return {
+    menu: state.truckInfo.menu
+  };
+};
+
+export default connect(mapStateToProps)(TruckMenu);
