@@ -55,3 +55,25 @@ input {
 .NavbarStyled {
   min-height: 6em;
 }*/
+
+.cart {
+  height: 600px;
+  border: 1px solid #111;
+}
+
+.truck-info-summary {
+  border: 1px solid blue;
+}
+
+.truck-menu-group {
+  background-color: #d8d8d8;
+  border: 1px solid green;
+}
+
+.truck-rating {
+  text-align: center;  
+}
+
+.cart-title {
+  text-align: center;
+}

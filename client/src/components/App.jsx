@@ -2,20 +2,27 @@ import React from 'react';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
-import Signup from './OwnerSignup.jsx';
+import OwnerSignup from './OwnerSignup.jsx';
+import TruckInfo from './TruckInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wantsLogin: false
+      wantsOwnerSignup: false,
+      wantsTruckInfo: false
     };
   }
 
   render() {
-    if (this.state.wantsLogin) {
+    if (this.state.wantsOwnerSignup) {
       return (
-        <Signup />
+        <OwnerSignup />
+      );
+    }
+    if (this.state.wantsTruckInfo) {
+      return (
+        <TruckInfo />
       );
     }
     return (
