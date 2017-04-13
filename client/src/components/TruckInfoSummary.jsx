@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfoSummary extends React.Component {
   constructor(props) {
@@ -7,22 +9,47 @@ class TruckInfoSummary extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.props.fetchTruckInfo('');
+  }
+
   render() {
+    if (this.props.truckInfoHasErrored) {
+      return <p>Sorry! There was an error loading this trucks info</p>;
+    }
+    if (this.props.truckInfoIsLoading) {
+      return <p>Loading…</p>;
+    }
+    const { image, name, description, rating } = this.props.truckSummary;
     return (
       <Row className="truck-info-summary">
         <Col md={3}>
-          <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'} style={{ maxHeight: '90px' }} alt="Truck Icon" />
+          <img src={image} style={{ maxHeight: '90px' }} alt="Truck Icon" />
         </Col>
         <Col md={6}>
-          <h2> Los Pollos Hermanos</h2>
-          <p> We sell the best chicken in the cosmosphere </p>
+          <h2> {name} </h2>
+          <p> {description} </p>
         </Col>
         <Col md={3} className="truck-rating">
-          <h3> 3 stars </h3>
+          <h3> {rating} stars </h3>
         </Col>
       </Row>
     );
   }
 }
 
-export default TruckInfoSummary;
+const mapStateToProps = (state) => {
+  return {
+    truckSummary: state.truckInfo,
+    truckInfoHasErrored: state.truckInfoHasErrored,
+    truckInfoIsLoading: state.truckInfoIsLoading
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTruckInfo: (truckID) => dispatch(truckInfoFetchData(truckID))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TruckInfoSummary);
