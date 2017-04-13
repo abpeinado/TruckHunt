@@ -2,7 +2,7 @@
 import React from 'react';
 // import { signup } from ''
 import { connect } from 'react-redux';
-import { signup, signupError, signupSuccess } from '../actions/signupActions.js';
+import { signup } from '../actions/signupActions.js';
 
 class OwnerSignup extends React.Component {
   constructor(props) {
