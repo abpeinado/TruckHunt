@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Label, ListGroupItem } from 'react-bootstrap';
 
-const TruckListItem = () => {
-  const info = this.props.restaurant;
+const TruckListItem = (props) => {
+  const info = props.restaurant;
   return (
     <ListGroupItem className="trucklist-group" >
       <div>

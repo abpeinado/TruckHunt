@@ -1,7 +1,9 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { Provider } from 'react-redux';
-import configureStore from '../client/src/store/configureStore.js';
+// import { Provider } from 'react-redux';
+
+// import configureStore from '../client/src/store/configureStore.js';
+
 // import renderer from 'react-test-renderer';
 import App from '../client/src/components/App';
 
@@ -13,7 +15,11 @@ describe('App Components Test', () => {
     expect(sum(1, 2)).toBe(3);
   });
 
-  const store = configureStore();
+
+  // const store = configureStore();
+
+
+
 
   // // snapshot test - to update, run "npm run resnap"
   // // see https://facebook.github.io/jest/docs/snapshot-testing.html#content

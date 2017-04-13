@@ -18,7 +18,9 @@ export const truckListIsLoading = (state = false, action) => {
 
 export const truckList = (state = [], action) => {
   switch (action.type) {
+
     case 'TRUCK_LIST_FETCH_DATA_SUCCESS':
+      console.log('TRUCK LIST SUCCESS', action.truckList);
       return action.truckList;
     default:
       return state;
