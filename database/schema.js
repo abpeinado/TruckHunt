@@ -1,4 +1,4 @@
-module.exports.createTables = (db) => {
+module.exports = (db) => {
   return db.query('DROP TABLE IF EXISTS\
     users\
     ')
