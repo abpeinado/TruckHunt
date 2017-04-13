@@ -27,7 +27,7 @@ class Search extends Component {
         text: address
       })
     };
-    fetch('/foodTrucks', init)
+    fetch('/search', init)
       .then((response) => {
         console.log('here ', response.statusText);
       })
