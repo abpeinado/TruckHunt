@@ -22,13 +22,21 @@ describe('server tests', () => {
     server.close();
   });
 
-  // Declaring server tests
   describe('basic server test', () => {
     it('responds to /', (done) => {
       request(server)
       .get('/')
       .expect(200, done);
     });
+
+    it('Should not throw error on POST to /foodTrucks', done => {
+      request(server)
+        .post('/foodTrucks')
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res).toEqual(expect.anything());
+          done();
+        });
+    });
   });
 });
-
