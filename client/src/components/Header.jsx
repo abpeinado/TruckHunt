@@ -1,11 +1,11 @@
-
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+// import { connect } from 'react-redux';
 import Logo from './Logo.jsx';
 import Search from './Search.jsx';
-import LoginButton from './LoginButton.jsx';
+// import LoginButton from './LoginButton.jsx';
 
-class Header extends React.Component {
+class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,9 +15,7 @@ class Header extends React.Component {
   }
 
   handleWantsSignup() {
-    this.setState({
-      wantsSignup: !this.state.wantsSignup
-    });
+    console.log('inside wants signup');
   }
 
   render() {
@@ -29,10 +27,14 @@ class Header extends React.Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Search />
-          </Navbar.Collapse>
-          <Navbar.Collapse>
-            <LoginButton onClick={this.handleWantsSignup} />
+            <Nav>
+              <NavItem>
+                <Search />
+              </NavItem>
+            </Nav>
+            <Nav pullRight>
+              <Button eventKey={1} href="#" onClick={this.handleWantsSignup}>Login/Signup</Button>
+            </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
@@ -41,10 +43,3 @@ class Header extends React.Component {
 }
 
 export default Header;
-
-// part of App
-// contains:
-//   -Logo,
-//   -Search,
-//   -OwnerLoginLink,
-//   -UserLoginLink,

@@ -20,7 +20,9 @@ Use the POST to '/search' as an example.
 **/
 app.post('/search', requesthandler.search);
 
-app.get('/truckSignup', (req, res) => {
+app.post('/truckSignup', (req, res) => {
+  const userInfo = req.body.userInfo;
+  console.log('yyyeeeehaww', userInfo);
   res.send('hello from truckSignup');
 });
 
