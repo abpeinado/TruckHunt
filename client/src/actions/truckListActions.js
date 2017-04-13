@@ -13,7 +13,6 @@ export function truckListIsLoading(bool) {
 }
 
 export function truckListFetchDataSuccess(truckList) {
-  console.log('TRUCK LIST ACTION SUCCESS', truckList);
   return {
     type: 'TRUCK_LIST_FETCH_DATA_SUCCESS',
     truckList
