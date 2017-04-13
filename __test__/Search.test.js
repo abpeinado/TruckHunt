@@ -1,17 +1,14 @@
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import Search from '../client/src/components/Search.jsx';
 
 describe('Search Component Tests', () => {
-  test('Search component renders', () => {
-    const search = mount(
-      <Search />
-    );
-    const div = search.find('.form-group');
-    expect(div.length).toBe(1);
+  let search;
+  beforeEach(() => {
+    search = shallow(<Search />);
   });
 
-  test('Search component should be a stateful class component', () => {
-    expect(React.Component.isPrototypeOf(Search)).toEqual(true);
+  it('should render without crashing', () => {
+    expect(search.exists()).toBe(true);
   });
 });

@@ -1,21 +1,18 @@
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import Logo from '../client/src/components/Logo.jsx';
 
 describe('Logo Component Tests', () => {
-  test('Search component renders', () => {
-    const logo = mount(
-      <Logo />
-    );
-    const div = logo.find('.logo-img');
-    expect(div.length).toBe(1);
+  let logo;
+  beforeEach(() => {
+    logo = shallow(<Logo />);
   });
 
-  test('Clicking on search returns user to homepage', () => {
-    const logo = mount(
-      <Logo />
-    );
-    const div = logo.find('.logo-img');
-    expect(div.length).toBe(1);
+  it('should render without crashing', () => {
+    expect(logo.exists()).toBe(true);
+  });
+
+  it('should render an image"', () => {
+    expect(logo.find('img').length).toEqual(1);
   });
 });

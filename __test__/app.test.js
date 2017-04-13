@@ -5,7 +5,7 @@ import React from 'react';
 // import configureStore from '../client/src/store/configureStore.js';
 
 // import renderer from 'react-test-renderer';
-import App from '../client/src/components/App';
+import App from './../client/src/components/App';
 
 const sum = (a, b) => (a + b); // example function (import ./server/sum.js)
 
