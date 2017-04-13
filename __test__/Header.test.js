@@ -2,8 +2,8 @@ import { mount } from 'enzyme';
 import React from 'react';
 import Header from '../client/src/components/Header.jsx';
 
-describe('Header Components Test', () => {
-  test('Header has className NavbarStyled', () => {
+describe('Header Component Tests', () => {
+  test('Header component renders', () => {
     const header = mount(
       <Header />
     );

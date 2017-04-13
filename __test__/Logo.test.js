@@ -2,8 +2,8 @@ import { mount } from 'enzyme';
 import React from 'react';
 import Logo from '../client/src/components/Logo.jsx';
 
-describe('Search Components Test', () => {
-  test('Search has className search', () => {
+describe('Logo Component Tests', () => {
+  test('Search component renders', () => {
     const logo = mount(
       <Logo />
     );
@@ -11,10 +11,11 @@ describe('Search Components Test', () => {
     expect(div.length).toBe(1);
   });
 
-/*  test('Redirect to homepage on click', () => {
+  test('Clicking on search returns user to homepage', () => {
     const logo = mount(
       <Logo />
     );
-
-  });*/
+    const div = logo.find('.logo-img');
+    expect(div.length).toBe(1);
+  });
 });
