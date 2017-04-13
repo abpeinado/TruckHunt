@@ -14,6 +14,12 @@ class TruckInfoSummary extends React.Component {
   }
 
   render() {
+    if (this.props.truckInfoHasErrored) {
+      return <p>Sorry! There was an error loading this trucks info</p>;
+    }
+    if (this.props.truckInfoIsLoading) {
+      return <p>Loading…</p>;
+    }
     const { image, name, description, rating } = this.props.truckSummary;
     return (
       <Row className="truck-info-summary">
@@ -34,7 +40,9 @@ class TruckInfoSummary extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    truckSummary: state.truckInfo
+    truckSummary: state.truckInfo,
+    truckInfoHasErrored: state.truckInfoHasErrored,
+    truckInfoIsLoading: state.truckInfoIsLoading
   };
 };
 
