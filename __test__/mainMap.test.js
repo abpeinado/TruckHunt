@@ -5,7 +5,7 @@ import Map from '../client/src/components/MainMap.jsx';
 describe('Map Component Tests', () => {
   test('Map has className mainMap', () => {
     const map = mount(
-      <Map />
+      <Map className={'mainMap'} md={12} />
     );
     const div = map.find('.mainMap');
     expect(div.length).toBe(1);

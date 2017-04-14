@@ -12,6 +12,6 @@ describe('App Components Test', () => {
       <Provider store={store}>
         <TruckList />
       </Provider>);
-    expect(TruckListWrapper.find('TruckListClass')).toBeDefined();
+    expect(TruckListWrapper.find('truckListClass')).toBeDefined();
   });
 });

@@ -1,4 +1,9 @@
 
+html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
+  padding: 0;
+  margin: 0;
+}
+
 html {
   font-family: 'Patua One', cursive;
   background-color: #7d64d6;
@@ -71,7 +76,7 @@ input {
 }
 
 .truck-rating {
-  text-align: center;  
+  text-align: center;
 }
 
 .cart-title {
