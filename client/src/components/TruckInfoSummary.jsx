@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfoSummary extends React.Component {
   constructor(props) {
@@ -9,18 +8,8 @@ class TruckInfoSummary extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    this.props.fetchTruckInfo('');
-  }
-
   render() {
-    if (this.props.truckInfoHasErrored) {
-      return <p>Sorry! There was an error loading this trucks info</p>;
-    }
-    if (this.props.truckInfoIsLoading) {
-      return <p>Loading…</p>;
-    }
-    const { image, name, description, rating } = this.props.truckSummary;
+    const { image, name, description, rating } = this.props.truckInfo;
     return (
       <Row className="truck-info-summary">
         <Col md={3}>
@@ -40,16 +29,10 @@ class TruckInfoSummary extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    truckSummary: state.truckInfo,
+    truckInfo: state.truckInfo,
     truckInfoHasErrored: state.truckInfoHasErrored,
     truckInfoIsLoading: state.truckInfoIsLoading
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchTruckInfo: (truckID) => dispatch(truckInfoFetchData(truckID))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TruckInfoSummary);
+export default connect(mapStateToProps)(TruckInfoSummary);
