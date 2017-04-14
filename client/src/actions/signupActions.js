@@ -41,7 +41,7 @@ export function signupFetch(userInfo) {
       })
       .then(response => response.json())
       .then(response => console.log('ars;elkjasl;dfkj', response))
-      .then(response => dispatch(signupSuccess(true)))
+      .then(() => dispatch(signupSuccess(true)))
       .catch(() => dispatch(signupError(true)));
   };
 }

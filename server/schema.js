@@ -1,4 +1,4 @@
-const pgp = require('pg-promise');
+// const pgp = require('pg-promise');
 
 module.exports = (db) => {
   return db.query('CREATE TABLE IF NOT EXISTS trucks (\

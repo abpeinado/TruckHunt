@@ -4,16 +4,14 @@ html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
   margin: 0;
 }
 
-body {
-  background-color: #7d64d6;
+html {
   font-family: 'Patua One', cursive;
-
+  background-color: #7d64d6;
 }
 
 .trucklist-group {
   min-height: 140px;
 }
-
 
 
 span.trucklist-group.list-group-item{
@@ -83,14 +81,4 @@ input {
 
 .cart-title {
   text-align: center;
-}
-
-.mapMap {
-  width: 100%;
-  height: 100%;
-}
-
-.groupListItem {
-  padding: 0;
-  margin: 0;
 }

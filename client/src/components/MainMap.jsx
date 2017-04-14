@@ -3,8 +3,7 @@ import { Col } from 'react-bootstrap';
 
 export default function Map() {
   return (
-    <Col md={12}>
-      Map
+    <Col md={4}>
       <div className="mainMap" >
         <iframe
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAXLEBPlNpPG_7Cx6WdXEszZ6woRdwQdnw

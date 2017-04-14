@@ -31,6 +31,15 @@ class Header extends Component {
               <NavItem>
                 <Search />
               </NavItem>
+              <NavItem>
+                <Button>
+                  <h3>Login</h3>
+                </Button>
+                <Button>
+                  <h3>Signup</h3>
+                </Button>
+              </NavItem>
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>
