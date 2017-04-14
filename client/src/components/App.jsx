@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       wantsOwnerSignup: false,
-      wantsTruckInfo: true
+      wantsTruckInfo: false
     };
   }
 
