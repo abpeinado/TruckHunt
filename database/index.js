@@ -1,3 +1,4 @@
+/*
 const pgp = require('pg-promise')();
 const schema = require('./schema.js');
 
@@ -24,3 +25,4 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 module.exports = { db, loadDb };
+*/
