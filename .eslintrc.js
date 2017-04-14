@@ -42,7 +42,10 @@ module.exports = {
     "react/no-unescaped-entities": "off",
     "react/no-array-index-key": "off",
     "arrow-body-style": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "no-multi-str": "off", 
+    "no-template-curly-in-string": "off", 
+    "camelcase": "off"
   },
   "allow": ["warn", "error", "log"]
 };

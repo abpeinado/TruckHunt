@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const truckData = require('./truckListData.js');
+const requesthandler = require('./requestHandler.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -10,10 +11,14 @@ app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-app.post('/foodTrucks', (req, res) => {
-  console.log(req.body);
-  res.send('data received');
-});
+/**
+**
+Please build all routes in requestHandler.js
+to keep the server file organized and out code modular.
+Use the POST to '/search' as an example.
+**
+**/
+app.post('/search', requesthandler.search);
 
 app.get('/truckSignup', (req, res) => {
   res.send('hello from truckSignup');
