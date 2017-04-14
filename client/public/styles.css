@@ -82,8 +82,6 @@ input {
 .cart-title {
   text-align: center;
 }
-<<<<<<< HEAD
-=======
 
 .NavbarVendor {
   padding-top: .8em;
@@ -105,4 +103,3 @@ input {
 .button.btn.btn-success {
   width: 100%;
 }*/
->>>>>>> (feat) Implement React Router, Vendor Management System, Current Orders w/ Redux fetch Server
