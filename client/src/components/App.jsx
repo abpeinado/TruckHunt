@@ -23,18 +23,22 @@ class App extends React.Component {
       );
     }
     return (
-      <Grid>
-        <Row>
-          <Header />
-        </Row>
-        <Row >
-          <Col md={9}>
-            <TruckList />
-          </Col>
-          <Col md={3}>
-            <MainMap />
-          </Col>
-        </Row>
+      <Grid fluid>
+        <div className='headerWrapper'>
+          <Row fluid>
+            <Header />
+          </Row>
+        </div>
+        <div className='bodyWrapper'>
+          <Row fluid>
+            <Col md={8}>
+              <TruckList />
+            </Col>
+            <Col md={4}>
+              <MainMap />
+            </Col>
+          </Row>
+        </div>
       </Grid>
     );
   }

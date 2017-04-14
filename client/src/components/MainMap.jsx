@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 
 export default function Map() {
   return (
-    <Col md={4}>
+    <Col md={12}>
       Map
       <div className="mainMap" >
         <iframe
