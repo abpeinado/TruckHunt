@@ -1,3 +1,7 @@
+const { Vendors } = require('./models/vendors.js');
+const { Customers } = require('./models/customers.js');
+const { Schedules } = require('./models/schedules.js');
+
 module.exports.search = (req, res) => {
   console.log(req.body);
   res.send('data received');
