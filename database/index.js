@@ -14,8 +14,6 @@ const loadDb = (db) => {
 };
 
 
-console.log('fdsf', process.env.NODE_ENV);
-
 // if (process.env.NODE_ENV !== 'test') {
 loadDb(db)
   .then(() => {
