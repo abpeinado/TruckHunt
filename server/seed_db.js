@@ -13,13 +13,14 @@ console.log('supertest', (permits.permits.data));
 // { permit: '17MFF-0179',
 //   food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks' }
 
-// permits.permits.data.forEach((permit) => {
-//   const permitInfo = {
-//     permit: permit[17],
-//     food_category: permit[19]
-//   };
-//   console.log(permitInfo);
-// });
+permits.permits.data.forEach((permit) => {
+  const permitInfo = {
+    permit_number: permit[17],
+    food_category: permit[19]
+  };
+  // console.log(permitInfo);
+  // add db function below to save each obj
+});
 
 
 // ---------POPULATING SCHEDULE INFO----------
@@ -45,5 +46,6 @@ schedule.schedule.data.forEach((s) => {
       long: s[31][2]
     }
   };
-  console.log(scheduleInfo);
+  // console.log(scheduleInfo);
+  // add db function below to save each obj
 });
