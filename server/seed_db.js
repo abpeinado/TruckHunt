@@ -1,9 +1,17 @@
 const schedule = require('./data/mobileFoodSchedule.js');
 const permits = require('./data/truckPermits.js');
+const vendors = require('./models/vendors.js');
 
-console.log('GOT IT');
-console.log('supertest', (permits.permits.data));
+const testObj = {
+  permit_number: '17MFF-0179',
+  food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks'
+};
 
+vendors.new(testObj);
+
+
+// console.log('GOT IT');
+// console.log('supertest', (permits.permits.data));
 
 //  --------POPULATING PERMIT INFO-----------
 
