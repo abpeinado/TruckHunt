@@ -46,17 +46,17 @@ permits.permits.data.forEach((permit) => {
 //   location: { lat: '37.7111783070436', long: '-122.403573115181' } }
 
 // // console.log('supertestTWO', (schedule.schedule.data));
-// schedule.schedule.data.forEach((s) => {
-//   const scheduleInfo = {
-//     day_of_week: s[8],
-//     start_time: s[10],
-//     end_time: s[11],
-//     location: {
-//       lat: s[31][1],
-//       long: s[31][2]
-//     }
-//   };
-//   // console.log(scheduleInfo);
-//   // add db function below to save each obj
-//   sch.newSchedule(scheduleInfo);
-// });
+schedule.schedule.data.forEach((s) => {
+  const scheduleInfo = {
+    day_of_week: s[8],
+    start_time: s[10],
+    end_time: s[11],
+    coordinates: {
+      lat: s[31][1],
+      long: s[31][2]
+    }
+  };
+  // console.log(scheduleInfo);
+  // add db function below to save each obj
+  sch.newSchedule(scheduleInfo);
+});
