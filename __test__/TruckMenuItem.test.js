@@ -1,22 +1,39 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from '../client/src/store/configureStore.js';
+import { mount } from 'enzyme';
 import TruckMenuItem from '../client/src/components/TruckMenuItem';
 
 describe('TruckMenuItem Component Test', () => {
   let truckMenuItem;
+  const item = {
+    name: 'salad',
+    description: 'lettuce, cucumber and some dressing',
+    price: '$5.99'
+  };
 
   beforeEach(() => {
-    const store = configureStore();
-    truckMenuItem = shallow(
-      <Provider store={store}>
-        <TruckMenuItem />
-      </Provider>
+    truckMenuItem = mount(
+      <TruckMenuItem item={item} />
     );
   });
 
-  it('should find create TruckMenuItem component', () => {
+  it('should create a TruckMenuItem component', () => {
     expect(truckMenuItem.exists()).toBe(true);
+  });
+
+  it('should render a div', () => {
+    expect(truckMenuItem.find('div').length).toEqual(1);
+  });
+
+  it('should contain the name, description and price', () => {
+    const text = truckMenuItem.text();
+    console.log('text', text);
+    expect(text).toContain(item.name);
+    expect(text).toContain(item.description);
+    expect(text).toContain(item.price);
+  });
+
+  it('should set the title based on props', () => {
+    const name = truckMenuItem.find('h5');
+    expect(name.text()).toContain('salad');
   });
 });
