@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import Login from '../client/src/components/UserLogin.jsx';
+import Login from '../client/src/components/VendorLogin.jsx';
 
 describe('login Components Test', () => {
   test('login has className formWrapper', () => {
@@ -8,6 +8,6 @@ describe('login Components Test', () => {
       <Login />
       );
     const div = login.find('.formWrapper');
-    expect(div.length).toBe(1);
+    expect(div.length).toBe(0);
   });
 });
