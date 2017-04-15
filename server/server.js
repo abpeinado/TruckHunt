@@ -4,6 +4,7 @@ const path = require('path');
 const truckData = require('./truckListData.js');
 const requestHandler = require('./requestHandler.js');
 const orderingData = require('./incomingOrdersData.js');
+const db = require('../database/index.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
