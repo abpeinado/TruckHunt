@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const truckData = require('./truckListData.js');
-const requesthandler = require('./requestHandler.js');
+const requestHandler = require('./requestHandler.js');
 const orderingData = require('./incomingOrdersData.js');
 const db = require('../database/index.js');
 
@@ -21,13 +21,9 @@ Use the POST to '/search' as an example.
 **
 **/
 
-app.post('/search', requesthandler.search);
+app.post('/search', requestHandler.search);
 
-app.post('/truckSignup', (req, res) => {
-  const userInfo = req.body.userInfo;
-  console.log('yyyeeeehaww', userInfo);
-  res.send(true);
-});
+app.post('/truckSignup', requestHandler.truckSignup);
 
 app.get('/trucklist', (req, res) => {
   res.send(truckData.truckList.trucks);
