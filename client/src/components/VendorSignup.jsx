@@ -132,7 +132,7 @@ class OwnerSignup extends React.Component {
       );
     }
     return (
-      <Form horizontal onSubmit={this.handleSubmit}>
+      <Form horizontal onSubmit={this.handleSubmit} className="VendorSignup" >
         <FormGroup >
           <Col sm={2}>
             Email

@@ -50,7 +50,7 @@ class UserLogin extends React.Component {
   render() {
     return (
 
-      <Form horizontal onSubmit={this.handleSubmit}>
+      <Form horizontal onSubmit={this.handleSubmit} className="VendorLogin">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={2}>
             Username

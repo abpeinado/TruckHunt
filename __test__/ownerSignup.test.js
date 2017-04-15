@@ -13,7 +13,9 @@ describe('Signup Components Test', () => {
         <Signup />
       </Provider>
       );
-    const div = signup.find('.formWrapper');
-    expect(div.length).toBe(0);
+    const VendorSignup = signup.find('.VendorSignup');
+      it('should find Vendor Signup Form component', () => {
+    expect(VendorSignup.exists()).toBe(true);
+  });;
   });
 });

@@ -7,7 +7,9 @@ describe('login Components Test', () => {
     const login = mount(
       <Login />
       );
-    const div = login.find('.formWrapper');
-    expect(div.length).toBe(0);
+    const VendorLogin = login.find('.VendorLogin');
+    it('should find create truckinfo component', () => {
+      expect(VendorLogin.exists()).toBe(true);
+    });
   });
 });
