@@ -6,7 +6,7 @@ module.exports = (db) => {
     phone_number VARCHAR(20),\
     first_name VARCHAR(20),\
     last_name VARCHAR(20),\
-    food_categories VARCHAR(100),\
+    food_category VARCHAR(1000),\
     password VARCHAR(200),\
     salt VARCHAR(40),\
     created TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
