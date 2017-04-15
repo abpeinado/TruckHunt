@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import TruckMenuGroup from './TruckMenuGroup.jsx';
 
-class TruckMenu extends React.Component {
+export class TruckMenuComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -29,4 +29,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(TruckMenu);
+const TruckMenu = connect(mapStateToProps)(TruckMenuComponent);
+export default TruckMenu;
