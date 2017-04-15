@@ -29,17 +29,18 @@ class Header extends Component {
           <Nav>
             <Search />
             <NavItem >
-              <Link to="/truckManagement" className="NavBarFoodTruck">
-                Food Vendor?
+              <Link to="/vendorManagement" className="NavBarFoodTruck">
+                <Button>
+                  Food Vendor?
+                </Button>
               </Link>
             </NavItem>
             <NavItem>
-              <Button>
-                <h3>Login</h3>
+              <Link to="/authenticate" className="NavBarFoodTruck">
+                <Button>
+                  Sign Up / Login
               </Button>
-              <Button>
-                <h3>Signup</h3>
-              </Button>
+              </Link>
             </NavItem>
           </Nav>
         </Navbar>

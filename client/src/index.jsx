@@ -7,6 +7,8 @@ import { ConnectedRouter } from 'react-router-redux';
 import ConsumerHomepage from './components/ConsumerHomepage.jsx';
 import VendorHomepage from './components/VendorHomepage.jsx';
 import TruckInfo from './components/TruckInfo.jsx';
+import Login from './components/VendorLogin.jsx';
+import Authenticate from './components/AuthenticationPortal.jsx';
 import configureStore from './store/configureStore.js';
 
 // browser history
@@ -20,8 +22,10 @@ render(
     <ConnectedRouter history={history}>
       <div>
         <Route exact path="/" component={ConsumerHomepage} />
+        <Route path="/vendorManagement" component={VendorHomepage} />
         <Route path="/truckMenu" component={TruckInfo} />
-        <Route path="/truckManagement" component={VendorHomepage} />
+        <Route path="/login" component={Login} />
+        <Route path="/authenticate" component={Authenticate} />
       </div>
     </ConnectedRouter>
   </Provider>,
