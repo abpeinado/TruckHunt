@@ -2,12 +2,12 @@ const schedule = require('./data/mobileFoodSchedule.js');
 const permits = require('./data/truckPermits.js');
 const vendors = require('./models/vendors.js');
 
-const testObj = {
+/*const testObj = {
   permit_number: '17MFF-0179',
   food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks'
 };
 
-vendors.new(testObj);
+vendors.new(testObj);*/
 
 
 // console.log('GOT IT');
@@ -26,6 +26,7 @@ permits.permits.data.forEach((permit) => {
     permit_number: permit[17],
     food_category: permit[19]
   };
+  vendors.new(permitInfo);
   // console.log(permitInfo);
   // add db function below to save each obj
 });
