@@ -1,4 +1,3 @@
-/*
 const pgp = require('pg-promise')();
 const schema = require('./schema.js');
 
@@ -14,15 +13,17 @@ const loadDb = (db) => {
   return schema(db);
 };
 
-if (process.env.NODE_ENV !== 'test') {
-  loadDb(db)
-    .then(() => {
-      console.log('Database successfully loaded.');
-    })
-    .catch(() => {
-      console.error('Error loading database.');
-    });
-}
+
+console.log('fdsf', process.env.NODE_ENV);
+
+// if (process.env.NODE_ENV !== 'test') {
+loadDb(db)
+  .then(() => {
+    console.log('Database successfully loaded.');
+  })
+  .catch(() => {
+    console.error('Error loading database.');
+  });
+// }
 
 module.exports = { db, loadDb };
-*/

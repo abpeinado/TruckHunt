@@ -4,6 +4,7 @@ const path = require('path');
 const truckData = require('./truckListData.js');
 const requesthandler = require('./requestHandler.js');
 const orderingData = require('./incomingOrdersData.js');
+const db = require('../database/index.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -19,6 +20,7 @@ to keep the server file organized and out code modular.
 Use the POST to '/search' as an example.
 **
 **/
+
 app.post('/search', requesthandler.search);
 
 app.post('/truckSignup', (req, res) => {
