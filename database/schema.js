@@ -1,21 +1,16 @@
 module.exports = (db) => {
-  return db.query('DROP TABLE IF EXISTS\
-    owners\
-    ')
-  .then(() => {
-    return db.query('CREATE TABLE IF NOT EXISTS vendors(\
-      vendor_id SERIAL PRIMARY KEY,\
-      permit_number VARCHAR(20) NOT NULL,\
-      email VARCHAR(30) NOT NULL UNIQUE,\
-      phone_number VARCHAR(20) NOT NULL,\
-      first_name VARCHAR(20) NOT NULL,\
-      last_name VARCHAR(20) NOT NULL,\
-      food_categories VARCHAR(100),\
-      password VARCHAR(200) NOT NULL,\
-      salt VARCHAR(40),\
-      created TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
-      );');
-  })
+  return db.query('CREATE TABLE IF NOT EXISTS vendors(\
+    vendor_id SERIAL PRIMARY KEY,\
+    permit_number VARCHAR(20) NOT NULL,\
+    email VARCHAR(30) NOT NULL UNIQUE,\
+    phone_number VARCHAR(20) NOT NULL,\
+    first_name VARCHAR(20) NOT NULL,\
+    last_name VARCHAR(20) NOT NULL,\
+    food_categories VARCHAR(100),\
+    password VARCHAR(200) NOT NULL,\
+    salt VARCHAR(40),\
+    created TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
+    );')
   .then(() => {
     return db.query('CREATE TABLE IF NOT EXISTS customers(\
       customer_id SERIAL PRIMARY KEY,\
