@@ -62,7 +62,7 @@ module.exports = (db) => {
       end_time VARCHAR(20) NOT NULL,\
       day_of_week INT NOT NULL,\
       coordinates VARCHAR(100) NOT NULL,\
-      vendor_id INT NOT NULL\
+      vendor_id INT\
       );');
   })
   .catch((error) => {

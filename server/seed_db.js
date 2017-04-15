@@ -1,13 +1,14 @@
 const schedule = require('./data/mobileFoodSchedule.js');
 const permits = require('./data/truckPermits.js');
 const vendors = require('./models/vendors.js');
+const sch = require('./models/schedules.js');
 
-/*const testObj = {
-  permit_number: '17MFF-0179',
-  food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks'
-};
+// const testObj = {
+//   permit_number: '17MFF-0179',
+//   food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks'
+// };
 
-vendors.new(testObj);*/
+// vendors.new(testObj);
 
 
 // console.log('GOT IT');
@@ -26,9 +27,9 @@ permits.permits.data.forEach((permit) => {
     permit_number: permit[17],
     food_category: permit[19]
   };
-  vendors.new(permitInfo);
   // console.log(permitInfo);
   // add db function below to save each obj
+  vendors.newVendor(permitInfo);
 });
 
 
@@ -44,17 +45,18 @@ permits.permits.data.forEach((permit) => {
 //   end_time: '11AM',
 //   location: { lat: '37.7111783070436', long: '-122.403573115181' } }
 
-// console.log('supertestTWO', (schedule.schedule.data));
-schedule.schedule.data.forEach((s) => {
-  const scheduleInfo = {
-    day_of_week: s[8],
-    start_time: s[10],
-    end_time: s[11],
-    location: {
-      lat: s[31][1],
-      long: s[31][2]
-    }
-  };
-  // console.log(scheduleInfo);
-  // add db function below to save each obj
-});
+// // console.log('supertestTWO', (schedule.schedule.data));
+// schedule.schedule.data.forEach((s) => {
+//   const scheduleInfo = {
+//     day_of_week: s[8],
+//     start_time: s[10],
+//     end_time: s[11],
+//     location: {
+//       lat: s[31][1],
+//       long: s[31][2]
+//     }
+//   };
+//   // console.log(scheduleInfo);
+//   // add db function below to save each obj
+//   sch.newSchedule(scheduleInfo);
+// });

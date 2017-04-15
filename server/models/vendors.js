@@ -1,7 +1,6 @@
 const { db } = require('../../database/index.js');
 
-module.exports.new = (vendor) => {
-  console.log(vendor);
+module.exports.newVendor = (vendor) => {
   return db.one(
     'INSERT INTO vendors\
     (permit_number, food_category)\
