@@ -3,12 +3,12 @@ import { Navbar } from 'react-bootstrap';
 
 const Logo = () => (
   <Navbar.Brand>
-    <div className="logo-inline">
-      <a href="/" >
+    <a href="/" >
+      <div className="logo-inline">
         <img className="logo-img" src={'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'} alt="logo" />
-      </a>
-      <h2 className="logo-text">Fuego Trucks</h2>
-    </div>
+        <h2 className="logo-text">  Truck Hunt</h2>
+      </div>
+    </a>
   </Navbar.Brand>
 );
 

@@ -82,3 +82,24 @@ input {
 .cart-title {
   text-align: center;
 }
+
+.NavbarVendor {
+  padding-top: .8em;
+  font-size: 1.6em;
+}
+
+.panel-heading {
+  min-height: 8em;
+}
+
+.incomingOrderMenuItem.well {
+  min-height: 9em;
+}
+
+/*.button.btn.btn-default {
+  width: 100%;
+}
+
+.button.btn.btn-success {
+  width: 100%;
+}*/

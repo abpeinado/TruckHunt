@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
-// import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
 import Search from './Search.jsx';
 // import LoginButton from './LoginButton.jsx';
@@ -26,22 +26,22 @@ class Header extends Component {
             <Logo />
             <Navbar.Toggle />
           </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav>
-              <NavItem>
-                <Search />
-              </NavItem>
-              <NavItem>
-                <Button>
-                  <h3>Login</h3>
-                </Button>
-                <Button>
-                  <h3>Signup</h3>
-                </Button>
-              </NavItem>
-
-            </Nav>
-          </Navbar.Collapse>
+          <Nav>
+            <Search />
+            <NavItem >
+              <Link to="/truckManagement" className="NavBarFoodTruck">
+                Food Vendor?
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Button>
+                <h3>Login</h3>
+              </Button>
+              <Button>
+                <h3>Signup</h3>
+              </Button>
+            </NavItem>
+          </Nav>
         </Navbar>
       </div>
     );
