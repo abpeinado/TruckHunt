@@ -1,6 +1,7 @@
 const pgp = require('pg-promise')();
 const schema = require('./schema.js');
 
+
 const url = process.env.DATABASE_URL || 'postgres://@localhost:5432/toads';
 
 if (process.env.DATABASE_URL) {
@@ -22,5 +23,6 @@ loadDb(db)
     console.error('Error loading database.');
   });
 // }
+
 
 module.exports = { db, loadDb };
