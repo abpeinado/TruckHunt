@@ -12,6 +12,16 @@ module.exports = (db) => {
     created TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
     );')
   .then(() => {
+    return db.query('CREATE TABLE IF NOT EXISTS schedules(\
+      schedule_id SERIAL PRIMARY KEY,\
+      start_time VARCHAR(20) NOT NULL,\
+      end_time VARCHAR(20) NOT NULL,\
+      day_of_week INT NOT NULL,\
+      coordinates VARCHAR(100) NOT NULL,\
+      vendor_id INT\
+      );');
+  })
+  .then(() => {
     return db.query('CREATE TABLE IF NOT EXISTS customers(\
       customer_id SERIAL PRIMARY KEY,\
       email VARCHAR(50) NOT NULL UNIQUE,\
@@ -53,16 +63,6 @@ module.exports = (db) => {
       order_status SMALLINT,\
       order_pickup SMALLINT,\
       order_time TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
-      );');
-  })
-  .then(() => {
-    return db.query('CREATE TABLE IF NOT EXISTS schedules(\
-      schedule_id SERIAL PRIMARY KEY,\
-      start_time VARCHAR(20) NOT NULL,\
-      end_time VARCHAR(20) NOT NULL,\
-      day_of_week INT NOT NULL,\
-      coordinates VARCHAR(100) NOT NULL,\
-      vendor_id INT\
       );');
   })
   .catch((error) => {
