@@ -20,10 +20,6 @@ describe('TruckMenuItem Component Test', () => {
     expect(truckMenuItem.exists()).toBe(true);
   });
 
-  it('should render a div', () => {
-    expect(truckMenuItem.find('div').length).toEqual(1);
-  });
-
   it('should contain the name, description and price', () => {
     const text = truckMenuItem.text();
     console.log('text', text);
