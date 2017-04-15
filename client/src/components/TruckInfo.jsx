@@ -3,7 +3,7 @@ import { Row, Grid } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
-import Cart from './Cart.jsx';
+import CartContainer from './CartContainer.jsx';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfo extends React.Component {
@@ -27,7 +27,7 @@ class TruckInfo extends React.Component {
         </Row>
         <Row >
           <TruckInfoLeftPane />
-          <Cart />
+          <CartContainer />
         </Row>
       </Grid>
     );
