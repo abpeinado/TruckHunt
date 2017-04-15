@@ -13,7 +13,6 @@ const loadDb = (db) => {
   return schema(db);
 };
 
-
 // if (process.env.NODE_ENV !== 'test') {
 loadDb(db)
   .then(() => {
