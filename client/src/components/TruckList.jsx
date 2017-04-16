@@ -21,7 +21,7 @@ class TruckList extends Component {
       <Row>
         <Col xs={12} md={8} mdOffset={2} className={'TruckListClass'} >
           TruckList
-          <ListGroup>
+          <ListGroup >
             {this.props.truckList.map((item, i) =>
               <TruckListItem restaurant={item} key={i} />
             )}

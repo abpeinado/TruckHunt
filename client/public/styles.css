@@ -51,6 +51,10 @@ input {
   max-height: 50px;
 }
 
+.logo-marker-img {
+  max-height: 50px;
+}
+
 .logo-text {
   margin-top: auto;
   font-size: 2.4em;
