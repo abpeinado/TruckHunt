@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { truckLocFetchData } from '../actions/truckLocActions.js';
-import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl } from "react-mapbox-gl";
 import mapboxgl from 'mapbox-gl';
 
 class Map extends React.Component {
@@ -37,6 +37,7 @@ class Map extends React.Component {
                 color: "white",
                 intensity: 0.4
               }}
+
               >
               {this.props.truckLoc.map((item, i) =>
                 <Marker
@@ -45,7 +46,8 @@ class Map extends React.Component {
                   <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV1.png'}/>
                 </Marker>
               )}
-
+              <ZoomControl/>
+              <ScaleControl/>
             </ReactMapboxGl>
 
           </div>
