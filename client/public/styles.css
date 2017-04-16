@@ -6,7 +6,7 @@ html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
 
 html {
   font-family: 'Patua One', cursive;
-  background-color: #7d64d6;
+  /*background-color: #7d64d6;*/
 }
 
 .trucklist-group {
@@ -48,6 +48,10 @@ input {
 }
 
 .logo-img {
+  max-height: 50px;
+}
+
+.logo-marker-img {
   max-height: 50px;
 }
 

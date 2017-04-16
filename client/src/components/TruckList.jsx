@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col, ListGroup } from 'react-bootstrap';
+import { Col, Row, ListGroup } from 'react-bootstrap';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import TruckListItem from './TruckListItem.jsx';
 
@@ -18,14 +18,16 @@ class TruckList extends Component {
       return <p>Loading…</p>;
     }
     return (
-      <Col className={'TruckListClass'} xs={12} md={8}>
-        TruckList
-        <ListGroup>
-          {this.props.truckList.map((item, i) =>
-            <TruckListItem restaurant={item} key={i} />
-          )}
-        </ListGroup>
-      </Col>
+      <Row>
+        <Col xs={12} md={8} mdOffset={2} className={'TruckListClass'} >
+          TruckList
+          <ListGroup >
+            {this.props.truckList.map((item, i) =>
+              <TruckListItem restaurant={item} key={i} />
+            )}
+          </ListGroup>
+        </Col>
+      </Row>
     );
   }
 }

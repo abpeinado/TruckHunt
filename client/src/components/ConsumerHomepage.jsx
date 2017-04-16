@@ -29,8 +29,8 @@ class ConsumerHomepage extends React.Component {
     return (
       <div>
         <Header />
-        <TruckList />
         <MainMap />
+        <TruckList />
       </div>
     );
   }

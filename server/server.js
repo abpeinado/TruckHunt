@@ -4,6 +4,7 @@ const path = require('path');
 const truckData = require('./truckListData.js');
 const requestHandler = require('./requestHandler.js');
 const orderingData = require('./incomingOrdersData.js');
+const truckLocs = require('./truckLocations.js');
 const db = require('../database/index.js');
 
 const port = process.env.PORT || 8000;
@@ -24,6 +25,10 @@ Use the POST to '/search' as an example.
 app.post('/search', requestHandler.search);
 
 app.post('/truckSignup', requestHandler.truckSignup);
+
+app.get('/truckLocations', (req, res) => {
+  res.send(truckLocs.truckLocs.trucks);
+});
 
 app.get('/trucklist', (req, res) => {
   res.send(truckData.truckList.trucks);
