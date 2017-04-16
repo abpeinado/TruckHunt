@@ -16,23 +16,27 @@ class Map extends React.Component {
       return <p>Sorry! There was an error loading today's trucks!</p>;
     }
     if (this.props.truckLocIsLoading) {
-      return <p>Loading…</p>;
+      return <p>Map Loading…</p>;
     }
 
     return (
       <Row >
-        <Col xs={12} md={8} mdOffset={2}>
+        <Col xs={12} md={12} >
           <div className="mainMap" >
 
              <ReactMapboxGl
               style="mapbox://styles/mapbox/streets-v8"
               accessToken="pk.eyJ1Ijoic3pvbGwiLCJhIjoiY2oxanIwcHI4MDFicDMzcG1wenNmbXlqbCJ9.oRYXUrA-6QSwq2tYGLN2xw"
               containerStyle={{
-                height: "30vh",
-                width: "66.6vw"
-              }}
+                height: "33vh"}}
               center={[-122.408966, 37.783697]}
               zoom={[13]}
+              pitch={50}
+              light= {{
+                anchor: "viewport",
+                color: "white",
+                intensity: 0.4
+              }}
               >
               {this.props.truckLoc.map((item, i) =>
                 <Marker
