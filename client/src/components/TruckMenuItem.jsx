@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
 
-const TruckMenuItem = (props) => {
-  const { name, description, price } = props.item;
+const TruckMenuItem = ({ item, onAddToCartClicked }) => {
+  const { name, description, price } = item;
   return (
     <Col md={6}>
       <Panel>
@@ -12,7 +12,10 @@ const TruckMenuItem = (props) => {
             <p> {description} </p>
           </Col>
           <Col md={3} sm={9} xs={3}>
-            <p> {price} </p>
+            <p> &#36;{price} </p>
+            <button onClick={onAddToCartClicked}>
+              Add to cart
+            </button>
           </Col>
         </Row>
       </Panel>
