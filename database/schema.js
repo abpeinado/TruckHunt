@@ -1,11 +1,12 @@
 module.exports = (db) => {
   return db.query('CREATE TABLE IF NOT EXISTS vendors(\
     vendor_id SERIAL PRIMARY KEY,\
-    permit_number VARCHAR(20) NOT NULL,\
-    email VARCHAR(30) UNIQUE,\
+    vendor_name VARCHAR(100) NOT NULL,\
+    permit_number VARCHAR(20) NOT NULL UNIQUE,\
+    email VARCHAR(50) UNIQUE,\
     phone_number VARCHAR(20),\
-    first_name VARCHAR(20),\
-    last_name VARCHAR(20),\
+    first_name VARCHAR(30),\
+    last_name VARCHAR(30),\
     food_category VARCHAR(1000),\
     password VARCHAR(200),\
     salt VARCHAR(40),\
@@ -14,11 +15,11 @@ module.exports = (db) => {
   .then(() => {
     return db.query('CREATE TABLE IF NOT EXISTS schedules(\
       schedule_id SERIAL PRIMARY KEY,\
-      start_time VARCHAR(20) NOT NULL,\
-      end_time VARCHAR(20) NOT NULL,\
+      start_time VARCHAR(30) NOT NULL,\
+      end_time VARCHAR(30) NOT NULL,\
       day_of_week INT NOT NULL,\
       coordinates VARCHAR(100) NOT NULL,\
-      vendor_id INT\
+      vendor_id INT NOT NULL\
       );');
   })
   .then(() => {
@@ -47,10 +48,9 @@ module.exports = (db) => {
       vendor_id INT,\
       name VARCHAR(100) NOT NULL,\
       course VARCHAR(100),\
-      food_categories VARCHAR(100),\
+      food_category VARCHAR(1000),\
       price SMALLINT NOT NULL,\
-      item_description VARCHAR(500),\
-      item_img VARCHAR(200)\
+      item_description VARCHAR(500)\
       );');
   })
   .then(() => {

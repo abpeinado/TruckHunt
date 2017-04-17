@@ -17,10 +17,10 @@ const loadDb = (db) => {
 // if (process.env.NODE_ENV !== 'test') {
 loadDb(db)
   .then(() => {
-    console.log('Database successfully loaded.');
+    console.log('Successfully connected to database');
   })
   .catch(() => {
-    console.error('Error loading database.');
+    console.error('Error connecting to database.');
   });
 // }
 
