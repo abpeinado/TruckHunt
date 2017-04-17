@@ -21,32 +21,56 @@ class Header extends Component {
   render() {
     return (
       <div className="NavbarStyled">
-        <Navbar>
+        <Navbar fluid>
           <Navbar.Header>
             <Logo />
             <Navbar.Toggle />
           </Navbar.Header>
-          <Nav>
-            <Search />
-            <NavItem >
-              <Link to="/vendorManagement" className="NavBarFoodTruck">
-                <Button>
-                  Food Vendor?
-                </Button>
-              </Link>
+          <Nav fluid>
+            <NavItem>
+              <Search/>
             </NavItem>
+          </Nav>
+          <Nav pullRight>
             <NavItem>
               <Link to="/authenticate" className="NavBarFoodTruck">
                 <Button>
-                  Sign Up / Login
-              </Button>
+                  Login
+                </Button>
               </Link>
             </NavItem>
           </Nav>
         </Navbar>
       </div>
+
     );
   }
 }
 
 export default Header;
+
+// <div className="NavbarStyled">
+//   <Navbar>
+//     <Navbar.Header>
+//       <Logo />
+//       <Navbar.Toggle />
+//     </Navbar.Header>
+//     <Nav>
+//       <Search />
+//       <NavItem >
+//         <Link to="/vendorManagement" className="NavBarFoodTruck">
+//           <Button>
+//             Food Vendor?
+//           </Button>
+//         </Link>
+//       </NavItem>
+//       <NavItem>
+//         <Link to="/authenticate" className="NavBarFoodTruck">
+//           <Button>
+//             Sign Up / Login
+//         </Button>
+//         </Link>
+//       </NavItem>
+//     </Nav>
+//   </Navbar>
+// </div>

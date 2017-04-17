@@ -4,8 +4,8 @@ module.exports.newItem = (item) => {
   return db.one(
     'INSERT INTO menu_items\
     (name, course, food_category, price, item_description)\
-    VALUES (${name}, ${course}, ${price}, ${item_description})\
-    RETURNING item_id',
+    VALUES (${name}, ${course}, ${food_category}, ${price}, ${item_description})\
+    RETURNING menu_item_id',
     item);
 };
 

@@ -42,6 +42,10 @@ app.get('/vendorIncomingOrder', (req, res) => {
   res.send(orderingData.VendorOrders.order);
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
 const server = app.listen(port, () => {
   console.log(`Express Service live and listening on: ${port}`);
 });
