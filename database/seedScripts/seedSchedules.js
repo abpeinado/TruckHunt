@@ -1,6 +1,6 @@
-const schedule = require('./data/mobileFoodSchedule.js');
-const Vendors = require('./models/vendors.js');
-const Schedules = require('./models/schedules.js');
+const schedule = require('../data/mobileFoodSchedule.js');
+const Vendors = require('../../server/models/vendors.js');
+const Schedules = require('../../server/models/schedules.js');
 
 Vendors.findVendorPermitsAndIds()
   .then((approvedPermits) => {

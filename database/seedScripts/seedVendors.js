@@ -1,5 +1,5 @@
-const permits = require('./data/truckPermits.js');
-const Vendors = require('./models/vendors.js');
+const permits = require('../data/truckPermits.js');
+const Vendors = require('../../server/models/vendors.js');
 
 const approvedPermits = {};
 const seedVedorsTable = () => {
