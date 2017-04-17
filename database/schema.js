@@ -12,7 +12,6 @@ module.exports = (db) => {
     salt VARCHAR(40),\
     created TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
     );')
-  // make vendor_id in schedules table NOT NULL once we get the join working
   .then(() => {
     return db.query('CREATE TABLE IF NOT EXISTS schedules(\
       schedule_id SERIAL PRIMARY KEY,\
@@ -20,7 +19,7 @@ module.exports = (db) => {
       end_time VARCHAR(30) NOT NULL,\
       day_of_week INT NOT NULL,\
       coordinates VARCHAR(100) NOT NULL,\
-      vendor_id INT\
+      vendor_id INT NOT NULL\
       );');
   })
   .then(() => {
@@ -49,10 +48,9 @@ module.exports = (db) => {
       vendor_id INT,\
       name VARCHAR(100) NOT NULL,\
       course VARCHAR(100),\
-      food_categories VARCHAR(100),\
+      food_category VARCHAR(1000),\
       price SMALLINT NOT NULL,\
-      item_description VARCHAR(500),\
-      item_img VARCHAR(200)\
+      item_description VARCHAR(500)\
       );');
   })
   .then(() => {

@@ -23,3 +23,11 @@ const seedVedorsTable = () => {
 };
 
 seedVedorsTable();
+
+//  --------POPULATING VENDORS INFO-----------
+// permit is at index 17 in the array
+// food items is index 19
+
+// EXAMPLE RETURN OBJ
+// { permit: '17MFF-0179',
+//   food_category: 'Cold Truck: Pre-packaged Sandwiches: Various Beverages: Salads: Snacks' }

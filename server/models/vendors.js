@@ -9,8 +9,8 @@ module.exports.newVendor = (vendor) => {
     vendor);
 };
 
-module.exports.findAllVendorPermits = () => {
-  return db.query('SELECT permit_number FROM vendors');
+module.exports.findVendorPermitsAndIds = () => {
+  return db.query('SELECT permit_number, vendor_id FROM vendors');
 };
 
 module.exports.findVendorIdByPermitNumber = (permit_number) => {
