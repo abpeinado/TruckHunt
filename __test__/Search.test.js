@@ -1,22 +1,24 @@
-import { mount } from 'enzyme';
+/* eslint-disable react/jsx-filename-extension */
+
+import { shallow } from 'enzyme';
 import React from 'react';
+import { Provider } from 'react-redux';
+import configureStore from '../client/src/store/configureStore.js';
 import Search from '../client/src/components/Search.jsx';
 
-describe('Search Component Tests', () => {
+describe('Search Component Test', () => {
   let search;
+
   beforeEach(() => {
-    search = mount(<Search />);
+    const store = configureStore();
+    search = shallow(
+      <Provider store={store}>
+        <Search />
+      </Provider>
+    );
   });
 
-  it('should render without crashing', () => {
+  it('should find search component', () => {
     expect(search.exists()).toBe(true);
-  });
-
-  it('should render a form"', () => {
-    expect(search.find('.form-group').length).toEqual(1);
-  });
-
-  it('should render a button"', () => {
-    expect(search.find('button').length).toEqual(1);
   });
 });

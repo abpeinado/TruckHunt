@@ -1,3 +1,4 @@
+
 export function truckLocHasErrored(bool) {
   return {
     type: 'TRUCK_LOC_HAS_ERRORED',

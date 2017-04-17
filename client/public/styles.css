@@ -37,17 +37,17 @@ span.trucklist-group:hover h4 p {
 }
 
 span.trucklist-group.list-group-item{
-  background-color: rgba(255, 176, 120, 0.37);
-  font-family: 'Walter Turncoat', cursive;
   margin-bottom: inherit;
   border-radius: .5em;
   padding: 0;
   margin: 0;
   overflow: auto;
+  margin-top: 1em;
 }
 
 span.trucklist-group.list-group-item:hover {
-  background-color: rgba(255, 176, 120, 0.77);
+  color: #fff;
+  background-color: rgba(245, 87, 11, 0.71);
   transition: 0.2s ease-in;
 }
 
@@ -56,7 +56,7 @@ span.label-default {
 }
 
 span.label-default:hover {
-  background-color: rgba(255, 106, 0, 0.65);
+  background-color: #fff;
   transition: 0.2s ease;
   color: rgba(255, 106, 0, 0.75);
 }
@@ -158,8 +158,13 @@ a.navbar-brand {
   width: 100%;
 }*/
 
+
 div.modal {
   padding: 0;
   margin: 0;
   position: relative;
+}
+
+.input.Demo__search-input {
+  width: 30em;
 }
