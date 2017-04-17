@@ -1,11 +1,12 @@
 module.exports = (db) => {
   return db.query('CREATE TABLE IF NOT EXISTS vendors(\
     vendor_id SERIAL PRIMARY KEY,\
+    vendor_name VARCHAR(100) NOT NULL,\
     permit_number VARCHAR(20) NOT NULL UNIQUE,\
-    email VARCHAR(30) UNIQUE,\
+    email VARCHAR(50) UNIQUE,\
     phone_number VARCHAR(20),\
-    first_name VARCHAR(20),\
-    last_name VARCHAR(20),\
+    first_name VARCHAR(30),\
+    last_name VARCHAR(30),\
     food_category VARCHAR(1000),\
     password VARCHAR(200),\
     salt VARCHAR(40),\
