@@ -165,6 +165,6 @@ div.modal {
   position: relative;
 }
 
-.input.Demo__search-input {
-  width: 30em;
+input.Demo__search-input {
+  width: 40em;
 }
