@@ -26,6 +26,14 @@ response: [trucks] (include lat/long, menu data, etc)
 // ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
 
+app.post('/vendorSignup', requestHandler.vendorSignup);
+
+app.post('/vendorLogin', requestHandler.vendorLogin);
+
+app.post('/userLogin', requestHandler.userLogin);
+
+app.post('/userSignup', requestHandler.userSignup);
+
 app.get('/truckLocations', (req, res) => {
   res.send(truckLocs.truckLocs.trucks);
 });
@@ -43,8 +51,6 @@ app.get('/truckInfo', (req, res) => {
 POST /vendorSignup
 body: {email, password, etc}
 // ******REFACTOR THIS ROUTE INTO THE ABOVE********/
-app.post('/truckSignup', requestHandler.truckSignup);
-// ************************************************
 
 /**
 POST /customerSignup

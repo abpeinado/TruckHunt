@@ -14,7 +14,8 @@ class OwnerSignup extends React.Component {
       verify: '',
       firstName: '',
       lastName: '',
-      email: ''
+      email: '',
+      permit: ''
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -24,6 +25,13 @@ class OwnerSignup extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handlePermitChange = this.handlePermitChange.bind(this);
+  }
+
+  handlePermitChange(event) {
+    this.setState({
+      permit: event.target.value
+    });
   }
 
   handlePhotoUpload(event) {
@@ -72,6 +80,7 @@ class OwnerSignup extends React.Component {
 
     const user = this.state.username;
     const pass = this.state.password;
+    const permit = this.state.permit;
     const verify = this.state.verify;
     const email = this.state.email;
     const firstName = this.state.firstName;
@@ -80,18 +89,13 @@ class OwnerSignup extends React.Component {
     const userInfo = {
       user,
       pass,
-      verify,
+      permit,
       email,
       firstName,
-      lastName
+      lastName,
+      url: '/vendorSignup'
     };
-
-    console.log('userInfo', userInfo);
-
-    console.log('insideHandleSubmitOwner', user);
-    console.log('insideHandleSubmitOwner', pass);
-    console.log('insideHandleSubmitOwner', verify);
-    // check db to see if username is available
+   // check db to see if username is available
     // constant ajax call saved inside redux store
     // if available check passwords match
     // TODO: add logic for password integrity
@@ -132,7 +136,7 @@ class OwnerSignup extends React.Component {
       );
     }
     return (
-      <Form horizontal onSubmit={this.handleSubmit} className="VendorSignup" >
+      <Form horizontal onSubmit={this.handleSubmit} className="loginForm" >
         <FormGroup>
           <Col sm={2}>
             Email
@@ -189,10 +193,10 @@ class OwnerSignup extends React.Component {
 
         <FormGroup>
           <Col sm={2}>
-            Photo Upload
+            Permit Number
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="Photo Upload" onClick={this.handlePhotoUpload} />
+            <FormControl type="text" placeholder="Permit Number" value={this.state.permit} onChange={this.handlePermitChange} />
           </Col>
         </FormGroup>
 
