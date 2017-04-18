@@ -1,5 +1,5 @@
-const MenuItemsData = require('./data/menuItems.js');
-const MenuItems = require('./models/menuItems.js');
+const MenuItemsData = require('../data/menuItems.js');
+const MenuItems = require('../../server/models/menuItems.js');
 
 // -----------POPULATINIG MENU ITEMS------------
 
