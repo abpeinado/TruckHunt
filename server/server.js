@@ -15,16 +15,16 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 /**
-**
-Please build all routes in requestHandler.js
+Please build out functionality in requestHandler.js
 to keep the server file organized and out code modular.
-Use the POST to '/search' as an example.
-**
 **/
 
+/**
+GET /search
+query: lat, long, time and optionally radius
+response: [trucks] (include lat/long, menu data, etc)
+// ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
-
-app.post('/truckSignup', requestHandler.truckSignup);
 
 app.get('/truckLocations', (req, res) => {
   res.send(truckLocs.truckLocs.trucks);
@@ -37,10 +37,50 @@ app.get('/trucklist', (req, res) => {
 app.get('/truckInfo', (req, res) => {
   res.send(truckData.truckList.trucks[0]);
 });
+// ************************************************
 
+/**
+POST /vendorSignup
+body: {email, password, etc}
+// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
+app.post('/truckSignup', requestHandler.truckSignup);
+// ************************************************
+
+/**
+POST /customerSignup
+body: {email, password, etc}
+**/
+
+/**
+POST /vendorLogin
+body: {email, password}
+**/
+
+/**
+POST /customerLogin
+body: {email, password}
+**/
+
+/**
+POST /checkout
+body: {stripe ID, menu item id's, vendor id}
+response: order number
+**/
+
+/**
+GET /vendorIncomingOrders
+query: vendor ID
+response: [orders] -- will include all orderes with status of unfulfilled (0)
+// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
 app.get('/vendorIncomingOrder', (req, res) => {
   res.send(orderingData.VendorOrders.order);
 });
+// ************************************************
+
+/**
+POST /orderStatus
+body: {order number, new status}
+**/
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
