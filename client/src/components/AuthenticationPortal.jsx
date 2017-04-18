@@ -9,7 +9,7 @@ const AuthenticationPortal = () => {
   return (
     <div>
       <Header />
-      <UniversalModal className='authModal'/>
+      <UniversalModal className="authModal" />
     </div>
   );
 };

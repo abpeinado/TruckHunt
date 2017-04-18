@@ -10,7 +10,7 @@ module.exports.search = (req, res) => {
   res.send('data received');
 };
 
-module.exports.truckSignup = (req, res) => {
+module.exports.vendorSignup = (req, res) => {
   const userInfo = req.body.userInfo;
   const username = req.body.userInfo.user;
   const permit = req.body.userInfo.permit;
@@ -40,7 +40,7 @@ module.exports.truckSignup = (req, res) => {
     .catch((error) => res.send(error));
 };
 
-module.exports.truckLogin = (req, res) => {
+module.exports.vendorLogin = (req, res) => {
   const userInfo = req.body.userInfo;
   Login.vendorLogin(userInfo)
     .then((response) => {

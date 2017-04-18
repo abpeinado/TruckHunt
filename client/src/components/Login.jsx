@@ -18,7 +18,6 @@ class UserLogin extends React.Component {
   }
 
   handleBusinessOwner(event) {
-    console.log('inside businessOwner yeeeehaw')
     this.setState({
       businessOwner: !this.state.businessOwner
     });

@@ -45,27 +45,6 @@ app.get('/trucklist', (req, res) => {
 app.get('/truckInfo', (req, res) => {
   res.send(truckData.truckList.trucks[0]);
 });
-// ************************************************
-
-/**
-POST /vendorSignup
-body: {email, password, etc}
-// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
-
-/**
-POST /customerSignup
-body: {email, password, etc}
-**/
-
-/**
-POST /vendorLogin
-body: {email, password}
-**/
-
-/**
-POST /customerLogin
-body: {email, password}
-**/
 
 /**
 POST /checkout
