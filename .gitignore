@@ -33,3 +33,6 @@ client/public/bundle.js
 
 #ds store
 .DS_Store
+
+#Dev Environment Variables: 
+.env

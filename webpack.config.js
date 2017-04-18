@@ -11,8 +11,8 @@ var config = {
     filename: 'bundle.js'
   },
   devServer: {
-      historyApiFallback: true,
-    },
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       {
@@ -21,7 +21,12 @@ var config = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development'
+    })
+  ]
 };
 
 module.exports = config;

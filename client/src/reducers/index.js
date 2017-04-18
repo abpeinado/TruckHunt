@@ -8,6 +8,7 @@ import { wantsSignup, signupError, signupLoading, signupSuccess, signup } from '
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart, removedFromCart } from './cartReducers';
 import { loginError, loginSuccess, loginLoading } from './loginReducers.js';
+import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
 
 export default combineReducers({
   truckList,
@@ -33,5 +34,8 @@ export default combineReducers({
   vendorIncomingOrderIsLoading,
   addedToCart,
   removedFromCart,
+  submittedOrder,
+  submitOrderHasErrored,
+  submitOrderIsLoading,
   router: routerReducer
 });
