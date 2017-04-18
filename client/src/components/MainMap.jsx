@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 import { truckLocFetchData } from '../actions/truckLocActions.js';
@@ -11,19 +11,25 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markerClicked: false
+      markerClicked: []
     };
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    this.handlePopupClose = this.handlePopupClose.bind(this);
   }
 
   componentDidMount() {
     this.props.truckLocFetchData('/truckLocations');
   }
 
-  handleMarkerClick(e) {
-    // console.log('markerClicked')
+  handleMarkerClick(location) {
     this.setState({
-      markerClicked: true
+      markerClicked: location
+    });
+  }
+
+  handlePopupClose() {
+    this.setState({
+      markerClicked: []
     });
   }
 
@@ -42,11 +48,16 @@ class Map extends React.Component {
 
     const popup = (
       <Popup
-        coordinates={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
+        coordinates={this.state.markerClicked}
         offset={{
           'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
         }}
       >
+        <div>
+        <Button onClick={this.handlePopupClose}>
+          <Glyphicon glyph="glyphicon glyphicon-remove" />
+        </Button>
+        </div>
         <h1>Popup</h1>
       </Popup>
       );
@@ -75,14 +86,14 @@ class Map extends React.Component {
                   coordinates={[item.lat, item.long]}
                   anchor="bottom"
                   key={i}
-                  onClick={this.handleMarkerClick}
+                  onClick={() => {this.handleMarkerClick([item.lat, item.long])}}
                 >
                   <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV1.png'} alt="mapMarker" />
                 </Marker>
 
               )}
 
-              { this.state.markerClicked && popup }
+              { this.state.markerClicked.length === 2 && popup }
 
               <Marker
                 coordinates={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
