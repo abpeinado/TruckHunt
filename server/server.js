@@ -15,19 +15,15 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 /**
-**
-Please build all routes in requestHandler.js
+Please build out functionality in requestHandler.js
 to keep the server file organized and out code modular.
-Use the POST to '/search' as an example.
-**
 **/
 
 /**
 GET /search
-Query: lat, long, time and optionally radius
+query: lat, long, time and optionally radius
 response: [trucks] (include lat/long, menu data, etc)
-**/
-// ******REFACTOR THESE ROUTES INTO THE ABOVE********
+// ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
 
 app.get('/truckLocations', (req, res) => {
@@ -43,12 +39,10 @@ app.get('/truckInfo', (req, res) => {
 });
 // ************************************************
 
-
 /**
 POST /vendorSignup
 body: {email, password, etc}
-**/
-// ******REFACTOR This ROUTE INTO THE ABOVE********
+// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
 app.post('/truckSignup', requestHandler.truckSignup);
 // ************************************************
 
@@ -73,10 +67,15 @@ body: {stripe ID, menu item id's, vendor id}
 response: order number
 **/
 
+/**
+GET /vendorIncomingOrders
+query: vendor ID
+response: [orders] -- will include all orderes with status of unfulfilled (0)
+// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
 app.get('/vendorIncomingOrder', (req, res) => {
   res.send(orderingData.VendorOrders.order);
-  // response: [orders] -- will include all orderes with status of unfulfilled (0)
 });
+// ************************************************
 
 /**
 POST /orderStatus
