@@ -10,16 +10,16 @@ class TruckListItem extends Component {
     return (
       <ListGroupItem className="trucklist-group" >
         <Link to="/truckMenu">
-          <Col xs={12} md={4} style={{ textAlign: 'center' }}>
+          <Col xs={12} sm={4} style={{ textAlign: 'center' }}>
             <img src={info.image} style={{ maxHeight: '90px' }} alt={`${info.name}-img`} />
           </Col>
-          <Col xs={12} md={8}>
-            <Col xs={6} md={8}>
+          <Col xs={12} sm={8}>
+            <Col xs={9} sm={8}>
               <h2>{ info.name }</h2>
-              <div>{ info.genre }</div>
-              <div>{ info.description }</div>
+              <div><h4>{ info.genre }</h4></div>
+              <div><p>{ info.description }</p></div>
             </Col>
-            <Col xs={6} md={4} className="trucklist-rating">
+            <Col xs={3} sm={3} className="trucklist-rating">
               <Label bsStyle="default" style={{ fontSize: '2.5em' }}>
                 { info.rating }
               </Label>

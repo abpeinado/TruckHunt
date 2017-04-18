@@ -1,23 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Faster+One|Permanent+Marker|Waiting+for+the+Sunrise|Walter+Turncoat');
 
 html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
   padding: 0;
   margin: 0;
 }
 
+
 html {
-  font-family: 'Patua One', cursive;
-  /*background-color: #7d64d6;*/
+/*  font-family: 'Patua One', cursive;
+*/  /*background-color: #7d64d6;*/
 }
+
 
 .trucklist-group {
   min-height: 140px;
 }
 
+h2.logo-text {
+  font-family: 'Permanent Marker', cursive;
+  color: #ff8600;
+}
+span.trucklist-group h2 {
+  color: #422a0b;
+}
+
+span.trucklist-group h2:hover {
+  color: #422a0b;
+}
+
+h4.list-group-item:hover {
+  color: #red;
+}
+
+span.trucklist-group:hover h4 p {
+  color: #422a0b;
+}
 
 span.trucklist-group.list-group-item{
-  background-color: rgba(255, 255, 255, 0.36);
+  background-color: rgba(255, 176, 120, 0.37);
+  font-family: 'Walter Turncoat', cursive;
   margin-bottom: inherit;
   border-radius: .5em;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+span.trucklist-group.list-group-item:hover {
+  background-color: rgba(255, 176, 120, 0.77);
+  transition: 0.2s ease-in;
+}
+
+span.label-default {
+  background-color: rgba(255, 106, 0, 0.75);
+}
+
+span.label-default:hover {
+  background-color: rgba(255, 106, 0, 0.65);
+  transition: 0.2s ease;
+  color: rgba(255, 106, 0, 0.75);
 }
 
 .trucklist-rating {
@@ -34,9 +75,15 @@ input {
   padding: 1em;
 }
 
+div.navbar-form {
+  padding:0;
+  margin:0;
+  border: 1px solid red;
+}
 
 .navbar-form.navbar-right {
-  padding-top: 1em;
+  padding-top: 0em;
+  margin: 0;
 }
 
 .container {
@@ -48,7 +95,7 @@ input {
 }
 
 .logo-img {
-  max-height: 50px;
+  max-height: 84px;
 }
 
 .logo-marker-img {
@@ -60,6 +107,9 @@ input {
   font-size: 2.4em;
 }
 
+a.navbar-brand {
+  padding: 0;
+}
 /*
 .NavbarStyled {
   min-height: 6em;
@@ -107,3 +157,9 @@ input {
 .button.btn.btn-success {
   width: 100%;
 }*/
+
+div.modal {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}

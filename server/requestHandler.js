@@ -9,6 +9,6 @@ module.exports.search = (req, res) => {
 
 module.exports.truckSignup = (req, res) => {
   const userInfo = req.body.userInfo;
-  console.log('yyyeeeehaww', userInfo);
+  console.log('userInfo inside requesthandler truckSignup', userInfo);
   res.send(true);
 };

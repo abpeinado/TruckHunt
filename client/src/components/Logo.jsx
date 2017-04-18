@@ -7,7 +7,6 @@ const Logo = () => (
     <Link to="/" >
       <div className="logo-inline">
         <img className="logo-img" src={'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'} alt="logo" />
-        <h2 className="logo-text">  Truck Hunt</h2>
       </div>
     </Link>
   </Navbar.Brand>

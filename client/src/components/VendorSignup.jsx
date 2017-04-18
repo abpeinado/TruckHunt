@@ -133,7 +133,7 @@ class OwnerSignup extends React.Component {
     }
     return (
       <Form horizontal onSubmit={this.handleSubmit} className="VendorSignup" >
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Email
           </Col>
@@ -142,7 +142,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Username
           </Col>
@@ -151,7 +151,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Password
           </Col>
@@ -160,7 +160,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Verify Password
           </Col>
@@ -169,7 +169,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             First Name
           </Col>
@@ -178,7 +178,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Last Name
           </Col>
@@ -187,7 +187,7 @@ class OwnerSignup extends React.Component {
           </Col>
         </FormGroup>
 
-        <FormGroup >
+        <FormGroup>
           <Col sm={2}>
             Photo Upload
           </Col>

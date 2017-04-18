@@ -9,7 +9,7 @@ class AuthenticationPortal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authToggle: false
+      authToggle: true
     };
 
     this.handleAuthToggle = this.handleAuthToggle.bind(this);
@@ -25,7 +25,7 @@ class AuthenticationPortal extends React.Component {
     return (
       <div>
         <div className="static-modal" >
-          <Modal.Dialog style={{ marginTop: '20em' }}>
+          <Modal.Dialog>
             <Modal.Header>
               {this.state.authToggle ?
                 (<Modal.Title style={{ textAlign: 'center' }} >Start Hunting</Modal.Title>)
