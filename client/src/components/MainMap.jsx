@@ -93,7 +93,6 @@ class Map extends React.Component {
                 offset={{
                   'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
                 }}
-                style={{ background: 'rgb(255, 106, 0)' }}
               >
 
                 <h4>
