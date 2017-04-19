@@ -5,62 +5,56 @@ import { connect } from 'react-redux';
 import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
-import { truckLocFetchData } from '../actions/truckLocActions.js';
+// import { truckLocFetchData } from '../actions/truckLocActions.js';
+import { truckListFetchData } from '../actions/truckListActions.js';
+
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      markerClicked: []
+      markerClicked: {}
     };
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handlePopupClose = this.handlePopupClose.bind(this);
   }
 
   componentDidMount() {
-    this.props.truckLocFetchData('/truckLocations');
+    this.props.truckListFetchData('/truckList');
+    console.log('got trucks');
   }
 
-  handleMarkerClick(location) {
+
+  handleMarkerClick(truck) {
+    console.log('TRUCK LOCATION', truck);
     this.setState({
-      markerClicked: location
+      markerClicked: truck
     });
   }
 
   handlePopupClose() {
     this.setState({
-      markerClicked: []
+      markerClicked: {}
     });
   }
 
   render() {
-    // console.log('LOCATION', this.props.mapCenter.lat, this.props.mapCenter.lng);
-    if (this.props.truckLocHasErrored) {
+    if (this.props.truckListHasErrored) {
       return <p>Sorry! There was an error loading today's trucks!</p>;
     }
-    if (this.props.truckLocIsLoading) {
-      return <p>Map Loading…</p>;
+    if (this.props.truckListIsLoading) {
+      return (
+        <div className="mapLoader">
+          <h2>
+        Finding the best trucks around...
+          </h2>
+          <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/loading.gif'} alt="loader" />
+        </div>);
     }
 
     const mapStyles = {
       height: '33vh'
     };
-
-    const popup = (
-      <Popup
-        coordinates={this.state.markerClicked}
-        offset={{
-          'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
-        }}
-      >
-        <div>
-        <Button onClick={this.handlePopupClose}>
-          <Glyphicon glyph="glyphicon glyphicon-remove" />
-        </Button>
-        </div>
-        <h1>Popup</h1>
-      </Popup>
-      );
 
     return (
       <Row >
@@ -81,19 +75,34 @@ class Map extends React.Component {
                 intensity: 0.4
               }}
             >
-              {this.props.truckLoc.map((item, i) =>
+              {this.props.truckList.map((item, i) =>
                 <Marker
-                  coordinates={[item.lat, item.long]}
+                  coordinates={[item.location.lat, item.location.long]}
                   anchor="bottom"
                   key={i}
-                  onClick={() => {this.handleMarkerClick([item.lat, item.long])}}
+                  onClick={() => { this.handleMarkerClick(item); }}
                 >
                   <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV1.png'} alt="mapMarker" />
                 </Marker>
 
               )}
 
-              { this.state.markerClicked.length === 2 && popup }
+              { Object.keys(this.state.markerClicked).length > 0 && (
+              <Popup
+                coordinates={[this.state.markerClicked.location.lat, this.state.markerClicked.location.long]}
+                offset={{
+                  'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
+                }}
+                style={{ background: 'rgb(255, 106, 0)' }}
+              >
+
+                <h4>
+                  {this.state.markerClicked.name} <Glyphicon onClick={this.handlePopupClose} glyph="glyphicon glyphicon-remove" />
+                </h4>
+                <p>Rating: {this.state.markerClicked.rating}</p>
+                <p> Hours: 2-4pm </p>
+              </Popup>
+                )}
 
               <Marker
                 coordinates={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
@@ -115,16 +124,16 @@ class Map extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    truckLoc: state.truckLoc,
-    truckLocHasErrored: state.truckLocHasErrored,
-    truckLocIsLoading: state.truckLocIsLoading,
+    truckList: state.truckList,
+    truckListHasErrored: state.truckListHasErrored,
+    truckListIsLoading: state.truckListIsLoading,
     mapCenter: state.mapCenter
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    truckLocFetchData: (url) => dispatch(truckLocFetchData(url))
+    truckListFetchData: (url) => dispatch(truckListFetchData(url))
   };
 };
 

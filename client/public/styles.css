@@ -37,7 +37,6 @@ span.trucklist-group:hover h4 p {
 }
 
 span.trucklist-group.list-group-item{
-  font-family: 'Walter Turncoat', cursive;
   margin-bottom: inherit;
   border-radius: .5em;
   padding: 0;
@@ -195,10 +194,26 @@ input.Demo__search-input {
   background-color: rgba(255, 176, 120, 0.17);
 }
 
-input::-webkit-input-placeholder {
+/*input::-webkit-input-placeholder {
    text-align: center;
 }
-
-input {
+*/
+/*input {
     text-align: center;
+}*/
+
+.mapLoader {
+  text-align: center;
+  padding-top: 2em;
 }
+
+/*map popup styles... not working correctly*/
+/*mapboxgl-popup-content {
+  color: #fff;
+  background: rgb(255, 106, 0);
+}*/
+t {
+  color: #fff;
+  background: rgb(255, 106, 0);
+}*/
+>>>>>>> (feat) map markers pull data from truckList to display info and open/close
