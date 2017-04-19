@@ -4,6 +4,11 @@ export const addToCart = itemID => ({
   itemID
 });
 
+export const removeFromCart = menuItem => ({
+  type: 'REMOVE_FROM_CART',
+  menuItem
+});
+
 // export function checkoutProcessing(bool) {
 //   return {
 //     type: 'CHECKOUT_IS_PROCESSING',

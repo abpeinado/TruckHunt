@@ -22,8 +22,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const TruckMenu = connect(
-  mapStateToProps,
-)(TruckMenuComponent);
+const TruckMenu = connect(mapStateToProps)(TruckMenuComponent);
 
 export default TruckMenu;

@@ -6,6 +6,16 @@ export const addedToCart = (state = [], action) => {
         ...state,
         action.itemID
       ];
+    case 'REMOVE_FROM_CART':
+      let found = false;
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].name === action.menuItem.name && !found) {
+          state.splice(i, 1);
+          found = true;
+        }
+      }
+      // state.filter((item) => item.name === action.menuItem.name);
+      return [...state];
     default:
       return state;
   }
