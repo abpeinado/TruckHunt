@@ -26,7 +26,7 @@ class Header extends Component {
             <Logo />
             <Navbar.Toggle />
           </Navbar.Header>
-          <Nav >
+          <Nav>
             <NavItem>
               <Search />
             </NavItem>
@@ -34,7 +34,7 @@ class Header extends Component {
           <Nav pullRight>
             <NavItem>
               <Link to="/authenticate" className="NavBarFoodTruck">
-                <Button bsStyle="large" bsStyle="primary">
+                <Button bsStyle="primary">
                   Login
                 </Button>
               </Link>

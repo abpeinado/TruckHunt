@@ -13,7 +13,6 @@ export function signupLoading(bool) {
 }
 
 export function signupSuccess(bool) {
-  console.log('asd;flkjasd;lfkjas;ldkfja;slkdfjas;ldkfj', bool);
   return {
     type: 'SIGNUP_SUCCESS',
     signupSuccess: bool
@@ -21,6 +20,7 @@ export function signupSuccess(bool) {
 }
 
 export function signupFetch(userInfo) {
+  const url = userInfo.url;
   const init = {
     method: 'POST',
     headers: {
@@ -33,14 +33,12 @@ export function signupFetch(userInfo) {
 
   return (dispatch) => {
     dispatch(signupLoading(true));
-    fetch('/truckSignup', init)
+    fetch(url, init)
       .then((response) => {
         dispatch(signupLoading(false));
-        console.log('got it', response);
         return response;
       })
       .then(response => response.json())
-      .then(response => console.log('ars;elkjasl;dfkj', response))
       .then(() => dispatch(signupSuccess(true)))
       .catch(() => dispatch(signupError(true)));
   };

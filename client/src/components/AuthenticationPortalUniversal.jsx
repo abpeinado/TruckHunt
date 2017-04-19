@@ -1,53 +1,69 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
-import Signup from './VendorSignup.jsx';
-import Login from './VendorLogin.jsx';
+import VendorSignup from './VendorSignup.jsx';
+import Signup from './Signup.jsx';
+import Login from './Login.jsx';
 
 
 class AuthenticationPortal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authToggle: true
+      userWantsLogin: true,
+      businessOwner: false
     };
 
-    this.handleAuthToggle = this.handleAuthToggle.bind(this);
+    this.handleuserWantsLogin = this.handleuserWantsLogin.bind(this);
+    this.handleBusinessOwner = this.handleBusinessOwner.bind(this);
   }
 
-  handleAuthToggle() {
+  handleBusinessOwner() {
+    console.log('biz owner');
     this.setState({
-      authToggle: !this.state.authToggle
+      businessOwner: !this.state.businessOwner
+    });
+  }
+
+  handleuserWantsLogin() {
+    this.setState({
+      userWantsLogin: !this.state.userWantsLogin,
+      businessOwner: false
     });
   }
 
   render() {
+    const signup = !this.state.businessOwner ? <Signup /> : <VendorSignup />;
     return (
       <div>
         <div className="static-modal" >
           <Modal.Dialog>
             <Modal.Header>
-              {this.state.authToggle ?
-                (<Modal.Title style={{ textAlign: 'center' }} >Start Hunting</Modal.Title>)
-                : (<Modal.Title style={{ textAlign: 'center' }} >Join the Hunt</Modal.Title>)
+              {this.state.userWantsLogin ?
+                (<Modal.Title className="loginTitle">Login</Modal.Title>)
+                : (<Modal.Title className="loginTitle">Signup</Modal.Title>)
               }
             </Modal.Header>
 
             <Modal.Body>
-              {this.state.authToggle ?
+              {this.state.userWantsLogin ?
                 (<Login />)
-                : (<Signup />)
+                : (signup)
               }
             </Modal.Body>
 
-            <Modal.Footer>
-              {this.state.authToggle ?
-                (<div style={{ textAlign: 'center' }}>
-                  <Button bsStyle="primary" onClick={this.handleAuthToggle}>New to Truck Hunt?</Button>
+            <Modal.Footer className="footerWrapper">
+              {this.state.userWantsLogin ?
+                (<div>
+                  <Button bsStyle="primary" onClick={this.handleuserWantsLogin}>Looking for signup?</Button>
                 </div>)
                 : (
-                  <div style={{ textAlign: 'center' }}>
-                    <Button bsStyle="primary" onClick={this.handleAuthToggle}>Already a user?</Button>
+                  <div>
+                    <Button bsStyle="primary" onClick={this.handleuserWantsLogin}>Already a user?</Button>
+                    {this.state.businessOwner ?
+                      (<Button bsStyle="primary" onClick={this.handleBusinessOwner}>Customer Signup</Button>) :
+                      (<Button bsStyle="primary" onClick={this.handleBusinessOwner}>Vendor Signup</Button>)
+                    }
                   </div>
                   )
               }

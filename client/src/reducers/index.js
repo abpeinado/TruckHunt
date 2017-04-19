@@ -7,6 +7,7 @@ import { mapCenter } from './mapCenterReducers.js';
 import { wantsSignup, signupError, signupLoading, signupSuccess, signup } from './signupReducers.js';
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart } from './cartReducers';
+import { loginError, loginSuccess, loginLoading } from './loginReducers.js';
 
 export default combineReducers({
   truckList,
@@ -23,6 +24,9 @@ export default combineReducers({
   signupSuccess,
   signupError,
   signupLoading,
+  loginError,
+  loginLoading,
+  loginSuccess,
   wantsSignup,
   vendorIncomingOrder,
   vendorIncomingOrderHasErrored,
