@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
-import Header from './Header.jsx';
+import Header from './HeaderLimited.jsx';
 import UniversalModal from './AuthenticationPortalUniversal.jsx';
 
 

@@ -6,6 +6,10 @@ module.exports.truckList = {
       description: 'This is a great little mexican joint',
       rating: '4/5',
       image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png',
+      location: {
+        lat: -122.397652,
+        long: 37.788353
+      },
       menu: [
         {
           title: 'Appetizers',
@@ -89,14 +93,22 @@ module.exports.truckList = {
       genre: 'Japanese',
       description: 'This is a great sushi shop',
       rating: '3/5',
-      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'
+      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png',
+      location: {
+        lat: -122.410011,
+        long: 37.802189
+      }
     },
     {
       name: 'Royal with Cheese',
       genre: 'American',
       description: 'Famous for the Marsellus Wallace"s Wife Burger',
       rating: '5/5',
-      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'
+      image: 'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png',
+      location: {
+        lat: -122.447777,
+        long: 37.781298
+      }
     }
   ]
 };
