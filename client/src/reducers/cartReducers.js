@@ -14,7 +14,6 @@ export const addedToCart = (state = [], action) => {
           found = true;
         }
       }
-      // state.filter((item) => item.name === action.menuItem.name);
       return [...state];
     default:
       return state;
