@@ -33,6 +33,7 @@ class AuthenticationPortal extends React.Component {
   }
 
   render() {
+    const signup = !this.state.businessOwner ? <Signup /> : <VendorSignup />;
     return (
       <div>
         <div className="static-modal" >
@@ -47,9 +48,7 @@ class AuthenticationPortal extends React.Component {
             <Modal.Body>
               {this.state.userWantsLogin ?
                 (<Login />)
-                : !this.state.businessOwner ?
-                (<Signup />) :
-                (<VendorSignup />)
+                : (signup)
               }
             </Modal.Body>
 
