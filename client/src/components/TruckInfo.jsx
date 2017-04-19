@@ -21,7 +21,7 @@ class TruckInfo extends React.Component {
       return <p>Loading…</p>;
     }
     return (
-      <Grid>
+      <div>
         <Row>
           <Header />
         </Row>
@@ -29,7 +29,7 @@ class TruckInfo extends React.Component {
           <TruckInfoLeftPane />
           <CartContainer />
         </Row>
-      </Grid>
+      </div>
     );
   }
 }

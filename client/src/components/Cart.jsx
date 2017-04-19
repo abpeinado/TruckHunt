@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from './CartItem.jsx';
 
-const Cart = ({ items, total, onCheckoutClicked }) => {
+const Cart = ({ items, total, onCheckoutClicked, removeItemFromCart }) => {
   const hasItems = items.length > 0;
   const cartItemNodes = hasItems ? (
     items.map((menuItem, i) =>
@@ -11,6 +11,7 @@ const Cart = ({ items, total, onCheckoutClicked }) => {
         price={menuItem.price}
         quantity={1}
         key={i}
+        onRemoveClicked={() => removeItemFromCart(menuItem)}
       />
     )
   ) : (
