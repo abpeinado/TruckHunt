@@ -1,6 +1,6 @@
-const { Vendors } = require('./models/vendors.js');
-const { Customers } = require('./models/customers.js');
-const { Schedules } = require('./models/schedules.js');
+const Vendors = require('./models/vendors.js');
+const Customers = require('./models/customers.js');
+const Schedules = require('./models/schedules.js');
 const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
