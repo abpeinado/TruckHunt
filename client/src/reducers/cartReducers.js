@@ -6,7 +6,7 @@ export const addedToCart = (state = [], action) => {
         ...state,
         action.itemID
       ];
-    case 'REMOVE_FROM_CART':
+    case 'REMOVE_FROM_CART': {
       let found = false;
       for (let i = 0; i < state.length; i++) {
         if (state[i].name === action.menuItem.name && !found) {
@@ -15,6 +15,7 @@ export const addedToCart = (state = [], action) => {
         }
       }
       return [...state];
+    }
     default:
       return state;
   }
