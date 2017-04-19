@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Faster+One|Permanent+Marker|Waiting+for+the+Sunrise|Walter+Turncoat');
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Faster+One|Permanent+Marker|Quicksand|Walter+Turncoat');
 
 html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
   padding: 0;
@@ -37,6 +37,7 @@ span.trucklist-group:hover h4 p {
 }
 
 span.trucklist-group.list-group-item{
+  font-family: 'Walter Turncoat', cursive;
   margin-bottom: inherit;
   border-radius: .5em;
   padding: 0;
@@ -177,7 +178,7 @@ input.Demo__search-input {
 
 .loginForm {
   text-align: center;
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .modal-footer {
@@ -198,6 +199,6 @@ input::-webkit-input-placeholder {
    text-align: center;
 }
 
-input#formHorizontalPassword {
+input {
     text-align: center;
 }

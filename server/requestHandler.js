@@ -12,30 +12,28 @@ module.exports.search = (req, res) => {
 
 module.exports.vendorSignup = (req, res) => {
   const userInfo = req.body.userInfo;
-  const username = req.body.userInfo.user;
+  const user = req.body.userInfo.user;
   const permit = req.body.userInfo.permit;
+  console.log('vendorSignup');
 
-  // Check username, if available add user
-  VendorSignup.checkUsername(username)
+  VendorSignup.checkUsername(user)
     .then((response) => {
       if (response.length === 0) {
-        // check permit
-        VendorSignup.checkPermit(permit)
-          .then((response) => {
-            // valid permit
-            if (response.length !== 0) {
-              VendorSignup.addUser(userInfo)
-                .then(() => res.send(true))
-                .catch((error) => res.send(error));
-            } else {
-              // Invalid permit
-              res.send(false);
-            }
-          })
-          .catch((error) => res.send(error));
-      } else {
-        res.send(false);
+        throw new Error();
       }
+      return VendorSignup.checkPermit(permit);
+    })
+    .then((response) => {
+      if (response.length === 0) {
+        throw new Error();
+      }
+      return VendorSignup.addUser(userInfo);
+    })
+    .then((response) => {
+      if (response.length === 0) {
+        throw new Error();
+      }
+      res.send(response);
     })
     .catch((error) => res.send(error));
 };
@@ -47,7 +45,10 @@ module.exports.vendorLogin = (req, res) => {
       console.log('response', response);
       res.send(response);
     })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      res.send(error);
+    }
+  );
 };
 
 module.exports.userLogin = (req, res) => {
@@ -57,26 +58,31 @@ module.exports.userLogin = (req, res) => {
     .then((response) => {
       res.send(response);
     })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      console.error(error);
+      res.send(error);
+    }
+  );
 };
 
 module.exports.userSignup = (req, res) => {
   const user = req.body.userInfo.user;
   const pass = req.body.userInfo.pass;
 
-  // Check for available username
   UserSignup.checkUsername(user)
     .then((response) => {
-      // Proceed if username isn't already taken
-      if (response.length === 0) {
-        // Add user to db
-        UserSignup.addUser(user, pass)
-          .then((response) => {
-            res.send(response);
-          })
-          .catch((error) => console.log(error));
+      if (response.length !== 0) {
+        throw new Error();
       }
+      return UserSignup.addUser(user, pass);
     })
-    .catch((error) => console.log(error));
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.send(error);
+    }
+  );
 };
 
