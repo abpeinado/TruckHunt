@@ -34,7 +34,7 @@ class Header extends Component {
           <Nav pullRight>
             <NavItem>
               <Link to="/authenticate" className="NavBarFoodTruck">
-                <Button bsStyle="primary">
+                <Button bsSize="large" bsStyle="primary">
                   Login
                 </Button>
               </Link>
