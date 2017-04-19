@@ -150,14 +150,6 @@ a.navbar-brand {
   min-height: 9em;
 }
 
-/*.button.btn.btn-default {
-  width: 100%;
-}
-
-.button.btn.btn-success {
-  width: 100%;
-}*/
-
 
 div.modal {
   padding: 0;
@@ -212,8 +204,7 @@ input.Demo__search-input {
   color: #fff;
   background: rgb(255, 106, 0);
 }*/
-t {
+/*t {
   color: #fff;
   background: rgb(255, 106, 0);
 }*/
->>>>>>> (feat) map markers pull data from truckList to display info and open/close
