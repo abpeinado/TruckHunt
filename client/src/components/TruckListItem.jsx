@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Label, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { mapCenterUpdate } from '../actions/mapCenterActions.js';
+
 
 class TruckListItem extends Component {
 
@@ -9,7 +11,6 @@ class TruckListItem extends Component {
 
     return (
       <ListGroupItem className="trucklist-group" >
-        <Link to="/truckMenu">
           <Col xs={12} sm={4} style={{ textAlign: 'center' }}>
             <img src={info.image} style={{ maxHeight: '90px' }} alt={`${info.name}-img`} />
           </Col>
@@ -25,7 +26,6 @@ class TruckListItem extends Component {
               </Label>
             </Col>
           </Col>
-        </Link>
       </ListGroupItem>
     );
   }
@@ -33,3 +33,4 @@ class TruckListItem extends Component {
 
 
 export default TruckListItem;
+
