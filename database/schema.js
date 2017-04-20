@@ -58,12 +58,21 @@ module.exports = (db) => {
     return db.query('CREATE TABLE IF NOT EXISTS orders(\
       order_id SERIAL PRIMARY KEY,\
       vendor_id INT NOT NULL,\
-      customer_id INT NOT NULL,\
-      menu_item_id INT,\
+      customer_id INT,\
+      customer_email VARCHAR(50),\
       price_total INT NOT NULL,\
       order_status SMALLINT,\
-      order_pickup SMALLINT,\
-      order_time TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\
+      order_time TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,\
+      order_note VARCHAR(140)\
+      );');
+  })
+  .then(() => {
+    return db.query('CREATE TABLE IF NOT EXISTS order_items(\
+      id SERIAL PRIMARY KEY,\
+      order_id INT NOT NULL,\
+      menu_item_id INT NOT NULL,\
+      item_note VARCHAR(140),\
+      quantity INT NOT NULL\
       );');
   })
   .catch((error) => {

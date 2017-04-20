@@ -14,7 +14,6 @@ const truckLocs = require('./truckLocations.js');
 const port = process.env.PORT || 8000;
 const app = express();
 
-
 // useful for debugging, please do not remove:
 app.use((req, res, next) => {
   // console.log('requrl= ', req.url);

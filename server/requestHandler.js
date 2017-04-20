@@ -6,7 +6,7 @@ const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
 const request = require('request');
 const Vendors = require('./models/vendors.js');
-
+const Orders = require('./models/orders.js');
 // const Schedules = require('./models/schedules.js');
 // const utils = require('./utils.js');
 
@@ -200,39 +200,6 @@ module.exports.userSignup = (req, res) => {
   );
 };
 
-module.exports.checkout = (req, res) => {
-  console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
-  const { tokenID, email, vendorID, menuItems, total } = req.body.orderInfo; // eslint-disable-line no-unused-vars
-  const currency = 'USD';
-  const amount = total; // cents, minumum is 50
-  const description = `Truck Hunt SF order with vendor ${vendorID}`;
-
-  // TODO: create order in orders table, save to submitted order
-  const submittedOrder = {
-    order_ID: '12345678'
-  };
-  // TODO: send client error if problem saving orders
-    // const details = 'Error placing order'
-    // res.status(503).send(details)
-
-  stripe.charges.create({
-    source: tokenID,
-    currency,
-    amount,
-    description
-  }, (err, charge) => { // eslint-disable-line no-unused-vars
-    if (err) { // error charging card
-      // TODO: delete order from database
-      // const { message, statusCode, requestId } = err.raw;
-      const details = 'Error processing payment';
-      res.statusMessage = details;
-      res.send(402);
-    } else {
-      res.status(201).send(submittedOrder); // success
-    }
-  });
-};
-
 module.exports.stripe = (req, res) => {
   const user = req.body.user;
   console.log('user', user);
@@ -270,5 +237,49 @@ module.exports.authenticate = (req, res) => {
         res.redirect('/vendor');
       })
       .catch((err) => res.status(400).send(err));
+  });
+};
+
+module.exports.checkout = (req, res) => {
+  // console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
+  const { tokenID, customer_email, vendor_id, customer_id, menuItems, total, order_note } = req.body.orderInfo; // eslint-disable-line no-unused-vars
+
+  const order = {
+    vendor_id,
+    customer_id, // null for checkout as guest
+    customer_email,
+    price_total: total,
+    order_note,
+    menuItems
+  };
+
+  // TODO: validate order - make sure there are some menu items, for example
+
+  Orders.addOrder(order)
+  .then(order_ID => {
+    const description = `Truck Hunt SF, order ${order_ID} with vendor ${vendor_id}`;
+
+    // TODO: pull vendor token here, insert into charges
+
+    stripe.charges.create({
+      source: tokenID,
+      currency: 'USD',
+      amount: total,
+      description
+    }, (err, charge) => { // eslint-disable-line no-unused-vars
+      if (err) {
+        // TODO: set order in DB to cancelled
+        // const { message, statusCode, requestId } = err.raw; // get more info on order
+        res.statusMessage = 'Error processing payment';
+        res.send(402);
+      } else {
+        res.status(201).send({ order_ID }); // success
+      }
+    });
+  })
+  .catch(error => {
+    console.log('error in placing order:', error);
+    res.statusMessage = 'Error saving order';
+    res.send(503);
   });
 };
