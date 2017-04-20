@@ -5,19 +5,46 @@ import { connect } from 'react-redux';
 import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
-import { mapMarkerUpdate, mapMarkerUnselected } from '../actions/mapActions.js';
+import { mapMarkerUpdate, mapMarkerUnselected, mapCenterUpdate } from '../actions/mapActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
 
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      location: {
+        lat: null,
+        long: null
+      }
+    };
+    this.showPosition = this.showPosition.bind(this);
   }
 
   componentDidMount() {
+    this.getLocation();
     // TODO: ADD DATE PARAM TO REQUEST
     this.props.truckListFetchData('/search', this.props.mapCenter);
     // console.log('trucks list recieved');
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      const location = navigator.geolocation.getCurrentPosition(this.showPosition);
+      console.log('current location test', location);
+    } else {
+      console.log('Geolocation is not supported by this browser');
+    }
+  }
+
+  showPosition(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    console.log('current location lat', lat);
+    console.log('current location long', lng);
+    const newCoordinates = { lng, lat };
+    console.log('showPos props', newCoordinates);
+    this.props.mapCenterUpdate(newCoordinates);
   }
 
   render() {
@@ -57,16 +84,21 @@ class Map extends React.Component {
                 intensity: 0.4
               }}
             >
-              {this.props.truckList.map((item, i) =>
-                <Marker
-                  // const coordinates = (JSON.parse(item.coordinates));
-                  coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
-                  anchor="bottom"
-                  key={i}
-                  onClick={() => { this.props.mapMarkerUpdate(item); }}
-                >
-                  <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV1.png'} alt="mapMarker" />
-                </Marker>
+              {this.props.truckList.map((item, i) => {
+                const random = (Math.floor(Math.random() * 4) + 1);
+                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
+                return (
+                  <Marker
+                    // const coordinates = (JSON.parse(item.coordinates));
+                    coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
+                    anchor="bottom"
+                    key={i}
+                    onClick={() => { this.props.mapMarkerUpdate(item); }}
+                  >
+                    <img src={image} alt={`mapMarker${image}`} />
+                  </Marker>
+                );
+              }
 
               )}
 
@@ -119,7 +151,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     truckListFetchData: (url) => dispatch(truckListFetchData(url)),
-    mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker))
+    mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker)),
+    mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
   };
 };
 
