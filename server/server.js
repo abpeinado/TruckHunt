@@ -1,5 +1,7 @@
-require('dotenv').config(); // imports environment vars from .env file
-                            // keep at top of file
+if (process.env.PORT === undefined) {
+  require('dotenv').config(); // imports environment vars from .env file
+                              // keep at top of file
+}
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
