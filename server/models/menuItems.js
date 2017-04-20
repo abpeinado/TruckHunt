@@ -8,3 +8,7 @@ module.exports.newItem = (item) => {
     RETURNING menu_item_id',
     item);
 };
+
+module.exports.menuData = (food_category) => {
+  return db.many('SELECT * FROM menu_items WHERE food_category = $1', [food_category]);
+};

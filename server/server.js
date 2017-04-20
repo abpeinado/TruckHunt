@@ -1,5 +1,7 @@
-require('dotenv').config(); // imports environment vars from .env file
-                            // keep at top of file
+if (process.env.PORT === undefined) {
+  require('dotenv').config(); // imports environment vars from .env file
+                              // keep at top of file
+}
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -7,7 +9,6 @@ const truckData = require('./truckListData.js');
 const requestHandler = require('./requestHandler.js');
 const orderingData = require('./incomingOrdersData.js');
 const truckLocs = require('./truckLocations.js');
-const db = require('../database/index.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -35,6 +36,8 @@ query: lat, long, time and optionally radius
 response: [trucks] (include lat/long, menu data, etc)
 // ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
+
+app.post('/menu', requestHandler.menu);
 
 app.post('/vendorSignup', requestHandler.vendorSignup);
 

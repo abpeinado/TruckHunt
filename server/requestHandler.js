@@ -5,10 +5,41 @@ const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
+const Search = require('./models/search.js');
+const MenuItems = require('./models/menuItems.js');
+const utils = require('./utils.js');
 
 module.exports.search = (req, res) => {
-  console.log(req.body);
-  res.send('data received');
+  // when geospacial querying is implemented we will pass
+  // the address/coordinates into Search.scheduleData()
+  Search.scheduleData()
+    .then((response) => {
+      //-----------
+      // If you want to modify the data received from the query to better display
+      // on the client-side pass the response into a function inported from utils.js
+      // and transform the object there. Return the transformed object and pass it
+      // into res.send instead of response.
+      // there will need to be a function from utils that filters out any food
+      // trucks that are not scheduled for the time the user selects
+      res.send(response);
+    })
+    .catch((error) => res.send(error));
+};
+
+module.exports.menu = (req, res) => {
+  const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
+  MenuItems.menuData(req.body)
+    .then((menu) => {
+      if (menu.length > 0) {
+        res.send(menu);
+      } else {
+        MenuItems.menuData(defaultFoodCategory)
+          .then((defaultMenu) => {
+            res.send(defaultMenu);
+          });
+      }
+    })
+    .catch((error) => res.send(error));
 };
 
 module.exports.vendorSignup = (req, res) => {
