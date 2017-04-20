@@ -15,11 +15,10 @@ module.exports.search = (req, res) => {
   Search.scheduleData()
     .then((response) => {
       //-----------
-      // if you want to modify the data received from the query to better display
+      // If you want to modify the data received from the query to better display
       // on the client-side pass the response into a function inported from utils.js
-      // and transform the object there. return the transformed object and pass it
-      // into res.send instead of response
-      //-----------
+      // and transform the object there. Return the transformed object and pass it
+      // into res.send instead of response.
       // there will need to be a function from utils that filters out any food
       // trucks that are not scheduled for the time the user selects
       res.send(response);
@@ -28,17 +27,8 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.menu = (req, res) => {
-  // you will need to pass MenuItems.menuData a food_category
-  // it may need to be different than req.body depending how the info is sent
-  //-----------
-  /* request.body should look like this
-  {
-    "food_category": "Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks"
-  }
-  */
-
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
-  MenuItems.menuData(req.body.food_category)
+  MenuItems.menuData(req.body)
     .then((menu) => {
       if (menu.length > 0) {
         res.send(menu);
