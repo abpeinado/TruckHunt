@@ -9,7 +9,8 @@ import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 class TruckInfo extends React.Component {
 
   componentDidMount() {
-    this.props.fetchTruckInfo(this.props.truckSelected.food_category);
+    // this.props.fetchTruckInfo(this.props.truckSelected.food_category);
+    this.props.fetchTruckInfo('Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks');
   }
 
   render() {

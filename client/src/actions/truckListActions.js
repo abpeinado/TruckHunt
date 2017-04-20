@@ -23,7 +23,8 @@ export function truckListFetchData(url, coordinates, date) {
   return (dispatch) => {
     dispatch(truckListIsLoading(true));
     const options = {
-      payload: {
+      method: 'POST',
+      body: {
         coordinates,
         date
       }

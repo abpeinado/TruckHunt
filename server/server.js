@@ -31,7 +31,7 @@ to keep the server file organized and out code modular.
 **/
 
 /**
-GET /search
+POST /search
 query: lat, long, time and optionally radius
 response: [trucks] (include lat/long, menu data, etc)
 // ******REFACTOR THESE ROUTES INTO THE ABOVE********/

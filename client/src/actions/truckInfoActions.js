@@ -23,8 +23,9 @@ export function truckInfoFetchData(truckCategory) {
   return (dispatch) => {
     dispatch(truckInfoIsLoading(true));
     const options = {
-      payload: {
-        truckCategory
+      method: 'POST',
+      body: {
+        data: "Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks"
       }
     };
     fetch('/menu', options)

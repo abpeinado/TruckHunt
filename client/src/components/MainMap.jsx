@@ -16,7 +16,7 @@ class Map extends React.Component {
 
   componentDidMount() {
     // TODO: ADD DATE PARAM TO REQUEST
-    this.props.truckListFetchData('/truckList', this.props.mapCenter);
+    this.props.truckListFetchData('/search', this.props.mapCenter);
     // console.log('trucks list recieved');
   }
 
@@ -59,7 +59,8 @@ class Map extends React.Component {
             >
               {this.props.truckList.map((item, i) =>
                 <Marker
-                  coordinates={[item.location.lat, item.location.long]}
+                  // const coordinates = (JSON.parse(item.coordinates));
+                  coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
                   anchor="bottom"
                   key={i}
                   onClick={() => { this.props.mapMarkerUpdate(item); }}
@@ -71,17 +72,17 @@ class Map extends React.Component {
 
               { Object.keys(this.props.mapMarkerSelected).length > 0 && (
               <Popup
-                coordinates={[this.props.mapMarkerSelected.location.lat, this.props.mapMarkerSelected.location.long]}
+                coordinates={[this.props.mapMarkerSelected.coordinates.long, this.props.mapMarkerSelected.coordinates.lat]}
                 offset={{
                   'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
                 }}
               >
 
                 <h4>
-                  {this.props.mapMarkerSelected.name} <Glyphicon onClick={() => { this.props.mapMarkerUpdate({}); }} glyph="glyphicon glyphicon-remove" />
+                  {this.props.mapMarkerSelected.vendor_name} <Glyphicon onClick={() => { this.props.mapMarkerUpdate({}); }} glyph="glyphicon glyphicon-remove" />
                 </h4>
-                <p>Rating: {this.props.mapMarkerSelected.rating}</p>
-                <p> Hours: 2-4pm </p>
+                <p>Rating: 4/5</p>
+                <p> Hours: {this.props.mapMarkerSelected.start_time} to {this.props.mapMarkerSelected.end_time}</p>
               </Popup>
                 )}
 

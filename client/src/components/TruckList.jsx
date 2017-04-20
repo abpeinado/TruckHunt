@@ -25,7 +25,7 @@ class TruckList extends Component {
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
               <Link to="/truckMenu" key={i} onClick={() => { this.props.truckSelectedUpdate(item); }} >
-                <TruckListItem restaurant={item}     />
+                <TruckListItem restaurant={item} />
               </Link>
             ))
           }

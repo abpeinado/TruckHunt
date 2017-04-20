@@ -14,6 +14,13 @@ module.exports.search = (req, res) => {
   // the address/coordinates into Search.scheduleData()
   Search.scheduleData()
     .then((response) => {
+      console.log('test res', JSON.parse(response[0].coordinates));
+      const newArr = [];
+      for (let i = 0; i < 100; i++) {
+        const tempItem = response[i];
+        tempItem.coordinates = JSON.parse(tempItem.coordinates);
+        newArr.push(tempItem);
+      }
       //-----------
       // If you want to modify the data received from the query to better display
       // on the client-side pass the response into a function inported from utils.js
@@ -21,14 +28,16 @@ module.exports.search = (req, res) => {
       // into res.send instead of response.
       // there will need to be a function from utils that filters out any food
       // trucks that are not scheduled for the time the user selects
-      res.send(response);
+      return newArr;
     })
+    .then((newArr) => res.send(newArr))
     .catch((error) => res.send(error));
 };
 
 module.exports.menu = (req, res) => {
+  console.log('menu', req.body.data);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
-  MenuItems.menuData(req.body)
+  MenuItems.menuData(req.body.data)
     .then((menu) => {
       if (menu.length > 0) {
         res.send(menu);
