@@ -73,9 +73,10 @@ class Map extends React.Component {
               { Object.keys(this.props.mapMarkerSelected).length > 0 && (
               <Popup
                 coordinates={[this.props.mapMarkerSelected.coordinates.long, this.props.mapMarkerSelected.coordinates.lat]}
-                offset={{
-                  'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
-                }}
+                anchor="top-left"
+                // offset={{
+                //   'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
+                // }}
               >
 
                 <h4>
