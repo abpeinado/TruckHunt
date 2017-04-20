@@ -15,7 +15,8 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    this.props.truckListFetchData('/truckList');
+    // TODO: ADD DATE PARAM TO REQUEST
+    this.props.truckListFetchData('/truckList', this.props.mapCenter);
     // console.log('trucks list recieved');
   }
 

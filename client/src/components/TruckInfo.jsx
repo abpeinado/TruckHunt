@@ -8,18 +8,18 @@ import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfo extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.fetchTruckInfo('');
-  // }
+  componentDidMount() {
+    this.props.fetchTruckInfo(this.props.truckSelected.food_category);
+  }
 
   render() {
-    // const { truckInfoHasErrored, truckInfoIsLoading, truckInfo } = this.props;
-    // if (truckInfoHasErrored) {
-    //   return <p>Sorry! There was an error loading this trucks info</p>;
-    // }
-    // if (truckInfoIsLoading || Object.keys(truckInfo).length === 0) {
-    //   return <p>Loading…</p>;
-    // }
+    const { truckInfoHasErrored, truckInfoIsLoading, truckInfo } = this.props;
+    if (truckInfoHasErrored) {
+      return <p>Sorry! There was an error loading this trucks info</p>;
+    }
+    if (truckInfoIsLoading || Object.keys(truckInfo).length === 0) {
+      return <p>Loading…</p>;
+    }
     return (
       <div>
         <Row>
@@ -34,19 +34,19 @@ class TruckInfo extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     truckInfo: state.truckInfo,
-//     truckInfoHasErrored: state.truckInfoHasErrored,
-//     truckInfoIsLoading: state.truckInfoIsLoading
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    truckInfo: state.truckInfo,
+    truckInfoHasErrored: state.truckInfoHasErrored,
+    truckInfoIsLoading: state.truckInfoIsLoading
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchTruckInfo: (truckID) => dispatch(truckInfoFetchData(truckID))
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTruckInfo: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
+  };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TruckInfo);
-export default TruckInfo;
+export default connect(mapStateToProps, mapDispatchToProps)(TruckInfo);
+// export default TruckInfo;

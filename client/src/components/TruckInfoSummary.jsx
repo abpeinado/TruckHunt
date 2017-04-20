@@ -10,7 +10,7 @@ class TruckInfoSummary extends React.Component {
   }
 
   render() {
-    const truck = this.props.truckSelected;
+    const truck = this.props.truckInfo;
     return (
       <Row className="truck-info-summary">
         <Col md={3}>
@@ -30,7 +30,7 @@ class TruckInfoSummary extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    truckSelected: state.truckSelected
+    truckInfo: state.truckInfo
   };
 };
 
