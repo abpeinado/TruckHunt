@@ -140,8 +140,3 @@ module.exports.checkout = (req, res) => {
   });
   res.send('order number blahblahblah');
 };
-
-module.exports.checkout = (req, res) => {
-  console.log('recieved a checkout!');
-  res.send(201);
-};
