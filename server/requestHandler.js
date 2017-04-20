@@ -28,18 +28,32 @@ module.exports.search = (req, res) => {
 
 module.exports.menu = (req, res) => {
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
-  MenuItems.menuData(req.body)
-    .then((menu) => {
-      if (menu.length > 0) {
-        res.send(menu);
-      } else {
-        MenuItems.menuData(defaultFoodCategory)
-          .then((defaultMenu) => {
-            res.send(defaultMenu);
-          });
+  MenuItems.foodCategories()
+    .then((foodCategories) => {
+      let found = false;
+      for (let i = 0; i < foodCategories.length; i++) {
+        if (foodCategories[i].food_category === req.body.food_category) {
+          found = true;
+        }
       }
+      if (found) {
+        return true;
+      }
+      return false;
     })
-    .catch((error) => res.send(error));
+    .then((found) => {
+      if (found) {
+        return MenuItems.menuData(req.body.food_category);
+      }
+      return MenuItems.menuData(defaultFoodCategory);
+    })
+    .then((menu) => {
+      res.send(menu);
+    })
+    .catch((error) => {
+      console.log('here');
+      res.send(error);
+    });
 };
 
 module.exports.vendorSignup = (req, res) => {

@@ -7,6 +7,21 @@ Vendors.findVendorPermitsAndIds()
     schedule.schedule.data.forEach((s) => {
       for (let i = 0; i < approvedPermits.length; i++) {
         if (approvedPermits[i].permit_number === s[12]) {
+
+          if (s[10][s[10].length - 2] === 'A') {
+            if (s[10][1] === 'A') {
+              console.log(s[10][0]);
+            } else {
+              console.log(s[10][0] + s[10][1]);
+            }
+          } else if (s[10][s[10].length - 2] === 'P') {
+            if (s[10][1] === 'P') {
+              console.log(s[10][0]);
+            } else {
+              console.log(s[10][0] + s[10][1]);
+            }
+          }
+
           const scheduleInfo = {
             day_of_week: s[8],
             start_time: s[10],
@@ -18,6 +33,7 @@ Vendors.findVendorPermitsAndIds()
             vendor_id: approvedPermits[i].vendor_id
           };
           Schedules.newSchedule(scheduleInfo);
+ 
         }
       }
     });

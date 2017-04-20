@@ -9,6 +9,10 @@ module.exports.newItem = (item) => {
     item);
 };
 
+module.exports.foodCategories = () => {
+  return db.many('SELECT food_category FROM menu_items');
+};
+
 module.exports.menuData = (food_category) => {
   return db.many('SELECT * FROM menu_items WHERE food_category = $1', [food_category]);
 };
