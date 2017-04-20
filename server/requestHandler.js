@@ -4,6 +4,7 @@ const Schedules = require('./models/schedules.js');
 const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 module.exports.search = (req, res) => {
   console.log(req.body);
@@ -82,7 +83,29 @@ module.exports.userSignup = (req, res) => {
     .catch((error) => {
       console.error(error);
       res.send(error);
-    }
-  );
+    });
 };
 
+module.exports.checkout = (req, res) => {
+  // console.log('recieved a checkout!');
+  const token = req.body.orderInfo;
+  // console.log('token: ', token);
+  const currency = 'USD';
+  const amount = 1000; // cents, minumum is 50
+  const description = 'this is a SMample charge';
+
+  stripe.charges.create({
+    source: token,
+    currency,
+    amount,
+    description
+  }, (err, charge) => {
+    if (err) {
+      console.log('error in checkout:', err);
+    } else {
+      console.log('success', charge);
+      // update orders table
+    }
+  });
+  res.send('order number blahblahblah');
+};

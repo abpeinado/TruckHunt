@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from './CartItem.jsx';
+import Payment from './Payment.jsx';
 
 const Cart = ({ items, total, onCheckoutClicked, removeItemFromCart }) => {
   const hasItems = items.length > 0;
@@ -31,6 +32,7 @@ const Cart = ({ items, total, onCheckoutClicked, removeItemFromCart }) => {
       >
         Checkout
       </button>
+      <Payment />
     </Col>
   );
 };

@@ -22,7 +22,7 @@ describe('TruckMenuItem Component Test', () => {
 
   it('should contain the name, description and price', () => {
     const text = truckMenuItem.text();
-    console.log('text', text);
+    // console.log('text', text);
     expect(text).toContain(item.name);
     expect(text).toContain(item.description);
     expect(text).toContain(item.price);

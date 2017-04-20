@@ -1,3 +1,5 @@
+require('dotenv').config(); // imports environment vars from .env file
+                            // keep at top of file
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -9,6 +11,14 @@ const db = require('../database/index.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
+
+
+// useful for debugging, please do not remove:
+app.use((req, res, next) => {
+  // console.log('requrl= ', req.url);
+  // console.log('reqmethod= ', req.method);
+  next();
+});
 
 app.use(bodyParser.json());
 
@@ -51,6 +61,7 @@ POST /checkout
 body: {stripe ID, menu item id's, vendor id}
 response: order number
 **/
+app.post('/checkout', requestHandler.checkout);
 
 /**
 GET /vendorIncomingOrders
