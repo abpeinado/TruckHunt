@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from './CartItem.jsx';
-import Payment from './Payment.jsx';
+import Checkout from './Checkout.jsx';
 
-const Cart = ({ items, total, onCheckoutClicked, removeItemFromCart }) => {
+const Cart = ({ items, total, removeItemFromCart }) => {
   const hasItems = items.length > 0;
   const cartItemNodes = hasItems ? (
     items.map((menuItem, i) =>
@@ -26,13 +26,10 @@ const Cart = ({ items, total, onCheckoutClicked, removeItemFromCart }) => {
       </Row>
       {cartItemNodes}
       <p>Total: &#36;{total}</p>
-      <button
-        onClick={onCheckoutClicked}
-        disabled={hasItems ? '' : 'disabled'}
-      >
-        Checkout
-      </button>
-      <Payment />
+      <Checkout
+        amount={1998}
+        description={'you\'re tastebuds are waiting...'}
+      />
     </Col>
   );
 };
