@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
-import { mapCenterUpdate } from '../actions/mapCenterActions.js';
+import { mapCenterUpdate } from '../actions/mapActions.js';
 
 class Search extends React.Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class Search extends React.Component {
   }
 
   render() {
-    // included with autocomplete... will revise styles at later data
+    // included with autocomplete... will revise styles at later date
     const cssClasses = {
       root: 'form-group',
       input: 'Demo__search-input',
@@ -88,8 +88,8 @@ class Search extends React.Component {
       type: 'text',
       value: this.state.address,
       onChange: this.handleChange,
-      onBlur: () => { console.log('Blur event!'); },
-      onFocus: () => { console.log('Focused!'); },
+      // onBlur: () => { console.log('Blur event!'); },
+      // onFocus: () => { console.log('Focused!'); },
       autoFocus: true,
       placeholder: 'Search Places'
     };

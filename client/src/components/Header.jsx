@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, is } from 'react';
 import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
@@ -32,7 +32,7 @@ class Header extends Component {
             </NavItem>
           </Nav>
           <Nav pullRight>
-            <NavItem>
+            <NavItem is={Link} >
               <Link to="/authenticate" className="NavBarFoodTruck">
                 <Button bsSize="large" bsStyle="primary">
                   Login

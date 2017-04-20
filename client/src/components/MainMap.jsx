@@ -5,37 +5,18 @@ import { connect } from 'react-redux';
 import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
 import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
-// import { truckLocFetchData } from '../actions/truckLocActions.js';
+import { mapMarkerUpdate, mapMarkerUnselected } from '../actions/mapActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
 
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      markerClicked: {}
-    };
-    this.handleMarkerClick = this.handleMarkerClick.bind(this);
-    this.handlePopupClose = this.handlePopupClose.bind(this);
   }
 
   componentDidMount() {
     this.props.truckListFetchData('/truckList');
-    console.log('got trucks');
-  }
-
-
-  handleMarkerClick(truck) {
-    console.log('TRUCK LOCATION', truck);
-    this.setState({
-      markerClicked: truck
-    });
-  }
-
-  handlePopupClose() {
-    this.setState({
-      markerClicked: {}
-    });
+    // console.log('trucks list recieved');
   }
 
   render() {
@@ -80,25 +61,25 @@ class Map extends React.Component {
                   coordinates={[item.location.lat, item.location.long]}
                   anchor="bottom"
                   key={i}
-                  onClick={() => { this.handleMarkerClick(item); }}
+                  onClick={() => { this.props.mapMarkerUpdate(item); }}
                 >
                   <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV1.png'} alt="mapMarker" />
                 </Marker>
 
               )}
 
-              { Object.keys(this.state.markerClicked).length > 0 && (
+              { Object.keys(this.props.mapMarkerSelected).length > 0 && (
               <Popup
-                coordinates={[this.state.markerClicked.location.lat, this.state.markerClicked.location.long]}
+                coordinates={[this.props.mapMarkerSelected.location.lat, this.props.mapMarkerSelected.location.long]}
                 offset={{
                   'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
                 }}
               >
 
                 <h4>
-                  {this.state.markerClicked.name} <Glyphicon onClick={this.handlePopupClose} glyph="glyphicon glyphicon-remove" />
+                  {this.props.mapMarkerSelected.name} <Glyphicon onClick={() => { this.props.mapMarkerUpdate({}); }} glyph="glyphicon glyphicon-remove" />
                 </h4>
-                <p>Rating: {this.state.markerClicked.rating}</p>
+                <p>Rating: {this.props.mapMarkerSelected.rating}</p>
                 <p> Hours: 2-4pm </p>
               </Popup>
                 )}
@@ -126,13 +107,16 @@ const mapStateToProps = (state) => {
     truckList: state.truckList,
     truckListHasErrored: state.truckListHasErrored,
     truckListIsLoading: state.truckListIsLoading,
-    mapCenter: state.mapCenter
+    mapCenter: state.mapCenter,
+    mapMarkerSelected: state.mapMarkerSelected
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    truckListFetchData: (url) => dispatch(truckListFetchData(url))
+    truckListFetchData: (url) => dispatch(truckListFetchData(url)),
+    mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker))
   };
 };
 

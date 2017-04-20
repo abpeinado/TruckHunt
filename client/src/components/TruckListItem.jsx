@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Label, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { mapCenterUpdate } from '../actions/mapCenterActions.js';
+// import { mapCenterUpdate } from '../actions/mapActions.js';
 
 
 class TruckListItem extends Component {
