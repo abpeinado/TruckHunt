@@ -1,6 +1,6 @@
+/* eslint-disable global-require */
 if (process.env.PORT === undefined) {
-  require('dotenv').config(); // imports environment vars from .env file
-                              // keep at top of file
+  require('dotenv').config(); // imports environment vars from .env file, keep at top
 }
 const express = require('express');
 const bodyParser = require('body-parser');
