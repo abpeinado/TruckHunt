@@ -14,8 +14,10 @@ module.exports.search = (req, res) => {
   // the address/coordinates into Search.scheduleData()
   // --------------------------------------------------
   // to filter by time uncomment the lines below the example object
-  // and delete Search.scheduleData(). Also make sure you have
-  // reseeded the database
+  // and delete Search.scheduleData(). You also havve to delete
+  // the scheduleData function in search.js and replace it with the one
+  // that is commented out. Also make sure you have
+  // dropped and reseeded the database
   // {
   //   "time": "11:56 AM",
   //   "dayOfWeek": 1

@@ -22,7 +22,6 @@ module.exports.convertTimeToNumber = (timeAsString) => {
   return time;
 };
 
-
 // module.exports.convertTimeToNumber = (timeAsString) => {
 //   console.log(timeAsString);
 //   let time;
