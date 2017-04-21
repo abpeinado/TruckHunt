@@ -10,7 +10,7 @@ const convertTimeToNumber = (timeAsString) => {
     } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
       time = Number(timeAsString[0] + timeAsString[1]);
     } else {
-      time = 0;
+      time = 24;
     }
   } else if (timeAsString[timeAsString.length - 2] === 'P') {
     if (timeAsString[1] === 'P') {

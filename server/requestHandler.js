@@ -12,15 +12,18 @@ const utils = require('./utils.js');
 module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
-  Search.scheduleData()
+  // --------------------------------------------------
+  // req.body should be an obj like this...
+  // {
+  //   time: 13 // only first two digits of the time as a number not a string
+  //   dayOfWeek: 4 // it should be a number
+  // }
+  Search.scheduleData(req.body.time, req.body.dayOfWeek)
     .then((response) => {
       //-----------
-      // If you want to modify the data received from the query to better display
-      // on the client-side pass the response into a function inported from utils.js
-      // and transform the object there. Return the transformed object and pass it
-      // into res.send instead of response.
-      // there will need to be a function from utils that filters out any food
-      // trucks that are not scheduled for the time the user selects
+      // To filter schedule data by location pass the response into a
+      // function inported from utils.js and transform the object there.
+      // Return the transformed object and pass it into res.send
       res.send(response);
     })
     .catch((error) => res.send(error));
