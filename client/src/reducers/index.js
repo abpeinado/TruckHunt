@@ -4,16 +4,14 @@ import { truckList, truckListHasErrored, truckListIsLoading } from './truckListR
 import { truckInfo, truckInfoHasErrored, truckInfoIsLoading } from './truckInfoReducers.js';
 import { truckLoc, truckLocHasErrored, truckLocIsLoading } from './truckLocReducers.js';
 import { mapCenter } from './mapCenterReducers.js';
-import { vendorSignupError, signupError, signupLoading, signupSuccess, signup } from './signupReducers.js';
+import { vendorSignupError, signupError, signupLoading, signupSuccess } from './signupReducers.js';
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart, removedFromCart } from './cartReducers';
 import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
 import { loginError, loginSuccess, loginLoading, vendorLoginSuccess } from './loginReducers.js';
 import { userWantsLandingPage, userWantsAdmin, userWantsLogin, userWantsSearch, userWantsCheckout, userID, userName } from './userReducers.js';
-import { locationReducer } from './locationReducer.js';
 
 export default combineReducers({
-  locationReducer,
   truckList,
   truckListHasErrored,
   truckListIsLoading,
@@ -24,7 +22,6 @@ export default combineReducers({
   truckLoc,
   truckLocHasErrored,
   truckLocIsLoading,
-  signup,
   signupSuccess,
   signupError,
   signupLoading,

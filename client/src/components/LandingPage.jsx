@@ -14,20 +14,16 @@ import Vendor from './VendorHomepage.jsx';
 
 class LandingPage extends React.Component {
   render() {
-    console.log('this is the landing page', this);
     return (
       <div>
-
         <Route exact path="/" component={Header} />
         <Route exact path="/" component={MainMap} />
         <Route exact path="/" component={TruckList} />
         <Route path="/auth" component={Login} />
         <Route path="/truckMenu" component={TruckInfo} />
         <Route path="/vendor" component={Vendor} />
-
         {/* ADD ADDITIONAL ROUTES HERE */}
         {/* TODO: INTEGRATE PATHNAME ARGUMENT IN ROUTES*/}
-
       </div>
     );
   }
