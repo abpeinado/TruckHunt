@@ -28,7 +28,6 @@ export function truckInfoFetchData(truckCategory) {
         food_category: truckCategory
       }
     };
-    console.log('should be req bod - truckinfoactions:', options);
     fetch('/menu', options)
       .then((response) => {
         if (!response.ok) {
@@ -39,6 +38,6 @@ export function truckInfoFetchData(truckCategory) {
       })
       .then(response => response.json())
       .then(truckInfo => dispatch(truckInfoFetchDataSuccess(truckInfo)))
-      // .catch(() => dispatch(truckInfoHasErrored(true)));
+      .catch(() => dispatch(truckInfoHasErrored(true)));
   };
 }

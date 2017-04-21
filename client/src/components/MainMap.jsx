@@ -31,7 +31,7 @@ class Map extends React.Component {
   getLocation() {
     if (navigator.geolocation) {
       const location = navigator.geolocation.getCurrentPosition(this.showPosition);
-      console.log('current location test', location);
+      // console.log('current location test', location);
     } else {
       console.log('Geolocation is not supported by this browser');
     }
@@ -40,10 +40,10 @@ class Map extends React.Component {
   showPosition(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    console.log('current location lat', lat);
-    console.log('current location long', lng);
+    // console.log('current location lat', lat);
+    // console.log('current location long', lng);
     const newCoordinates = { lng, lat };
-    console.log('showPos props', newCoordinates);
+    // console.log('showPos props', newCoordinates);
     this.props.mapCenterUpdate(newCoordinates);
   }
 
@@ -89,7 +89,6 @@ class Map extends React.Component {
                 const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
                 return (
                   <Marker
-                    // const coordinates = (JSON.parse(item.coordinates));
                     coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
                     anchor="bottom"
                     key={i}

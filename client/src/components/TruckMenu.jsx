@@ -6,7 +6,7 @@ import TruckMenuGroup from './TruckMenuGroup.jsx';
 export const TruckMenuComponent = (props) => {
   return (
     <Row>
-      <Col md={12}>
+      <Col md={12} className="TruckMenuClass">
         {props.truckInfo.map((menuGroup, i) =>
           <TruckMenuGroup
             menuGroup={menuGroup}

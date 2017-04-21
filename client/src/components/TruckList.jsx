@@ -25,11 +25,9 @@ class TruckList extends Component {
           <ListGroup >
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
-              <div key={i} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }} >
-              <Link to="/truckMenu" >
+              <Link to="/truckMenu" key={i} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
                 <TruckListItem restaurant={item} />
               </Link>
-              </div>
             ))
           }
           </ListGroup>
