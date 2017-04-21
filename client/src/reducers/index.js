@@ -9,7 +9,7 @@ import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrder
 import { addedToCart, removedFromCart } from './cartReducers';
 import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
 import { loginError, loginSuccess, loginLoading, vendorLoginSuccess } from './loginReducers.js';
-import { userWantsLandingPage, userWantsAdmin, userWantsLogin, userWantsSearch, userWantsCheckout, userID, userName } from './userReducers.js';
+import { userID, userName } from './userReducers.js';
 
 export default combineReducers({
   truckList,
@@ -38,11 +38,6 @@ export default combineReducers({
   submittedOrder,
   submitOrderHasErrored,
   submitOrderIsLoading,
-  userWantsLandingPage,
-  userWantsAdmin,
-  userWantsLogin,
-  userWantsSearch,
-  userWantsCheckout,
   userID,
   userName,
   router: routerReducer

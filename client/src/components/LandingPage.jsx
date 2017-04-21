@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router';
-import { withRouter } from 'react-router-dom';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import Login from '../containers/AuthModal.jsx';
@@ -29,14 +28,4 @@ class LandingPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userWantsLandingPage: state.userWantsLandingPage,
-    userWantsLogin: state.userWantsLogin,
-    userWantsCheckout: state.userWantCheckout,
-    userWantsAdmin: state.userWantsAdmin
-  };
-};
-
-/* In react-router v4.1.1 withRouter will re-render its component every time the route changes, necessary in redux */
-export default withRouter(connect(mapStateToProps, null)(LandingPage));
+export default LandingPage;

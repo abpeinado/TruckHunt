@@ -1,7 +1,7 @@
 import React from 'react';
 import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { loginAttempt } from '../actions/loginActions.js';
 
 class UserLogin extends React.Component {
