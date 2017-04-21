@@ -1,36 +1,15 @@
 const schedule = require('../data/mobileFoodSchedule.js');
 const Vendors = require('../../server/models/vendors.js');
 const Schedules = require('../../server/models/schedules.js');
-
-const convertTimeToNumber = (timeAsString) => {
-  let time;
-  if (timeAsString[timeAsString.length - 2] === 'A') {
-    if (timeAsString[1] === 'A') {
-      time = Number(timeAsString[0]);
-    } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
-      time = Number(timeAsString[0] + timeAsString[1]);
-    } else {
-      time = 24;
-    }
-  } else if (timeAsString[timeAsString.length - 2] === 'P') {
-    if (timeAsString[1] === 'P') {
-      time = Number(timeAsString[0]) + 12;
-    } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
-      time = Number(timeAsString[0] + timeAsString[1]) + 12;
-    } else {
-      time = 12;
-    }
-  }
-  return time;
-};
+const utils = require('../../server/utils.js');
 
 Vendors.findVendorPermitsAndIds()
   .then((approvedPermits) => {
     schedule.schedule.data.forEach((s) => {
       for (let i = 0; i < approvedPermits.length; i++) {
         if (approvedPermits[i].permit_number === s[12]) {
-          const start = convertTimeToNumber(s[10]);
-          const end = convertTimeToNumber(s[11]);
+          const start = utils.convertTimeToNumber(s[10]);
+          const end = utils.convertTimeToNumber(s[11]);
           const scheduleInfo = {
             day_of_week: s[8],
             start_time: start,

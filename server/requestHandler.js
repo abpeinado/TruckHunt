@@ -13,12 +13,16 @@ module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
   // --------------------------------------------------
-  // req.body should be an obj like this...
+  // to filter by time uncomment the lines below the example object
+  // and delete Search.scheduleData(). Also make sure you have
+  // reseeded the database
   // {
-  //   time: 13 // only first two digits of the time as a number not a string
-  //   dayOfWeek: 4 // it should be a number
+  //   "time": "11:56 AM",
+  //   "dayOfWeek": 1
   // }
-  Search.scheduleData(req.body.time, req.body.dayOfWeek)
+  // const timeAsNum = utils.convertTimeToNumber(req.body.time);
+  // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
+  Search.scheduleData()
     .then((response) => {
       //-----------
       // To filter schedule data by location pass the response into a
