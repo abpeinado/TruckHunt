@@ -107,6 +107,9 @@ class UserLogin extends React.Component {
               <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
             </Col>
           </FormGroup>
+          {this.props.signupError &&
+            <span><h4>Sorry but that username is already taken, please try another</h4></span>
+          }
 
           <FormGroup>
             <Col sm={12}>

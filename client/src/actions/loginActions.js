@@ -55,12 +55,13 @@ export function loginAttempt(userInfo) {
       .then((response) => {
         dispatch(loginLoading(false));
         console.log('respsonseFETCH', response);
-        if (response.length === 0) {
-          dispatch(loginError(true));
+        if (response.status === 200) {
+          dispatch(loginSuccess(true));
+        } else {
+          throw new Error('Cannot Authenticate Credentials');
         }
         return response;
       })
-      .then(() => dispatch(loginSuccess(true)))
       .catch(() => dispatch(loginError(true)));
   };
 }

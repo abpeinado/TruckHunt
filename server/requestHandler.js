@@ -81,7 +81,7 @@ module.exports.vendorSignup = (req, res) => {
     })
     .then((response) => {
       if (response.length === 0) {
-        throw new Error('invalid permit', response);
+        throw new Error('invalid permit');
       }
       return VendorSignup.addUserToDB(userInfo);
     })
@@ -93,7 +93,7 @@ module.exports.vendorSignup = (req, res) => {
     })
     .catch((error) => {
       console.error('inside catch of vendorSignup', error);
-      res.status(401).send(error.message);
+      res.status(400).send(error.message);
     }
   );
 };
@@ -106,10 +106,10 @@ module.exports.vendorLogin = (req, res) => {
         throw new Error('invalid combo');
       }
       console.log('response', response);
-      res.send(response);
+      res.status(200).send(response);
     })
     .catch((error) => {
-      res.send(error);
+      res.status(401).send(error);
     }
   );
 };
@@ -126,7 +126,7 @@ module.exports.userLogin = (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      res.status(403).send(error);
+      res.status(401).send(error);
     }
   );
 };

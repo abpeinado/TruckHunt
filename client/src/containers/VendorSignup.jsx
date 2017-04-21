@@ -110,8 +110,7 @@ class OwnerSignup extends React.Component {
       this.setState({
         phoneNumber: '',
         password: '',
-        verify: '',
-
+        verify: ''
       });
     } else {
       // TODO: conditional render passwords don't match
@@ -121,24 +120,9 @@ class OwnerSignup extends React.Component {
   }
 
   render() {
-    if (this.props.signupError) {
-      return (
-        <h1>ERROR</h1>
-      );
-    }
-    if (this.props.signupLoading) {
-      return (
-        <h1>Loading...</h1>
-      );
-    }
-
-    // IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: ADD REDIRECT TO TRUCK MANAGEMENT VIEW
-    console.log('SIGNUP ', this.props.signupSuccess);
     if (this.props.signupSuccess === true) {
       return (
         <div>
-          <h1>SUCCESS</h1>
           <Redirect
             to={{
               pathname: '/vendor'
@@ -219,6 +203,9 @@ class OwnerSignup extends React.Component {
             </Button>
           </Col>
         </FormGroup>
+
+        {this.props.signupError &&
+          <h4> Some of your information is invalid, please double check your inputs </h4>}
       </Form>
     );
   }
@@ -227,7 +214,7 @@ class OwnerSignup extends React.Component {
 const mapStateToProps = (state) => {
   return {
     signupSuccess: state.signupSuccess,
-    signupError: state.signupError,
+    signupError: state.vendorSignupError,
     signupLoading: state.signupLoading
   };
 };
