@@ -21,9 +21,7 @@ class LandingPage extends React.Component {
         <Route exact path="/" component={Header} />
         <Route exact path="/" component={MainMap} />
         <Route exact path="/" component={TruckList} />
-        <Route path="/auth" component={Header} />
         <Route path="/auth" component={Login} />
-        <Route path="/truckMenu" component={Header} />
         <Route path="/truckMenu" component={TruckInfo} />
         <Route path="/vendor" component={Vendor} />
 

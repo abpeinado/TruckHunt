@@ -4,6 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 import VendorSignup from './VendorSignup.jsx';
 import Signup from './Signup.jsx';
 import Login from './Login.jsx';
+import Header from '../components/Header.jsx';
 
 
 class AuthenticationPortal extends React.Component {
@@ -35,6 +36,7 @@ class AuthenticationPortal extends React.Component {
     const signup = !this.state.businessOwner ? <Signup /> : <VendorSignup />;
     return (
       <div>
+        <Header />
         <div className="static-modal" >
           <Modal.Dialog>
             <Modal.Header>
