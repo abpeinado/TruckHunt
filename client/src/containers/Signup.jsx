@@ -66,9 +66,8 @@ class UserLogin extends React.Component {
   }
 
   render() {
-
     if (this.props.signupSuccess) {
-      return(
+      return (
         <div>
           <Redirect
             to={{
@@ -77,50 +76,45 @@ class UserLogin extends React.Component {
           />
         </div>
       );
-    } else {
-      return (
-
-        <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
-          <FormGroup controlId="formHorizontalEmail">
-            <Col sm={12}>
-              Username
-            </Col>
-            <Col sm={12}>
-              <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup controlId="formHorizontalPassword">
-            <Col sm={12}>
-              Password
-            </Col>
-            <Col sm={12}>
-              <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup controlId="formHorizontalPassword">
-            <Col sm={12}>
-              Verify Password
-            </Col>
-            <Col sm={12}>
-              <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
-            </Col>
-          </FormGroup>
-          {this.props.signupError &&
-            <span><h4>Sorry but that username is already taken, please try another</h4></span>
-          }
-
-          <FormGroup>
-            <Col sm={12}>
-              <Button type="submit">
-                Signup
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>
-      );
     }
+    return (
+      <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
+        <FormGroup controlId="formHorizontalEmail">
+          <Col sm={12}>
+            Username
+          </Col>
+          <Col sm={12}>
+            <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup controlId="formHorizontalPassword">
+          <Col sm={12}>
+            Password
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup controlId="formHorizontalPassword">
+          <Col sm={12}>
+            Verify Password
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
+          </Col>
+        </FormGroup>
+        {this.props.signupError &&
+          <span><h4>Sorry but that username is already taken, please try another</h4></span>
+        }
+        <FormGroup>
+          <Col sm={12}>
+            <Button type="submit">
+              Signup
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
+    );
   }
 }
 

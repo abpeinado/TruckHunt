@@ -116,83 +116,82 @@ class OwnerSignup extends React.Component {
     if (this.props.signupSuccess) {
       return (
         // Redirect to vendor portal if successful
-          <Redirect
-            to={{
-              pathname: '/vendor'
-            }}
-          />
-      );
-    } else {
-      return (
-        <Form horizontal onSubmit={this.handleSubmit} className="loginForm" >
-          <FormGroup>
-            <Col sm={2}>
-              Email
-            </Col>
-            <Col sm={10}>
-              <FormControl type="email" placeholder="eats@fuegotrucks.com" value={this.state.email} onChange={this.handleEmailChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-             Phone Number
-            </Col>
-            <Col sm={10}>
-              <FormControl type="text" placeholder="(415) 555-5555" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-              Password
-            </Col>
-            <Col sm={10}>
-              <FormControl type="password" placeholder="Top Secret" value={this.state.password} onChange={this.handlePasswordChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-              Verify Password
-            </Col>
-            <Col sm={10}>
-              <FormControl type="password" placeholder="Top Secret" value={this.state.verify} onChange={this.handleVerifyChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-              First Name
-            </Col>
-            <Col sm={10}>
-              <FormControl type="text" placeholder="John" value={this.state.firstName} onChange={this.handleFirstNameChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-              Last Name
-            </Col>
-            <Col sm={10}>
-              <FormControl type="text" placeholder="Yossarian" value={this.state.lastName} onChange={this.handleLastNameChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={2}>
-              Permit Number
-            </Col>
-            <Col sm={10}>
-              <FormControl type="text" placeholder="XXXXX-XXXX" value={this.state.permit} onChange={this.handlePermitChange} />
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={12}>
-              <Button type="submit" bsStyle="success" block>
-                Submit
-              </Button>
-            </Col>
-          </FormGroup>
-          {this.props.signupError &&
-            <h4> Some of your information is invalid, please double check your inputs </h4>}
-        </Form>
+        <Redirect
+          to={{
+            pathname: '/vendor'
+          }}
+        />
       );
     }
+    return (
+      <Form horizontal onSubmit={this.handleSubmit} className="loginForm" >
+        <FormGroup>
+          <Col sm={2}>
+            Email
+          </Col>
+          <Col sm={10}>
+            <FormControl type="email" placeholder="eats@fuegotrucks.com" value={this.state.email} onChange={this.handleEmailChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+           Phone Number
+          </Col>
+          <Col sm={10}>
+            <FormControl type="text" placeholder="(415) 555-5555" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+            Password
+          </Col>
+          <Col sm={10}>
+            <FormControl type="password" placeholder="Top Secret" value={this.state.password} onChange={this.handlePasswordChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+            Verify Password
+          </Col>
+          <Col sm={10}>
+            <FormControl type="password" placeholder="Top Secret" value={this.state.verify} onChange={this.handleVerifyChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+            First Name
+          </Col>
+          <Col sm={10}>
+            <FormControl type="text" placeholder="John" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+            Last Name
+          </Col>
+          <Col sm={10}>
+            <FormControl type="text" placeholder="Yossarian" value={this.state.lastName} onChange={this.handleLastNameChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={2}>
+            Permit Number
+          </Col>
+          <Col sm={10}>
+            <FormControl type="text" placeholder="XXXXX-XXXX" value={this.state.permit} onChange={this.handlePermitChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={12}>
+            <Button type="submit" bsStyle="success" block>
+              Submit
+            </Button>
+          </Col>
+        </FormGroup>
+        {this.props.signupError &&
+          <h4> Some of your information is invalid, please double check your inputs </h4>}
+      </Form>
+    );
   }
 }
 

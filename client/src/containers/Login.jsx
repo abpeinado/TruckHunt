@@ -74,60 +74,59 @@ class UserLogin extends React.Component {
     if (this.props.loginSuccess) {
       return (
         // Redirect to vendor portal if successful
-          <Redirect
-            to={{
-              pathname: '/'
-            }}
-          />
+        <Redirect
+          to={{
+            pathname: '/'
+          }}
+        />
       );
     } else if (this.props.vendorLoginSuccess) {
       return (
         // Redirect to vendor portal if successful
-          <Redirect
-            to={{
-              pathname: '/vendor'
-            }}
-          />
-      );
-    } else {
-      return (
-        <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
-          <FormGroup controlId="formHorizontalEmail">
-            <Col sm={12}>
-              <h3>Username</h3>
-            </Col>
-            <Col sm={12}>
-              <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup controlId="formHorizontalPassword">
-            <Col sm={12}>
-              <h3>Password</h3>
-            </Col>
-            <Col sm={12}>
-              <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
-            </Col>
-          </FormGroup>
-          {this.props.loginError &&
-            <span><h4>try again...</h4></span>
-          }
-          <FormGroup>
-            <Col sm={12}>
-              <Checkbox onChange={this.handleBusinessOwner}>Business Owner</Checkbox>
-              <Checkbox>Remember me</Checkbox>
-            </Col>
-          </FormGroup>
-          <FormGroup>
-            <Col sm={12}>
-              <Button type="submit">
-                Login
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>
+        <Redirect
+          to={{
+            pathname: '/vendor'
+          }}
+        />
       );
     }
+    return (
+      <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
+        <FormGroup controlId="formHorizontalEmail">
+          <Col sm={12}>
+            <h3>Username</h3>
+          </Col>
+          <Col sm={12}>
+            <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
+          </Col>
+        </FormGroup>
+
+        <FormGroup controlId="formHorizontalPassword">
+          <Col sm={12}>
+            <h3>Password</h3>
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
+          </Col>
+        </FormGroup>
+        {this.props.loginError &&
+          <span><h4>try again...</h4></span>
+        }
+        <FormGroup>
+          <Col sm={12}>
+            <Checkbox onChange={this.handleBusinessOwner}>Business Owner</Checkbox>
+            <Checkbox>Remember me</Checkbox>
+          </Col>
+        </FormGroup>
+        <FormGroup>
+          <Col sm={12}>
+            <Button type="submit">
+              Login
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
+    );
   }
 }
 

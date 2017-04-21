@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from '../client/src/store/configureStore.js';
-import Login from '../client/src/components/Login.jsx';
+import Login from '../client/src/containers/Login.jsx';
 
 describe('Login Components Test', () => {
   const store = configureStore();

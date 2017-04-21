@@ -44,7 +44,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-{/* In react-router v4.1.1 withRouter will re-render its component every time the route changes, necessary in redux */}
+/* In react-router v4.1.1 withRouter will re-render its component every time the route changes, necessary in redux */
 export default withRouter(connect(mapStateToProps, null)(LandingPage));
-
-// export default LandingPage;
