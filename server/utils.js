@@ -1,5 +1,4 @@
 module.exports.convertTimeToNumber = (timeAsString) => {
-  console.log(timeAsString);
   let time;
   if (timeAsString[timeAsString.length - 2] === 'A') {
     if (!!Number(timeAsString[1]) === false && Number(timeAsString[1]) !== 0) {
@@ -18,7 +17,6 @@ module.exports.convertTimeToNumber = (timeAsString) => {
       time = 12;
     }
   }
-  console.log(time);
   return time;
 };
 
