@@ -36,10 +36,13 @@ export function signupFetch(userInfo) {
     fetch(url, init)
       .then((response) => {
         dispatch(signupLoading(false));
+        if (response.status === 201) {
+          dispatch(signupSuccess(true));
+        } else {
+          throw new Error('Could not create new user');
+        }
         return response;
       })
-      .then(response => response.json())
-      .then(() => dispatch(signupSuccess(true)))
       .catch(() => dispatch(signupError(true)));
   };
 }

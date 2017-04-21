@@ -9,8 +9,11 @@ import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrder
 import { addedToCart, removedFromCart } from './cartReducers';
 import { loginError, loginSuccess, loginLoading } from './loginReducers.js';
 import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
+import { userWantsLandingPage, userWantsAdmin } from './userReducers.js';
+import { locationReducer } from './locationReducer.js';
 
 export default combineReducers({
+  locationReducer,
   truckList,
   truckListHasErrored,
   truckListIsLoading,
@@ -37,5 +40,10 @@ export default combineReducers({
   submittedOrder,
   submitOrderHasErrored,
   submitOrderIsLoading,
+  userWantsLandingPage,
+  userWantsAdmin,
   router: routerReducer
 });
+
+// Now you can dispatch navigation actions from anywhere!
+// store.dispatch(push('/foo'))

@@ -74,7 +74,7 @@ class UserLogin extends React.Component {
       <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={12}>
-            Username
+            <h3>Username</h3>
           </Col>
           <Col sm={12}>
             <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
@@ -83,13 +83,15 @@ class UserLogin extends React.Component {
 
         <FormGroup controlId="formHorizontalPassword">
           <Col sm={12}>
-            Password
+            <h3>Password</h3>
           </Col>
           <Col sm={12}>
             <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </Col>
         </FormGroup>
-
+        {this.props.loginError &&
+          <span><h4>try again...</h4></span>
+        }
         <FormGroup>
           <Col sm={12}>
             <Checkbox onChange={this.handleBusinessOwner}>Business Owner</Checkbox>

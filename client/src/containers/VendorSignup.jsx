@@ -3,13 +3,14 @@ import React from 'react';
 // import { signup } from ''
 import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
 class OwnerSignup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      phoneNumber: '',
       password: '',
       verify: '',
       firstName: '',
@@ -18,7 +19,7 @@ class OwnerSignup extends React.Component {
       permit: ''
     };
     this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleVerifyChange = this.handleVerifyChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,9 +39,9 @@ class OwnerSignup extends React.Component {
     console.log('inside photo upload handler', event);
   }
 
-  handleUsernameChange(event) {
+  handlePhoneNumberChange(event) {
     this.setState({
-      username: event.target.value
+      phoneNumber: event.target.value
     });
   }
 
@@ -78,7 +79,7 @@ class OwnerSignup extends React.Component {
     event.preventDefault();
     // event.stopPropagation();
 
-    const user = this.state.username;
+    const phone = this.state.phoneNumber;
     const pass = this.state.password;
     const permit = this.state.permit;
     const verify = this.state.verify;
@@ -87,7 +88,7 @@ class OwnerSignup extends React.Component {
     const lastName = this.state.lastName;
 
     const userInfo = {
-      user,
+      phone,
       pass,
       permit,
       email,
@@ -95,18 +96,22 @@ class OwnerSignup extends React.Component {
       lastName,
       url: '/vendorSignup'
     };
-   // check db to see if username is available
+    // check db to see if phoneNumber is available
     // constant ajax call saved inside redux store
     // if available check passwords match
     // TODO: add logic for password integrity
     if (pass === verify) {
       console.log('inside handleSubmit, passwords match');
       // dispatch fetch function saved in redux
-      this.props.signupFetch(userInfo);
+      this.props.signupFetch(userInfo, () => {
+        console.log('signupFetch Async');
+      });
+
       this.setState({
-        username: '',
+        phoneNumber: '',
         password: '',
-        verify: ''
+        verify: '',
+
       });
     } else {
       // TODO: conditional render passwords don't match
@@ -132,7 +137,14 @@ class OwnerSignup extends React.Component {
     console.log('SIGNUP ', this.props.signupSuccess);
     if (this.props.signupSuccess === true) {
       return (
-        <h1>SUCCESS</h1>
+        <div>
+          <h1>SUCCESS</h1>
+          <Redirect
+            to={{
+              pathname: '/vendor'
+            }}
+          />
+        </div>
       );
     }
     return (
@@ -148,10 +160,10 @@ class OwnerSignup extends React.Component {
 
         <FormGroup>
           <Col sm={2}>
-            Username
+           Phone Number
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
+            <FormControl type="text" placeholder="phoneNumber" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
           </Col>
         </FormGroup>
 
@@ -227,49 +239,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OwnerSignup);
-
-          //  <form onSubmit={this.handleSubmit}>
-          //   <FieldGroup
-          //     id="formControlsText"
-          //     type="email"
-          //     label="Email address"
-          //     placeholder="Enter email"
-          //   />
-          //   <FieldGroup
-          //     id="formControlsText"
-          //     type="text"
-          //     label="Username"
-          //     placeholder="Enter username"
-          //   />
-          //   <FieldGroup
-          //     id="formControlsText"
-          //     type="password"
-          //     label="Password"
-          //     placeholder="Enter password"
-          //   />
-          // </form>
-
-          // <div className="signupInput">
-          //   <input type="text" placeholder="email" value={this.state.email} onChange={this.handleEmailChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="password" placeholder="verify" value={this.state.verify} onChange={this.handleVerifyChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} />
-          // </div>
-          // <div className="signupInput">
-          //   <input type="text" value="Photo Upload" onClick={this.handlePhotoUpload} />
-          // </div>
-          // <div className="submitButton">
-          //   <input type="submit" value="Submit" />
-          // </div>
