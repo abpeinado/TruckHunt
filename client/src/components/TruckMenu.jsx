@@ -7,7 +7,7 @@ export const TruckMenuComponent = (props) => {
   return (
     <Row>
       <Col md={12}>
-        {props.truckSelected.map((menuGroup, i) =>
+        {props.truckInfo.map((menuGroup, i) =>
           <TruckMenuGroup
             menuGroup={menuGroup}
             key={i}
@@ -20,7 +20,7 @@ export const TruckMenuComponent = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    truckSelected: state.truckSelected.menu
+    truckInfo: state.truckInfo
   };
 };
 

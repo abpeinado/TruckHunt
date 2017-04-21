@@ -16,11 +16,12 @@ module.exports.search = (req, res) => {
     .then((response) => {
       console.log('test res', JSON.parse(response[0].coordinates));
       const newArr = [];
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; newArr.length < 100; i++) {
         const tempItem = response[i];
         tempItem.coordinates = JSON.parse(tempItem.coordinates);
         newArr.push(tempItem);
       }
+
       //-----------
       // If you want to modify the data received from the query to better display
       // on the client-side pass the response into a function inported from utils.js
@@ -35,20 +36,63 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.menu = (req, res) => {
-  console.log('menu', req.body.data);
+  console.log('menu route body', req.body);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
-  MenuItems.menuData(req.body.data)
-    .then((menu) => {
-      if (menu.length > 0) {
-        res.send(menu);
-      } else {
-        MenuItems.menuData(defaultFoodCategory)
-          .then((defaultMenu) => {
-            res.send(defaultMenu);
-          });
+  MenuItems.foodCategories()
+    .then((foodCategories) => {
+      let found = false;
+      for (let i = 0; i < foodCategories.length; i++) {
+        if (foodCategories[i].food_category === req.body.food_category) {
+          found = true;
+        }
       }
+      if (found) {
+        return true;
+      }
+      return false;
     })
-    .catch((error) => res.send(error));
+    .then((found) => {
+      if (found) {
+        return MenuItems.menuData(req.body.food_category);
+      }
+      return MenuItems.menuData(defaultFoodCategory);
+    })
+    .then((menu) => {
+      // create category array
+      const foodCategories = [];
+      // create menuItems object
+      const menuItems = {};
+      // loop thru menu
+      for (let i = 0; i < menu.length; i++) {
+        // get food category
+        const course = menu[i].course;
+        // if the food cat is not in menuItems object
+        if (!menuItems[course]) {
+          // push to food cat array
+          foodCategories.push(menu[i].course);
+          // create array containing the menu item and
+          menuItems[course] = [menu[i]];
+          // add that to menuItems[foodcategory]
+        } else {
+          // push the menuItem to menuItems[foodcategory]
+          menuItems[course].push(menu[i]);
+        }
+      }
+      for (let j = 0; j < foodCategories.length; j++) {
+        let course = {};
+        course.title = foodCategories[j];
+        course.items = menuItems[foodCategories[j]];
+        foodCategories[j] = course;
+        course = {};
+      }
+      // console.log('menuItems', menuItems);
+      // console.log('foodCategories', foodCategories);
+      res.send(foodCategories);
+    })
+    .catch((error) => {
+      console.log('here');
+      res.send(error);
+    });
 };
 
 module.exports.vendorSignup = (req, res) => {

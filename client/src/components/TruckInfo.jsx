@@ -9,8 +9,8 @@ import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 class TruckInfo extends React.Component {
 
   componentDidMount() {
-    // this.props.fetchTruckInfo(this.props.truckSelected.food_category);
-    this.props.fetchTruckInfo('Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks');
+    // const category = this.props.truckSelected.food_category;
+    this.props.truckInfo;
   }
 
   render() {
@@ -39,13 +39,14 @@ const mapStateToProps = (state) => {
   return {
     truckInfo: state.truckInfo,
     truckInfoHasErrored: state.truckInfoHasErrored,
-    truckInfoIsLoading: state.truckInfoIsLoading
+    truckInfoIsLoading: state.truckInfoIsLoading,
+    truckSelected: state.truckSelected
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTruckInfo: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
+    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
   };
 };
 

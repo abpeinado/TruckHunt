@@ -25,9 +25,10 @@ export function truckInfoFetchData(truckCategory) {
     const options = {
       method: 'POST',
       body: {
-        data: "Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks"
+        food_category: truckCategory
       }
     };
+    console.log('should be req bod - truckinfoactions:', options);
     fetch('/menu', options)
       .then((response) => {
         if (!response.ok) {
@@ -38,6 +39,6 @@ export function truckInfoFetchData(truckCategory) {
       })
       .then(response => response.json())
       .then(truckInfo => dispatch(truckInfoFetchDataSuccess(truckInfo)))
-      .catch(() => dispatch(truckInfoHasErrored(true)));
+      // .catch(() => dispatch(truckInfoHasErrored(true)));
   };
 }
