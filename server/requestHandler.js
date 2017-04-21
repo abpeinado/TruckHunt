@@ -69,7 +69,6 @@ module.exports.vendorSignup = (req, res) => {
   const userInfo = req.body.userInfo;
   const user = req.body.userInfo.user;
   const permit = req.body.userInfo.permit;
-  console.log('vendorSignup');
 
   VendorSignup.checkUsername(user)
     .then((response) => {
@@ -99,14 +98,16 @@ module.exports.vendorSignup = (req, res) => {
 };
 
 module.exports.vendorLogin = (req, res) => {
-  const userInfo = req.body.userInfo;
-  Login.vendorLogin(userInfo)
+  const user = req.body.userInfo.user;
+  const pass = req.body.userInfo.pass;
+
+  Login.vendorLogin(user, pass)
     .then((response) => {
       if (response.length === 0) {
         throw new Error('invalid combo');
       }
       console.log('response', response);
-      res.status(200).send(response);
+      res.status(202).send(response);
     })
     .catch((error) => {
       res.status(401).send(error);

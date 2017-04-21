@@ -32,3 +32,10 @@ export function userWantsCheckout(bool) {
     userWantsCheckout: bool
   };
 }
+
+export function userID(num) {
+  return {
+    type: 'USER_ID',
+    userID: num
+  };
+}

@@ -29,7 +29,6 @@ const Header = () => {
         </Nav>
       </Navbar>
     </div>
-
   );
 };
 

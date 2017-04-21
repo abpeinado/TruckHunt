@@ -3,7 +3,7 @@ import React from 'react';
 // import { signup } from ''
 import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
 class OwnerSignup extends React.Component {
@@ -18,7 +18,6 @@ class OwnerSignup extends React.Component {
       email: '',
       permit: ''
     };
-    this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleVerifyChange = this.handleVerifyChange.bind(this);
@@ -33,10 +32,6 @@ class OwnerSignup extends React.Component {
     this.setState({
       permit: event.target.value
     });
-  }
-
-  handlePhotoUpload(event) {
-    console.log('inside photo upload handler', event);
   }
 
   handlePhoneNumberChange(event) {
@@ -76,8 +71,9 @@ class OwnerSignup extends React.Component {
   }
 
   handleSubmit(event) {
+    // prevent form from triggering page refresh
     event.preventDefault();
-    // event.stopPropagation();
+    event.stopPropagation();
 
     const phone = this.state.phoneNumber;
     const pass = this.state.password;
@@ -87,6 +83,7 @@ class OwnerSignup extends React.Component {
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
 
+    // Prepare obj to send to server
     const userInfo = {
       phone,
       pass,
@@ -96,126 +93,115 @@ class OwnerSignup extends React.Component {
       lastName,
       url: '/vendorSignup'
     };
-    // check db to see if phoneNumber is available
-    // constant ajax call saved inside redux store
-    // if available check passwords match
+
     // TODO: add logic for password integrity
     if (pass === verify) {
-      console.log('inside handleSubmit, passwords match');
-      // dispatch fetch function saved in redux
-      this.props.signupFetch(userInfo, () => {
-        console.log('signupFetch Async');
-      });
-
+      // pass signup function from redux store the userInfo obj
+      this.props.signupFetch(userInfo, () => {});
+      // restore state to initial condition
       this.setState({
         phoneNumber: '',
         password: '',
-        verify: ''
+        verify: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        permit: ''
       });
-    } else {
-      // TODO: conditional render passwords don't match
-      // ALSO: error handling for incorrect login
-      console.log('inside handleSubmit, passwords do not match');
     }
   }
 
+  // Render to the DOM
   render() {
-    if (this.props.signupSuccess === true) {
+    if (this.props.signupSuccess) {
       return (
-        <div>
+        // Redirect to vendor portal if successful
           <Redirect
             to={{
               pathname: '/vendor'
             }}
           />
-        </div>
+      );
+    } else {
+      return (
+        <Form horizontal onSubmit={this.handleSubmit} className="loginForm" >
+          <FormGroup>
+            <Col sm={2}>
+              Email
+            </Col>
+            <Col sm={10}>
+              <FormControl type="email" placeholder="eats@fuegotrucks.com" value={this.state.email} onChange={this.handleEmailChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+             Phone Number
+            </Col>
+            <Col sm={10}>
+              <FormControl type="text" placeholder="(415) 555-5555" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+              Password
+            </Col>
+            <Col sm={10}>
+              <FormControl type="password" placeholder="Top Secret" value={this.state.password} onChange={this.handlePasswordChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+              Verify Password
+            </Col>
+            <Col sm={10}>
+              <FormControl type="password" placeholder="Top Secret" value={this.state.verify} onChange={this.handleVerifyChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+              First Name
+            </Col>
+            <Col sm={10}>
+              <FormControl type="text" placeholder="John" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+              Last Name
+            </Col>
+            <Col sm={10}>
+              <FormControl type="text" placeholder="Yossarian" value={this.state.lastName} onChange={this.handleLastNameChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={2}>
+              Permit Number
+            </Col>
+            <Col sm={10}>
+              <FormControl type="text" placeholder="XXXXX-XXXX" value={this.state.permit} onChange={this.handlePermitChange} />
+            </Col>
+          </FormGroup>
+          <FormGroup>
+            <Col sm={12}>
+              <Button type="submit" bsStyle="success" block>
+                Submit
+              </Button>
+            </Col>
+          </FormGroup>
+          {this.props.signupError &&
+            <h4> Some of your information is invalid, please double check your inputs </h4>}
+        </Form>
       );
     }
-    return (
-      <Form horizontal onSubmit={this.handleSubmit} className="loginForm" >
-        <FormGroup>
-          <Col sm={2}>
-            Email
-          </Col>
-          <Col sm={10}>
-            <FormControl type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-           Phone Number
-          </Col>
-          <Col sm={10}>
-            <FormControl type="text" placeholder="phoneNumber" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-            Password
-          </Col>
-          <Col sm={10}>
-            <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-            Verify Password
-          </Col>
-          <Col sm={10}>
-            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-            First Name
-          </Col>
-          <Col sm={10}>
-            <FormControl type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-            Last Name
-          </Col>
-          <Col sm={10}>
-            <FormControl type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={2}>
-            Permit Number
-          </Col>
-          <Col sm={10}>
-            <FormControl type="text" placeholder="Permit Number" value={this.state.permit} onChange={this.handlePermitChange} />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={12}>
-            <Button type="submit" bsStyle="success" block>
-              Submit
-            </Button>
-          </Col>
-        </FormGroup>
-
-        {this.props.signupError &&
-          <h4> Some of your information is invalid, please double check your inputs </h4>}
-      </Form>
-    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    signupSuccess: state.signupSuccess,
     signupError: state.vendorSignupError,
-    signupLoading: state.signupLoading
+    signupSuccess: state.signupSuccess,
+    signupLoading: state.signupLoading,
+    venderLoginSuccess: state.venderLoginSuccess
   };
 };
 

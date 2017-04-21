@@ -7,9 +7,9 @@ import { mapCenter } from './mapCenterReducers.js';
 import { vendorSignupError, signupError, signupLoading, signupSuccess, signup } from './signupReducers.js';
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart, removedFromCart } from './cartReducers';
-import { loginError, loginSuccess, loginLoading } from './loginReducers.js';
 import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
-import { userWantsLandingPage, userWantsAdmin } from './userReducers.js';
+import { loginError, loginSuccess, loginLoading, vendorLoginSuccess } from './loginReducers.js';
+import { userWantsLandingPage, userWantsAdmin, userWantsLogin, userWantsSearch, userWantsCheckout, userID, userName } from './userReducers.js';
 import { locationReducer } from './locationReducer.js';
 
 export default combineReducers({
@@ -31,6 +31,7 @@ export default combineReducers({
   loginError,
   loginLoading,
   loginSuccess,
+  vendorLoginSuccess,
   vendorSignupError,
   vendorIncomingOrder,
   vendorIncomingOrderHasErrored,
@@ -42,6 +43,11 @@ export default combineReducers({
   submitOrderIsLoading,
   userWantsLandingPage,
   userWantsAdmin,
+  userWantsLogin,
+  userWantsSearch,
+  userWantsCheckout,
+  userID,
+  userName,
   router: routerReducer
 });
 

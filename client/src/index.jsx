@@ -4,19 +4,16 @@ import { Provider, connect } from 'react-redux';
 import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import App from './components/LandingPage.jsx';
-import VendorHomepage from './components/VendorHomepage.jsx';
-import TruckInfo from './components/TruckInfo.jsx';
-import Authenticate from './components/AuthenticationPortal.jsx';
 import configureStore from './store/configureStore.js';
 
-// browser history
+// Browser history for Router
 const history = createHistory();
 
-// can pass in an initialState here if necessary:
+// initialState here for Redux:
 const store = configureStore();
 
 render(
-  <Router>
+  <Router history={history}>
     <Provider store={store}>
       <App />
     </Provider>

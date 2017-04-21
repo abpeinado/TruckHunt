@@ -31,5 +31,5 @@ export const vendorSignupError = (state = false, action) => {
       return action.vendorSignupError;
     default:
       return state;
-  };
-}
+  }
+};

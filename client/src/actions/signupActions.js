@@ -47,7 +47,6 @@ export function signupFetch(userInfo) {
         if (response.status === 201) {
           dispatch(signupSuccess(true));
         } else if (response.status === 400) {
-          console.log('responseSIGNUPFETCH', response.json());
           dispatch(vendorSignupError(true));
           throw new Error('Could not create new user');
         } else if (response.status === 401) {

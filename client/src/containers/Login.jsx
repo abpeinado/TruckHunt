@@ -1,7 +1,7 @@
 import React from 'react';
 import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router';
 import { loginAttempt } from '../actions/loginActions.js';
 
 class UserLogin extends React.Component {
@@ -70,15 +70,24 @@ class UserLogin extends React.Component {
   }
 
   render() {
+    console.log(this.props.vendorLoginSuccess);
     if (this.props.loginSuccess) {
       return (
-        <div>
+        // Redirect to vendor portal if successful
           <Redirect
             to={{
               pathname: '/'
             }}
           />
-        </div>
+      );
+    } else if (this.props.vendorLoginSuccess) {
+      return (
+        // Redirect to vendor portal if successful
+          <Redirect
+            to={{
+              pathname: '/vendor'
+            }}
+          />
       );
     } else {
       return (
@@ -124,9 +133,10 @@ class UserLogin extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loginSuccess: state.loginSuccess,
     loginError: state.loginError,
-    loginLoading: state.loginLoading
+    loginSuccess: state.loginSuccess,
+    loginLoading: state.loginLoading,
+    vendorLoginSuccess: state.vendorLoginSuccess
   };
 };
 

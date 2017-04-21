@@ -19,7 +19,6 @@ class AuthenticationPortal extends React.Component {
   }
 
   handleBusinessOwner() {
-    console.log('biz owner');
     this.setState({
       businessOwner: !this.state.businessOwner
     });
@@ -44,14 +43,12 @@ class AuthenticationPortal extends React.Component {
                 : (<Modal.Title className="loginTitle">Signup</Modal.Title>)
               }
             </Modal.Header>
-
             <Modal.Body>
               {this.state.userWantsLogin ?
                 (<Login />)
                 : (signup)
               }
             </Modal.Body>
-
             <Modal.Footer className="footerWrapper">
               {this.state.userWantsLogin ?
                 (<div>
@@ -65,9 +62,8 @@ class AuthenticationPortal extends React.Component {
                       (<Button bsStyle="primary" onClick={this.handleBusinessOwner}>Vendor Signup</Button>)
                     }
                   </div>
-                  )
+                )
               }
-
             </Modal.Footer>
           </Modal.Dialog>
         </div>
