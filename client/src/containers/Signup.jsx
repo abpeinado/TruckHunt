@@ -1,10 +1,10 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
-class UserLogin extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,10 +126,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signupFetch: (info) => dispatch(signupFetch(info))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signupFetch: (info) => dispatch(signupFetch(info))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

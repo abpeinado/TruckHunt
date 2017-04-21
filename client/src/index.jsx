@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
-import App from './components/LandingPage.jsx';
+import LandingPage from './components/LandingPage.jsx';
 import configureStore from './store/configureStore.js';
 
 // Browser history for Router
@@ -15,7 +15,7 @@ const store = configureStore();
 render(
   <Router history={history}>
     <Provider store={store}>
-      <App />
+      <LandingPage />
     </Provider>
   </Router>,
   document.getElementById('app'));

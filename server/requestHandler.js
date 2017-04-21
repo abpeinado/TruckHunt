@@ -1,13 +1,11 @@
-const Vendors = require('./models/vendors.js');
-const Customers = require('./models/customers.js');
-const Schedules = require('./models/schedules.js');
 const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
-const utils = require('./utils.js');
+// const Schedules = require('./models/schedules.js');
+// const utils = require('./utils.js');
 
 module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass

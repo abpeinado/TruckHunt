@@ -1,10 +1,10 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { loginAttempt } from '../actions/loginActions.js';
 
-class UserLogin extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class UserLogin extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleBusinessOwner(event) {
+  handleBusinessOwner() {
     this.setState({
       businessOwner: !this.state.businessOwner
     });
@@ -145,4 +145,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

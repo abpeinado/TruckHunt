@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col, Row, ListGroup } from 'react-bootstrap';
-import { truckListFetchData } from '../actions/truckListActions.js';
 import TruckListItem from './TruckListItem.jsx';
 
 class TruckList extends Component {

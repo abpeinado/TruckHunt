@@ -1,12 +1,10 @@
 /* eslint-disable object-shorthand */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
-import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { mapCenterUpdate } from '../actions/mapCenterActions.js';
 
-class Search extends React.Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -126,7 +124,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapDispatchToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 
 // OLD SEARCH FOR SERVER CALL REFERENCE-- WILL TAKE OUT WHEN CONNECTED

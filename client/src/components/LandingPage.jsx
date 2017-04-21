@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Route } from 'react-router';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';

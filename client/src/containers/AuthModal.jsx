@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import VendorSignup from './VendorSignup.jsx';
 import Signup from './Signup.jsx';
@@ -7,7 +6,7 @@ import Login from './Login.jsx';
 import Header from '../components/Header.jsx';
 
 
-class AuthenticationPortal extends React.Component {
+class AuthModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,4 +73,4 @@ class AuthenticationPortal extends React.Component {
   }
 }
 
-export default AuthenticationPortal;
+export default AuthModal;
