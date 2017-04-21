@@ -15,8 +15,8 @@ module.exports = (db) => {
   .then(() => {
     return db.query('CREATE TABLE IF NOT EXISTS schedules(\
       schedule_id SERIAL PRIMARY KEY,\
-      start_time VARCHAR(30) NOT NULL,\
-      end_time VARCHAR(30) NOT NULL,\
+      start_time INT NOT NULL,\
+      end_time INT NOT NULL,\
       day_of_week INT NOT NULL,\
       coordinates VARCHAR(100) NOT NULL,\
       vendor_id INT NOT NULL\

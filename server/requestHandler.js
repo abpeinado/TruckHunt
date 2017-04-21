@@ -12,15 +12,24 @@ const utils = require('./utils.js');
 module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
+  // --------------------------------------------------
+  // to filter by time uncomment the lines below the example object
+  // and delete Search.scheduleData(). You also havve to delete
+  // the scheduleData function in search.js and replace it with the one
+  // that is commented out. Also make sure you have
+  // dropped and reseeded the database
+  // {
+  //   "time": "11:56 AM",
+  //   "dayOfWeek": 1
+  // }
+  // const timeAsNum = utils.convertTimeToNumber(req.body.time);
+  // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
   Search.scheduleData()
     .then((response) => {
       //-----------
-      // If you want to modify the data received from the query to better display
-      // on the client-side pass the response into a function inported from utils.js
-      // and transform the object there. Return the transformed object and pass it
-      // into res.send instead of response.
-      // there will need to be a function from utils that filters out any food
-      // trucks that are not scheduled for the time the user selects
+      // To filter schedule data by location pass the response into a
+      // function inported from utils.js and transform the object there.
+      // Return the transformed object and pass it into res.send
       res.send(response);
     })
     .catch((error) => res.send(error));
@@ -28,18 +37,32 @@ module.exports.search = (req, res) => {
 
 module.exports.menu = (req, res) => {
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
-  MenuItems.menuData(req.body)
-    .then((menu) => {
-      if (menu.length > 0) {
-        res.send(menu);
-      } else {
-        MenuItems.menuData(defaultFoodCategory)
-          .then((defaultMenu) => {
-            res.send(defaultMenu);
-          });
+  MenuItems.foodCategories()
+    .then((foodCategories) => {
+      let found = false;
+      for (let i = 0; i < foodCategories.length; i++) {
+        if (foodCategories[i].food_category === req.body.food_category) {
+          found = true;
+        }
       }
+      if (found) {
+        return true;
+      }
+      return false;
     })
-    .catch((error) => res.send(error));
+    .then((found) => {
+      if (found) {
+        return MenuItems.menuData(req.body.food_category);
+      }
+      return MenuItems.menuData(defaultFoodCategory);
+    })
+    .then((menu) => {
+      res.send(menu);
+    })
+    .catch((error) => {
+      console.log('here');
+      res.send(error);
+    });
 };
 
 module.exports.vendorSignup = (req, res) => {

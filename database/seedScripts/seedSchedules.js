@@ -1,16 +1,19 @@
 const schedule = require('../data/mobileFoodSchedule.js');
 const Vendors = require('../../server/models/vendors.js');
 const Schedules = require('../../server/models/schedules.js');
+const utils = require('../../server/utils.js');
 
 Vendors.findVendorPermitsAndIds()
   .then((approvedPermits) => {
     schedule.schedule.data.forEach((s) => {
       for (let i = 0; i < approvedPermits.length; i++) {
         if (approvedPermits[i].permit_number === s[12]) {
+          const start = utils.convertTimeToNumber(s[10]);
+          const end = utils.convertTimeToNumber(s[11]);
           const scheduleInfo = {
             day_of_week: s[8],
-            start_time: s[10],
-            end_time: s[11],
+            start_time: start,
+            end_time: end,
             coordinates: {
               lat: s[31][1],
               long: s[31][2]

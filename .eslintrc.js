@@ -49,7 +49,8 @@ module.exports = {
     "react/prefer-stateless-function": "off",
     "no-useless-constructor": "off",
     "no-unused-vars": "off", 
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "global-require": "off"
   },
   "allow": ["warn", "error", "log"]
 };
