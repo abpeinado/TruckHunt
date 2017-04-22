@@ -43,7 +43,7 @@ module.exports.search = (req, res) => {
       // To filter schedule data by location pass the response into a
       // function inported from utils.js and transform the object there.
       // Return the transformed object and pass it into res.send
-      res.send(response);
+      // res.send(response);
     })
     .then((newArr) => res.send(newArr))
     .catch((error) => res.send(error));

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
-import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
 import { mapCenterUpdate } from '../actions/mapActions.js';
 
 

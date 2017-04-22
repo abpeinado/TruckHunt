@@ -38,7 +38,6 @@ export function signupFetch(userInfo) {
     })
   };
 
-
   return (dispatch) => {
     dispatch(signupLoading(true));
     fetch(url, init)

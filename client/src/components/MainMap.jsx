@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
+import { Row, Col, Glyphicon } from 'react-bootstrap';
 import mapboxgl from 'mapbox-gl';
-import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
-import { mapMarkerUpdate, mapMarkerUnselected, mapCenterUpdate } from '../actions/mapActions.js';
+import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
+import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
 
 
@@ -43,7 +43,7 @@ class Map extends React.Component {
     // console.log('current location lat', lat);
     // console.log('current location long', lng);
     const newCoordinates = { lng, lat };
-    // console.log('showPos props', newCoordinates);
+    console.log('current position', newCoordinates);
     this.props.mapCenterUpdate(newCoordinates);
   }
 
