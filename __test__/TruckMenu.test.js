@@ -17,7 +17,6 @@ describe('TruckMenu Components Test', () => {
 });
 
 
-
 // describe('TruckMenu Component Test', () => {
 //   let truckMenu;
 //   const item = {};
