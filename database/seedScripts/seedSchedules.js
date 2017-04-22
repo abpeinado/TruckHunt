@@ -2,30 +2,39 @@ const schedule = require('../data/mobileFoodSchedule.js');
 const Vendors = require('../../server/models/vendors.js');
 const Schedules = require('../../server/models/schedules.js');
 
+const convertTimeToNumber = (timeAsString) => {
+  let time;
+  if (timeAsString[timeAsString.length - 2] === 'A') {
+    if (timeAsString[1] === 'A') {
+      time = Number(timeAsString[0]);
+    } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
+      time = Number(timeAsString[0] + timeAsString[1]);
+    } else {
+      time = 0;
+    }
+  } else if (timeAsString[timeAsString.length - 2] === 'P') {
+    if (timeAsString[1] === 'P') {
+      time = Number(timeAsString[0]) + 12;
+    } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
+      time = Number(timeAsString[0] + timeAsString[1]) + 12;
+    } else {
+      time = 12;
+    }
+  }
+  return time;
+};
+
 Vendors.findVendorPermitsAndIds()
   .then((approvedPermits) => {
     schedule.schedule.data.forEach((s) => {
       for (let i = 0; i < approvedPermits.length; i++) {
         if (approvedPermits[i].permit_number === s[12]) {
-
-          if (s[10][s[10].length - 2] === 'A') {
-            if (s[10][1] === 'A') {
-              console.log(s[10][0]);
-            } else {
-              console.log(s[10][0] + s[10][1]);
-            }
-          } else if (s[10][s[10].length - 2] === 'P') {
-            if (s[10][1] === 'P') {
-              console.log(s[10][0]);
-            } else {
-              console.log(s[10][0] + s[10][1]);
-            }
-          }
-
+          const start = convertTimeToNumber(s[10]);
+          const end = convertTimeToNumber(s[11]);
           const scheduleInfo = {
             day_of_week: s[8],
-            start_time: s[10],
-            end_time: s[11],
+            start_time: start,
+            end_time: end,
             coordinates: {
               lat: s[31][1],
               long: s[31][2]
@@ -33,7 +42,6 @@ Vendors.findVendorPermitsAndIds()
             vendor_id: approvedPermits[i].vendor_id
           };
           Schedules.newSchedule(scheduleInfo);
- 
         }
       }
     });
