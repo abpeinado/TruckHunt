@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Glyphicon } from 'react-bootstrap';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl'; // eslint-disable-line no-unused-vars
 import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
@@ -30,7 +30,7 @@ class Map extends React.Component {
 
   getLocation() {
     if (navigator.geolocation) {
-      const location = navigator.geolocation.getCurrentPosition(this.showPosition);
+      navigator.geolocation.getCurrentPosition(this.showPosition);
       // console.log('current location test', location);
     } else {
       console.log('Geolocation is not supported by this browser');

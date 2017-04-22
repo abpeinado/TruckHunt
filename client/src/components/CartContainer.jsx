@@ -5,11 +5,10 @@ import { removeFromCart } from '../actions/cartActions.js';
 // import { getCartTotal } from '../reducers/cartReducers';
 import Cart from './Cart.jsx';
 
-const CartContainer = ({ cartItems, total, checkout, removeItemFromCart }) => (
+const CartContainer = ({ cartItems, total, removeItemFromCart }) => (
   <Cart
     items={cartItems}
     total={total}
-    onCheckoutClicked={() => checkout(cartItems)}
     removeItemFromCart={removeItemFromCart}
   />
 );
