@@ -20,8 +20,7 @@ class TruckList extends Component {
 
   render() {
     return (
-      <Row>
-        <Col xs={12} md={8} mdOffset={2} className={'TruckListClass'} >
+
           <ListGroup >
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
@@ -31,8 +30,6 @@ class TruckList extends Component {
             ))
           }
           </ListGroup>
-        </Col>
-      </Row>
     );
   }
 }

@@ -36,7 +36,7 @@ class Header extends Component {
     //   hour = hour - 12;
     // }
     const timeFormatted = `${hour}:${min}`;
-    console.log('moment time', moment()._d);
+    // console.log('moment time', moment()._d);
 
     return (
       <Menu size='large' borderless>
