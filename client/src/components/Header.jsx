@@ -3,7 +3,6 @@ import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
 import Search from './Search.jsx';
-// import LoginButton from './LoginButton.jsx';
 
 const Header = () => {
   return (

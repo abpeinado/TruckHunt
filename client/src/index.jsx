@@ -1,24 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
-import App from './components/LandingPage.jsx';
-import VendorHomepage from './components/VendorHomepage.jsx';
-import TruckInfo from './components/TruckInfo.jsx';
-import Authenticate from './components/AuthenticationPortal.jsx';
+import LandingPage from './components/LandingPage.jsx';
 import configureStore from './store/configureStore.js';
 
-// browser history
+// Browser history for Router
 const history = createHistory();
 
-// can pass in an initialState here if necessary:
+// initialState here for Redux:
 const store = configureStore();
 
 render(
-  <Router>
+  <Router history={history}>
     <Provider store={store}>
-      <App />
+      <LandingPage />
     </Provider>
-  </Router >,
+  </Router>,
   document.getElementById('app'));

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import VendorSignup from './VendorSignup.jsx';
 import Signup from './Signup.jsx';
 import Login from './Login.jsx';
+import Header from '../components/Header.jsx';
 
 
-class AuthenticationPortal extends React.Component {
+class AuthModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,6 @@ class AuthenticationPortal extends React.Component {
   }
 
   handleBusinessOwner() {
-    console.log('biz owner');
     this.setState({
       businessOwner: !this.state.businessOwner
     });
@@ -36,6 +35,7 @@ class AuthenticationPortal extends React.Component {
     const signup = !this.state.businessOwner ? <Signup /> : <VendorSignup />;
     return (
       <div>
+        <Header />
         <div className="static-modal" >
           <Modal.Dialog>
             <Modal.Header>
@@ -44,14 +44,12 @@ class AuthenticationPortal extends React.Component {
                 : (<Modal.Title className="loginTitle">Signup</Modal.Title>)
               }
             </Modal.Header>
-
             <Modal.Body>
               {this.state.userWantsLogin ?
                 (<Login />)
                 : (signup)
               }
             </Modal.Body>
-
             <Modal.Footer className="footerWrapper">
               {this.state.userWantsLogin ?
                 (<div>
@@ -65,9 +63,8 @@ class AuthenticationPortal extends React.Component {
                       (<Button bsStyle="primary" onClick={this.handleBusinessOwner}>Vendor Signup</Button>)
                     }
                   </div>
-                  )
+                )
               }
-
             </Modal.Footer>
           </Modal.Dialog>
         </div>
@@ -76,4 +73,4 @@ class AuthenticationPortal extends React.Component {
   }
 }
 
-export default AuthenticationPortal;
+export default AuthModal;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
 import Logo from './Logo.jsx';
 
 class Header extends Component {

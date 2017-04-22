@@ -1,9 +1,10 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { loginAttempt } from '../actions/loginActions.js';
 
-class UserLogin extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +18,7 @@ class UserLogin extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleBusinessOwner(event) {
+  handleBusinessOwner() {
     this.setState({
       businessOwner: !this.state.businessOwner
     });
@@ -69,8 +70,27 @@ class UserLogin extends React.Component {
   }
 
   render() {
+    console.log(this.props.vendorLoginSuccess);
+    if (this.props.loginSuccess) {
+      return (
+        // Redirect to vendor portal if successful
+        <Redirect
+          to={{
+            pathname: '/'
+          }}
+        />
+      );
+    } else if (this.props.vendorLoginSuccess) {
+      return (
+        // Redirect to vendor portal if successful
+        <Redirect
+          to={{
+            pathname: '/vendor'
+          }}
+        />
+      );
+    }
     return (
-
       <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={12}>
@@ -98,7 +118,6 @@ class UserLogin extends React.Component {
             <Checkbox>Remember me</Checkbox>
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={12}>
             <Button type="submit">
@@ -113,9 +132,10 @@ class UserLogin extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loginSuccess: state.loginSuccess,
     loginError: state.loginError,
-    loginLoading: state.loginLoading
+    loginSuccess: state.loginSuccess,
+    loginLoading: state.loginLoading,
+    vendorLoginSuccess: state.vendorLoginSuccess
   };
 };
 
@@ -125,4 +145,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

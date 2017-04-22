@@ -1,12 +1,12 @@
 // Signup page for truck owners
 import React from 'react';
 // import { signup } from ''
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
-class OwnerSignup extends React.Component {
+class VendorSignup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,6 @@ class OwnerSignup extends React.Component {
       email: '',
       permit: ''
     };
-    this.handlePhotoUpload = this.handlePhotoUpload.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleVerifyChange = this.handleVerifyChange.bind(this);
@@ -33,10 +32,6 @@ class OwnerSignup extends React.Component {
     this.setState({
       permit: event.target.value
     });
-  }
-
-  handlePhotoUpload(event) {
-    console.log('inside photo upload handler', event);
   }
 
   handlePhoneNumberChange(event) {
@@ -76,8 +71,9 @@ class OwnerSignup extends React.Component {
   }
 
   handleSubmit(event) {
+    // prevent form from triggering page refresh
     event.preventDefault();
-    // event.stopPropagation();
+    event.stopPropagation();
 
     const phone = this.state.phoneNumber;
     const pass = this.state.password;
@@ -87,6 +83,7 @@ class OwnerSignup extends React.Component {
     const firstName = this.state.firstName;
     const lastName = this.state.lastName;
 
+    // Prepare obj to send to server
     const userInfo = {
       phone,
       pass,
@@ -96,55 +93,34 @@ class OwnerSignup extends React.Component {
       lastName,
       url: '/vendorSignup'
     };
-    // check db to see if phoneNumber is available
-    // constant ajax call saved inside redux store
-    // if available check passwords match
+
     // TODO: add logic for password integrity
     if (pass === verify) {
-      console.log('inside handleSubmit, passwords match');
-      // dispatch fetch function saved in redux
-      this.props.signupFetch(userInfo, () => {
-        console.log('signupFetch Async');
-      });
-
+      // pass signup function from redux store the userInfo obj
+      this.props.signupFetch(userInfo, () => {});
+      // restore state to initial condition
       this.setState({
         phoneNumber: '',
         password: '',
         verify: '',
-
+        firstName: '',
+        lastName: '',
+        email: '',
+        permit: ''
       });
-    } else {
-      // TODO: conditional render passwords don't match
-      // ALSO: error handling for incorrect login
-      console.log('inside handleSubmit, passwords do not match');
     }
   }
 
+  // Render to the DOM
   render() {
-    if (this.props.signupError) {
+    if (this.props.signupSuccess) {
       return (
-        <h1>ERROR</h1>
-      );
-    }
-    if (this.props.signupLoading) {
-      return (
-        <h1>Loading...</h1>
-      );
-    }
-
-    // IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO: ADD REDIRECT TO TRUCK MANAGEMENT VIEW
-    console.log('SIGNUP ', this.props.signupSuccess);
-    if (this.props.signupSuccess === true) {
-      return (
-        <div>
-          <h1>SUCCESS</h1>
-          <Redirect
-            to={{
-              pathname: '/vendor'
-            }}
-          />
-        </div>
+        // Redirect to vendor portal if successful
+        <Redirect
+          to={{
+            pathname: '/vendor'
+          }}
+        />
       );
     }
     return (
@@ -154,64 +130,57 @@ class OwnerSignup extends React.Component {
             Email
           </Col>
           <Col sm={10}>
-            <FormControl type="email" placeholder="Email" value={this.state.email} onChange={this.handleEmailChange} />
+            <FormControl type="email" placeholder="eats@fuegotrucks.com" value={this.state.email} onChange={this.handleEmailChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
            Phone Number
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="phoneNumber" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
+            <FormControl type="text" placeholder="(415) 555-5555" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
             Password
           </Col>
           <Col sm={10}>
-            <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
+            <FormControl type="password" placeholder="Top Secret" value={this.state.password} onChange={this.handlePasswordChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
             Verify Password
           </Col>
           <Col sm={10}>
-            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
+            <FormControl type="password" placeholder="Top Secret" value={this.state.verify} onChange={this.handleVerifyChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
             First Name
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="First Name" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+            <FormControl type="text" placeholder="John" value={this.state.firstName} onChange={this.handleFirstNameChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
             Last Name
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="Last Name" value={this.state.lastName} onChange={this.handleLastNameChange} />
+            <FormControl type="text" placeholder="Yossarian" value={this.state.lastName} onChange={this.handleLastNameChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={2}>
             Permit Number
           </Col>
           <Col sm={10}>
-            <FormControl type="text" placeholder="Permit Number" value={this.state.permit} onChange={this.handlePermitChange} />
+            <FormControl type="text" placeholder="XXXXX-XXXX" value={this.state.permit} onChange={this.handlePermitChange} />
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={12}>
             <Button type="submit" bsStyle="success" block>
@@ -219,6 +188,8 @@ class OwnerSignup extends React.Component {
             </Button>
           </Col>
         </FormGroup>
+        {this.props.signupError &&
+          <h4> Some of your information is invalid, please double check your inputs </h4>}
       </Form>
     );
   }
@@ -226,16 +197,15 @@ class OwnerSignup extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    signupError: state.vendorSignupError,
     signupSuccess: state.signupSuccess,
-    signupError: state.signupError,
-    signupLoading: state.signupLoading
+    signupLoading: state.signupLoading,
+    venderLoginSuccess: state.venderLoginSuccess
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signupFetch: (info) => dispatch(signupFetch(info))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signupFetch: (info) => dispatch(signupFetch(info))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(OwnerSignup);
+export default connect(mapStateToProps, mapDispatchToProps)(VendorSignup);

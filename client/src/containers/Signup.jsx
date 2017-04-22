@@ -1,10 +1,10 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
-class UserLogin extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,9 +66,8 @@ class UserLogin extends React.Component {
   }
 
   render() {
-
     if (this.props.signupSuccess) {
-      return(
+      return (
         <div>
           <Redirect
             to={{
@@ -77,47 +76,45 @@ class UserLogin extends React.Component {
           />
         </div>
       );
-    } else {
-      return (
-
-        <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
-          <FormGroup controlId="formHorizontalEmail">
-            <Col sm={12}>
-              Username
-            </Col>
-            <Col sm={12}>
-              <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup controlId="formHorizontalPassword">
-            <Col sm={12}>
-              Password
-            </Col>
-            <Col sm={12}>
-              <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup controlId="formHorizontalPassword">
-            <Col sm={12}>
-              Verify Password
-            </Col>
-            <Col sm={12}>
-              <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
-            </Col>
-          </FormGroup>
-
-          <FormGroup>
-            <Col sm={12}>
-              <Button type="submit">
-                Signup
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>
-      );
     }
+    return (
+      <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
+        <FormGroup controlId="formHorizontalEmail">
+          <Col sm={12}>
+            Username
+          </Col>
+          <Col sm={12}>
+            <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup controlId="formHorizontalPassword">
+          <Col sm={12}>
+            Password
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
+          </Col>
+        </FormGroup>
+        <FormGroup controlId="formHorizontalPassword">
+          <Col sm={12}>
+            Verify Password
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
+          </Col>
+        </FormGroup>
+        {this.props.signupError &&
+          <span><h4>Sorry but that username is already taken, please try another</h4></span>
+        }
+        <FormGroup>
+          <Col sm={12}>
+            <Button type="submit">
+              Signup
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
+    );
   }
 }
 
@@ -129,10 +126,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signupFetch: (info) => dispatch(signupFetch(info))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signupFetch: (info) => dispatch(signupFetch(info))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -24,3 +24,12 @@ export const loginSuccess = (state = false, action) => {
       return state;
   }
 };
+
+export const vendorLoginSuccess = (state = false, action) => {
+  switch (action.type) {
+    case 'VENDOR_LOGIN_SUCCESS':
+      return action.vendorLoginSuccess;
+    default:
+      return state;
+  }
+};
