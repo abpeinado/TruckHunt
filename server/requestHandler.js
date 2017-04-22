@@ -50,7 +50,7 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.menu = (req, res) => {
-  console.log('menu route body', req.body);
+  // console.log('menu route body', req.body);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
   MenuItems.foodCategories()
     .then((foodCategories) => {
