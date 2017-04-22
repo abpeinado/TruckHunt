@@ -31,16 +31,35 @@ export function loginAttempt(userInfo) {
     })
   };
 
+  // return (dispatch) => {
+  //   dispatch(loginLoading(true));
+  //   fetch(url, init)
+  //     .then((response) => {
+  //       dispatch(loginLoading(false));
+  //       if (response.length === 0) {
+  //         dispatch(loginError(true));
+  //       }
+  //       console.log('back from server successful FETCH', response);
+  //       return response;
+  //     })
+  //     .then(response => response.json())
+  //     .then(response => console.log('responseJSON', response))
+  //     .then(() => dispatch(loginSuccess(true)))
+  //     .catch(() => dispatch(loginError(true)));
+  // };
+
   return (dispatch) => {
     dispatch(loginLoading(true));
     fetch(url, init)
+      // .then((response) => response.json())
       .then((response) => {
         dispatch(loginLoading(false));
-        console.log('back from server successful FETCH', response);
+        console.log('respsonseFETCH', response);
+        if (response.length === 0) {
+          dispatch(loginError(true));
+        }
         return response;
       })
-      .then(response => response.json())
-      .then(response => console.log('responseJSON', response))
       .then(() => dispatch(loginSuccess(true)))
       .catch(() => dispatch(loginError(true)));
   };

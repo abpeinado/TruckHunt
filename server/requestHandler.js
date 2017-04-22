@@ -119,30 +119,38 @@ module.exports.vendorSignup = (req, res) => {
 
   VendorSignup.checkUsername(user)
     .then((response) => {
-      if (response.length === 0) {
-        throw new Error();
+      if (response.length !== 0) {
+        console.log('invalid username inside throw', response);
+        throw new Error('invalid username');
       }
-      return VendorSignup.checkPermit(permit);
+      return VendorSignup.checkPermitNumberIsValid(permit);
     })
     .then((response) => {
       if (response.length === 0) {
-        throw new Error();
+        throw new Error('invalid permit', response);
       }
-      return VendorSignup.addUser(userInfo);
+      return VendorSignup.addUserToDB(userInfo);
     })
     .then((response) => {
       if (response.length === 0) {
-        throw new Error();
+        throw new Error('error adding user', response);
       }
-      res.send(response);
+      res.status(201).send(response);
     })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      console.error('inside catch of vendorSignup', error);
+      res.status(401).send(error.message);
+    }
+  );
 };
 
 module.exports.vendorLogin = (req, res) => {
   const userInfo = req.body.userInfo;
   Login.vendorLogin(userInfo)
     .then((response) => {
+      if (response.length === 0) {
+        throw new Error('invalid combo');
+      }
       console.log('response', response);
       res.send(response);
     })
@@ -157,11 +165,14 @@ module.exports.userLogin = (req, res) => {
   const pass = req.body.userInfo.pass;
   Login.userLogin(user, pass)
     .then((response) => {
-      res.send(response);
+      if (response.length === 0) {
+        throw new Error('Invalid user/pass');
+      }
+      res.status(200).send(response);
     })
     .catch((error) => {
       console.error(error);
-      res.send(error);
+      res.status(403).send(error);
     }
   );
 };
@@ -178,12 +189,13 @@ module.exports.userSignup = (req, res) => {
       return UserSignup.addUser(user, pass);
     })
     .then((response) => {
-      res.send(response);
+      res.status(201).send(response);
     })
     .catch((error) => {
       console.error(error);
-      res.send(error);
-    });
+      res.status(403).send(error);
+    }
+  );
 };
 
 module.exports.checkout = (req, res) => {
