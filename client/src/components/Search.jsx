@@ -62,11 +62,11 @@ class Search extends Component {
     this.props.mapCenterUpdate(newCoordinates);
 
     // remove for Production... this should help for development
-    return (
-      <div className="alert alert-success" role="alert">
-        <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
-      </div>
-    );
+    // return (
+    //   <div className="alert alert-success" role="alert">
+    //     <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
+    //   </div>
+    // );
   }
 
   render() {
