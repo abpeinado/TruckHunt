@@ -1,26 +1,21 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { loginAttempt } from '../actions/loginActions.js';
+import { Redirect } from 'react-router-dom';
+import { signupFetch } from '../actions/signupActions.js';
 
-class UserLogin extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
-      businessOwner: false
+      verify: ''
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleVerifyChange = this.handleVerifyChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleBusinessOwner = this.handleBusinessOwner.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleBusinessOwner(event) {
-    this.setState({
-      businessOwner: !this.state.businessOwner
-    });
   }
 
   handleUsernameChange(event) {
@@ -35,32 +30,34 @@ class UserLogin extends React.Component {
     });
   }
 
+  handleVerifyChange(event) {
+    this.setState({
+      verify: event.target.value
+    });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
 
     const user = this.state.username;
     const pass = this.state.password;
-    const businessOwner = this.state.businessOwner;
+    const verify = this.state.verify;
     const userInfo = ({
       user,
       pass,
-      url: ''
+      url: '/userSignup'
     });
 
-    if (user !== null && pass !== null) {
+    if (user !== null && pass !== null && verify === pass) {
       // send userInfo to server
-      if (businessOwner) {
-        userInfo.url = '/vendorLogin';
-        this.props.loginAttempt(userInfo);
-      } else {
-        userInfo.url = '/userLogin';
-        this.props.loginAttempt(userInfo);
-      }
+      this.props.signupFetch(userInfo);
+
       // reset field values
       this.setState({
         username: '',
-        password: ''
+        password: '',
+        verify: ''
       });
     } else {
       // TODO: conditional render passwords don't match
@@ -69,8 +66,18 @@ class UserLogin extends React.Component {
   }
 
   render() {
+    if (this.props.signupSuccess) {
+      return (
+        <div>
+          <Redirect
+            to={{
+              pathname: '/'
+            }}
+          />
+        </div>
+      );
+    }
     return (
-
       <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={12}>
@@ -80,7 +87,6 @@ class UserLogin extends React.Component {
             <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
           </Col>
         </FormGroup>
-
         <FormGroup controlId="formHorizontalPassword">
           <Col sm={12}>
             Password
@@ -89,18 +95,21 @@ class UserLogin extends React.Component {
             <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </Col>
         </FormGroup>
-
-        <FormGroup>
+        <FormGroup controlId="formHorizontalPassword">
           <Col sm={12}>
-            <Checkbox onChange={this.handleBusinessOwner}>Business Owner</Checkbox>
-            <Checkbox>Remember me</Checkbox>
+            Verify Password
+          </Col>
+          <Col sm={12}>
+            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
           </Col>
         </FormGroup>
-
+        {this.props.signupError &&
+          <span><h4>Sorry but that username is already taken, please try another</h4></span>
+        }
         <FormGroup>
           <Col sm={12}>
             <Button type="submit">
-              Login
+              Signup
             </Button>
           </Col>
         </FormGroup>
@@ -111,16 +120,14 @@ class UserLogin extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loginSuccess: state.loginSuccess,
-    loginError: state.loginError,
-    loginLoading: state.loginLoading
+    signupSuccess: state.signupSuccess,
+    signupError: state.signupError,
+    signupLoading: state.signupLoading
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginAttempt: (info) => dispatch(loginAttempt(info))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signupFetch: (info) => dispatch(signupFetch(info))
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

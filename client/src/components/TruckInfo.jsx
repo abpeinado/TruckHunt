@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Grid } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';

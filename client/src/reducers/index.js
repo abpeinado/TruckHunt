@@ -4,11 +4,12 @@ import { truckList, truckListHasErrored, truckListIsLoading } from './truckListR
 import { truckInfo, truckInfoHasErrored, truckInfoIsLoading } from './truckInfoReducers.js';
 import { truckLoc, truckLocHasErrored, truckLocIsLoading } from './truckLocReducers.js';
 import { mapCenter } from './mapCenterReducers.js';
-import { wantsSignup, signupError, signupLoading, signupSuccess, signup } from './signupReducers.js';
+import { vendorSignupError, signupError, signupLoading, signupSuccess } from './signupReducers.js';
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart, removedFromCart } from './cartReducers';
-import { loginError, loginSuccess, loginLoading } from './loginReducers.js';
 import { submittedOrder, submitOrderHasErrored, submitOrderIsLoading } from './paymentReducers.js';
+import { loginError, loginSuccess, loginLoading, vendorLoginSuccess } from './loginReducers.js';
+import { userID, userName } from './userReducers.js';
 
 export default combineReducers({
   truckList,
@@ -21,14 +22,14 @@ export default combineReducers({
   truckLoc,
   truckLocHasErrored,
   truckLocIsLoading,
-  signup,
   signupSuccess,
   signupError,
   signupLoading,
   loginError,
   loginLoading,
   loginSuccess,
-  wantsSignup,
+  vendorLoginSuccess,
+  vendorSignupError,
   vendorIncomingOrder,
   vendorIncomingOrderHasErrored,
   vendorIncomingOrderIsLoading,
@@ -37,5 +38,10 @@ export default combineReducers({
   submittedOrder,
   submitOrderHasErrored,
   submitOrderIsLoading,
+  userID,
+  userName,
   router: routerReducer
 });
+
+// Now you can dispatch navigation actions from anywhere!
+// store.dispatch(push('/foo'))

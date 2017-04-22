@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Row, Col, Glyphicon, Button } from 'react-bootstrap';
-import mapboxgl from 'mapbox-gl';
-import ReactMapboxGl, { Layer, Feature, Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
+import { Row, Col, Glyphicon } from 'react-bootstrap';
+import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 // import { truckLocFetchData } from '../actions/truckLocActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
 
@@ -137,4 +136,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map);
-

@@ -186,13 +186,13 @@ input.Demo__search-input {
   background-color: rgba(255, 176, 120, 0.17);
 }
 
-/*input::-webkit-input-placeholder {
-   text-align: center;
+input.form-control::-webkit-input-placeholder {
+  text-align: center;
 }
-*/
-/*input {
-    text-align: center;
-}*/
+
+input.form-control {
+  text-align: center;
+}
 
 .mapLoader {
   text-align: center;

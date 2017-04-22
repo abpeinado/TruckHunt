@@ -12,6 +12,13 @@ export function signupLoading(bool) {
   };
 }
 
+export function vendorSignupError(bool) {
+  return {
+    type: 'VENDOR_SIGNUP_ERROR',
+    vendorSignupError: bool
+  };
+}
+
 export function signupSuccess(bool) {
   return {
     type: 'SIGNUP_SUCCESS',
@@ -31,15 +38,23 @@ export function signupFetch(userInfo) {
     })
   };
 
+
   return (dispatch) => {
     dispatch(signupLoading(true));
     fetch(url, init)
       .then((response) => {
         dispatch(signupLoading(false));
+        if (response.status === 201) {
+          dispatch(signupSuccess(true));
+        } else if (response.status === 400) {
+          dispatch(vendorSignupError(true));
+          throw new Error('Could not create new user');
+        } else if (response.status === 401) {
+          dispatch(signupError(true));
+          throw new Error('Could not create new user');
+        }
         return response;
       })
-      .then(response => response.json())
-      .then(() => dispatch(signupSuccess(true)))
-      .catch(() => dispatch(signupError(true)));
+      .catch((error) => console.error(error));
   };
 }

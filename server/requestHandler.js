@@ -1,13 +1,11 @@
-const Vendors = require('./models/vendors.js');
-const Customers = require('./models/customers.js');
-const Schedules = require('./models/schedules.js');
 const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
-const utils = require('./utils.js');
+// const Schedules = require('./models/schedules.js');
+// const utils = require('./utils.js');
 
 module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass
@@ -69,39 +67,48 @@ module.exports.vendorSignup = (req, res) => {
   const userInfo = req.body.userInfo;
   const user = req.body.userInfo.user;
   const permit = req.body.userInfo.permit;
-  console.log('vendorSignup');
 
   VendorSignup.checkUsername(user)
     .then((response) => {
-      if (response.length === 0) {
-        throw new Error();
+      if (response.length !== 0) {
+        console.log('invalid username inside throw', response);
+        throw new Error('invalid username');
       }
-      return VendorSignup.checkPermit(permit);
+      return VendorSignup.checkPermitNumberIsValid(permit);
     })
     .then((response) => {
       if (response.length === 0) {
-        throw new Error();
+        throw new Error('invalid permit');
       }
-      return VendorSignup.addUser(userInfo);
+      return VendorSignup.addUserToDB(userInfo);
     })
     .then((response) => {
       if (response.length === 0) {
-        throw new Error();
+        throw new Error('error adding user', response);
       }
-      res.send(response);
+      res.status(201).send(response);
     })
-    .catch((error) => res.send(error));
+    .catch((error) => {
+      console.error('inside catch of vendorSignup', error);
+      res.status(400).send(error.message);
+    }
+  );
 };
 
 module.exports.vendorLogin = (req, res) => {
-  const userInfo = req.body.userInfo;
-  Login.vendorLogin(userInfo)
+  const user = req.body.userInfo.user;
+  const pass = req.body.userInfo.pass;
+
+  Login.vendorLogin(user, pass)
     .then((response) => {
+      if (response.length === 0) {
+        throw new Error('invalid combo');
+      }
       console.log('response', response);
-      res.send(response);
+      res.status(202).send(response);
     })
     .catch((error) => {
-      res.send(error);
+      res.status(401).send(error);
     }
   );
 };
@@ -111,11 +118,14 @@ module.exports.userLogin = (req, res) => {
   const pass = req.body.userInfo.pass;
   Login.userLogin(user, pass)
     .then((response) => {
-      res.send(response);
+      if (response.length === 0) {
+        throw new Error('Invalid user/pass');
+      }
+      res.status(200).send(response);
     })
     .catch((error) => {
       console.error(error);
-      res.send(error);
+      res.status(401).send(error);
     }
   );
 };
@@ -132,12 +142,13 @@ module.exports.userSignup = (req, res) => {
       return UserSignup.addUser(user, pass);
     })
     .then((response) => {
-      res.send(response);
+      res.status(201).send(response);
     })
     .catch((error) => {
       console.error(error);
-      res.send(error);
-    });
+      res.status(403).send(error);
+    }
+  );
 };
 
 module.exports.checkout = (req, res) => {

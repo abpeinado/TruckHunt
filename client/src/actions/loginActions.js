@@ -19,6 +19,13 @@ export function loginSuccess(bool) {
   };
 }
 
+export function vendorLoginSuccess(bool) {
+  return {
+    type: 'VENDOR_LOGIN_SUCCESS',
+    vendorLoginSuccess: bool
+  };
+}
+
 export function loginAttempt(userInfo) {
   const url = userInfo.url;
   const init = {
@@ -36,12 +43,18 @@ export function loginAttempt(userInfo) {
     fetch(url, init)
       .then((response) => {
         dispatch(loginLoading(false));
-        console.log('back from server successful FETCH', response);
+        if (response.status === 200) {
+          // 200 Successful User Login
+          dispatch(loginSuccess(true));
+        } else if (response.status === 202) {
+          // 202 Successful Vendor Login
+          dispatch(vendorLoginSuccess(true));
+        } else if (response.status === 401) {
+          // 404 Cannot Resolve Auth
+          throw new Error('Cannot Authenticate Credentials');
+        }
         return response;
       })
-      .then(response => response.json())
-      .then(response => console.log('responseJSON', response))
-      .then(() => dispatch(loginSuccess(true)))
       .catch(() => dispatch(loginError(true)));
   };
 }

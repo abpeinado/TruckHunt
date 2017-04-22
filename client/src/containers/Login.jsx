@@ -1,20 +1,27 @@
 import React from 'react';
-import { FieldGroup, FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
+import { FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { loginAttempt } from '../actions/loginActions.js';
 
-class UserLogin extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
-      verify: ''
+      businessOwner: false
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handleVerifyChange = this.handleVerifyChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleBusinessOwner = this.handleBusinessOwner.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleBusinessOwner() {
+    this.setState({
+      businessOwner: !this.state.businessOwner
+    });
   }
 
   handleUsernameChange(event) {
@@ -29,34 +36,32 @@ class UserLogin extends React.Component {
     });
   }
 
-  handleVerifyChange(event) {
-    this.setState({
-      verify: event.target.value
-    });
-  }
-
   handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
 
     const user = this.state.username;
     const pass = this.state.password;
-    const verify = this.state.verify;
+    const businessOwner = this.state.businessOwner;
     const userInfo = ({
       user,
       pass,
-      url: '/userSignup'
+      url: ''
     });
 
-    if (user !== null && pass !== null && verify === pass) {
+    if (user !== null && pass !== null) {
       // send userInfo to server
-      this.props.loginAttempt(userInfo);
-
+      if (businessOwner) {
+        userInfo.url = '/vendorLogin';
+        this.props.loginAttempt(userInfo);
+      } else {
+        userInfo.url = '/userLogin';
+        this.props.loginAttempt(userInfo);
+      }
       // reset field values
       this.setState({
         username: '',
-        password: '',
-        verify: ''
+        password: ''
       });
     } else {
       // TODO: conditional render passwords don't match
@@ -65,12 +70,31 @@ class UserLogin extends React.Component {
   }
 
   render() {
+    console.log(this.props.vendorLoginSuccess);
+    if (this.props.loginSuccess) {
+      return (
+        // Redirect to vendor portal if successful
+        <Redirect
+          to={{
+            pathname: '/'
+          }}
+        />
+      );
+    } else if (this.props.vendorLoginSuccess) {
+      return (
+        // Redirect to vendor portal if successful
+        <Redirect
+          to={{
+            pathname: '/vendor'
+          }}
+        />
+      );
+    }
     return (
-
       <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={12}>
-            Username
+            <h3>Username</h3>
           </Col>
           <Col sm={12}>
             <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
@@ -79,32 +103,25 @@ class UserLogin extends React.Component {
 
         <FormGroup controlId="formHorizontalPassword">
           <Col sm={12}>
-            Password
+            <h3>Password</h3>
           </Col>
           <Col sm={12}>
             <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
           </Col>
         </FormGroup>
-
-        <FormGroup controlId="formHorizontalPassword">
-          <Col sm={12}>
-            Verify Password
-          </Col>
-          <Col sm={12}>
-            <FormControl type="password" placeholder="Verify Password" value={this.state.verify} onChange={this.handleVerifyChange} />
-          </Col>
-        </FormGroup>
-
+        {this.props.loginError &&
+          <span><h4>try again...</h4></span>
+        }
         <FormGroup>
           <Col sm={12}>
+            <Checkbox onChange={this.handleBusinessOwner}>Business Owner</Checkbox>
             <Checkbox>Remember me</Checkbox>
           </Col>
         </FormGroup>
-
         <FormGroup>
           <Col sm={12}>
             <Button type="submit">
-              Signup
+              Login
             </Button>
           </Col>
         </FormGroup>
@@ -115,9 +132,10 @@ class UserLogin extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loginSuccess: state.loginSuccess,
     loginError: state.loginError,
-    loginLoading: state.loginLoading
+    loginSuccess: state.loginSuccess,
+    loginLoading: state.loginLoading,
+    vendorLoginSuccess: state.vendorLoginSuccess
   };
 };
 
@@ -127,4 +145,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

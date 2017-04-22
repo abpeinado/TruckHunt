@@ -6,9 +6,9 @@ module.exports.userLogin = (user, pass) => {
     ', [user, pass]);
 };
 
-module.exports.vendorLogin = (user) => {
+module.exports.vendorLogin = (user, pass) => {
   return db.query(
     'SELECT vendor_id FROM vendors WHERE email = $1 AND password = $2\
-    ', [user.user, user.pass]);
+    ', [user, pass]);
 };
 

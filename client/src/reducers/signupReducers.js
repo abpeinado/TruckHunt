@@ -24,3 +24,12 @@ export const signupSuccess = (state = false, action) => {
       return state;
   }
 };
+
+export const vendorSignupError = (state = false, action) => {
+  switch (action.type) {
+    case 'VENDOR_SIGNUP_ERROR':
+      return action.vendorSignupError;
+    default:
+      return state;
+  }
+};
