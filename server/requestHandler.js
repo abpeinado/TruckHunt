@@ -4,6 +4,9 @@ const Login = require('./models/login.js');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
+const request = require('request');
+const Vendors = require('./models/vendors.js');
+
 // const Schedules = require('./models/schedules.js');
 // const utils = require('./utils.js');
 
@@ -227,5 +230,37 @@ module.exports.checkout = (req, res) => {
     } else {
       res.status(201).send(submittedOrder); // success
     }
+  });
+};
+
+module.exports.stripe = (req, res) => {
+  const stripeSignupOrCreate = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_AW9IjRVX74HgUE1bKit6VSZvw2D3qc6o&scope=read_write&metadata=orderid[8888]';
+  res.redirect(stripeSignupOrCreate);
+};
+
+module.exports.authenticate = (req, res) => {
+  const code = req.query.code;
+  const options = { method: 'GET',
+    url: 'https://connect.stripe.com/oauth/token',
+    qs: {
+      grant_type: 'authorization_code',
+      client_id: 'ca_AW9IjRVX74HgUE1bKit6VSZvw2D3qc6o',
+      code,
+      client_secret: 'sk_test_Lg1ccOU42NWi7d4ibLxwomnP'
+    },
+    headers: {
+      'cache-control': 'no-cache'
+    }
+  };
+
+  // console.log('inside authenticate', code);
+  request.post(options, (error, response, body) => {
+    if (error) throw new Error(error);
+    const accessToken = JSON.parse(body).stripe_user_id;
+    Vendors.addVendorToken(accessToken, 'jj@jj.com')
+      .then((response) => {
+        res.redirect('/vendor');
+      })
+      .catch((error) => res.status(400).send(error));
   });
 };
