@@ -24,16 +24,33 @@ module.exports.search = (req, res) => {
   // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
   Search.scheduleData()
     .then((response) => {
+      console.log('test res', JSON.parse(response[0].coordinates));
+      const newArr = [];
+      for (let i = 0; newArr.length < 100; i++) {
+        const tempItem = response[i];
+        tempItem.coordinates = JSON.parse(tempItem.coordinates);
+        newArr.push(tempItem);
+      }
+
       //-----------
+      // If you want to modify the data received from the query to better display
+      // on the client-side pass the response into a function inported from utils.js
+      // and transform the object there. Return the transformed object and pass it
+      // into res.send instead of response.
+      // there will need to be a function from utils that filters out any food
+      // trucks that are not scheduled for the time the user selects
+      return newArr;
       // To filter schedule data by location pass the response into a
       // function inported from utils.js and transform the object there.
       // Return the transformed object and pass it into res.send
-      res.send(response);
+      // res.send(response);
     })
+    .then((newArr) => res.send(newArr))
     .catch((error) => res.send(error));
 };
 
 module.exports.menu = (req, res) => {
+  // console.log('menu route body', req.body);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
   MenuItems.foodCategories()
     .then((foodCategories) => {
@@ -55,7 +72,36 @@ module.exports.menu = (req, res) => {
       return MenuItems.menuData(defaultFoodCategory);
     })
     .then((menu) => {
-      res.send(menu);
+      // create category array
+      const foodCategories = [];
+      // create menuItems object
+      const menuItems = {};
+      // loop thru menu
+      for (let i = 0; i < menu.length; i++) {
+        // get food category
+        const course = menu[i].course;
+        // if the food cat is not in menuItems object
+        if (!menuItems[course]) {
+          // push to food cat array
+          foodCategories.push(menu[i].course);
+          // create array containing the menu item and
+          menuItems[course] = [menu[i]];
+          // add that to menuItems[foodcategory]
+        } else {
+          // push the menuItem to menuItems[foodcategory]
+          menuItems[course].push(menu[i]);
+        }
+      }
+      for (let j = 0; j < foodCategories.length; j++) {
+        let course = {};
+        course.title = foodCategories[j];
+        course.items = menuItems[foodCategories[j]];
+        foodCategories[j] = course;
+        course = {};
+      }
+      // console.log('menuItems', menuItems);
+      // console.log('foodCategories', foodCategories);
+      res.send(foodCategories);
     })
     .catch((error) => {
       console.log('here');

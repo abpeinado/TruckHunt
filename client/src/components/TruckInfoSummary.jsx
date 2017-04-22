@@ -10,18 +10,18 @@ class TruckInfoSummary extends React.Component {
   }
 
   render() {
-    const { image, name, description, rating } = this.props.truckInfo;
+    const truck = this.props.truckSelected;
     return (
       <Row className="truck-info-summary">
         <Col md={3}>
-          <img src={image} style={{ maxHeight: '90px' }} alt="Truck Icon" />
+          <img src={truck.image} style={{ maxHeight: '90px' }} alt="Truck Icon" />
         </Col>
         <Col md={6}>
-          <h2> {name} </h2>
-          <p> {description} </p>
+          <h2> {truck.vendor_name} </h2>
+          <p> {truck.food_category} </p>
         </Col>
         <Col md={3} className="truck-rating">
-          <h3> {rating} stars </h3>
+          <h3> {truck.rating} stars </h3>
         </Col>
       </Row>
     );
@@ -30,9 +30,7 @@ class TruckInfoSummary extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    truckInfo: state.truckInfo,
-    truckInfoHasErrored: state.truckInfoHasErrored,
-    truckInfoIsLoading: state.truckInfoIsLoading
+    truckSelected: state.truckSelected
   };
 };
 

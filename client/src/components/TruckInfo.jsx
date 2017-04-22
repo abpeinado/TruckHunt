@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -9,7 +11,8 @@ import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 class TruckInfo extends React.Component {
 
   componentDidMount() {
-    this.props.fetchTruckInfo('');
+    // const category = this.props.truckSelected.food_category;
+    this.props.truckInfo;
   }
 
   render() {
@@ -38,14 +41,16 @@ const mapStateToProps = (state) => {
   return {
     truckInfo: state.truckInfo,
     truckInfoHasErrored: state.truckInfoHasErrored,
-    truckInfoIsLoading: state.truckInfoIsLoading
+    truckInfoIsLoading: state.truckInfoIsLoading,
+    truckSelected: state.truckSelected
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTruckInfo: (truckID) => dispatch(truckInfoFetchData(truckID))
+    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TruckInfo);
+// export default TruckInfo;

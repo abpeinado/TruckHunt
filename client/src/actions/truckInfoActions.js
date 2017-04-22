@@ -19,15 +19,16 @@ export function truckInfoFetchDataSuccess(truckInfo) {
   };
 }
 
-export function truckInfoFetchData(truckID) {
+export function truckInfoFetchData(truckCategory) {
   return (dispatch) => {
     dispatch(truckInfoIsLoading(true));
     const options = {
-      payload: {
-        truckID
+      method: 'POST',
+      body: {
+        food_category: truckCategory
       }
     };
-    fetch('/truckInfo', options)
+    fetch('/menu', options)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

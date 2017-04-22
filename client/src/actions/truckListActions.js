@@ -19,10 +19,17 @@ export function truckListFetchDataSuccess(truckList) {
   };
 }
 
-export function truckListFetchData(url) {
+export function truckListFetchData(url, coordinates, date) {
   return (dispatch) => {
     dispatch(truckListIsLoading(true));
-    fetch(url)
+    const options = {
+      method: 'POST',
+      body: {
+        coordinates,
+        date
+      }
+    };
+    fetch(url, options)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

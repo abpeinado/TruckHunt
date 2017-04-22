@@ -6,7 +6,6 @@ import { addToCart } from '../actions/cartActions.js';
 
 export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart }) => {
   const { title, items } = menuGroup;
-
   return (
     <Row className="truck-menu-group">
       <Col md={12}>

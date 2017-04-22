@@ -3,7 +3,8 @@ import { routerReducer } from 'react-router-redux';
 import { truckList, truckListHasErrored, truckListIsLoading } from './truckListReducers.js';
 import { truckInfo, truckInfoHasErrored, truckInfoIsLoading } from './truckInfoReducers.js';
 import { truckLoc, truckLocHasErrored, truckLocIsLoading } from './truckLocReducers.js';
-import { mapCenter } from './mapCenterReducers.js';
+import { mapCenter, mapMarkerSelected } from './mapReducers.js';
+import { truckSelected } from './truckSelectedReducers.js';
 import { vendorSignupError, signupError, signupLoading, signupSuccess } from './signupReducers.js';
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { addedToCart, removedFromCart } from './cartReducers';
@@ -18,7 +19,9 @@ export default combineReducers({
   truckInfo,
   truckInfoHasErrored,
   truckInfoIsLoading,
+  truckSelected,
   mapCenter,
+  mapMarkerSelected,
   truckLoc,
   truckLocHasErrored,
   truckLocIsLoading,
