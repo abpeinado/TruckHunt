@@ -12,6 +12,18 @@ const utils = require('./utils.js');
 module.exports.search = (req, res) => {
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
+  // --------------------------------------------------
+  // to filter by time uncomment the lines below the example object
+  // and delete Search.scheduleData(). You also havve to delete
+  // the scheduleData function in search.js and replace it with the one
+  // that is commented out. Also make sure you have
+  // dropped and reseeded the database
+  // {
+  //   "time": "11:56 AM",
+  //   "dayOfWeek": 1
+  // }
+  // const timeAsNum = utils.convertTimeToNumber(req.body.time);
+  // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
   Search.scheduleData()
     .then((response) => {
       console.log('test res', JSON.parse(response[0].coordinates));
@@ -30,6 +42,10 @@ module.exports.search = (req, res) => {
       // there will need to be a function from utils that filters out any food
       // trucks that are not scheduled for the time the user selects
       return newArr;
+      // To filter schedule data by location pass the response into a
+      // function inported from utils.js and transform the object there.
+      // Return the transformed object and pass it into res.send
+      res.send(response);
     })
     .then((newArr) => res.send(newArr))
     .catch((error) => res.send(error));
