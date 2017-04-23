@@ -163,7 +163,7 @@ input.Demo__search-input {
 
 .loginTitle {
   text-align: center;
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 2em;
 }
 
@@ -174,7 +174,7 @@ input.Demo__search-input {
 
 .modal-footer {
   text-align: center !important;
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Quicksand', sans-serif;
   background-color: rgba(255, 176, 120, 0.37);
 }
 
@@ -210,6 +210,99 @@ input.form-control {
 }*/
 
 .truckListCards {
-    height: 1055px;
-    overflow: scroll;
+  height: 1055px;
+  overflow: scroll;
 }
+
+.ui.right.aligned.category.search.item {
+  position: fixed;
+  z-index: 88888;
+  left: 13%;
+  top: 2%;
+  background-color: rgba(212, 212, 212, 0.08);
+  border-radius: 5%;
+}
+
+.grid-sizer,
+.grid-item { width: 50%; }
+
+.ui.grid>.column:not(.row) {
+  padding: 0;
+}
+
+.mainroot {
+  border: 1px solid rebeccapurple;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  /* position: relative; */
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.ui.grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.ui.grid.gridWrapper {
+  position: fixed;
+  border: 1px solid red;
+  height: 100%;
+}
+
+.ui.grid>.column:not(.row) {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+
+
+/*-------TESTING FOR MASONRY LAYOUT-------*/
+/*-------NOT USEFUL IF IMPLEMENTING REACT_MASONRY_LAYOUT, only native MASONRY-------*/
+
+/* ---- grid ---- */
+/*/*
+.grid {
+  background: #EEE;
+  max-width: 1200px;
+}
+
+/* clearfix */
+/*.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}*/
+
+/* ---- grid-item ---- */
+
+/*.grid-sizer,
+.grid-item {
+  width: 20%;
+}
+
+.grid-item {
+  height: 120px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.grid-item--width2 { width:  40%; }
+.grid-item--width3 { width:  60%; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }*/
+/*/

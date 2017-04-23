@@ -29,14 +29,14 @@ class ConsumerHomepage extends React.Component {
     // }
 
     return (
-      <div>
-        <Header />
-        <Grid>
-          <Grid.Column width={10}>
-            <MainMap />
+      <div className="mainroot">
+        <Header className="headerWrapper" />
+        <Grid className="gridWrapper">
+          <Grid.Column className="gridLeftWrapper" width={10}>
+            <MainMap className="mapWrapper" />
           </Grid.Column>
-          <Grid.Column width={6}>
-            <TruckList />
+          <Grid.Column width={6} className="gridRightWrapper">
+            <TruckList className="truckListWrapper" />
           </Grid.Column>
         </Grid>
       </div>

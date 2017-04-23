@@ -8,6 +8,7 @@ import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 import TruckListItem from './TruckListItem.jsx';
+// import $ from 'jquery';
 
 
 class TruckList extends Component {
@@ -19,14 +20,23 @@ class TruckList extends Component {
   }
 
   render() {
+    // PER THE ORIGINAL MASONRY DOCS -> doesn't play nice with react
+    // document.getElementByClassName('grid').masonry({
+    //   // set itemSelector so .grid-sizer is not used in layout
+    //   itemSelector: '.grid-item',
+    //   // use element for option
+    //   columnWidth: '.grid-sizer',
+    //   percentPosition: true
+    // });
+
     return (
       <Grid className="truckListCards">
-        <Grid.Column >
+        <Grid.Column className="grid-sizer">
           <Card.Group itemsPerRow={2}>
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
               <Link to="/truckMenu" key={i} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-                <TruckListItem restaurant={item} />
+                <TruckListItem className="grid-item" restaurant={item} />
               </Link>
             ))
           }
@@ -49,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
     truckSelectedUpdate: (truck) => dispatch(truckSelectedUpdate(truck)),
     truckListFetchData: (url) => dispatch(truckListFetchData(url)),
     truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
-
   };
 };
 

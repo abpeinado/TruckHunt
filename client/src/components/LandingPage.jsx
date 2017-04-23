@@ -16,6 +16,7 @@ class LandingPage extends React.Component {
         <Route path="/auth" component={Login} />
         <Route path="/truckMenu" component={TruckInfo} />
         <Route path="/vendor" component={Vendor} />
+
         {/* ADD ADDITIONAL ROUTES HERE */}
         {/* TODO: INTEGRATE PATHNAME ARGUMENT IN ROUTES*/}
       </div>

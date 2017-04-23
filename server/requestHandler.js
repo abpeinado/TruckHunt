@@ -234,12 +234,19 @@ module.exports.checkout = (req, res) => {
 };
 
 module.exports.stripe = (req, res) => {
-  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&metadata=orderid[8888]`;
+  const user = req.body.user;
+  console.log('user', user);
+
+  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&state=8888`;
+
   res.redirect(stripeSignupOrCreate);
 };
 
 module.exports.authenticate = (req, res) => {
   const code = req.query.code;
+  const user = req.query.state;
+  console.log('appending user_id in oauth2 request', user);
+
   const options = { method: 'GET',
     url: 'https://connect.stripe.com/oauth/token',
     qs: {
@@ -257,6 +264,7 @@ module.exports.authenticate = (req, res) => {
   request.post(options, (error, response, body) => {
     if (error) throw new Error(error);
     const accessToken = JSON.parse(body).stripe_user_id;
+    // TODO: pass user_id from client for db insertion
     Vendors.addVendorToken(accessToken, 'jj@jj.com')
       .then(() => {
         res.redirect('/vendor');
