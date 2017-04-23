@@ -234,7 +234,7 @@ module.exports.checkout = (req, res) => {
 };
 
 module.exports.stripe = (req, res) => {
-  const stripeSignupOrCreate = 'https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_AW9IjRVX74HgUE1bKit6VSZvw2D3qc6o&scope=read_write&metadata=orderid[8888]';
+  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&metadata=orderid[8888]`;
   res.redirect(stripeSignupOrCreate);
 };
 
@@ -244,9 +244,9 @@ module.exports.authenticate = (req, res) => {
     url: 'https://connect.stripe.com/oauth/token',
     qs: {
       grant_type: 'authorization_code',
-      client_id: 'ca_AW9IjRVX74HgUE1bKit6VSZvw2D3qc6o',
+      client_id: process.env.app_id,
       code,
-      client_secret: 'sk_test_Lg1ccOU42NWi7d4ibLxwomnP'
+      client_secret: process.env.api_key
     },
     headers: {
       'cache-control': 'no-cache'
@@ -258,9 +258,9 @@ module.exports.authenticate = (req, res) => {
     if (error) throw new Error(error);
     const accessToken = JSON.parse(body).stripe_user_id;
     Vendors.addVendorToken(accessToken, 'jj@jj.com')
-      .then((response) => {
+      .then(() => {
         res.redirect('/vendor');
       })
-      .catch((error) => res.status(400).send(error));
+      .catch((err) => res.status(400).send(err));
   });
 };
