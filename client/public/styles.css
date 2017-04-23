@@ -208,3 +208,8 @@ input.form-control {
   color: #fff;
   background: rgb(255, 106, 0);
 }*/
+
+.truckListCards {
+    height: 1055px;
+    overflow: scroll;
+}

@@ -7,24 +7,25 @@ import TruckList from './TruckList.jsx';
 
 
 class ConsumerHomepage extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  // componentWillUpdate() {
+  //   this.props.truckListIsLoading;
   // }
+
 
   render() {
     // if (this.props.truckListIsLoading) {
     //   return (
-    //     <div>
-    //       <Header />
-    //       <div className="mapLoader">
-    //         <h2>
-    //       Finding the best trucks around...
-    //         </h2>
-    //         <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/loading.gif'} alt="loader" />
-    //       </div>
-    //     </div>
-    //   );
+    //     <div className="mapLoader">
+    //       <h2>
+    //     Finding the best trucks around...
+    //       </h2>
+    //       <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/loading.gif'} alt="loader" />
+    //     </div>);
     // }
 
     return (

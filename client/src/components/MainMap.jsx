@@ -99,7 +99,7 @@ class Map extends React.Component {
           >
 
             <h4>
-              {this.props.mapMarkerSelected.vendor_name} <Icon link name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
+              {this.props.mapMarkerSelected.vendor_name} <Icon link color='orange' name='close' onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
             <p>Rating: 4/5</p>
             <p> Hours: {this.props.mapMarkerSelected.start_time} to {this.props.mapMarkerSelected.end_time}</p>
