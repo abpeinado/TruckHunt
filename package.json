@@ -20,6 +20,7 @@
     "lint": "eslint --ext .js --ext .jsx client server"
   },
   "dependencies": {
+    "antd": "^2.9.2",
     "babel-core": "6.24.0",
     "babel-jest": "19.0.0",
     "babel-loader": "6.4.1",
@@ -31,6 +32,7 @@
     "express": "4.15.2",
     "jquery": "3.2.1",
     "mapbox-gl": "0.35.1",
+    "moment": "^2.18.1",
     "mysql": "2.13.0",
     "nodemon": "1.11.0",
     "path": "0.12.7",
@@ -50,6 +52,7 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "request": "^2.81.0",
+    "semantic-ui-react": "^0.68.1",
     "stripe": "^4.18.0",
     "underscore": "1.8.3",
     "webpack": "2.3.3",
