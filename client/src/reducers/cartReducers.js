@@ -21,6 +21,21 @@ export const addedToCart = (state = [], action) => {
   }
 };
 
+export const cartTotal = (state = 0, action) => {
+  switch (action.type) {
+    case 'ADD_TO_TOTAL': {
+      const newTotal = state + action.itemID.price;
+      return newTotal;
+    }
+    case 'REMOVE_FROM_TOTAL': {
+      const newTotal = state - action.itemID.price;
+      return newTotal;
+    }
+    default:
+      return state;
+  }
+};
+
 // export const checkoutHasErrored = (state = false, action) => {
 //   switch (action.type) {
 //     case 'CHECKOUT_HAS_ERRORED':

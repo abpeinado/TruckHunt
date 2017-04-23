@@ -9,6 +9,16 @@ export const removeFromCart = menuItem => ({
   menuItem
 });
 
+export const addToTotal = itemID => ({
+  type: 'ADD_TO_TOTAL',
+  itemID
+});
+
+export const removeFromTotal = itemID => ({
+  type: 'REMOVE_FROM_TOTAL',
+  itemID
+});
+
 // export function checkoutProcessing(bool) {
 //   return {
 //     type: 'CHECKOUT_IS_PROCESSING',

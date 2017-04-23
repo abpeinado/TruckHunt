@@ -5,7 +5,8 @@ import TruckMenuItem from '../client/src/components/TruckMenuItem';
 describe('TruckMenuItem Component Test', () => {
   let truckMenuItem;
   const item = {
-    name: 'salad'
+    name: 'salad',
+    price: 499
   };
 
   beforeEach(() => {
@@ -20,8 +21,6 @@ describe('TruckMenuItem Component Test', () => {
 
   it('should contain the name, description and price', () => {
     const text = truckMenuItem.text();
-    // console.log('text', text);
     expect(text).toContain(item.name);
   });
-
 });

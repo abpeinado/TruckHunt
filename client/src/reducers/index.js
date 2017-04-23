@@ -9,7 +9,7 @@ import { vendorSignupError, signupError, signupLoading, signupSuccess } from './
 import { vendorIncomingOrder, vendorIncomingOrderHasErrored, vendorIncomingOrderIsLoading } from './vendorIncomingOrderReducers.js';
 import { loginError, loginSuccess, loginLoading, vendorLoginSuccess } from './loginReducers.js';
 import { userID, userName } from './userReducers.js';
-import { addedToCart } from './cartReducers';
+import { addedToCart, cartTotal } from './cartReducers';
 import { submittedOrder, submitOrderError, submitOrderProcessing } from './checkoutReducers.js';
 
 export default combineReducers({
@@ -37,6 +37,7 @@ export default combineReducers({
   vendorIncomingOrderHasErrored,
   vendorIncomingOrderIsLoading,
   addedToCart,
+  cartTotal,
   submittedOrder,
   userID,
   userName,

@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-
 if (process.env.PORT === undefined) {
   require('dotenv').config(); // imports environment vars from .env file, keep at top
 }
@@ -26,11 +25,6 @@ app.use(bodyParser.json());
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
 /**
-Please build out functionality in requestHandler.js
-to keep the server file organized and out code modular.
-**/
-
-/**
 POST /search
 query: lat, long, time and optionally radius
 response: [trucks] (include lat/long, menu data, etc)
@@ -50,7 +44,6 @@ app.post('/userSignup', requestHandler.userSignup);
 app.get('/stripe', requestHandler.stripe);
 
 app.get('/authenticate', requestHandler.authenticate);
-
 
 app.get('/truckLocations', (req, res) => {
   res.send(truckLocs.truckLocs.trucks);
@@ -72,12 +65,12 @@ response: order number
 app.post('/checkout', requestHandler.checkout);
 
 /**
-GET /vendorIncomingOrders
+POST /vendorIncomingOrders
 query: vendor ID
 response: [orders] -- will include all orderes with status of unfulfilled (0)
 // ******REFACTOR THIS ROUTE INTO THE ABOVE********/
 app.get('/vendorIncomingOrder', (req, res) => {
-  res.send(orderingData.VendorOrders.order);
+  res.send(orderingData.VendorOrders);
 });
 // ************************************************
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { Message, Card, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import TruckMenuItem from './TruckMenuItem.jsx';
-import { addToCart } from '../actions/cartActions.js';
+import { addToCart, addToTotal } from '../actions/cartActions.js';
 
-export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart }) => {
+export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart, addItemToTotal }) => {
   const { title, items } = menuGroup;
   return (
     <Message className="truck-menu-group">
@@ -15,7 +15,12 @@ export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart }) => {
           <TruckMenuItem
             item={item}
             key={i}
-            onAddToCartClicked={() => addItemToCart(item)}
+            onAddToCartClicked={
+              () => {
+                addItemToCart(item);
+                addItemToTotal(item);
+              }
+            }
           />
         )}
       </Card.Group>
@@ -25,7 +30,8 @@ export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addItemToCart: (itemID) => dispatch(addToCart(itemID))
+    addItemToCart: (itemID) => dispatch(addToCart(itemID)),
+    addItemToTotal: (itemID) => dispatch(addToTotal(itemID))
   };
 };
 

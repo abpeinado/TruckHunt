@@ -29,7 +29,7 @@ module.exports.search = (req, res) => {
     .then((response) => {
       console.log('test res', JSON.parse(response[0].coordinates));
       const newArr = [];
-      for (let i = 0; newArr.length < 100; i++) {
+      for (let i = 0; newArr.length < 20; i++) {
         const tempItem = response[i];
         tempItem.coordinates = JSON.parse(tempItem.coordinates);
         newArr.push(tempItem);
@@ -53,7 +53,6 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.menu = (req, res) => {
-  // console.log('menu route body', req.body);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
   MenuItems.foodCategories()
     .then((foodCategories) => {
@@ -102,8 +101,6 @@ module.exports.menu = (req, res) => {
         foodCategories[j] = course;
         course = {};
       }
-      // console.log('menuItems', menuItems);
-      // console.log('foodCategories', foodCategories);
       res.send(foodCategories);
     })
     .catch((error) => {
