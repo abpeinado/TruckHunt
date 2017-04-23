@@ -1,4 +1,5 @@
-/* eslint-disable react/style-prop-object */
+/* eslint-disable react/style-prop-object  */
+/* eslint-disable no-unused-vars */
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -31,6 +32,7 @@ class Map extends React.Component {
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition);
+      // const location = navigator.geolocation.getCurrentPosition(this.showPosition);
       // console.log('current location test', location);
     } else {
       console.log('Geolocation is not supported by this browser');
@@ -99,7 +101,7 @@ class Map extends React.Component {
           >
 
             <h4>
-              {this.props.mapMarkerSelected.vendor_name} <Icon link color='orange' name='close' onClick={() => { this.props.mapMarkerUpdate({}); }} />
+              {this.props.mapMarkerSelected.vendor_name} <Icon link color="orange" name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
             <p>Rating: 4/5</p>
             <p> Hours: {this.props.mapMarkerSelected.start_time} to {this.props.mapMarkerSelected.end_time}</p>
@@ -112,7 +114,6 @@ class Map extends React.Component {
           >
             <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/mapMarkerLocation(reduced).gif'} alt="mapCenter" />
           </Marker>
-
           <ZoomControl />
           <ScaleControl />
         </ReactMapboxGl>

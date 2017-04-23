@@ -13,18 +13,18 @@ class TruckListItem extends Component {
         <Card.Content>
           <Image src={image} style={{ maxHeight: '90px' }} alt={`${info.vendor_name}-img`} />
           <Card.Header>
-          { info.vendor_name }
+            { info.vendor_name }
           </Card.Header>
           <Card.Description>
-          { info.food_category }
+            { info.food_category }
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-            <a>
-              <Icon name='like outline' />
-              Rating
-            </a>
-            <Rating maxRating={5} defaultRating={4} icon='star' size='large' />
+          <a>
+            <Icon name="like outline" />
+            Rating
+          </a>
+          <Rating maxRating={5} defaultRating={4} icon="star" size="large" />
         </Card.Content>
       </Card>
     );

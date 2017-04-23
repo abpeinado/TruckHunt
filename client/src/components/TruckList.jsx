@@ -20,7 +20,7 @@ class TruckList extends Component {
 
   render() {
     return (
-      <Grid className='truckListCards'>
+      <Grid className="truckListCards">
         <Grid.Column >
           <Card.Group itemsPerRow={2}>
             {this.props.truckList === undefined ? null :

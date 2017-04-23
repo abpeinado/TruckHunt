@@ -13,6 +13,6 @@ describe('Header Component Tests', () => {
   });
 
   it('should render a div"', () => {
-    expect(header.find('div').length).toEqual(1);
+    expect(header.find('Menu').length).toEqual(1);
   });
 });

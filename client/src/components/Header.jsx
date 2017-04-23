@@ -13,11 +13,11 @@ class Header extends Component {
   }
 
 
-  handleClick(e, { name }) {
-    this.setState({
-      activeItem: name
-    });
-  }
+  // handleClick(e, { name }) {
+  //   this.setState({
+  //     activeItem: name
+  //   });
+  // }
 
   timeChange(time, timeString) {
     console.log(time, timeString);
@@ -25,12 +25,12 @@ class Header extends Component {
 
 
   render() {
-    const { activeItem } = this.state;
+    // const { activeItem } = this.state;
     moment.locale('en');
     const time = 'HH:mm A';
     const date = 'MM/DD/YYYY';
     const currentTime = new Date();
-    let hour = currentTime.getHours();
+    const hour = currentTime.getHours();
     const min = currentTime.getMinutes();
     // if (hour > 12) {
     //   hour = hour - 12;
@@ -39,19 +39,19 @@ class Header extends Component {
     // console.log('moment time', moment()._d);
 
     return (
-      <Menu size='large' borderless>
+      <Menu size="large" borderless>
         <Menu.Item>
-          <Logo/>
+          <Logo />
         </Menu.Item>
-        <Menu.Menu position='right'>
-          <div className='ui right aligned category search item'>
-            <div className='ui transparent icon input'>
+        <Menu.Menu position="right">
+          <div className="ui right aligned category search item">
+            <div className="ui transparent icon input">
               <Search />
-              <i className='search link icon' />
+              <i className="search link icon" />
             </div>
           </div>
         </Menu.Menu>
-        <Menu.Menu position='right'>
+        <Menu.Menu position="right">
           <Menu.Item >
             <DatePicker defaultValue={moment('01-01-2017', date)} format={date} />
             <TimePicker defaultValue={moment(timeFormatted, time)} format={time} />
@@ -70,34 +70,3 @@ class Header extends Component {
 
 export default Header;
 
-// import React from 'react';
-// import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
-
-// const Header = () => {
-//   return (
-//     <div className="NavbarStyled">
-//       <Navbar fluid>
-//         <Navbar.Header>
-//           <Logo />
-//           <Navbar.Toggle />
-//         </Navbar.Header>
-//         <Nav>
-//           <NavItem>
-//             <Search />
-//           </NavItem>
-//         </Nav>
-//         <Nav pullRight>
-//           <NavItem>
-//             <Link to="/auth" className="NavBarFoodTruck">
-//               <Button bsSize="large" bsStyle="primary">
-//                 Login
-//               </Button>
-//             </Link>
-//           </NavItem>
-//         </Nav>
-//       </Navbar>
-//     </div>
-//   );
-// };
-
-// export default Header;
