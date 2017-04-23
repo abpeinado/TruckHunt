@@ -31,12 +31,12 @@ class TruckList extends Component {
 
     return (
       <Grid className="truckListCards">
-        <Grid.Column className='grid-sizer'>
-          <Card.Group  itemsPerRow={2}>
+        <Grid.Column className="grid-sizer">
+          <Card.Group itemsPerRow={2}>
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
               <Link to="/truckMenu" key={i} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-                <TruckListItem className='grid-item' restaurant={item} />
+                <TruckListItem className="grid-item" restaurant={item} />
               </Link>
             ))
           }
