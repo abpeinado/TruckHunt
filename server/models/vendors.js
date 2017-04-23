@@ -16,3 +16,20 @@ module.exports.findVendorPermitsAndIds = () => {
 module.exports.findVendorIdByPermitNumber = (permit_number) => {
   return db.oneOrNone('SELECT vendor_id FROM vendors WHERE permit_number = $1', [permit_number]);
 };
+
+// // add token TODO:
+// module.exports.addVendorToken = (token, vendor) => {
+//   console.log('inside add addVendorToken')
+//   return db.query('UPDATE vendors SET stripe_user_id=$1 WHERE vendor_id=$2', [token, vendor]);
+// };
+
+// add token current implementation
+module.exports.addVendorToken = (token) => {
+  console.log('inside add addVendorToken');
+  return db.query('UPDATE vendors SET stripe_user_id=$1', [token]);
+};
+
+// get token
+module.exports.getVendorToken = (vendor) => {
+  return db.query('SELECT stripe_user_id FROM vendors WHERE vendor_id=$1', [vendor]);
+};

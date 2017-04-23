@@ -48,6 +48,11 @@ app.post('/userLogin', requestHandler.userLogin);
 
 app.post('/userSignup', requestHandler.userSignup);
 
+app.get('/stripe', requestHandler.stripe);
+
+app.get('/authenticate', requestHandler.authenticate);
+
+
 app.get('/truckLocations', (req, res) => {
   res.send(truckLocs.truckLocs.trucks);
 });

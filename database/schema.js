@@ -6,6 +6,7 @@ module.exports = (db) => {
     email VARCHAR(50) UNIQUE,\
     phone_number VARCHAR(20),\
     first_name VARCHAR(30),\
+    stripe_user_id VARCHAR(30),\
     last_name VARCHAR(30),\
     food_category VARCHAR(1000),\
     password VARCHAR(200),\
