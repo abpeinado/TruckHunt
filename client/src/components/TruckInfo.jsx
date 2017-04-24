@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
 import CartContainer from './CartContainer.jsx';
-import TrunkInfoSummary from './TruckInfoSummary.jsx';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfo extends React.Component {
@@ -27,7 +26,6 @@ class TruckInfo extends React.Component {
     return (
       <div>
         <Header />
-        <TrunkInfoSummary />
         <Grid className="gridWrapper">
           <TruckInfoLeftPane />
           <CartContainer />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Rating } from 'semantic-ui-react';
+import { Segment, Header, Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
@@ -13,7 +13,7 @@ class TruckInfoSummary extends React.Component {
     const truck = this.props.truckSelected;
 
     return (
-      <div className="menuHeader">
+      <Segment inverted color="orange" className="menuHeader">
         <Header as="h1" icon textAlign="center">
           <Header.Content>
             {truck.vendor_name}
@@ -27,7 +27,7 @@ class TruckInfoSummary extends React.Component {
         <Header textAlign="center">
           <Rating icon="star" defaultRating={4} maxRating={5} size="huge" />
         </Header>
-      </div>
+      </Segment>
 
     );
   }
