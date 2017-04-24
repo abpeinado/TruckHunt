@@ -1,3 +1,8 @@
+// No longer using this file, instead swithcing all signup/login actions to the signupActions file
+// merged in respective reducers as well into the signup reducers and importing the accordingly where needed
+
+import fetch from 'isomorphic-fetch';
+
 export function loginError(bool) {
   return {
     type: 'LOGIN_ERROR',
@@ -26,6 +31,13 @@ export function vendorLoginSuccess(bool) {
   };
 }
 
+// export function setUserID (userID) {
+//   return {
+//     type: 'SET_USERID',
+//     setUserID: userID
+//   }
+// }
+
 export function loginAttempt(userInfo) {
   const url = userInfo.url;
   const init = {
@@ -46,6 +58,10 @@ export function loginAttempt(userInfo) {
         if (response.status === 200) {
           // 200 Successful User Login
           dispatch(loginSuccess(true));
+          console.log('inside successful login beudy', response);
+          // console.log('inside successful login beudy',  response.customer_id);
+          // console.log(typeof dispatch);
+          // console.log(typeof dispatch(setUserID));
         } else if (response.status === 202) {
           // 202 Successful Vendor Login
           dispatch(vendorLoginSuccess(true));
@@ -54,6 +70,11 @@ export function loginAttempt(userInfo) {
           throw new Error('Cannot Authenticate Credentials');
         }
         return response;
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('inside loginAttempt, response', data[0].customer_id);
+        // dispatch(setUserID(data[0].customer_id));
       })
       .catch(() => dispatch(loginError(true)));
   };

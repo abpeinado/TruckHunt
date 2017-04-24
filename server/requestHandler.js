@@ -1,12 +1,10 @@
-const VendorSignup = require('./models/vendorSignup.js');
-const UserSignup = require('./models/userSignup.js');
-const Login = require('./models/login.js');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
-const request = require('request');
-const Vendors = require('./models/vendors.js');
 const Orders = require('./models/orders.js');
+// const request = require('request');
+// const Vendors = require('./models/vendors.js');
+
 // const Schedules = require('./models/schedules.js');
 // const utils = require('./utils.js');
 
@@ -109,133 +107,17 @@ module.exports.menu = (req, res) => {
     });
 };
 
-module.exports.vendorSignup = (req, res) => {
-  const userInfo = req.body.userInfo;
-  const user = req.body.userInfo.user;
-  const permit = req.body.userInfo.permit;
+module.exports.vendorSignup = require('./routes/vendorSignup.js');
 
-  VendorSignup.checkUsername(user)
-    .then((response) => {
-      if (response.length !== 0) {
-        console.log('invalid username inside throw', response);
-        throw new Error('invalid username');
-      }
-      return VendorSignup.checkPermitNumberIsValid(permit);
-    })
-    .then((response) => {
-      if (response.length === 0) {
-        throw new Error('invalid permit');
-      }
-      return VendorSignup.addUserToDB(userInfo);
-    })
-    .then((response) => {
-      if (response.length === 0) {
-        throw new Error('error adding user', response);
-      }
-      res.status(201).send(response);
-    })
-    .catch((error) => {
-      console.error('inside catch of vendorSignup', error);
-      res.status(400).send(error.message);
-    }
-  );
-};
+module.exports.vendorLogin = require('./routes/vendorLogin.js');
 
-module.exports.vendorLogin = (req, res) => {
-  const user = req.body.userInfo.user;
-  const pass = req.body.userInfo.pass;
+module.exports.userLogin = require('./routes/userLogin.js');
 
-  Login.vendorLogin(user, pass)
-    .then((response) => {
-      if (response.length === 0) {
-        throw new Error('invalid combo');
-      }
-      console.log('response', response);
-      res.status(202).send(response);
-    })
-    .catch((error) => {
-      res.status(401).send(error);
-    }
-  );
-};
+module.exports.userSignup = require('./routes/userSignup.js');
 
-module.exports.userLogin = (req, res) => {
-  const user = req.body.userInfo.user;
-  const pass = req.body.userInfo.pass;
-  Login.userLogin(user, pass)
-    .then((response) => {
-      if (response.length === 0) {
-        throw new Error('Invalid user/pass');
-      }
-      res.status(200).send(response);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(401).send(error);
-    }
-  );
-};
+module.exports.authenticate = require('./routes/stripeAuthorization.js');
 
-module.exports.userSignup = (req, res) => {
-  const user = req.body.userInfo.user;
-  const pass = req.body.userInfo.pass;
-
-  UserSignup.checkUsername(user)
-    .then((response) => {
-      if (response.length !== 0) {
-        throw new Error();
-      }
-      return UserSignup.addUser(user, pass);
-    })
-    .then((response) => {
-      res.status(201).send(response);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(403).send(error);
-    }
-  );
-};
-
-module.exports.stripe = (req, res) => {
-  const user = req.body.user;
-  console.log('user', user);
-
-  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&state=8888`;
-
-  res.redirect(stripeSignupOrCreate);
-};
-
-module.exports.authenticate = (req, res) => {
-  const code = req.query.code;
-  const user = req.query.state;
-  console.log('appending user_id in oauth2 request', user);
-
-  const options = { method: 'GET',
-    url: 'https://connect.stripe.com/oauth/token',
-    qs: {
-      grant_type: 'authorization_code',
-      client_id: process.env.app_id,
-      code,
-      client_secret: process.env.api_key
-    },
-    headers: {
-      'cache-control': 'no-cache'
-    }
-  };
-
-  // console.log('inside authenticate', code);
-  request.post(options, (error, response, body) => {
-    if (error) throw new Error(error);
-    const accessToken = JSON.parse(body).stripe_user_id;
-    // TODO: pass user_id from client for db insertion
-    Vendors.addVendorToken(accessToken, 'jj@jj.com')
-      .then(() => {
-        res.redirect('/vendor');
-      })
-      .catch((err) => res.status(400).send(err));
-  });
-};
+module.exports.stripe = require('./routes/stripeCallback.js');
 
 module.exports.checkout = (req, res) => {
   // console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
@@ -292,5 +174,39 @@ module.exports.checkout = (req, res) => {
     console.log('error saving order:', error);
     res.statusMessage = 'Error saving order';
     res.sendStatus(503);
+    res.send(503);
+  });
+};
+
+module.exports.checkout = (req, res) => {
+  console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
+  const { tokenID, email, vendorID, menuItems, total } = req.body.orderInfo; // eslint-disable-line no-unused-vars
+  const currency = 'USD';
+  const amount = total; // cents, minumum is 50
+  const description = `Truck Hunt SF order with vendor ${vendorID}`;
+
+  // TODO: create order in orders table, save to submitted order
+  const submittedOrder = {
+    order_ID: '12345678'
+  };
+  // TODO: send client error if problem saving orders
+    // const details = 'Error placing order'
+    // res.status(503).send(details)
+
+  stripe.charges.create({
+    source: tokenID,
+    currency,
+    amount,
+    description
+  }, (err, charge) => { // eslint-disable-line no-unused-vars
+    if (err) { // error charging card
+      // TODO: delete order from database
+      // const { message, statusCode, requestId } = err.raw;
+      const details = 'Error processing payment';
+      res.statusMessage = details;
+      res.send(402);
+    } else {
+      res.status(201).send(submittedOrder); // success
+    }
   });
 };

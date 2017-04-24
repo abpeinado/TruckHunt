@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, Button, FormGroup, Form, Col, Checkbox } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { loginAttempt } from '../actions/loginActions.js';
+import { loginAttempt } from '../actions/signupActions.js';
 
 class Login extends React.Component {
   constructor(props) {
@@ -71,6 +71,7 @@ class Login extends React.Component {
 
   render() {
     console.log(this.props.vendorLoginSuccess);
+    console.log(this.props.loginSuccess);
     if (this.props.loginSuccess) {
       return (
         // Redirect to vendor portal if successful
