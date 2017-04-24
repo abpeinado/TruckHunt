@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Message, Card, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import TruckMenuItem from './TruckMenuItem.jsx';
 import { addToCart } from '../actions/cartActions.js';
@@ -7,22 +7,19 @@ import { addToCart } from '../actions/cartActions.js';
 export const TruckMenuGroupComponent = ({ menuGroup, addItemToCart }) => {
   const { title, items } = menuGroup;
   return (
-    <Row className="truck-menu-group">
-      <Col md={12}>
-        <Row>
-          <h3> {title} </h3>
-        </Row>
-        <Row>
-          {items.map((item, i) =>
-            <TruckMenuItem
-              item={item}
-              key={i}
-              onAddToCartClicked={() => addItemToCart(item)}
-            />
-          )}
-        </Row>
-      </Col>
-    </Row>
+    <Message className="truck-menu-group">
+      <Header as="h2" textAlign="center">{title}</Header>
+      <Divider section />
+      <Card.Group itemsPerRow={2}>
+        {items.map((item, i) =>
+          <TruckMenuItem
+            item={item}
+            key={i}
+            onAddToCartClicked={() => addItemToCart(item)}
+          />
+        )}
+      </Card.Group>
+    </Message>
   );
 };
 

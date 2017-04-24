@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
@@ -25,13 +25,11 @@ class TruckInfo extends React.Component {
     }
     return (
       <div>
-        <Row>
-          <Header />
-        </Row>
-        <Row >
+        <Header />
+        <Grid className="gridWrapper">
           <TruckInfoLeftPane />
           <CartContainer />
-        </Row>
+        </Grid>
       </div>
     );
   }

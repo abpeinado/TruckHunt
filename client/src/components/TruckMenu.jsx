@@ -1,20 +1,26 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { Tabs } from 'antd';
 import TruckMenuGroup from './TruckMenuGroup.jsx';
 
 export const TruckMenuComponent = (props) => {
+  const TabPane = Tabs.TabPane;
   return (
-    <Row>
-      <Col md={12} className="TruckMenuClass">
-        {props.truckInfo.map((menuGroup, i) =>
-          <TruckMenuGroup
-            menuGroup={menuGroup}
-            key={i}
-          />
-        )}
-      </Col>
-    </Row>
+    <Grid.Row className="TruckMenuClass">
+      <Tabs defaultActiveKey="1">
+        <TabPane tab="Menu" key="1">
+          {props.truckInfo.map((menuGroup, i) =>
+            <TruckMenuGroup
+              menuGroup={menuGroup}
+              key={i}
+            />
+          )}
+        </TabPane>
+        <TabPane tab="About" key="2">About Page</TabPane>
+        <TabPane tab="Map" key="3">Map Page </TabPane>
+      </Tabs>
+    </Grid.Row>
   );
 };
 

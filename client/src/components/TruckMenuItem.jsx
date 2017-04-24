@@ -1,25 +1,19 @@
 import React from 'react';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Button, Card } from 'semantic-ui-react';
 
 const TruckMenuItem = ({ item, onAddToCartClicked }) => {
   const { name, item_description, price } = item;
   return (
-    <Col md={6}>
-      <Panel>
-        <Row>
-          <Col md={9} sm={9} xs={9}>
-            <h5> {name} </h5>
-            <p> {item_description} </p>
-          </Col>
-          <Col md={3} sm={9} xs={3}>
-            <p> &#36;{price} </p>
-            <button onClick={onAddToCartClicked}>
-              Add to cart
-            </button>
-          </Col>
-        </Row>
-      </Panel>
-    </Col>
+    <Card color="orange">
+      <Card.Content>
+        <Card.Header>{name}</Card.Header>
+        <Card.Meta>&#36;{price}</Card.Meta>
+        <Card.Description>{item_description}</Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <Button basic floated="right" size="mini" icon="plus" color="orange" onClick={onAddToCartClicked} />
+      </Card.Content>
+    </Card>
   );
 };
 

@@ -115,12 +115,12 @@ a.navbar-brand {
   min-height: 6em;
 }*/
 
-.cart {
+/*.cart {
   height: 600px;
   border: 1px solid #111;
-}
+}*/
 
-.truck-info-summary {
+/*.truck-info-summary {
   border: 1px solid blue;
 }
 
@@ -128,7 +128,7 @@ a.navbar-brand {
   background-color: #d8d8d8;
   border: 1px solid green;
 }
-
+*/
 .truck-rating {
   text-align: center;
 }
@@ -223,12 +223,13 @@ input.form-control {
   border-radius: 5%;
 }
 
-.grid-sizer,
-.grid-item { width: 50%; }
+/*.grid-sizer,
+.grid-item { width: 50%; }*/
 
-.ui.grid>.column:not(.row) {
+/*.ui.grid>.column:not(.row) {
   padding: 0;
 }
+*/
 
 .mainroot {
   border: 1px solid rebeccapurple;
@@ -236,19 +237,16 @@ input.form-control {
   margin: 0;
   position: absolute;
   top: 0;
-  /* position: relative; */
+   position: relative;
   left: 0;
   height: 100%;
   width: 100%;
 }
-
 .ui.grid {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  margin: 1rem;
 }
 
-.ui.grid.gridWrapper {
+/*.ui.grid.gridWrapper {
   position: fixed;
   border: 1px solid red;
   height: 100%;
@@ -257,9 +255,44 @@ input.form-control {
 .ui.grid>.column:not(.row) {
   padding-top: 0rem;
   padding-bottom: 0rem;
+}*/
+
+/*.menuHeader {
+  height: 200px;
+  background-image: url('http://i2.cdn.cnn.com/cnnnext/dam/assets/120405183406-stacked-sandwich-super-169.jpg')
+}*/
+
+.ui.grid.TruckMenuClass {
+  margin: 1rem;
+}
+
+.row.truck-menu-group {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.six.wide.column.gridLeftWrapper.cart {
+  padding-right: 3em;
+}
+
+.ten.wide.column.gridLeftWrapper.truck-info-left-pane {
+  padding-left: 4em;
+}
+
+.row.truck-menu-group {
+  display: grid;
+}
+
+.ui.grid>.row  {
+  display: block;
 }
 
 
+
+
+
+
+/*
 * { box-sizing: border-box; }
 
 body { font-family: sans-serif; }
