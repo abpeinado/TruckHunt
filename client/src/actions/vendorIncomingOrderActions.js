@@ -19,10 +19,16 @@ export function vendorIncomingOrderFetchDataSuccess(vendorIncomingOrder) {
   };
 }
 
-export function vendorIncomingOrderFetchData(url) {
+export function vendorIncomingOrderFetchData(url, vendorId) {
   return (dispatch) => {
     dispatch(vendorIncomingOrderIsLoading(true));
-    fetch(url)
+    const options = {
+      method: 'POST',
+      body: {
+        vendorId
+      }
+    };
+    fetch(url, options)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

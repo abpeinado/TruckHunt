@@ -8,13 +8,16 @@ Vendors.findVendorIds()
       const randomRating = Math.floor(Math.random() * 3) + 3;
       const initialReview = {
         customer_id: 1,
-        vendor_id: vendorIds[i].vendor_id, 
-        rating: randomRating, 
+        vendor_id: vendorIds[i].vendor_id,
+        rating: randomRating,
         review: 'Good food'
-      }
+      };
       Reviews.newReview(initialReview);
     }
   })
+  // .then(() => {
+  //   pgp.end();
+  // })
   .catch((error) => {
     console.log('error: ', error);
   });

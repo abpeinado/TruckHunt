@@ -9,7 +9,6 @@ import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-m
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import { truckListFetchData } from '../actions/truckListActions.js';
 
-
 class Map extends React.Component {
   constructor(props) {
     super(props);

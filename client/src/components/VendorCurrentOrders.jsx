@@ -7,7 +7,7 @@ import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
 class VendorCurrentOrders extends Component {
 
   componentDidMount() {
-    this.props.vendorIncomingOrderFetchData('/vendorIncomingOrder');
+    this.props.vendorIncomingOrderFetchData('/vendorIncomingOrder', 74);
   }
 
   render() {
