@@ -7,7 +7,7 @@ import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
 class VendorCurrentOrders extends Component {
 
   componentDidMount() {
-    this.props.vendorIncomingOrderFetchData('/vendorIncomingOrder', 74);
+    this.props.FetchVendorOrders('/vendorIncomingOrder', 74);
   }
 
   render() {
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    vendorIncomingOrderFetchData: (url) => dispatch(vendorIncomingOrderFetchData(url))
+    FetchVendorOrders: (url, id) => dispatch(vendorIncomingOrderFetchData(url, id))
   };
 };
 

@@ -5,8 +5,6 @@ class IncomingItem extends Component {
 
   render() {
     const order = this.props.incomingOrder;
-    console.log('SHOULD BE TITLE', order.orderNo);
-
     const incomingOrderHeader = (
       <Col xs={12}>
         <Col xs={3}>

@@ -1,6 +1,7 @@
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
 const utils = require('./utils.js');
+const orderingData = require('./incomingOrdersData.js');
 // const Schedules = require('./models/schedules.js');
 // const request = require('request');
 // const Vendors = require('./models/vendors.js');
@@ -113,3 +114,8 @@ module.exports.authenticate = require('./routes/stripeAuthorization.js');
 module.exports.stripe = require('./routes/stripeCallback.js');
 
 module.exports.checkout = require('./routes/checkout.js');
+
+module.exports.vendorIncomingOrder = (req, res) => {
+  console.log('body: ', req.body);
+  res.send(orderingData.VendorOrders);
+};
