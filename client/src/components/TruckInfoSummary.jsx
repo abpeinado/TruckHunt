@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Header, Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
@@ -11,19 +11,24 @@ class TruckInfoSummary extends React.Component {
 
   render() {
     const truck = this.props.truckSelected;
+
     return (
-      <Row className="truck-info-summary">
-        <Col md={3}>
-          <img src={truck.image} style={{ maxHeight: '90px' }} alt="Truck Icon" />
-        </Col>
-        <Col md={6}>
-          <h2> {truck.vendor_name} </h2>
-          <p> {truck.food_category} </p>
-        </Col>
-        <Col md={3} className="truck-rating">
-          <h3> {truck.rating} stars </h3>
-        </Col>
-      </Row>
+       <div className='menuHeader'>
+        <Header as='h1' icon textAlign='center'>
+          <Header.Content>
+            {truck.vendor_name}
+          </Header.Content>
+        </Header>
+        <Header as='h3' textAlign='center'>
+          <Header.Content>
+            {truck.food_category}
+          </Header.Content>
+        </Header>
+        <Header textAlign='center'>
+          <Rating icon='star' defaultRating={4} maxRating={5} size='huge'/>
+        </Header>
+      </div>
+
     );
   }
 }
@@ -35,4 +40,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(TruckInfoSummary);
-

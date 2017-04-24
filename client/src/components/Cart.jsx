@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Grid, Segment, Divider, Header } from 'semantic-ui-react';
 import CartItem from './CartItem.jsx';
 import Checkout from './Checkout.jsx';
 
@@ -20,17 +20,20 @@ const Cart = ({ items, total, removeItemFromCart }) => {
   );
 
   return (
-    <Col md={4} className="cart">
-      <Row>
-        <h4 className="cart-title"> Your Cart: </h4>
-      </Row>
-      {cartItemNodes}
-      <p>Total: &#36;{total}</p>
-      <Checkout
-        amount={1998}
-        description={'you\'re tastebuds are waiting...'}
-      />
-    </Col>
+
+    <Grid.Column className="gridLeftWrapper cart" width={6}>
+    <Segment>
+        <Header as='h2' className="cart-title">Cart</Header>
+        <Divider section />
+        {cartItemNodes}
+        <Divider section />
+        Total: &#36;{total}
+        <Checkout
+          amount={1998}
+          description={'you\'re tastebuds are waiting...'}
+        />
+      </Segment>
+    </Grid.Column>
   );
 };
 

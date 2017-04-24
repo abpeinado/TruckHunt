@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submitOrder } from '../actions/checkoutActions.js';
+import { Button } from 'semantic-ui-react';
 
 let handler;
 
@@ -52,7 +53,7 @@ export class CheckoutComponent extends React.Component {
     } else if (code === 503) { // order error
       problem = 'order. Your card has not been charged';
     }
-    return `We're  Sorry, but there was an error processing your 
+    return `We're  Sorry, but there was an error processing your
       ${problem}. Please Try again in a moment. (Error Code: ${code})`;
   }
 
@@ -66,13 +67,9 @@ export class CheckoutComponent extends React.Component {
       return <div>Success! You're order has been placed.</div>;
     }
     return (
-      <div>
-        <button
-          onClick={this.onCheckoutClicked}
-        >
-        Checkout
-        </button>
-      </div>
+      <Button fluid basic color="green" onClick={this.onCheckoutClicked}>
+      Checkout
+      </Button>
     );
   }
 }
