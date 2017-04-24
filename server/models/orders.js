@@ -34,3 +34,11 @@ module.exports.addOrder = ({ vendor_id,
     });
   });
 };
+
+module.exports.updateStatus = (order_id, int) => {
+  return db.one(
+    'UPDATE orders SET order_status = $1\
+    WHERE order_id = $2\
+    RETURNING order_id\
+    ', [int, order_id]);
+};

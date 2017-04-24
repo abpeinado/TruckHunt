@@ -268,10 +268,13 @@ module.exports.checkout = (req, res) => {
       description
     }, (err, charge) => { // eslint-disable-line no-unused-vars
       if (err) {
-        // TODO: set order in DB to cancelled
         // const { message, statusCode, requestId } = err.raw; // get more info on order
         res.statusMessage = 'Error processing payment';
         res.send(402);
+        Orders.updateStatus(order_ID, 5)
+        .catch((updateStatusErr) => {
+          console.log('error cancelling order: ', updateStatusErr);
+        });
       } else {
         res.status(201).send({ order_ID }); // success
       }
