@@ -33,3 +33,21 @@ export const vendorSignupError = (state = false, action) => {
       return state;
   }
 };
+
+export const setUsername = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_USERNAME':
+      return action.setUsername;
+    default:
+      return state;
+  }
+};
+
+export const setUserID = (state = 0, action) => {
+  switch (action.type) {
+    case 'SET_USERID':
+      return action.setUserID;
+    default:
+      return state;
+  }
+};

@@ -26,6 +26,20 @@ export function signupSuccess(bool) {
   };
 }
 
+export function setUsername(username) {
+  return {
+    type: 'SET_USERNAME',
+    setUsername: username
+  };
+}
+
+export function setUserID(userID) {
+  return {
+    type: 'SET_USERID',
+    setUserID: userID
+  };
+}
+
 export function signupFetch(userInfo) {
   const url = userInfo.url;
   const init = {
@@ -37,6 +51,7 @@ export function signupFetch(userInfo) {
       userInfo
     })
   };
+
 
   return (dispatch) => {
     dispatch(signupLoading(true));
@@ -53,6 +68,11 @@ export function signupFetch(userInfo) {
           throw new Error('Could not create new user');
         }
         return response;
+      })
+      .then(response => response.json())
+      .then((response) => {
+        console.log('response from signupSuccess YYYYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEEEEHHHHHHHHHHHAWWWWWWWWW', response.customer_id);
+        dispatch(setUserID(response.customer_id));
       })
       .catch((error) => console.error(error));
   };

@@ -188,6 +188,7 @@ module.exports.userSignup = (req, res) => {
       return UserSignup.addUser(user, pass);
     })
     .then((response) => {
+      console.log('response inside userSIGGGGGGGGGGGGNNNUUUUUUPPPPPPP', response);
       res.status(201).send(response);
     })
     .catch((error) => {
@@ -198,10 +199,12 @@ module.exports.userSignup = (req, res) => {
 };
 
 module.exports.stripe = (req, res) => {
-  const user = req.body.user;
+  const user = req.query.user;
   console.log('user', user);
+  console.log('user', req.query.user);
 
-  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&state=8888`;
+
+  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&state=${user}`;
 
   res.redirect(stripeSignupOrCreate);
 };

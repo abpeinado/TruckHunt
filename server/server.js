@@ -41,7 +41,7 @@ app.post('/userLogin', requestHandler.userLogin);
 
 app.post('/userSignup', requestHandler.userSignup);
 
-app.get('/stripe', requestHandler.stripe);
+app.post('/stripe', requestHandler.stripe);
 
 app.get('/authenticate', requestHandler.authenticate);
 
