@@ -57,7 +57,6 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal }) => {
         <Divider section />
         Total: &#36;{totalWithDecimals}
         <Checkout
-          amount={1998}
           description={'you\'re tastebuds are waiting...'}
         />
       </Segment>
