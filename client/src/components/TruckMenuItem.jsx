@@ -11,7 +11,7 @@ const TruckMenuItem = ({ item, onAddToCartClicked }) => {
         <Card.Description>{item_description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button basic floated='right' size='mini' icon='plus' color="orange" onClick={onAddToCartClicked}/>
+        <Button basic floated="right" size="mini" icon="plus" color="orange" onClick={onAddToCartClicked} />
       </Card.Content>
     </Card>
   );

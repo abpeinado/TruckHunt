@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */ // ignore 'stripeCheckout is undefined'
 import React from 'react';
 import { connect } from 'react-redux';
-import { submitOrder } from '../actions/checkoutActions.js';
 import { Button } from 'semantic-ui-react';
+import { submitOrder } from '../actions/checkoutActions.js';
 
 let handler;
 

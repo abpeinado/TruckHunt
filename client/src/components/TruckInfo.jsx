@@ -26,12 +26,12 @@ class TruckInfo extends React.Component {
     }
     return (
       <div>
-          <Header />
-          <TrunkInfoSummary />
-          <Grid className="gridWrapper">
-            <TruckInfoLeftPane />
-            <CartContainer />
-          </Grid>
+        <Header />
+        <TrunkInfoSummary />
+        <Grid className="gridWrapper">
+          <TruckInfoLeftPane />
+          <CartContainer />
+        </Grid>
       </div>
     );
   }

@@ -5,14 +5,14 @@ import TruckMenuGroup from './TruckMenuGroup.jsx';
 
 export const TruckMenuComponent = (props) => {
   return (
-      <Grid.Row className="TruckMenuClass">
-        {props.truckInfo.map((menuGroup, i) =>
-          <TruckMenuGroup
-            menuGroup={menuGroup}
-            key={i}
-          />
-        )}
-      </Grid.Row>
+    <Grid.Row className="TruckMenuClass">
+      {props.truckInfo.map((menuGroup, i) =>
+        <TruckMenuGroup
+          menuGroup={menuGroup}
+          key={i}
+        />
+      )}
+    </Grid.Row>
   );
 };
 

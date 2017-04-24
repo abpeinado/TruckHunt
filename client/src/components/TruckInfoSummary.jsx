@@ -13,19 +13,19 @@ class TruckInfoSummary extends React.Component {
     const truck = this.props.truckSelected;
 
     return (
-       <div className='menuHeader'>
-        <Header as='h1' icon textAlign='center'>
+      <div className="menuHeader">
+        <Header as="h1" icon textAlign="center">
           <Header.Content>
             {truck.vendor_name}
           </Header.Content>
         </Header>
-        <Header as='h3' textAlign='center'>
+        <Header as="h3" textAlign="center">
           <Header.Content>
             {truck.food_category}
           </Header.Content>
         </Header>
-        <Header textAlign='center'>
-          <Rating icon='star' defaultRating={4} maxRating={5} size='huge'/>
+        <Header textAlign="center">
+          <Rating icon="star" defaultRating={4} maxRating={5} size="huge" />
         </Header>
       </div>
 
