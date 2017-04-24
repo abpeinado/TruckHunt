@@ -20,7 +20,6 @@ const Cart = ({ items, total, removeItemFromCart }) => {
   );
 
   return (
-
     <Grid.Column className="gridLeftWrapper cart" width={6}>
       <Segment>
         <Header as="h2" className="cart-title">Cart</Header>

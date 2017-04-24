@@ -38,10 +38,12 @@ export class CheckoutComponent extends React.Component {
   submitOrder(token) {
     const orderInfo = {
       tokenID: token.id,
-      email: token.email,
-      vendorID: 1234, // will be pulled from state
-      menuItems: this.props.truckList,
-      total: 1999 // will be pulled from state
+      customer_email: token.email,
+      vendor_id: 1234, // will be pulled from state
+      customer_id: null, // checkout as guest
+      menuItems: this.props.cartItems,
+      total: 1999, // will be pulled from state
+      order_note: '' // can add a note for entire order
     };
     this.props.submitOrder(orderInfo);
   }
@@ -53,7 +55,7 @@ export class CheckoutComponent extends React.Component {
     } else if (code === 503) { // order error
       problem = 'order. Your card has not been charged';
     }
-    return `We're  Sorry, but there was an error processing your
+    return `We're  Sorry, but there was an error processing your 
       ${problem}. Please Try again in a moment. (Error Code: ${code})`;
   }
 
