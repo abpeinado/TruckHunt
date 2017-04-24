@@ -38,7 +38,9 @@ export function truckListFetchData(url, coordinates, date) {
         return response;
       })
       .then(response => response.json())
-      .then(truckList => dispatch(truckListFetchDataSuccess(truckList)))
+      .then(truckList => {
+        dispatch(truckListFetchDataSuccess(truckList));
+      })
       .catch(() => dispatch(truckListHasErrored(true)));
   };
 }

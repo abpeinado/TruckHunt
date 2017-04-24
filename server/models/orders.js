@@ -1,13 +1,14 @@
 const { db } = require('../../database/index.js');
 
-module.exports.addOrder = ({ vendor_id,
-                            customer_id,
-                            customer_email,
-                            price_total,
-                            order_status = 0,
-                            order_note = '',
-                            menuItems = []
-                          }) => {
+module.exports.addOrder = ({
+  vendor_id,
+  customer_id,
+  customer_email,
+  price_total,
+  order_status = 0,
+  order_note = '',
+  menuItems = []
+}) => {
   return db.one(
     'INSERT INTO orders\
     (vendor_id, customer_id, customer_email, price_total, order_status, order_note)\
@@ -41,4 +42,10 @@ module.exports.updateStatus = (order_id, int) => {
     WHERE order_id = $2\
     RETURNING order_id\
     ', [int, order_id]);
+};
+
+module.exports.findVendorOrders = (vendorId) => {
+  return db.query(
+    'SELECT * FROM orders WHERE vendor_id = $1\
+    ', [vendorId]);
 };
