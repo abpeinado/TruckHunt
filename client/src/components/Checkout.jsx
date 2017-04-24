@@ -13,7 +13,7 @@ export class CheckoutComponent extends React.Component {
   }
   componentDidMount() {
     handler = StripeCheckout.configure({
-      key: 'pk_test_gQjftMB43LFvjEbAptDzM9zr',
+      key: process.env.STRIPE_PUBLIC_KEY,
       name: 'Truck Hunt',
       image: 'http://www.iconsdb.com/icons/preview/red/truck-2-xxl.png',
       locale: 'auto',
