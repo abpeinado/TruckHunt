@@ -24,7 +24,8 @@ var config = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      STRIPE_PUBLIC_KEY: 'pk_test_SJfX4CmrmicrEMjGMoKpUKzp'
     })
   ]
 };

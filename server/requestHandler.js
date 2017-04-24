@@ -1,7 +1,7 @@
 const VendorSignup = require('./models/vendorSignup.js');
 const UserSignup = require('./models/userSignup.js');
 const Login = require('./models/login.js');
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
 const request = require('request');
@@ -240,7 +240,6 @@ module.exports.authenticate = (req, res) => {
 module.exports.checkout = (req, res) => {
   // console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
   const { tokenID, customer_email, vendor_id, customer_id, menuItems, total, order_note } = req.body.orderInfo; // eslint-disable-line no-unused-vars
-
   const order = {
     vendor_id,
     customer_id, // null for checkout as guest
@@ -255,31 +254,43 @@ module.exports.checkout = (req, res) => {
   Orders.addOrder(order)
   .then(order_ID => {
     const description = `Truck Hunt SF, order ${order_ID} with vendor ${vendor_id}`;
+    // console.log('order saved successfuly - now charging card');
 
-    // TODO: pull vendor token here, insert into charges
+    const vendor_token = null;
+    // TODO: pull vendor token from DB
 
-    stripe.charges.create({
+    const chargeParams = {
       source: tokenID,
       currency: 'USD',
       amount: total,
       description
-    }, (err, charge) => { // eslint-disable-line no-unused-vars
+    };
+
+    if (vendor_token) {
+      chargeParams.destination = {
+        account: vendor_token
+      };
+    }
+
+    stripe.charges.create(chargeParams, (err, charge) => { // eslint-disable-line no-unused-vars
       if (err) {
         // const { message, statusCode, requestId } = err.raw; // get more info on order
         res.statusMessage = 'Error processing payment';
-        res.send(402);
+        console.log('error charging card charge');
+        res.sendStatus(402);
         Orders.updateStatus(order_ID, 5)
         .catch((updateStatusErr) => {
           console.log('error cancelling order: ', updateStatusErr);
         });
       } else {
         res.status(201).send({ order_ID }); // success
+        // console.log('order placed successfuly');
       }
     });
   })
   .catch(error => {
-    console.log('error in placing order:', error);
+    console.log('error saving order:', error);
     res.statusMessage = 'Error saving order';
-    res.send(503);
+    res.sendStatus(503);
   });
 };
