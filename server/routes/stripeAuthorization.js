@@ -10,9 +10,9 @@ module.exports = (req, res) => {
     url: 'https://connect.stripe.com/oauth/token',
     qs: {
       grant_type: 'authorization_code',
-      client_id: process.env.app_id,
+      client_id: process.env.STRIPE_APP_ID,
       code,
-      client_secret: process.env.api_key
+      client_secret: process.env.STRIPE_SECRET_KEY
     },
     headers: {
       'cache-control': 'no-cache'

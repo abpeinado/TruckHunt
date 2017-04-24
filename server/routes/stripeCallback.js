@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   // console.log('user', user);
   // console.log('user', req.query.user);
 
-  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.app_id}&scope=read_write&state=${user}`;
+  const stripeSignupOrCreate = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${process.env.STRIPE_APP_ID}&scope=read_write&state=${user}`;
 
   res.redirect(stripeSignupOrCreate);
 };
