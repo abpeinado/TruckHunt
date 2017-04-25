@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const truckData = require('./truckListData.js');
 const requestHandler = require('./requestHandler.js');
-const orderingData = require('./incomingOrdersData.js');
 const truckLocs = require('./truckLocations.js');
 
 const port = process.env.PORT || 8000;
@@ -69,9 +68,7 @@ POST /vendorIncomingOrders
 query: vendor ID
 response: [orders] -- will include all orderes with status of unfulfilled (0)
 // ******REFACTOR THIS ROUTE INTO THE ABOVE********/
-app.get('/vendorIncomingOrder', (req, res) => {
-  res.send(orderingData.VendorOrders);
-});
+app.post('/vendorIncomingOrders', requestHandler.vendorIncomingOrders);
 // ************************************************
 
 /**

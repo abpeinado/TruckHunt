@@ -19,18 +19,27 @@ export function vendorIncomingOrderFetchDataSuccess(vendorIncomingOrder) {
   };
 }
 
-export function vendorIncomingOrderFetchData(url) {
+export function vendorIncomingOrderFetchData(url, vendorId) {
+  const init = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      vendorId
+    })
+  };
   return (dispatch) => {
     dispatch(vendorIncomingOrderIsLoading(true));
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(response.statusText);
+    fetch(url, init)
+      .then((res) => {
+        if (!res.ok) {
+          throw Error(res.statusText);
         }
         dispatch(vendorIncomingOrderIsLoading(false));
-        return response;
+        return res;
       })
-      .then(response => response.json())
+      .then(res => res.json())
       .then(truckList => dispatch(vendorIncomingOrderFetchDataSuccess(truckList)))
       .catch(() => dispatch(vendorIncomingOrderHasErrored(true)));
   };
