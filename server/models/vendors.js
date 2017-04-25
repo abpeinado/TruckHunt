@@ -36,6 +36,9 @@ module.exports.addVendorToken = (token) => {
 // };
 
 // get token
-module.exports.getVendorToken = (vendor) => {
-  return db.query('SELECT stripe_user_id FROM vendors WHERE vendor_id=$1', [vendor]);
+module.exports.getVendorToken = (vendor_id) => {
+  return db.one(
+    'SELECT stripe_user_id FROM vendors\
+    WHERE vendor_id=$1\
+    ', [vendor_id]);
 };

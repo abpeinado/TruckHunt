@@ -19,7 +19,7 @@ module.exports = (req, res) => {
     }
   };
 
-  // console.log('inside authenticate', code);
+  // console.log('inside authenticate, auth token:', code);
   request.post(options, (error, response, body) => {
     if (error) throw new Error(error);
     const accessToken = JSON.parse(body).stripe_user_id;

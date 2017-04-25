@@ -12,6 +12,7 @@ export class CheckoutComponent extends React.Component {
     this.onCheckoutClicked = this.onCheckoutClicked.bind(this);
   }
   componentDidMount() {
+    const amount = this.props.cartTotal; // eslint-disable-line no-unused-vars
     handler = StripeCheckout.configure({
       key: process.env.STRIPE_PUBLIC_KEY,
       name: 'Truck Hunt',
@@ -31,7 +32,7 @@ export class CheckoutComponent extends React.Component {
   onCheckoutClicked(event) {
     handler.open({
       description: this.props.description, // should be a description of the product
-      amount: this.props.amount
+      amount: this.props.cartTotal
     });
     event.preventDefault();
   }
@@ -39,10 +40,10 @@ export class CheckoutComponent extends React.Component {
     const orderInfo = {
       tokenID: token.id,
       customer_email: token.email,
-      vendor_id: 1234, // will be pulled from state
+      vendor_id: this.props.vendor_id, // will be pulled from state
       customer_id: null, // checkout as guest
       menuItems: this.props.cartItems,
-      total: 1999, // will be pulled from state
+      total: this.props.cartTotal, // will be pulled from state
       order_note: '' // can add a note for entire order
     };
     this.props.submitOrder(orderInfo);
@@ -80,7 +81,9 @@ const mapStateToProps = (state) => ({
   cartItems: state.addedToCart,
   submitOrderError: state.submitOrderError,
   submitOrderProcessing: state.submitOrderProcessing,
-  submittedOrder: state.submittedOrder
+  submittedOrder: state.submittedOrder,
+  cartTotal: state.cartTotal,
+  vendor_id: state.truckSelected.vendor_id
 });
 
 const mapDispatchToProps = (dispatch) => ({
