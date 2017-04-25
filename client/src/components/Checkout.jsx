@@ -13,6 +13,7 @@ export class CheckoutComponent extends React.Component {
   }
   componentDidMount() {
     const amount = this.props.cartTotal; // eslint-disable-line no-unused-vars
+    console.log('stripe key', process.env.STRIPE_PUBLIC_KEY);
     handler = StripeCheckout.configure({
       key: process.env.STRIPE_PUBLIC_KEY,
       name: 'Truck Hunt',
@@ -56,7 +57,7 @@ export class CheckoutComponent extends React.Component {
     } else if (code === 503) { // order error
       problem = 'order. Your card has not been charged';
     }
-    return `We're  Sorry, but there was an error processing your 
+    return `We're  Sorry, but there was an error processing your
       ${problem}. Please Try again in a moment. (Error Code: ${code})`;
   }
 

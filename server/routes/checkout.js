@@ -3,7 +3,7 @@ const Orders = require('../models/orders.js');
 const Vendors = require('../models/vendors.js');
 
 module.exports = (req, res) => {
-  // console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
+  console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
   const { tokenID, customer_email, vendor_id, customer_id, menuItems, total, order_note } = req.body.orderInfo; // eslint-disable-line no-unused-vars
   const order = {
     vendor_id,

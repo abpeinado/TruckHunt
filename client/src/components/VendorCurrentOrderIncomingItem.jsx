@@ -12,14 +12,68 @@ class IncomingItem extends Component {
 
   handleReady() {
     console.log('inside handleReady');
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'READY',
+        orderID: 999
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
   handleDelay() {
     console.log('inside handleDelay');
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'DELAYED',
+        orderID: 999
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
   handleOnTime() {
     console.log('inside handleOnTime');
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'ONTIME',
+        orderID: 999
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
 
