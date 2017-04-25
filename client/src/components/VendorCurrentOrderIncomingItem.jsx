@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Well, Row } from 'react-bootstrap';
 
 class IncomingItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleDelay = this.handleDelay.bind(this);
+    this.handleReady = this.handleReady.bind(this);
+    this.handleOnTime = this.handleOnTime.bind(this);
+  }
+
+  handleReady() {
+    console.log('inside handleReady');
+  }
+
+  handleDelay() {
+    console.log('inside handleDelay');
+  }
+
+  handleOnTime() {
+    console.log('inside handleOnTime');
+  }
+
 
   render() {
     const order = this.props.incomingOrder;
@@ -78,9 +98,9 @@ class IncomingItem extends Component {
               <div>
                 <ButtonToolbar>
                   <ButtonGroup bsSize="large" vertical block>
-                    <Button bsStyle="success" style={{ height: '6em' }} >ON-TIME</Button>
-                    <Button bsStyle="default" style={{ height: '6em' }} >DELAYED</Button>
-                    <Button bsStyle="primary" style={{ height: '11.2em' }} >READY FOR PICKUP</Button>
+                    <Button onClick={this.handleOnTime} bsStyle="success" style={{ height: '6em' }} >ON-TIME</Button>
+                    <Button onClick={this.handleDelay} bsStyle="default" style={{ height: '6em' }} >DELAYED</Button>
+                    <Button onClick={this.handleReady} bsStyle="primary" style={{ height: '11.2em' }} >READY FOR PICKUP</Button>
                   </ButtonGroup>
                 </ButtonToolbar>
               </div>
