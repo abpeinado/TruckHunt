@@ -1,4 +1,5 @@
 /* eslint import/prefer-default-export: 0 */
+/* eslint-disable operator-assignment */
 
 export const mapCenter = (state = { lng: -122.408966, lat: 37.783697 }, action) => {
   switch (action.type) {
@@ -32,11 +33,12 @@ let hour = currentTime.getHours();
 const min = currentTime.getMinutes();
 let ampm = '';
 if (hour > 12) {
-  hour -= 12;
+  hour = hour - 12;
   ampm = 'PM';
 } else {
   ampm = 'AM';
 }
+
 const timeFormatted = `${hour}:${min} ${ampm}`;
 
 export const mapDate = (state = { time: timeFormatted, dayOfWeek: 1 }, action) => {

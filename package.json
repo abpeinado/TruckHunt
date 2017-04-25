@@ -55,6 +55,7 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "request": "^2.81.0",
+    "scroll-into-view": "^1.8.0",
     "semantic-ui-react": "^0.68.1",
     "stripe": "^4.18.0",
     "underscore": "1.8.3",

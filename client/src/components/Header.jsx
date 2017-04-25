@@ -1,3 +1,5 @@
+/* eslint-disable operator-assignment */
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -73,15 +75,17 @@ class Header extends Component {
     let ampm = '';
     let timeFormatted = `${hour}:${min} ${ampm}`;
     if (hour > 12) {
-      hour -= 12;
       ampm = 'PM';
+      timeFormatted = `${hour - 12}:${min} ${ampm}`;
     } else {
       ampm = 'AM';
+      timeFormatted = `${hour}:${min} ${ampm}`;
     }
     if (min < 10) {
       timeFormatted = `${hour}:0${min} ${ampm}`;
     }
 
+    console.log('hour', hour);
     return (
       <Menu size="large" borderless>
         <Menu.Item>
