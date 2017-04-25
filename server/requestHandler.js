@@ -1,10 +1,12 @@
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
-// const request = require('request');
-// const Vendors = require('./models/vendors.js');
-
 // const Schedules = require('./models/schedules.js');
-// const utils = require('./utils.js');
+
+const request = require('request');
+const Vendors = require('./models/vendors.js');
+const Orders = require('./models/orders.js');
+const utils = require('./utils.js');
+
 
 module.exports.search = (req, res) => {
   console.log('client req1', req.body);
@@ -21,9 +23,8 @@ module.exports.search = (req, res) => {
   //   "time": "11:56 AM",
   //   "dayOfWeek": 1
   // }
-  // const timeAsNum = utils.convertTimeToNumber(req.body.time);
-  // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
-  Search.scheduleData()
+  const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
+  Search.scheduleData(timeAsNum, req.body.date.dayOfWeek)
     .then((response) => {
       console.log('test res', JSON.parse(response[0].coordinates));
       const newArr = [];
