@@ -79,7 +79,7 @@ class Map extends React.Component {
             (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
-                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
+                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${2}.png`;
                 return (
                   <Marker
                     coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}

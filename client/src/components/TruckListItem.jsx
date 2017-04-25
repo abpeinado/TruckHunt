@@ -6,7 +6,7 @@ class TruckListItem extends Component {
   render() {
     const info = this.props.restaurant;
     const random = (Math.floor(Math.random() * 4) + 1);
-    const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarker(large)V${random}.png`;
+    const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarker(large)V${2}.png`;
 
     return (
       <Card className="trucklist-group" >
