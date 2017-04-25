@@ -44,8 +44,24 @@ module.exports.updateStatus = (order_id, int) => {
     ', [int, order_id]);
 };
 
-module.exports.findVendorOrders = (vendorId) => {
+module.exports.findVendorOrders = (vendor_id) => {
   return db.query(
     'SELECT * FROM orders WHERE vendor_id = $1\
-    ', [vendorId]);
+    ', [vendor_id]);
+};
+
+
+module.exports.getIncomingOrderItems = (vendor_id) => {
+  return db.any(
+    'SELECT o.order_id, o.customer_email, o.order_time, extract(epoch from o.order_time),\
+    o.price_total, o.order_status,\
+    mi.menu_item_id, mi.name, mi.price, oi.quantity, oi.item_note\
+    FROM orders as o\
+    INNER JOIN order_items as oi\
+    ON o.order_id = oi.order_id\
+    INNER JOIN menu_items as mi\
+    ON oi.menu_item_id = mi.menu_item_id\
+    WHERE o.vendor_id = $1\
+    AND o.order_status < 2\
+    ', [vendor_id]);
 };

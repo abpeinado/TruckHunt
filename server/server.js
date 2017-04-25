@@ -65,6 +65,9 @@ response: order number
 **/
 app.post('/checkout', requestHandler.checkout);
 
+
+app.get('/vendorIncomingOrders', requestHandler.vendorIncomingOrders);
+
 /**
 POST /vendorIncomingOrders
 query: vendor ID
