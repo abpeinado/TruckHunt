@@ -1,41 +1,71 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { DatePicker, TimePicker } from 'antd';
+import { connect } from 'react-redux';
+// import { DatePicker, TimePicker } from 'antd';
+import Datetime from 'react-datetime';
 import { Menu } from 'semantic-ui-react';
 import moment from 'moment';
 import Logo from './Logo.jsx';
 import Search from './Search.jsx';
+import { truckListFetchData } from '../actions/truckListActions.js';
+import { mapDateUpdate } from '../actions/mapActions.js';
+
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      date: ''
+    };
+    this.timeChange = this.timeChange.bind(this);
   }
 
+  timeChange(e) {
+    console.log('time event', e);
+    const date = moment(e).format('llll');
+    console.log('date format', date);
+    const dateArr = JSON.stringify(date).split(' ');
+    console.log('og date', dateArr);
+    const AMPMparse = dateArr[5].split('').splice(0, 2).join('');
+    const timeParsed = `${dateArr[4]} ${AMPMparse}`;
+    const dateParsed = dateArr[0].split('').splice(1, 3).join('');
+    console.log('timeParsed', timeParsed);
+    console.log('dateParsed', dateParsed);
 
-  // handleClick(e, { name }) {
-  //   this.setState({
-  //     activeItem: name
-  //   });
+    const dateIndex = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+    const dateObj = {
+      time: timeParsed,
+      dayOfWeek: dateIndex[dateParsed]
+    };
+
+    console.log('dateObj', dateObj);
+    this.props.mapDateUpdate(dateObj);
+    this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
+  }
+
+ // {
+  //   "time": "11:56 AM",
+  //   "dayOfWeek": 1
   // }
 
-  timeChange(time, timeString) {
-    console.log(time, timeString);
-  }
-
+ // {
+  //   "time": "15",
+  //   "dayOfWeek": 1
+  // }
 
   render() {
     // const { activeItem } = this.state;
     moment.locale('en');
-    const time = 'HH:mm A';
-    const date = 'MM/DD/YYYY';
-    const currentTime = new Date();
-    const hour = currentTime.getHours();
-    const min = currentTime.getMinutes();
+    // const time = 'HH:mm A';
+    // const date = 'MM/DD/YYYY';
+    // const currentTime = new Date();
+    // const hour = currentTime.getHours();
+    // const min = currentTime.getMinutes();
     // if (hour > 12) {
     //   hour = hour - 12;
     // }
-    const timeFormatted = `${hour}:${min}`;
+    // const timeFormatted = `${hour}:${min}`;
     // console.log('moment time', moment()._d);
 
     return (
@@ -53,9 +83,7 @@ class Header extends Component {
         </Menu.Menu>
         <Menu.Menu position="right">
           <Menu.Item >
-            <DatePicker defaultValue={moment('01-01-2017', date)} format={date} />
-            <TimePicker defaultValue={moment(timeFormatted, time)} format={time} />
-
+            <Datetime value={this.state.inputValue} onChange={this.timeChange} defaultValue={'Select Pickup Time'} />
           </Menu.Item>
           <Menu.Item >
             <Link to="/auth" className="NavBarFoodTruck">
@@ -68,5 +96,25 @@ class Header extends Component {
   }
 }
 
-export default Header;
 
+const mapStateToProps = (state) => {
+  return {
+    mapDate: state.mapDate,
+    mapCenter: state.mapCenter
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    mapDateUpdate: (date) => dispatch(mapDateUpdate(date)),
+    truckListFetchData: (locationDate) => dispatch(truckListFetchData(locationDate))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+
+// export default Header;
+
+            // <DatePicker defaultValue={moment('01-01-2017', date)} format={date} />
+            // <TimePicker defaultValue={moment(timeFormatted, time)} format={time} onChange={this.timeChange} value={this.state.time} />
