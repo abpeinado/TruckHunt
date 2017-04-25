@@ -12,7 +12,7 @@ const truckLocs = require('./truckLocations.js');
 const port = process.env.PORT || 8000;
 const app = express();
 
-// useful for debugging, please do not remove:
+// uncomment the console logs below for debugging:
 app.use((req, res, next) => {
   // console.log('requrl= ', req.url);
   // console.log('reqmethod= ', req.method);
@@ -23,11 +23,6 @@ app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, '../client/public')));
 
-/**
-POST /search
-query: lat, long, time and optionally radius
-response: [trucks] (include lat/long, menu data, etc)
-// ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
 
 app.post('/orderStatus', requestHandler.orderStatus);
@@ -58,28 +53,9 @@ app.get('/truckInfo', (req, res) => {
   res.send(truckData.truckList.trucks[0]);
 });
 
-/**
-POST /checkout
-body: {stripe ID, menu item id's, vendor id}
-response: order number
-**/
 app.post('/checkout', requestHandler.checkout);
 
-
-app.get('/vendorIncomingOrders', requestHandler.vendorIncomingOrders);
-
-/**
-POST /vendorIncomingOrders
-query: vendor ID
-response: [orders] -- will include all orderes with status of unfulfilled (0)
-// ******REFACTOR THIS ROUTE INTO THE ABOVE********/
 app.post('/vendorIncomingOrders', requestHandler.vendorIncomingOrders);
-// ************************************************
-
-/**
-POST /orderStatus
-body: {order number, new status}
-**/
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
