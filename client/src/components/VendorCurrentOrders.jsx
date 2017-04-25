@@ -7,7 +7,7 @@ import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
 class VendorCurrentOrders extends Component {
 
   componentDidMount() {
-    this.props.FetchVendorOrders('/vendorIncomingOrder', 74);
+    this.props.FetchVendorOrders('/vendorIncomingOrders', 74);
   }
 
   render() {
@@ -38,7 +38,8 @@ const mapStateToProps = (state) => {
   return {
     vendorIncomingOrder: state.vendorIncomingOrder,
     vendorIncomingOrderHasErrored: state.vendorIncomingOrderHasErrored,
-    vendorIncomingOrderIsLoading: state.vendorIncomingOrderIsLoading
+    vendorIncomingOrderIsLoading: state.vendorIncomingOrderIsLoading,
+    setUserID: state.setUserID
   };
 };
 

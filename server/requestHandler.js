@@ -115,7 +115,7 @@ module.exports.stripe = require('./routes/stripeCallback.js');
 
 module.exports.checkout = require('./routes/checkout.js');
 
-module.exports.vendorIncomingOrder = (req, res) => {
+module.exports.vendorIncomingOrders = (req, res) => {
   console.log('body: ', req.body);
   res.send(orderingData.VendorOrders);
 };

@@ -68,7 +68,7 @@ POST /vendorIncomingOrders
 query: vendor ID
 response: [orders] -- will include all orderes with status of unfulfilled (0)
 // ******REFACTOR THIS ROUTE INTO THE ABOVE********/
-app.post('/vendorIncomingOrder', requestHandler.vendorIncomingOrder);
+app.post('/vendorIncomingOrders', requestHandler.vendorIncomingOrders);
 // ************************************************
 
 /**
