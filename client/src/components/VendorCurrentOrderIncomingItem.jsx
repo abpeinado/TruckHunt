@@ -19,7 +19,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'READY',
-        orderID: 999
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
@@ -41,7 +41,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'DELAYED',
-        orderID: 999
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
@@ -54,8 +54,9 @@ class IncomingItem extends Component {
       });
   }
 
-  handleOnTime() {
-    console.log('inside handleOnTime');
+  handleOnTime(event) {
+    console.log('inside handleOnTime', event.target);
+    console.log('inside handleOnTime', this);
     const init = {
       method: 'POST',
       headers: {
@@ -63,7 +64,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'ONTIME',
-        orderID: 999
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
