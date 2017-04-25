@@ -3,10 +3,6 @@ const MenuItems = require('./models/menuItems.js');
 const utils = require('./utils.js');
 const orderingData = require('./incomingOrdersData.js');
 const Order = require('./models/orders.js');
-// const Schedules = require('./models/schedules.js');
-// const request = require('request');
-// const Vendors = require('./models/vendors.js');
-// const Orders = require('./models/orders.js');
 
 module.exports.search = (req, res) => {
   const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
