@@ -120,11 +120,11 @@ class IncomingItem extends Component {
         </Col>
       </Col>
     );
-            // <div style={{ 'padding-top': '16px' }}>MIN AGO</div>
+    const statusColor = { 0: 'success', 1: 'warning', 2: 'primary' };
 
     return (
       <Accordion >
-        <Panel header={incomingOrderHeader} className="incomingOrderHeaderStyle">
+        <Panel header={incomingOrderHeader} bsStyle={statusColor[order.order_status]} className="incomingOrderHeaderStyle">
           <Row>
             <Col xs={8}>
               {this.props.incomingOrder.items.map((item, i) =>
