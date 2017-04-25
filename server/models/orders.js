@@ -37,7 +37,6 @@ module.exports.addOrder = ({
 };
 
 module.exports.updateStatus = (order_id, int) => {
-  console.log('inside update status');
   return db.one(
     'UPDATE orders SET order_status = $1\
     WHERE order_id = $2\
