@@ -3,7 +3,6 @@ const Orders = require('../models/orders.js');
 const Vendors = require('../models/vendors.js');
 
 module.exports = (req, res) => {
-  console.log('recieved a checkout - orderInfo:', req.body.orderInfo);
   const { tokenID, customer_email, vendor_id, customer_id, menuItems, total, order_note } = req.body.orderInfo; // eslint-disable-line no-unused-vars
   const order = {
     vendor_id,
@@ -18,7 +17,6 @@ module.exports = (req, res) => {
   Orders.addOrder(order)
   .then(order_ID => {
     const description = `Truck Hunt SF, order ${order_ID} with vendor ${vendor_id}`;
-    // console.log('order saved successfuly - now charging card');
     const chargeParams = {
       source: tokenID,
       currency: 'USD',
