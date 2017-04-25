@@ -102,6 +102,51 @@ module.exports.stripe = require('./routes/stripeCallback.js');
 module.exports.checkout = require('./routes/checkout.js');
 
 module.exports.vendorIncomingOrders = require('./routes/vendorIncomingOrders.js');
+// module.exports.vendorIncomingOrders = (req, res) => {
+//   console.log('body: ', req.body);
+//   // res.send(orderingData.VendorOrders);
+//   const fakeData = [
+//     {
+//       order_id: 1,
+//       order_time: '2017-04-24 16:15:17.816122-07',
+//       customer_email: 'matt@gmail.com',
+//       price_total: 7000,
+//       order_status: 0, // 0 = on time, 1 = delayed, 2 = ready for pickup
+//       items: [{ menu_item_id: 14, name: 'kale salad', price: 2000, quantity: 4, item_note: 'no goat cheese' },
+//       { menu_item_id: 15, name: 'cheeseburger', price: 5000, quantity: 2, item_note: 'add cado' }]
+//     },
+//     {
+//       order_id: 2,
+//       order_time: '2017-04-24 16:17:13.816122-07',
+//       customer_email: 'sam@gmail.com',
+//       price_total: 6000,
+//       order_status: 1, // 0 = on time, 1 = delayed, 2 = ready for pickup
+//       items:
+//       [{ menu_item_id: 14, name: 'eggs and ham', price: 2000, quantity: 2, item_note: 'no onions' },
+//       { menu_item_id: 15, name: 'chicken sando', price: 4000, quantity: 1, item_note: 'add extra cado' }]
+//     },
+//     {
+//       order_id: 3,
+//       order_time: '2017-04-24 16:18:17.816122-07',
+//       customer_email: 'mike@gmail.com',
+//       price_total: 7000,
+//       order_status: 0, // 0 = on time, 1 = delayed, 2 = ready for pickup
+//       items: [{ menu_item_id: 13, name: 'hotty totties', price: 10000, quantity: 8, item_note: 'extra shot' },
+//       { menu_item_id: 18, name: 'mango jangos', price: 5000, quantity: 2, item_note: 'add cado' }]
+//     },
+//     {
+//       order_id: 4,
+//       order_time: '2017-04-24 16:20:13.816122-07',
+//       customer_email: 'benicci@gmail.com',
+//       price_total: 2000,
+//       order_status: 2, // 0 = on time, 1 = delayed, 2 = ready for pickup
+//       items: [{ menu_item_id: 14, name: 'coconut struddle', price: 3000, quantity: 1, item_note: 'napkins please' },
+//       { menu_item_id: 15, name: 'pizza', price: 1000, quantity: 1, item_note: 'add pepperoni and pinapples' }]
+//     }
+//   ];
+//   console.log('fakeData', fakeData);
+//   res.send(fakeData);
+// };
 
 module.exports.orderStatus = (req, res) => {
   const orderStatus = req.body.orderStatus;

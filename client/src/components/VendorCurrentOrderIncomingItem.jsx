@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Well, Row } from 'react-bootstrap';
+import MenuItem from './vendorOrderMenuItem.jsx';
 
 class IncomingItem extends Component {
   constructor(props) {
@@ -84,10 +85,10 @@ class IncomingItem extends Component {
       <Col xs={12}>
         <Col xs={3}>
           <h5>
-            {order.orderNo}
+            {order.order_id}
           </h5>
           <h2>
-            {order.customerName}
+            {order.customer_email}
           </h2>
         </Col>
         <Col xs={3}>
@@ -95,7 +96,7 @@ class IncomingItem extends Component {
           Total
           </h5>
           <h2>
-            {order.totalPaid}
+            {order.price_total}
           </h2>
         </Col>
         <Col xs={6}>
@@ -104,12 +105,12 @@ class IncomingItem extends Component {
             Ordered
             </h5>
             <h2>
-              {order.numberOfItems} Items
+              {order.items.length} Items
             </h2>
           </Col>
           <Col xs={6} style={{ 'padding-top': '16px', 'padding-left': '3em' }}>
             <Label bsStyle="success" style={{ fontSize: '2em' }}>
-              {order.orderTime}
+              {order.order_time}
             </Label>
             <div style={{ 'padding-top': '16px' }}>MIN AGO</div>
           </Col>
@@ -117,37 +118,14 @@ class IncomingItem extends Component {
       </Col>
     );
 
-    const incomingOrderMenuItem = (
-      <Well className="incomingOrderMenuItem">
-        <Col xs={3}>
-          <h2>
-          4
-          </h2>
-        </Col>
-        <Col xs={6}>
-          <h2>
-          Kale Salad
-          </h2>
-          <h5>
-          -No Goat Cheese
-          </h5>
-        </Col>
-        <Col xs={3}>
-          <h2>
-          $20.00
-          </h2>
-        </Col>
-      </Well>
-    );
-
     return (
       <Accordion >
         <Panel header={incomingOrderHeader} className="incomingOrderHeaderStyle">
           <Row>
             <Col xs={8}>
-              {incomingOrderMenuItem}
-              {incomingOrderMenuItem}
-              {incomingOrderMenuItem}
+              {this.props.incomingOrder.items.map((item, i) =>
+                <MenuItem incomingOrder={item} key={i} />
+              )}
             </Col>
             <Col xs={4} style={{ fontSize: '2.5em' }}>
               <div>
