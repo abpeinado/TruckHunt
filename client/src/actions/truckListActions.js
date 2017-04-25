@@ -45,6 +45,7 @@ export function truckListFetchData(url, coordinates, date) {
         return response;
       })
       .then(response => response.json())
+      // .then(response => console.log('res from server', response))
       .then(truckList => {
         dispatch(truckListFetchDataSuccess(truckList));
       })
