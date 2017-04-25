@@ -32,7 +32,7 @@ let hour = currentTime.getHours();
 const min = currentTime.getMinutes();
 let ampm = '';
 if (hour > 12) {
-  hour = hour - 12;
+  hour -= 12;
   ampm = 'PM';
 } else {
   ampm = 'AM';

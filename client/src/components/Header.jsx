@@ -61,14 +61,20 @@ class Header extends Component {
     moment.locale('en');
     // const time = 'HH:mm A';
     // const date = 'MM/DD/YYYY';
-    // const currentTime = new Date();
-    // const hour = currentTime.getHours();
-    // const min = currentTime.getMinutes();
-    // if (hour > 12) {
-    //   hour = hour - 12;
-    // }
-    // const timeFormatted = `${hour}:${min}`;
-    // console.log('moment time', moment()._d);
+    const currentTime = new Date();
+    let hour = currentTime.getHours();
+    const min = currentTime.getMinutes();
+    let ampm = '';
+    let timeFormatted = `${hour}:${min} ${ampm}`;
+    if (hour > 12) {
+      hour -= 12;
+      ampm = 'PM';
+    } else {
+      ampm = 'AM';
+    }
+    if (min < 10) {
+      timeFormatted = `${hour}:0${min} ${ampm}`;
+    }
 
     return (
       <Menu size="large" borderless>
@@ -85,7 +91,7 @@ class Header extends Component {
         </Menu.Menu>
         <Menu.Menu position="right">
           <Menu.Item >
-            <Datetime value={this.state.inputValue} onChange={this.timeChange} defaultValue={'Select Pickup Time'} />
+            <Datetime value={this.state.inputValue} onChange={this.timeChange} defaultValue={`Searching @ ${timeFormatted}`} />
           </Menu.Item>
           <Menu.Item >
             <Link to="/auth" className="NavBarFoodTruck">
