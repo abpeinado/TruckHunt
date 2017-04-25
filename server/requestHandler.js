@@ -4,7 +4,6 @@ const utils = require('./utils.js');
 const Orders = require('./models/orders.js');
 const convertOrderItemsToOrder = require('./utils.js').convertOrderItemsToOrder;
 
-
 module.exports.search = (req, res) => {
   const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
   Search.scheduleData(timeAsNum, req.body.date.dayOfWeek)
@@ -16,19 +15,16 @@ module.exports.search = (req, res) => {
         newArr.push(tempItem);
       }
       return newArr;
-      // To filter schedule data by location pass the response into a
-      // function inported from utils.js and transform the array of objects there.
-      // Return the transformed object and pass it into res.send
     })
     .then((newArr) => res.send(newArr))
     .catch((error) => res.send(error));
 };
 
 module.exports.menu = (req, res) => {
-  console.log('menu res------------', req.body);
-  const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
+  const defaultFoodCategory = 'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages';
   MenuItems.foodCategories()
     .then((foodCategories) => {
+      console.log('body food category', req.body.food_category);
       let found = false;
       for (let i = 0; i < foodCategories.length; i++) {
         if (foodCategories[i].food_category === req.body.food_category) {
@@ -41,29 +37,22 @@ module.exports.menu = (req, res) => {
       return false;
     })
     .then((found) => {
+      // console.log('found', found);
       if (found) {
         return MenuItems.menuData(req.body.food_category);
       }
       return MenuItems.menuData(defaultFoodCategory);
     })
     .then((menu) => {
-      // create category array
+      // console.log('menu', menu);
       const foodCategories = [];
-      // create menuItems object
       const menuItems = {};
-      // loop thru menu
       for (let i = 0; i < menu.length; i++) {
-        // get food category
         const course = menu[i].course;
-        // if the food cat is not in menuItems object
         if (!menuItems[course]) {
-          // push to food cat array
           foodCategories.push(menu[i].course);
-          // create array containing the menu item and
           menuItems[course] = [menu[i]];
-          // add that to menuItems[foodcategory]
         } else {
-          // push the menuItem to menuItems[foodcategory]
           menuItems[course].push(menu[i]);
         }
       }
@@ -77,7 +66,7 @@ module.exports.menu = (req, res) => {
       res.send(foodCategories);
     })
     .catch((error) => {
-      console.log('here');
+      // console.log('error here', error);
       res.send(error);
     });
 };
