@@ -5,18 +5,20 @@ import { removeFromCart, removeFromTotal } from '../actions/cartActions.js';
 // import { getCartTotal } from '../reducers/cartReducers';
 import Cart from './Cart.jsx';
 
-const CartContainer = ({ cartItems, total, removeItemFromCart, removeItemFromTotal }) => (
+const CartContainer = ({ cartItems, total, removeItemFromCart, removeItemFromTotal, orderSubmitted }) => (
   <Cart
     items={cartItems}
     total={total}
     removeItemFromCart={removeItemFromCart}
     removeItemFromTotal={removeItemFromTotal}
+    orderSubmitted={orderSubmitted}
   />
 );
 
 const mapStateToProps = (state) => ({
   cartItems: state.addedToCart,
-  total: state.cartTotal
+  total: state.cartTotal,
+  orderSubmitted: !!state.submittedOrder
 });
 
 const mapDispatchToProps = (dispatch) => {

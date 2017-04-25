@@ -22,6 +22,18 @@ export function submitOrderSuccess(submittedOrder) {
   };
 }
 
+export const clearSubmitOrderSuccess = () => ({
+  type: 'CLEAR_SUBMIT_ORDER_SUCCESS'
+});
+
+export const clearCart = () => ({
+  type: 'CLEAR_CART'
+});
+
+export const clearCartTotal = () => ({
+  type: 'CLEAR_CART_TOTAL'
+});
+
 export function submitOrder(orderInfo) {
   const init = {
     method: 'POST',
@@ -36,6 +48,8 @@ export function submitOrder(orderInfo) {
     dispatch(submitOrderProcessing(true));
     fetch('/checkout', init)
       .then((res) => {
+        dispatch(clearCart());
+        dispatch(clearCartTotal());
         if (!res.ok) {
           dispatch(submitOrderError(res.status, res.statusText));
         }

@@ -43,8 +43,8 @@ module.exports = (req, res) => {
             console.log('error cancelling order: ', updateStatusErr);
           });
         } else {
-          res.status(201).send({ order_ID }); // success
-          console.log('order placed successfuly: ', charge);
+          res.status(201).send({ order_ID, total }); // success
+          // console.log('order placed successfuly: ', charge);
         }
       });
     })

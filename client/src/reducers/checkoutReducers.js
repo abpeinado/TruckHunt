@@ -20,6 +20,8 @@ export const submittedOrder = (state = null, action) => {
   switch (action.type) {
     case 'SUBMIT_ORDER_SUCCESS':
       return action.submittedOrder;
+    case 'CLEAR_SUBMIT_ORDER_SUCCESS':
+      return null;
     default:
       return state;
   }

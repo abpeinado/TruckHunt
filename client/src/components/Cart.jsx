@@ -4,7 +4,7 @@ import { Grid, Segment, Divider, Header } from 'semantic-ui-react';
 import CartItem from './CartItem.jsx';
 import Checkout from './Checkout.jsx';
 
-const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal }) => {
+const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal, orderSubmitted }) => {
   let totalWithDecimals = '0.00';
   const hasItems = items.length > 0;
   const itemsWithQuantities = [];
@@ -47,6 +47,14 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal }) => {
   ) : (
     <p> You're Cart is Empty </p>
   );
+  const totalNode = orderSubmitted ? (
+    <div />
+  ) : (
+    <div>
+      <Divider section />
+      Total: &#36;{totalWithDecimals}
+    </div>
+  );
 
   return (
     <Grid.Column className="animated slideInRight gridLeftWrapper cart" width={6}>
@@ -54,8 +62,7 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal }) => {
         <Header as="h2" className="cart-title">Cart</Header>
         <Divider section />
         {cartItemNodes}
-        <Divider section />
-        Total: &#36;{totalWithDecimals}
+        {totalNode}
         <Checkout
           description={'you\'re tastebuds are waiting...'}
         />

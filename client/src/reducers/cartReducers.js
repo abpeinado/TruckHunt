@@ -16,6 +16,9 @@ export const addedToCart = (state = [], action) => {
       }
       return [...state];
     }
+    case 'CLEAR_CART': {
+      return [];
+    }
     default:
       return state;
   }
@@ -31,6 +34,8 @@ export const cartTotal = (state = 0, action) => {
       const newTotal = state - action.itemID.price;
       return newTotal;
     }
+    case 'CLEAR_CART_TOTAL':
+      return 0;
     default:
       return state;
   }
