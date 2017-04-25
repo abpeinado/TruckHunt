@@ -2,10 +2,7 @@ const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
 const utils = require('./utils.js');
 const orderingData = require('./incomingOrdersData.js');
-// const Schedules = require('./models/schedules.js');
-// const request = require('request');
-// const Vendors = require('./models/vendors.js');
-// const Orders = require('./models/orders.js');
+const Order = require('./models/orders.js');
 
 module.exports.search = (req, res) => {
   const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
@@ -108,4 +105,47 @@ module.exports.checkout = require('./routes/checkout.js');
 module.exports.vendorIncomingOrders = (req, res) => {
   console.log('body: ', req.body);
   res.send(orderingData.VendorOrders);
+};
+
+
+module.exports.orderStatus = (req, res) => {
+  const orderStatus = req.body.orderStatus;
+  const orderID = req.body.orderID;
+
+
+  console.log('gettin hotter', req.body.orderStatus);
+  console.log('gettin hotter', req.body.orderID);
+
+  if (orderStatus === 'READY') {
+    return Order.updateStatus(orderID, 2)
+      .then((response) => {
+        console.log('response yeah', response);
+        res.status(201).send(response);
+      })
+      .catch((err) => {
+        console.log('response no', err);
+        res.status(400).send(err);
+      });
+  } else if (orderStatus === 'DELAYED') {
+    return Order.updateStatus(orderID, 1)
+      .then((response) => {
+        console.log('response yeah', response);
+        res.status(201).send(response);
+      })
+      .catch((err) => {
+        console.log('response no', err);
+        res.status(400).send(err);
+      });
+  } else if (orderStatus === 'ONTIME') {
+    return Order.updateStatus(orderID, 0)
+      .then((response) => {
+        console.log('response yeah', response);
+        res.status(201).send(response);
+      })
+      .catch((err) => {
+        console.log('response no', err);
+        res.status(400).send(err);
+      });
+  }
+  return res.send(400);
 };

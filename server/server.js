@@ -30,6 +30,8 @@ response: [trucks] (include lat/long, menu data, etc)
 // ******REFACTOR THESE ROUTES INTO THE ABOVE********/
 app.post('/search', requestHandler.search);
 
+app.post('/orderStatus', requestHandler.orderStatus);
+
 app.post('/menu', requestHandler.menu);
 
 app.post('/vendorSignup', requestHandler.vendorSignup);

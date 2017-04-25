@@ -12,14 +12,69 @@ class IncomingItem extends Component {
 
   handleReady() {
     console.log('inside handleReady');
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'READY',
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
   handleDelay() {
     console.log('inside handleDelay');
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'DELAYED',
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
-  handleOnTime() {
-    console.log('inside handleOnTime');
+  handleOnTime(event) {
+    console.log('inside handleOnTime', event.target);
+    console.log('inside handleOnTime', this);
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'ONTIME',
+        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+      })
+    };
+
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
   }
 
 

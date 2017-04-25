@@ -156,10 +156,3 @@ export function loginAttempt(userInfo) {
       .catch(() => dispatch(loginError(true)));
   };
 }
-
-// export function logoutUser(bool) {
-//   return {
-//     type: 'LOGOUT_USER',
-//     logoutUser: bool
-//   };
-// };

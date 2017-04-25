@@ -56,7 +56,7 @@ export class CheckoutComponent extends React.Component {
     } else if (code === 503) { // order error
       problem = 'order. Your card has not been charged';
     }
-    return `We're  Sorry, but there was an error processing your 
+    return `We're  Sorry, but there was an error processing your
       ${problem}. Please Try again in a moment. (Error Code: ${code})`;
   }
 

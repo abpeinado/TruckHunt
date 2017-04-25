@@ -3,7 +3,6 @@ import React from 'react';
 // import { signup } from ''
 import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { signupFetch } from '../actions/signupActions.js';
 
 class VendorSignup extends React.Component {
