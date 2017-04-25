@@ -2,10 +2,9 @@ const Orders = require('../models/orders.js');
 const convertOrderItemsToOrder = require('../utils.js').convertOrderItemsToOrder;
 
 module.exports = (req, res) => {
-  const { vendor_id } = req.body;
-  // console.log(vendor_id);
+  const vendorId = req.body.vendorId;
 
-  Orders.getIncomingOrderItems(vendor_id)
+  Orders.getIncomingOrderItems(vendorId)
   .then(orderItems => {
     const orders = convertOrderItemsToOrder(orderItems);
     // console.log('orders: ', JSON.stringify(orders));

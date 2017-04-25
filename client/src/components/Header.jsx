@@ -1,5 +1,5 @@
-/* eslint-disable operator-assignment */
 
+/* eslint-disable operator-assignment */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -48,21 +48,10 @@ class Header extends Component {
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
   }
 
-  handleLogout(){
+  handleLogout() {
     console.log('inside handleLogout');
     this.props.setUserID(0);
   }
-
-
- // {
-  //   "time": "11:56 AM",
-  //   "dayOfWeek": 1
-  // }
-
- // {
-  //   "time": "15",
-  //   "dayOfWeek": 1
-  // }
 
   render() {
     // const { activeItem } = this.state;
@@ -76,16 +65,27 @@ class Header extends Component {
     let timeFormatted = `${hour}:${min} ${ampm}`;
     if (hour > 12) {
       ampm = 'PM';
-      timeFormatted = `${hour - 12}:${min} ${ampm}`;
+      if (min < 10) {
+        timeFormatted = `${hour}:0${min} ${ampm}`;
+      } else {
+        timeFormatted = `${hour - 12}:${min} ${ampm}`;
+      }
+    } else if (hour === 12) {
+      ampm = 'PM';
+      if (min < 10) {
+        timeFormatted = `${hour}:0${min} ${ampm}`;
+      } else {
+        timeFormatted = `${hour}:${min} ${ampm}`;
+      }
     } else {
       ampm = 'AM';
-      timeFormatted = `${hour}:${min} ${ampm}`;
-    }
-    if (min < 10) {
-      timeFormatted = `${hour}:0${min} ${ampm}`;
+      if (min < 10) {
+        timeFormatted = `${hour}:0${min} ${ampm}`;
+      } else {
+        timeFormatted = `${hour}:${min} ${ampm}`;
+      }
     }
 
-    console.log('hour', hour);
     return (
       <Menu size="large" borderless>
         <Menu.Item>

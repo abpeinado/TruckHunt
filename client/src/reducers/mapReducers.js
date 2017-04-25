@@ -35,6 +35,8 @@ let ampm = '';
 if (hour > 12) {
   hour = hour - 12;
   ampm = 'PM';
+} else if (hour === 12) {
+  ampm = 'PM';
 } else {
   ampm = 'AM';
 }

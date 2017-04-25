@@ -159,8 +159,11 @@ module.exports.orderStatus = (req, res) => {
   if (orderStatus === 'READY') {
     return Orders.updateStatus(orderID, 2)
       .then((response) => {
-        // console.log('response yeah', response);
-        res.status(201).send(response);
+        console.log('response yeah looking for vendoriID)', response);
+        return Orders.findVendorOrders(response.vendor_id);
+      })
+      .then((data) => {
+        res.status(201).send(data);
       })
       .catch((err) => {
         console.log('response no', err);
@@ -169,8 +172,11 @@ module.exports.orderStatus = (req, res) => {
   } else if (orderStatus === 'DELAYED') {
     return Orders.updateStatus(orderID, 1)
       .then((response) => {
-        // console.log('response yeah', response);
-        res.status(201).send(response);
+        console.log('response yeah looking for vendoriID)', response);
+        return Orders.findVendorOrders(response.vendor_id);
+      })
+      .then((data) => {
+        res.status(201).send(data);
       })
       .catch((err) => {
         console.log('response no', err);
@@ -179,8 +185,11 @@ module.exports.orderStatus = (req, res) => {
   } else if (orderStatus === 'ONTIME') {
     return Orders.updateStatus(orderID, 0)
       .then((response) => {
-        // console.log('response yeah', response);
-        res.status(201).send(response);
+        console.log('response yeah looking for vendoriID)', response);
+        return Orders.findVendorOrders(response.vendor_id);
+      })
+      .then((data) => {
+        res.status(201).send(data);
       })
       .catch((err) => {
         console.log('response no', err);

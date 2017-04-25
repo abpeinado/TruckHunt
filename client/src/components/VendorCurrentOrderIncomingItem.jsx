@@ -21,7 +21,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'READY',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
@@ -43,7 +43,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'DELAYED',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
@@ -66,7 +66,7 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'ONTIME',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
