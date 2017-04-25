@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { DatePicker, TimePicker } from 'antd';
 import Datetime from 'react-datetime';
 import { Menu } from 'semantic-ui-react';
 import moment from 'moment';
@@ -18,6 +17,7 @@ class Header extends Component {
       date: ''
     };
     this.timeChange = this.timeChange.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   timeChange(e) {
@@ -45,6 +45,12 @@ class Header extends Component {
     console.log('---------------mapdate', this.props.mapDate);
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
   }
+
+  handleLogout(){
+    console.log('inside handleLogout');
+    this.props.setUserID(0);
+  }
+
 
  // {
   //   "time": "11:56 AM",
@@ -94,9 +100,14 @@ class Header extends Component {
             <Datetime value={this.state.inputValue} onChange={this.timeChange} defaultValue={`Searching @ ${timeFormatted}`} />
           </Menu.Item>
           <Menu.Item >
-            <Link to="/auth" className="NavBarFoodTruck">
-                Login
-            </Link>
+            {this.props.setUserID === 0 ?
+              (<Link to="/auth" className="NavBarFoodTruck">
+                  Login
+              </Link>) :
+             (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
+                  Logout
+              </Link>)
+            }
           </Menu.Item>
         </Menu.Menu>
       </Menu>
@@ -104,11 +115,11 @@ class Header extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     mapDate: state.mapDate,
-    mapCenter: state.mapCenter
+    mapCenter: state.mapCenter,
+    setUserID: state.setUserID
   };
 };
 
@@ -120,9 +131,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-
-
-// export default Header;
-
-            // <DatePicker defaultValue={moment('01-01-2017', date)} format={date} />
-            // <TimePicker defaultValue={moment(timeFormatted, time)} format={time} onChange={this.timeChange} value={this.state.time} />

@@ -110,17 +110,23 @@ class VendorSignup extends React.Component {
       });
     }
   }
+        // // Redirect to vendor portal if successful
+        // {<Redirect
+        //   to={{
+        //     pathname: '/vendor'
+        //   }}
+        // />}
 
   // Render to the DOM
   render() {
     if (this.props.signupSuccess) {
       return (
-        // Redirect to vendor portal if successful
-        <Redirect
-          to={{
-            pathname: '/vendor'
-          }}
-        />
+        <div>
+          <h2> time to sign up buddy! </h2>
+          <form action={`/stripe?user=${this.props.setUserID}`} method="post">
+            <input type="submit" value="signup with stripe" />
+          </form>
+        </div>
       );
     }
     return (
@@ -200,7 +206,9 @@ const mapStateToProps = (state) => {
     signupError: state.vendorSignupError,
     signupSuccess: state.signupSuccess,
     signupLoading: state.signupLoading,
-    venderLoginSuccess: state.venderLoginSuccess
+    venderLoginSuccess: state.venderLoginSuccess,
+    setUserID: state.setUserID,
+    setUsername: state.setUsername
   };
 };
 

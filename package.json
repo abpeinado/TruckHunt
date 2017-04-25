@@ -17,7 +17,8 @@
     "resnap": "jest --updateSnapshot",
     "build": "webpack",
     "postinstall": "npm run build",
-    "lint": "eslint --ext .js --ext .jsx client server"
+    "lint": "eslint --ext .js --ext .jsx client server",
+    "seed": "node database/seedScripts/seedVendors.js && database/seedScripts/seedSchedules.js && database/seedScripts/seedMenus.js && database/seedScripts/seedReviews.js"
   },
   "dependencies": {
     "antd": "^2.9.2",
