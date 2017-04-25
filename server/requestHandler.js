@@ -1,31 +1,26 @@
 const Search = require('./models/search.js');
 const MenuItems = require('./models/menuItems.js');
+const utils = require('./utils.js');
+// const Schedules = require('./models/schedules.js');
 // const request = require('request');
 // const Vendors = require('./models/vendors.js');
+// const Orders = require('./models/orders.js');
 
-// const Schedules = require('./models/schedules.js');
-// const utils = require('./utils.js');
 
 module.exports.search = (req, res) => {
+  // console.log('client req1', req.body);
+  // console.log('client req2', req.body.date);
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
-  // --------------------------------------------------
-  // to filter by time uncomment the lines below the example object
-  // and delete Search.scheduleData(). You also havve to delete
-  // the scheduleData function in search.js and replace it with the one
-  // that is commented out. Also make sure you have
-  // dropped and reseeded the database
-  // {
-  //   "time": "11:56 AM",
-  //   "dayOfWeek": 1
-  // }
-  // const timeAsNum = utils.convertTimeToNumber(req.body.time);
-  // Search.scheduleData(timeAsNum, req.body.dayOfWeek)
-  Search.scheduleData()
+  const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
+  // console.log(req.body.date.dayOfWeek);
+  Search.scheduleData(timeAsNum, req.body.date.dayOfWeek)
+    // .then((response) => console.log('back from db', response))
     .then((response) => {
-      console.log('test res', JSON.parse(response[0].coordinates));
+      // console.log('test res', JSON.parse(response[0].coordinates));
+      console.log('test res', response);
       const newArr = [];
-      for (let i = 0; newArr.length < 20; i++) {
+      for (let i = 0; i < response.length; i++) {
         const tempItem = response[i];
         tempItem.coordinates = JSON.parse(tempItem.coordinates);
         newArr.push(tempItem);

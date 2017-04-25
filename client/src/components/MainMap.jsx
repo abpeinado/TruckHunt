@@ -25,7 +25,7 @@ class Map extends React.Component {
   componentDidMount() {
     this.getLocation();
     // TODO: ADD DATE PARAM TO REQUEST
-    this.props.truckListFetchData('/search', this.props.mapCenter);
+    this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
     // console.log('trucks list recieved');
   }
 
@@ -74,22 +74,28 @@ class Map extends React.Component {
             intensity: 0.4
           }}
         >
-          {this.props.truckList.map((item, i) => {
-            const random = (Math.floor(Math.random() * 4) + 1);
-            const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
-            return (
-              <Marker
-                coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
-                anchor="bottom"
-                key={i}
-                onClick={() => { this.props.mapMarkerUpdate(item); }}
-              >
-                <img src={image} alt={`mapMarker${image}`} />
-              </Marker>
-            );
+          {
+
+
+            (this.props.truckList.length) ? (
+              this.props.truckList.map((item, i) => {
+                const random = (Math.floor(Math.random() * 4) + 1);
+                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
+                return (
+                  <Marker
+                    coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
+                    anchor="bottom"
+                    key={i}
+                    onClick={() => { this.props.mapMarkerUpdate(item); }}
+                  >
+                    <img src={image} alt={`mapMarker${image}`} />
+                  </Marker>
+                );
+              }
+              )
+            ) : (null)
           }
 
-          )}
 
           { Object.keys(this.props.mapMarkerSelected).length > 0 && (
           <Popup
@@ -128,6 +134,7 @@ const mapStateToProps = (state) => {
     truckListHasErrored: state.truckListHasErrored,
     truckListIsLoading: state.truckListIsLoading,
     mapCenter: state.mapCenter,
+    mapDate: state.mapDate,
     mapMarkerSelected: state.mapMarkerSelected
 
   };
@@ -135,7 +142,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    truckListFetchData: (url) => dispatch(truckListFetchData(url)),
+    truckListFetchData: (url, location, locationDate) => dispatch(truckListFetchData(url, location, locationDate)),
     mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker)),
     mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
   };
