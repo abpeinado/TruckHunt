@@ -57,6 +57,30 @@ class Map extends React.Component {
       height: '88vh'
     };
 
+    let start = '';
+    let end = '';
+    if (Object.keys(this.props.mapMarkerSelected).length > 0) {
+      start = this.props.mapMarkerSelected.start_time;
+      end = this.props.mapMarkerSelected.end_time;
+      if (start < 12) {
+        start += ' AM';
+      } else if (start === 12) {
+        start += ' PM';
+      } else {
+        start -= 12;
+        start += ' PM';
+      }
+
+      if (end < 12) {
+        end += ' AM';
+      } else if (end === 12) {
+        end += ' PM';
+      } else {
+        end -= 12;
+        end += ' PM';
+      }
+    }
+
     return (
       <div className="mainMap" >
         <ReactMapboxGl
@@ -109,7 +133,7 @@ class Map extends React.Component {
               {this.props.mapMarkerSelected.vendor_name} <Icon link color="orange" name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
             <p>Rating: 4/5</p>
-            <p> Hours: {this.props.mapMarkerSelected.start_time} to {this.props.mapMarkerSelected.end_time}</p>
+            <p> Hours: {start} to {end}</p>
           </Popup>
             )}
 
