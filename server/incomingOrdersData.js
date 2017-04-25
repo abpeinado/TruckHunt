@@ -15,7 +15,7 @@ module.exports.VendorOrders = [
   },
   {
     orderNo: '#000-52',
-    customerName: 'Benicci',
+    customerName: 'Benici',
     totalPaid: '$10.00',
     orderTime: '2',
     numberOfItems: '1'
