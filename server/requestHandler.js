@@ -7,26 +7,16 @@ const orderingData = require('./incomingOrdersData.js');
 // const Vendors = require('./models/vendors.js');
 // const Orders = require('./models/orders.js');
 
-
 module.exports.search = (req, res) => {
-  // console.log('client req1', req.body);
-  // console.log('client req2', req.body.date);
-  // when geospacial querying is implemented we will pass
-  // the address/coordinates into Search.scheduleData()
   const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
-  // console.log(req.body.date.dayOfWeek);
   Search.scheduleData(timeAsNum, req.body.date.dayOfWeek)
-    // .then((response) => console.log('back from db', response))
     .then((response) => {
-      // console.log('test res', JSON.parse(response[0].coordinates));
-      console.log('test res', response);
       const newArr = [];
       for (let i = 0; i < response.length; i++) {
         const tempItem = response[i];
         tempItem.coordinates = JSON.parse(tempItem.coordinates);
         newArr.push(tempItem);
       }
-
       //-----------
       // If you want to modify the data received from the query to better display
       // on the client-side pass the response into a function inported from utils.js

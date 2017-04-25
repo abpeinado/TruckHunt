@@ -9,7 +9,6 @@ module.exports = (req, res) => {
       if (response.length === 0) {
         throw new Error('invalid combo');
       }
-      console.log('response', response);
       res.status(202).send(response);
     })
     .catch((error) => {

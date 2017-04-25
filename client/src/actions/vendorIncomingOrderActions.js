@@ -19,6 +19,13 @@ export function vendorIncomingOrderFetchDataSuccess(vendorIncomingOrder) {
   };
 }
 
+export function foundOrders(found) {
+  return {
+    type: 'FOUND_ORDERS_FOR_VENDOR',
+    found
+  };
+}
+
 export function vendorIncomingOrderFetchData(url, vendorId) {
   const init = {
     method: 'POST',

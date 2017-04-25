@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
-import { vendorIncomingOrderFetchData } from '../actions/vendorIncomingOrderActions.js';
+import { vendorIncomingOrderFetchData, foundOrders } from '../actions/vendorIncomingOrderActions.js';
 import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
 
 class VendorCurrentOrders extends Component {
 
-  componentDidMount() {
-    this.props.FetchVendorOrders('/vendorIncomingOrders', 74);
+  // componentDidMount() {
+  //   this.props.FetchVendorOrders('/vendorIncomingOrders', 74);
+  //   this.props.FoundOrdersOnce(true);
+  //   console.log('found orders: ', this.props.foundOrders);
+  // }
+
+  componentWillUpdate() {
+    if (!this.props.foundOrders) {
+      this.props.FetchVendorOrders('/vendorIncomingOrders', this.props.setUserID);
+      this.props.FoundOrdersOnce(true);
+    }
   }
 
   render() {
@@ -39,13 +48,15 @@ const mapStateToProps = (state) => {
     vendorIncomingOrder: state.vendorIncomingOrder,
     vendorIncomingOrderHasErrored: state.vendorIncomingOrderHasErrored,
     vendorIncomingOrderIsLoading: state.vendorIncomingOrderIsLoading,
-    setUserID: state.setUserID
+    setUserID: state.setUserID,
+    foundOrders: state.foundOrders
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    FetchVendorOrders: (url, id) => dispatch(vendorIncomingOrderFetchData(url, id))
+    FetchVendorOrders: (url, id) => dispatch(vendorIncomingOrderFetchData(url, id)),
+    FoundOrdersOnce: (found) => dispatch(foundOrders(found))
   };
 };
 

@@ -24,3 +24,12 @@ export const vendorIncomingOrder = (state = [], action) => {
       return state;
   }
 };
+
+export const foundOrders = (state = false, action) => {
+  switch (action.type) {
+    case 'FOUND_ORDERS_FOR_VENDOR':
+      return action.found;
+    default:
+      return state;
+  }
+};
