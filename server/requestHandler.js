@@ -31,6 +31,7 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.menu = (req, res) => {
+  console.log('menu res------------', req.body);
   const defaultFoodCategory = 'Cold Truck: packaged sandwiches: snacks: candy: hot and cold drinks';
   MenuItems.foodCategories()
     .then((foodCategories) => {
@@ -184,6 +185,19 @@ module.exports.orderStatus = (req, res) => {
       });
   } else if (orderStatus === 'ONTIME') {
     return Orders.updateStatus(orderID, 0)
+      .then((response) => {
+        console.log('response yeah looking for vendoriID)', response);
+        return Orders.findVendorOrders(response.vendor_id);
+      })
+      .then((data) => {
+        res.status(201).send(data);
+      })
+      .catch((err) => {
+        console.log('response no', err);
+        res.status(400).send(err);
+      });
+  } else if (orderStatus === 'COMPLETE') {
+    return Orders.updateStatus(orderID, 3)
       .then((response) => {
         console.log('response yeah looking for vendoriID)', response);
         return Orders.findVendorOrders(response.vendor_id);

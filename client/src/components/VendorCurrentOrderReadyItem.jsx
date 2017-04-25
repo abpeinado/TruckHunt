@@ -7,8 +7,30 @@ class ReadyItem extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.handleComplete = this.handleComplete.bind(this);
   }
 
+  handleComplete(event) {
+    console.log('inside handleComplete', event.target);
+    console.log('inside handleComplete', this);
+    const init = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderStatus: 'COMPLETE',
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+      })
+    };
+    fetch('/orderStatus', init)
+      .then((response) => {
+        console.log('response from fetch', response);
+      })
+      .catch((err) => {
+        console.log('error from fetch vendorcurrentorder', err);
+      });
+  }
 
   render() {
     const time = moment(this.props.incomingOrder.order_time).format('llll');
@@ -56,7 +78,7 @@ class ReadyItem extends Component {
               <div>
                 <ButtonToolbar>
                   <ButtonGroup bsSize="large" vertical block>
-                    <Button bsStyle="primary" style={{ height: '12em' }} >PICKED UP</Button>
+                    <Button onClick={this.handleComplete} bsStyle="primary" style={{ height: '12em' }} >Complete</Button>
                   </ButtonGroup>
                 </ButtonToolbar>
               </div>

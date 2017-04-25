@@ -19,6 +19,12 @@ export function vendorIncomingOrderFetchDataSuccess(vendorIncomingOrder) {
   };
 }
 
+export function vendorIncomingOrderUpdate(vendorIncomingOrders) {
+  return (dispatch) => {
+    dispatch(vendorIncomingOrderFetchDataSuccess(vendorIncomingOrders));
+  };
+}
+
 export function foundOrders(found) {
   return {
     type: 'FOUND_ORDERS_FOR_VENDOR',

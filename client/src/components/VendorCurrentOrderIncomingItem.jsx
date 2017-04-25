@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Row } from 'react-bootstrap';
 import moment from 'moment';
+import { vendorIncomingOrderUpdate } from '../actions/vendorIncomingOrderActions.js';
 import MenuItem from './vendorOrderMenuItem.jsx';
 
 class IncomingItem extends Component {
@@ -27,8 +29,10 @@ class IncomingItem extends Component {
 
     fetch('/orderStatus', init)
       .then((response) => {
-        console.log('response from fetch', response);
+        console.log('response from fetch', JSON.stringify(response));
+        return JSON.stringify(response);
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -49,8 +53,10 @@ class IncomingItem extends Component {
 
     fetch('/orderStatus', init)
       .then((response) => {
-        console.log('response from fetch', response);
+        console.log('response from fetch', JSON.stringify(response));
+        return JSON.stringify(response);
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -72,8 +78,10 @@ class IncomingItem extends Component {
 
     fetch('/orderStatus', init)
       .then((response) => {
-        console.log('response from fetch', response);
+        console.log('response from fetch', JSON.stringify(response));
+        return JSON.stringify(response);
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -149,4 +157,13 @@ class IncomingItem extends Component {
   }
 }
 
-export default IncomingItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    vendorIncomingOrderUpdate: (vendorIncomingOrders) => dispatch(vendorIncomingOrderUpdate(vendorIncomingOrders))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(IncomingItem);
+
+
+// export default IncomingItem;
