@@ -13,7 +13,6 @@ export class CheckoutComponent extends React.Component {
   }
   componentDidMount() {
     const amount = this.props.cartTotal; // eslint-disable-line no-unused-vars
-    console.log('stripe key', process.env.STRIPE_PUBLIC_KEY);
     handler = StripeCheckout.configure({
       key: process.env.STRIPE_PUBLIC_KEY,
       name: 'Truck Hunt',
