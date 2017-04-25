@@ -18,6 +18,10 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    console.log('setUserID: ', this.props.setUserID);
+  }
+
   handleBusinessOwner() {
     this.setState({
       businessOwner: !this.state.businessOwner
@@ -136,7 +140,8 @@ const mapStateToProps = (state) => {
     loginError: state.loginError,
     loginSuccess: state.loginSuccess,
     loginLoading: state.loginLoading,
-    vendorLoginSuccess: state.vendorLoginSuccess
+    vendorLoginSuccess: state.vendorLoginSuccess,
+    setUserID: state.setUserID
   };
 };
 
