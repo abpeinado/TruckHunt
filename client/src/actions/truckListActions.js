@@ -22,13 +22,20 @@ export function truckListFetchDataSuccess(truckList) {
 export function truckListFetchData(url, coordinates, date) {
   return (dispatch) => {
     dispatch(truckListIsLoading(true));
+    const dateParsed = date;
+    const coordinatesParsed = coordinates;
+    // console.log('action coordinates', coordinatesParsed);
+    // console.log('action date', dateParsed);
+    const reqBody = { coordinates: coordinatesParsed, date: dateParsed };
+    // console.log('reqBody', reqBody);
     const options = {
       method: 'POST',
-      body: {
-        coordinates,
-        date
-      }
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reqBody)
     };
+    // console.log('OPTIONS', options);
     fetch(url, options)
       .then((response) => {
         if (!response.ok) {

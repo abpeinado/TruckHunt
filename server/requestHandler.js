@@ -7,6 +7,8 @@ const MenuItems = require('./models/menuItems.js');
 // const utils = require('./utils.js');
 
 module.exports.search = (req, res) => {
+  console.log('client req1', req.body);
+  console.log('client req2', req.body.date);
   // when geospacial querying is implemented we will pass
   // the address/coordinates into Search.scheduleData()
   // --------------------------------------------------

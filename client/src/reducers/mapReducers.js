@@ -26,7 +26,7 @@ export const mapMarkerSelected = (state = {}, action) => {
 //   }
 // };
 
-export const mapDate = (state = { time: '12:00 AM', dayOfWeek: 1 }, action) => {
+export const mapDate = (state = { time: "12:00 AM", dayOfWeek: 1 }, action) => {
   switch (action.type) {
     case 'MAP_DATE':
       return action.date;

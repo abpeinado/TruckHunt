@@ -25,7 +25,7 @@ class Map extends React.Component {
   componentDidMount() {
     this.getLocation();
     // TODO: ADD DATE PARAM TO REQUEST
-    this.props.truckListFetchData('/search', this.props.mapCenter);
+    this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
     // console.log('trucks list recieved');
   }
 
@@ -128,6 +128,7 @@ const mapStateToProps = (state) => {
     truckListHasErrored: state.truckListHasErrored,
     truckListIsLoading: state.truckListIsLoading,
     mapCenter: state.mapCenter,
+    mapDate: state.mapDate,
     mapMarkerSelected: state.mapMarkerSelected
 
   };
@@ -135,7 +136,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    truckListFetchData: (url) => dispatch(truckListFetchData(url)),
+    truckListFetchData: (url, location, locationDate) => dispatch(truckListFetchData(url, location, locationDate)),
     mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker)),
     mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
   };

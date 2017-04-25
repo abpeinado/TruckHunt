@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 import { mapCenterUpdate } from '../actions/mapActions.js';
-
+import { truckListFetchData } from '../actions/truckListActions.js';
 
 class Search extends Component {
   constructor(props) {
@@ -60,6 +60,7 @@ class Search extends Component {
     const newCoordinates = { lat: lat, lng: lng };
 
     this.props.mapCenterUpdate(newCoordinates);
+    this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
 
     // remove for Production... this should help for development
     // return (
@@ -115,13 +116,16 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    mapDate: state.mapDate,
     mapCenter: state.mapCenter
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
+    mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates)),
+    truckListFetchData: (url, location, locationDate) => dispatch(truckListFetchData(url, location, locationDate))
+
   };
 };
 

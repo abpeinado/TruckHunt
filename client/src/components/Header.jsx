@@ -41,6 +41,8 @@ class Header extends Component {
 
     console.log('dateObj', dateObj);
     this.props.mapDateUpdate(dateObj);
+    console.log('---------------mapcenter', this.props.mapCenter);
+    console.log('---------------mapdate', this.props.mapDate);
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
   }
 
@@ -107,7 +109,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     mapDateUpdate: (date) => dispatch(mapDateUpdate(date)),
-    truckListFetchData: (locationDate) => dispatch(truckListFetchData(locationDate))
+    truckListFetchData: (url, location, locationDate) => dispatch(truckListFetchData(url, location, locationDate))
   };
 };
 
