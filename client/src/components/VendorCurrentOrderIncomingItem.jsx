@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Well, Row } from 'react-bootstrap';
+import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Row } from 'react-bootstrap';
+import moment from 'moment';
 import MenuItem from './vendorOrderMenuItem.jsx';
 
 class IncomingItem extends Component {
@@ -80,6 +81,9 @@ class IncomingItem extends Component {
 
 
   render() {
+    const time = moment(this.props.incomingOrder.order_time).format('llll');
+    const timeFormatted = moment(time).fromNow();
+
     const order = this.props.incomingOrder;
     const incomingOrderHeader = (
       <Col xs={12}>
@@ -96,7 +100,7 @@ class IncomingItem extends Component {
           Total
           </h5>
           <h2>
-            {order.price_total}
+            ${order.price_total}
           </h2>
         </Col>
         <Col xs={6}>
@@ -110,13 +114,13 @@ class IncomingItem extends Component {
           </Col>
           <Col xs={6} style={{ 'padding-top': '16px', 'padding-left': '3em' }}>
             <Label bsStyle="success" style={{ fontSize: '2em' }}>
-              {order.order_time}
+              {timeFormatted}
             </Label>
-            <div style={{ 'padding-top': '16px' }}>MIN AGO</div>
           </Col>
         </Col>
       </Col>
     );
+            // <div style={{ 'padding-top': '16px' }}>MIN AGO</div>
 
     return (
       <Accordion >
