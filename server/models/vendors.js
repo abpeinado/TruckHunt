@@ -30,10 +30,6 @@ module.exports.addVendorToken = (token, vendor) => {
 module.exports.addVendorToken = (token) => {
   return db.query('UPDATE vendors SET stripe_user_id=$1', [token]);
 };
-// module.exports.addVendorToken = (token) => {
-//   console.log('inside add addVendorToken');
-//   return db.query('UPDATE vendors SET stripe_user_id=$1', [token]);
-// };
 
 // get token
 module.exports.getVendorToken = (vendor_id) => {
@@ -42,3 +38,8 @@ module.exports.getVendorToken = (vendor_id) => {
     WHERE vendor_id=$1\
     ', [vendor_id]);
 };
+
+// module.exports.addVendorToken = (token) => {
+//   console.log('inside add addVendorToken');
+//   return db.query('UPDATE vendors SET stripe_user_id=$1', [token]);
+// };

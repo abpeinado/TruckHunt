@@ -80,7 +80,7 @@ module.exports.convertOrderItemsToOrder = orderItems => {
         quantity,
         item_note
       };
-      
+
       orders.push(order);
       ordersHash[orderItem.order_id] = [item];
     } else {
@@ -89,7 +89,7 @@ module.exports.convertOrderItemsToOrder = orderItems => {
     }
   });
 
-  //sort orders by time
+  // sort orders by time
   orders.sort((a, b) => {
     return a.order_time_epoch - b.order_time_epoch;
   });

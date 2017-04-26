@@ -43,17 +43,32 @@ export function vendorIncomingOrderFetchData(url, vendorId) {
     })
   };
   return (dispatch) => {
+    console.log('about to execute dispatch');
     dispatch(vendorIncomingOrderIsLoading(true));
     fetch(url, init)
       .then((res) => {
         if (!res.ok) {
-          throw Error(res.statusText);
+          throw Error(res.status);
+        } else {
+          dispatch(vendorIncomingOrderIsLoading(false));
+          return res;
         }
-        dispatch(vendorIncomingOrderIsLoading(false));
-        return res;
       })
-      .then(res => res.json())
-      .then(truckList => dispatch(vendorIncomingOrderFetchDataSuccess(truckList)))
-      .catch(() => dispatch(vendorIncomingOrderHasErrored(true)));
+      .then(res => res.json()) // convert res.body stream to object
+      .then(res => {
+        console.log('WHAT IS THIS vendor incoming actions', res);
+        if (res.ignore) {
+            // do nothing
+          console.log('mystery call', res);
+        } else {
+          const truckList = res;
+          dispatch(vendorIncomingOrderFetchDataSuccess(truckList));
+        }
+      })
+      .catch((err) => {
+        console.log('error caught in vendor order actions', err);
+        dispatch(vendorIncomingOrderHasErrored(true));
+      });
   };
 }
+

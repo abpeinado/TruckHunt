@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Row } from 'react-bootstrap';
 import moment from 'moment';
+import { vendorIncomingOrderUpdate } from '../actions/vendorIncomingOrderActions.js';
 import MenuItem from './vendorOrderMenuItem.jsx';
 
 class ReadyItem extends Component {
@@ -10,9 +12,7 @@ class ReadyItem extends Component {
     this.handleComplete = this.handleComplete.bind(this);
   }
 
-  handleComplete(event) {
-    console.log('inside handleComplete', event.target);
-    console.log('inside handleComplete', this);
+  handleComplete() {
     const init = {
       method: 'POST',
       headers: {
@@ -24,9 +24,12 @@ class ReadyItem extends Component {
       })
     };
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
         console.log('response from fetch', response);
+        return response;
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -44,7 +47,7 @@ class ReadyItem extends Component {
             {order.order_id}
           </h3>
           <h2>
-          {order.customer_email}
+            {order.customer_email}
           </h2>
         </Col>
         <Col xs={6} style={{ 'padding-top': '16px', 'padding-left': '3em' }}>
@@ -90,4 +93,11 @@ class ReadyItem extends Component {
   }
 }
 
-export default ReadyItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    vendorIncomingOrderUpdate: (vendorIncomingOrders) => dispatch(vendorIncomingOrderUpdate(vendorIncomingOrders))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ReadyItem);
+// export default ReadyItem;

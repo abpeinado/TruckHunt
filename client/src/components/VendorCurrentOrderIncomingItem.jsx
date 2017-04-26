@@ -28,9 +28,10 @@ class IncomingItem extends Component {
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
-        console.log('response from fetch', JSON.stringify(response));
-        return JSON.stringify(response);
+        console.log('response from fetch', response);
+        return response;
       })
       .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
@@ -52,9 +53,10 @@ class IncomingItem extends Component {
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
-        console.log('response from fetch', JSON.stringify(response));
-        return JSON.stringify(response);
+        console.log('response from fetch', response);
+        return response;
       })
       .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
@@ -62,7 +64,7 @@ class IncomingItem extends Component {
       });
   }
 
-  handleOnTime(event) {
+  handleOnTime() {
     console.log('inside handleOnTime', event.target);
     console.log('inside handleOnTime', this);
     const init = {
@@ -77,9 +79,10 @@ class IncomingItem extends Component {
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
-        console.log('response from fetch', JSON.stringify(response));
-        return JSON.stringify(response);
+        console.log('response from fetch', response);
+        return response;
       })
       .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {

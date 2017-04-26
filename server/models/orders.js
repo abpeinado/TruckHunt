@@ -62,6 +62,6 @@ module.exports.getIncomingOrderItems = (vendor_id) => {
     INNER JOIN menu_items as mi\
     ON oi.menu_item_id = mi.menu_item_id\
     WHERE o.vendor_id = $1\
-    AND o.order_status < 2\
+    AND o.order_status < 4\
     ', [vendor_id]);
 };
