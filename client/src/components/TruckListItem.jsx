@@ -11,7 +11,7 @@ class TruckListItem extends Component {
     const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarker(large)V${2}.png`;
 
     return (
-      <Card className="trucklist-group" >
+      <Card className="animated slideInUp trucklist-group" >
         <Card.Content>
           <Image src={image} style={{ maxHeight: '90px' }} alt={`${info.vendor_name}-img`} />
           <Card.Header>

@@ -13,10 +13,10 @@ class OrderSuccess extends React.Component {
       <div>
         <HeaderBar />
         <Grid className="gridWrapper">
-           <Grid.Column className="gridLeftWrapper truck-info-left-pane" width={10}>
-              <Segment inverted color="green" className="menuHeader">
+           <Grid.Column className="animated tada gridLeftWrapper truck-info-left-pane" width={10}>
+              <Segment inverted color="green" className="menuHeader" style={{ 'min-height': '12em' }}>
                 <Header as="h1" icon textAlign="center">
-                  <Header.Content>
+                  <Header.Content style={{ 'padding-top': '1.2em' }}>
                     <Icon.Group color="grey">
                       <Icon size='large' name='checkmark' />
                     </Icon.Group>
@@ -28,8 +28,8 @@ class OrderSuccess extends React.Component {
                     </div>
                   </Header.Content>
                 </Header>
-                <Header as="h2" textAlign="center">
-                  <Header.Content>
+                <Header as="h2" textAlign="center" >
+                  <Header.Content style={{ 'padding-bottom': '1.2em' }}>
                     Check your email for order status updates!
                   </Header.Content>
                 </Header>
