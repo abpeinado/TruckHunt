@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Well, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Row } from 'react-bootstrap';
+import moment from 'moment';
+import { vendorIncomingOrderUpdate } from '../actions/vendorIncomingOrderActions.js';
+import MenuItem from './vendorOrderMenuItem.jsx';
 
 class IncomingItem extends Component {
   constructor(props) {
@@ -19,14 +23,17 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'READY',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
         console.log('response from fetch', response);
+        return response;
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -41,20 +48,23 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'DELAYED',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
         console.log('response from fetch', response);
+        return response;
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
   }
 
-  handleOnTime(event) {
+  handleOnTime() {
     console.log('inside handleOnTime', event.target);
     console.log('inside handleOnTime', this);
     const init = {
@@ -64,14 +74,17 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'ONTIME',
-        orderID: 3 // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
       })
     };
 
     fetch('/orderStatus', init)
+      .then(res => res.json()) // convert res.body stream to object
       .then((response) => {
         console.log('response from fetch', response);
+        return response;
       })
+      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
       .catch((err) => {
         console.log('error from fetch vendorcurrentorder', err);
       });
@@ -79,15 +92,18 @@ class IncomingItem extends Component {
 
 
   render() {
+    const time = moment(this.props.incomingOrder.order_time).format('llll');
+    const timeFormatted = moment(time).fromNow();
+
     const order = this.props.incomingOrder;
     const incomingOrderHeader = (
       <Col xs={12}>
         <Col xs={3}>
           <h5>
-            {order.orderNo}
+            {order.order_id}
           </h5>
           <h2>
-            {order.customerName}
+            {order.customer_email}
           </h2>
         </Col>
         <Col xs={3}>
@@ -95,7 +111,7 @@ class IncomingItem extends Component {
           Total
           </h5>
           <h2>
-            {order.totalPaid}
+            ${order.price_total}
           </h2>
         </Col>
         <Col xs={6}>
@@ -104,50 +120,27 @@ class IncomingItem extends Component {
             Ordered
             </h5>
             <h2>
-              {order.numberOfItems} Items
+              {order.items.length} Items
             </h2>
           </Col>
           <Col xs={6} style={{ 'padding-top': '16px', 'padding-left': '3em' }}>
             <Label bsStyle="success" style={{ fontSize: '2em' }}>
-              {order.orderTime}
+              {timeFormatted}
             </Label>
-            <div style={{ 'padding-top': '16px' }}>MIN AGO</div>
           </Col>
         </Col>
       </Col>
     );
-
-    const incomingOrderMenuItem = (
-      <Well className="incomingOrderMenuItem">
-        <Col xs={3}>
-          <h2>
-          4
-          </h2>
-        </Col>
-        <Col xs={6}>
-          <h2>
-          Kale Salad
-          </h2>
-          <h5>
-          -No Goat Cheese
-          </h5>
-        </Col>
-        <Col xs={3}>
-          <h2>
-          $20.00
-          </h2>
-        </Col>
-      </Well>
-    );
+    const statusColor = { 0: 'success', 1: 'warning', 2: 'primary' };
 
     return (
       <Accordion >
-        <Panel header={incomingOrderHeader} className="incomingOrderHeaderStyle">
+        <Panel header={incomingOrderHeader} bsStyle={statusColor[order.order_status]} className="incomingOrderHeaderStyle">
           <Row>
             <Col xs={8}>
-              {incomingOrderMenuItem}
-              {incomingOrderMenuItem}
-              {incomingOrderMenuItem}
+              {this.props.incomingOrder.items.map((item, i) =>
+                <MenuItem incomingOrder={item} key={i} />
+              )}
             </Col>
             <Col xs={4} style={{ fontSize: '2.5em' }}>
               <div>
@@ -167,4 +160,13 @@ class IncomingItem extends Component {
   }
 }
 
-export default IncomingItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    vendorIncomingOrderUpdate: (vendorIncomingOrders) => dispatch(vendorIncomingOrderUpdate(vendorIncomingOrders))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(IncomingItem);
+
+
+// export default IncomingItem;

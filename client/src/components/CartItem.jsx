@@ -6,7 +6,7 @@ const CartItem = ({ name, price, quantity, onRemoveClicked }) => {
   const priceWithDecimals = `${priceAsString.slice(0, priceAsString.length - 2)}.${priceAsString.slice(priceAsString.length - 2)}`;
 
   return (
-    <Message size="small">
+    <Message size="small" className="animated slideInRight">
       <Grid>
         <Grid.Row>
           <Grid.Column width={3} textAlign="center">

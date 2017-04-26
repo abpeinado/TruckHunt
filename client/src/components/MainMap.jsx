@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Rating } from 'semantic-ui-react';
 import mapboxgl from 'mapbox-gl'; // eslint-disable-line no-unused-vars
 import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
@@ -57,6 +57,30 @@ class Map extends React.Component {
       height: '88vh'
     };
 
+    let start = '';
+    let end = '';
+    if (Object.keys(this.props.mapMarkerSelected).length > 0) {
+      start = this.props.mapMarkerSelected.start_time;
+      end = this.props.mapMarkerSelected.end_time;
+      if (start < 12) {
+        start += ' AM';
+      } else if (start === 12) {
+        start += ' PM';
+      } else {
+        start -= 12;
+        start += ' PM';
+      }
+
+      if (end < 12) {
+        end += ' AM';
+      } else if (end === 12) {
+        end += ' PM';
+      } else {
+        end -= 12;
+        end += ' PM';
+      }
+    }
+
     return (
       <div className="mainMap" >
         <ReactMapboxGl
@@ -79,7 +103,7 @@ class Map extends React.Component {
             (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
-                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${random}.png`;
+                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${2}.png`;
                 return (
                   <Marker
                     coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
@@ -108,8 +132,8 @@ class Map extends React.Component {
             <h4>
               {this.props.mapMarkerSelected.vendor_name} <Icon link color="orange" name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
-            <p>Rating: 4/5</p>
-            <p> Hours: {this.props.mapMarkerSelected.start_time} to {this.props.mapMarkerSelected.end_time}</p>
+            <Rating maxRating={5} defaultRating={this.props.mapMarkerSelected.rating} icon="star" size="small" />
+            <p> Open {start} to {end}</p>
           </Popup>
             )}
 

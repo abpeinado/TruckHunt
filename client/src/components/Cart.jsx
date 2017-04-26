@@ -49,7 +49,7 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal }) => {
   );
 
   return (
-    <Grid.Column className="gridLeftWrapper cart" width={6}>
+    <Grid.Column className="animated slideInRight gridLeftWrapper cart" width={6}>
       <Segment>
         <Header as="h2" className="cart-title">Cart</Header>
         <Divider section />

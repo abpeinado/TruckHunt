@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import Header from './Header.jsx';
+import Header from './HeaderLimitedWLogin.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
 import CartContainer from './CartContainer.jsx';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';

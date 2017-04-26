@@ -2,19 +2,25 @@ const Orders = require('../models/orders.js');
 const convertOrderItemsToOrder = require('../utils.js').convertOrderItemsToOrder;
 
 module.exports = (req, res) => {
-  const { vendor_id } = req.body;
-  // console.log(vendor_id);
-
-  Orders.getIncomingOrderItems(vendor_id)
-  .then(orderItems => {
-    const orders = convertOrderItemsToOrder(orderItems);
-    // console.log('orders: ', JSON.stringify(orders));
-    res.status(200).send(orders);
-  })
-  .catch(err => {
-    console.log('error getting orders', err);
-    res.sendStatus(404);
-  });
+  console.log('HERE------------------------>>>>>', req.body);
+  const vendorId = req.body.vendorId;
+  if (vendorId === 0) {
+    res.status(200).send({ ignore: true });
+  } else {
+    console.log('this hsould be vendor id', vendorId);
+    console.log('this hsould be vendor id type ', typeof vendorId);
+    Orders.getIncomingOrderItems(vendorId)
+    .then(orderItems => {
+      console.log('this is where it is', orderItems);
+      const orders = convertOrderItemsToOrder(orderItems);
+      console.log('orders: ', JSON.stringify(orders));
+      res.status(200).send(orders);
+    })
+    .catch(err => {
+      console.log('error getting orders', err);
+      res.sendStatus(404);
+    });
+  }
 };
 
 /*
@@ -30,4 +36,4 @@ return format:
 ]
 */
 
-// module.exports({ body: { vendor_id:5 } }); //uncomment to test
+// module.exports({ body: { vendorId: 24 } }); // uncomment to test

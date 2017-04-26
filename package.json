@@ -21,6 +21,7 @@
     "seed": "node database/seedScripts/seedVendors.js && database/seedScripts/seedSchedules.js && database/seedScripts/seedMenus.js && database/seedScripts/seedReviews.js"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "antd": "^2.9.2",
     "babel-core": "6.24.0",
     "babel-jest": "19.0.0",
@@ -55,6 +56,7 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "request": "^2.81.0",
+    "scroll-into-view": "^1.8.0",
     "semantic-ui-react": "^0.68.1",
     "stripe": "^4.18.0",
     "underscore": "1.8.3",

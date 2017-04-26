@@ -1,8 +1,13 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { vendorIncomingOrderFetchData, foundOrders } from '../actions/vendorIncomingOrderActions.js';
 import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
+import ReadyItem from './VendorCurrentOrderReadyItem.jsx';
 
 class VendorCurrentOrders extends Component {
 
@@ -14,6 +19,7 @@ class VendorCurrentOrders extends Component {
 
   componentWillUpdate() {
     if (!this.props.foundOrders) {
+      console.log('SET USER ID', this.props.setUserID);
       this.props.FetchVendorOrders('/vendorIncomingOrders', this.props.setUserID);
       this.props.FoundOrdersOnce(true);
     }
@@ -29,14 +35,22 @@ class VendorCurrentOrders extends Component {
     return (
       <div>
         <Col xs={12} md={8}>
-          <h2 style={{ textAlign: 'center', color: '#fff' }}>INCOMING ORDERS</h2>
-          {this.props.vendorIncomingOrder.map((item, i) =>
-            <IncomingItem incomingOrder={item} key={i} />
+          <h2 style={{ textAlign: 'center' }}>INCOMING ORDERS</h2>
+          {this.props.vendorIncomingOrder.map((item, i) => {
+            if (item.order_status < 2) {
+              return <IncomingItem incomingOrder={item} key={i} />;
+            }
+          }
           )}
         </Col>
-        <Col style={{ textAlign: 'center', color: '#fff' }} xs={12} md={4}>
+        <Col style={{ textAlign: 'center' }} xs={12} md={4}>
           <h2>READY FOR PICKUP</h2>
-
+          {this.props.vendorIncomingOrder.map((item, i) => {
+            if (item.order_status === 2) {
+              return <ReadyItem incomingOrder={item} key={i} />;
+            }
+          }
+          )}
         </Col>
       </div>
     );

@@ -7,7 +7,9 @@ import { Grid, Card } from 'semantic-ui-react';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
+import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import TruckListItem from './TruckListItem.jsx';
+
 // import $ from 'jquery';
 
 
@@ -35,7 +37,7 @@ class TruckList extends Component {
           <Card.Group itemsPerRow={2}>
             {this.props.truckList === undefined ? null :
             (this.props.truckList.map((item, i) =>
-              <Link to="/truckMenu" key={i} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
+              <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
                 <TruckListItem className="grid-item" restaurant={item} />
               </Link>
             ))
@@ -50,15 +52,18 @@ class TruckList extends Component {
 const mapStateToProps = (state) => {
   return {
     truckList: state.truckList,
-    truckSelected: state.truckSelected
+    truckSelected: state.truckSelected,
+    mapMarkerSelected: state.mapMarkerSelected
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker)),
     truckSelectedUpdate: (truck) => dispatch(truckSelectedUpdate(truck)),
     truckListFetchData: (url) => dispatch(truckListFetchData(url)),
-    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
+    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory)),
+    mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
   };
 };
 

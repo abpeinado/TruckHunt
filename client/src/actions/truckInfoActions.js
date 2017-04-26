@@ -20,13 +20,17 @@ export function truckInfoFetchDataSuccess(truckInfo) {
 }
 
 export function truckInfoFetchData(truckCategory) {
+
   return (dispatch) => {
     dispatch(truckInfoIsLoading(true));
     const options = {
       method: 'POST',
-      body: {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         food_category: truckCategory
-      }
+      })
     };
     fetch('/menu', options)
       .then((response) => {

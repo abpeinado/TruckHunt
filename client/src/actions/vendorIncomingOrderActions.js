@@ -19,6 +19,12 @@ export function vendorIncomingOrderFetchDataSuccess(vendorIncomingOrder) {
   };
 }
 
+export function vendorIncomingOrderUpdate(vendorIncomingOrders) {
+  return (dispatch) => {
+    dispatch(vendorIncomingOrderFetchDataSuccess(vendorIncomingOrders));
+  };
+}
+
 export function foundOrders(found) {
   return {
     type: 'FOUND_ORDERS_FOR_VENDOR',
@@ -41,13 +47,24 @@ export function vendorIncomingOrderFetchData(url, vendorId) {
     fetch(url, init)
       .then((res) => {
         if (!res.ok) {
-          throw Error(res.statusText);
+          throw Error(res.status);
+        } else {
+          dispatch(vendorIncomingOrderIsLoading(false));
+          return res;
         }
-        dispatch(vendorIncomingOrderIsLoading(false));
-        return res;
       })
       .then(res => res.json())
-      .then(truckList => dispatch(vendorIncomingOrderFetchDataSuccess(truckList)))
-      .catch(() => dispatch(vendorIncomingOrderHasErrored(true)));
+      .then(res => {
+        if (res.ignore) {
+            // do nothing
+        } else {
+          const truckList = res;
+          dispatch(vendorIncomingOrderFetchDataSuccess(truckList));
+        }
+      })
+      .catch((err) => {
+        dispatch(vendorIncomingOrderHasErrored(true));
+      });
   };
 }
+

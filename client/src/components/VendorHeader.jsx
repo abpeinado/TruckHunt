@@ -10,7 +10,7 @@ const VendorHeader = () => (
         <Logo />
         <Navbar.Toggle />
       </Navbar.Header>
-      <Nav bsStyle="pills" activeKey={1} className="NavbarVendor" pullRight navbar>
+      <Nav bsStyle="pills" className="NavbarVendor" pullRight navbar>
         <NavItem eventKey={1} title="CurrentOrders">
           <Link to="/vendor">
             Current Orders
@@ -37,3 +37,5 @@ const VendorHeader = () => (
 );
 
 export default VendorHeader;
+
+//      <Nav bsStyle="pills" activeKey={1} className="NavbarVendor" pullRight navbar>

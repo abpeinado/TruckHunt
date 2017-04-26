@@ -40,7 +40,7 @@ module.exports.updateStatus = (order_id, int) => {
   return db.one(
     'UPDATE orders SET order_status = $1\
     WHERE order_id = $2\
-    RETURNING order_id\
+    RETURNING vendor_id\
     ', [int, order_id]);
 };
 
@@ -62,6 +62,6 @@ module.exports.getIncomingOrderItems = (vendor_id) => {
     INNER JOIN menu_items as mi\
     ON oi.menu_item_id = mi.menu_item_id\
     WHERE o.vendor_id = $1\
-    AND o.order_status < 2\
+    AND o.order_status < 4\
     ', [vendor_id]);
 };
