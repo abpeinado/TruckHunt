@@ -1,6 +1,5 @@
 const MenuItems = require('../server/models/menuItems.js');
 const { db } = require('../database/index.js');
-// --runInBand
 
 const testMenuItem = {
   food_category: 'Burgers: melts: hot dogs: burritos:sandwiches: fries: onion rings: drinks'

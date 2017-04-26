@@ -1,6 +1,5 @@
 const Vendor = require('../server/models/vendors.js');
 const { db } = require('../database/index.js');
-// --runInBand
 
 const testVendor = {
   vendor_name: 'BH & MT LLC',
