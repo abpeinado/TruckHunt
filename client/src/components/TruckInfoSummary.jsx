@@ -25,7 +25,7 @@ class TruckInfoSummary extends React.Component {
           </Header.Content>
         </Header>
         <Header textAlign="center">
-          <Rating icon="star" defaultRating={4} maxRating={5} size="huge" />
+          <Rating icon="star" defaultRating={truck.rating} maxRating={5} size="huge" />
         </Header>
       </Segment>
 

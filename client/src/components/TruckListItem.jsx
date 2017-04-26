@@ -26,7 +26,7 @@ class TruckListItem extends Component {
             <Icon name="like outline" />
             Rating
           </a>
-          <Rating maxRating={5} defaultRating={4} icon="star" size="large" />
+          <Rating maxRating={5} defaultRating={info.rating} icon="star" size="large" />
         </Card.Content>
       </Card>
     );

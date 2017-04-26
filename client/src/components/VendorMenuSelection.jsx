@@ -8,7 +8,7 @@ class VendorItemAvailability extends Component {
       <div>
         <VendorHeader />
         <div>
-          <h2>
+          <h2 style={{ textAlign: 'center' }}>
             Menu Selection Coming Soon!
           </h2>
         </div>

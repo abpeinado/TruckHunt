@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */ // ignore 'stripeCheckout is undefined'
 import React from 'react';
+import { Loader, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 import { submitOrder } from '../actions/checkoutActions.js';
 
 let handler;
@@ -65,9 +66,22 @@ export class CheckoutComponent extends React.Component {
     if (submitOrderError) {
       return <div>{this.errorMessage(submitOrderError)}</div>;
     } else if (submitOrderProcessing) {
-      return <div>You're order is processing </div>;
+      return (
+        <div>
+          <h2 style={{ textAlign: 'center' }}>You're order is processing</h2>
+          <Loader active inline='centered' />
+        </div>
+      );
     } else if (submittedOrder) {
-      return <div>Success! You're order has been placed.</div>;
+      return (
+        <div>
+          <Redirect
+            to={{
+              pathname: '/orderSuccess'
+            }}
+          />
+        </div>
+        );
     }
     return (
       <Button fluid basic color="green" onClick={this.onCheckoutClicked}>

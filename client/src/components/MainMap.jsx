@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Rating } from 'semantic-ui-react';
 import mapboxgl from 'mapbox-gl'; // eslint-disable-line no-unused-vars
 import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
@@ -132,8 +132,8 @@ class Map extends React.Component {
             <h4>
               {this.props.mapMarkerSelected.vendor_name} <Icon link color="orange" name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
-            <p>Rating: 4/5</p>
-            <p> Hours: {start} to {end}</p>
+            <Rating maxRating={5} defaultRating={this.props.mapMarkerSelected.rating} icon="star" size="small" />
+            <p> Open {start} to {end}</p>
           </Popup>
             )}
 

@@ -7,7 +7,7 @@ import { Grid, Card } from 'semantic-ui-react';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
-import { mapMarkerUpdate } from '../actions/mapActions.js';
+import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import TruckListItem from './TruckListItem.jsx';
 
 // import $ from 'jquery';
@@ -62,7 +62,8 @@ const mapDispatchToProps = (dispatch) => {
     mapMarkerUpdate: (mapMarker) => dispatch(mapMarkerUpdate(mapMarker)),
     truckSelectedUpdate: (truck) => dispatch(truckSelectedUpdate(truck)),
     truckListFetchData: (url) => dispatch(truckListFetchData(url)),
-    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory))
+    truckInfoFetchData: (truckCategory) => dispatch(truckInfoFetchData(truckCategory)),
+    mapCenterUpdate: (coordinates) => dispatch(mapCenterUpdate(coordinates))
   };
 };
 
