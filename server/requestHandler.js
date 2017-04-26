@@ -1,75 +1,9 @@
-const Search = require('./models/search.js');
-const MenuItems = require('./models/menuItems.js');
-const utils = require('./utils.js');
 const Orders = require('./models/orders.js');
 const convertOrderItemsToOrder = require('./utils.js').convertOrderItemsToOrder;
 
-module.exports.search = (req, res) => {
-  const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
-  Search.scheduleData(timeAsNum, req.body.date.dayOfWeek)
-    .then((response) => {
-      const newArr = [];
-      for (let i = 0; i < response.length; i++) {
-        const tempItem = response[i];
-        tempItem.coordinates = JSON.parse(tempItem.coordinates);
-        newArr.push(tempItem);
-      }
-      return newArr;
-    })
-    .then((newArr) => res.send(newArr))
-    .catch((error) => res.send(error));
-};
+module.exports.search = require('./routes/search.js');
 
-module.exports.menu = (req, res) => {
-  const defaultFoodCategory = 'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages';
-  MenuItems.foodCategories()
-    .then((foodCategories) => {
-      console.log('body food category', req.body.food_category);
-      let found = false;
-      for (let i = 0; i < foodCategories.length; i++) {
-        if (foodCategories[i].food_category === req.body.food_category) {
-          found = true;
-        }
-      }
-      if (found) {
-        return true;
-      }
-      return false;
-    })
-    .then((found) => {
-      console.log('found', found);
-      if (found) {
-        return MenuItems.menuData(req.body.food_category);
-      }
-      return MenuItems.menuData(defaultFoodCategory);
-    })
-    .then((menu) => {
-      console.log('menu', menu);
-      const foodCategories = [];
-      const menuItems = {};
-      for (let i = 0; i < menu.length; i++) {
-        const course = menu[i].course;
-        if (!menuItems[course]) {
-          foodCategories.push(menu[i].course);
-          menuItems[course] = [menu[i]];
-        } else {
-          menuItems[course].push(menu[i]);
-        }
-      }
-      for (let j = 0; j < foodCategories.length; j++) {
-        let course = {};
-        course.title = foodCategories[j];
-        course.items = menuItems[foodCategories[j]];
-        foodCategories[j] = course;
-        course = {};
-      }
-      res.send(foodCategories);
-    })
-    .catch((error) => {
-      // console.log('error here', error);
-      res.send(error);
-    });
-};
+module.exports.menu = require('./routes/menu.js');
 
 module.exports.vendorSignup = require('./routes/vendorSignup.js');
 
@@ -154,4 +88,3 @@ module.exports.orderStatus = (req, res) => {
   }
   return res.send(400);
 };
-

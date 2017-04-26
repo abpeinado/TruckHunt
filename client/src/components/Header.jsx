@@ -24,16 +24,11 @@ class Header extends Component {
   }
 
   timeChange(e) {
-    console.log('time event', e);
     const date = moment(e).format('llll');
-    console.log('date format', date);
     const dateArr = JSON.stringify(date).split(' ');
-    console.log('og date', dateArr);
     const AMPMparse = dateArr[5].split('').splice(0, 2).join('');
     const timeParsed = `${dateArr[4]} ${AMPMparse}`;
     const dateParsed = dateArr[0].split('').splice(1, 3).join('');
-    console.log('timeParsed', timeParsed);
-    console.log('dateParsed', dateParsed);
 
     const dateIndex = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
@@ -42,10 +37,7 @@ class Header extends Component {
       dayOfWeek: dateIndex[dateParsed]
     };
 
-    console.log('dateObj', dateObj);
     this.props.mapDateUpdate(dateObj);
-    console.log('---------------mapcenter', this.props.mapCenter);
-    console.log('---------------mapdate', this.props.mapDate);
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
   }
 
@@ -55,10 +47,7 @@ class Header extends Component {
   }
 
   render() {
-    // const { activeItem } = this.state;
     moment.locale('en');
-    // const time = 'HH:mm A';
-    // const date = 'MM/DD/YYYY';
     const currentTime = new Date();
     let hour = currentTime.getHours();
     let min = currentTime.getMinutes();
@@ -68,7 +57,6 @@ class Header extends Component {
       ampm = 'PM';
       if (min < 10) {
         timeFormatted = `${hour - 12}:0${min} ${ampm}`;
-        console.log('time here', timeFormatted);
       } else {
         timeFormatted = `${hour - 12}:${min} ${ampm}`;
       }

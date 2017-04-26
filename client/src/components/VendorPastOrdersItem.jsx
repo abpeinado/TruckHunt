@@ -8,11 +8,9 @@ class PastItem extends Component {
     super(props);
   }
 
-
   render() {
     const time = moment(this.props.incomingOrder.order_time).format('llll');
     const timeFormatted = moment(time).fromNow();
-    // const timeFormatted = moment(time);
 
     const order = this.props.incomingOrder;
     const incomingOrderHeader = (

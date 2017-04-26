@@ -17,18 +17,3 @@ module.exports = (req, res) => {
     });
   }
 };
-
-/*
-return format:
-[{order_id: 1,
-  customer_email: 'matt@gmail.com,
-  order_time: '2017-04-24 16:15:17.816122-07',
-  price_total: 1200,
-  order_status: 0,// 0 = on time, 1 = delayed, 2 = ready for pickup
-  items: [{menu_item_id: 14, name: 'kale salad', price: 2000, quantity: 4, item_note: '-no goat cheese' }, ...]
- },
- {order_id: 2, ...}, ....
-]
-*/
-
-// module.exports({ body: { vendorId: 24 } }); // uncomment to test

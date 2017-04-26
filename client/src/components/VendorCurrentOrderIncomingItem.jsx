@@ -23,12 +23,12 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'READY',
-        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id
       })
     };
 
     fetch('/orderStatus', init)
-      .then(res => res.json()) // convert res.body stream to object
+      .then(res => res.json())
       .then((response) => {
         console.log('response from fetch', response);
         return response;
@@ -48,12 +48,12 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'DELAYED',
-        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id
       })
     };
 
     fetch('/orderStatus', init)
-      .then(res => res.json()) // convert res.body stream to object
+      .then(res => res.json())
       .then((response) => {
         console.log('response from fetch', response);
         return response;
@@ -74,12 +74,12 @@ class IncomingItem extends Component {
       },
       body: JSON.stringify({
         orderStatus: 'ONTIME',
-        orderID: this.props.incomingOrder.order_id // ADD ORDER ID HERE this.props.incomingOrder.orderNo
+        orderID: this.props.incomingOrder.order_id
       })
     };
 
     fetch('/orderStatus', init)
-      .then(res => res.json()) // convert res.body stream to object
+      .then(res => res.json())
       .then((response) => {
         console.log('response from fetch', response);
         return response;
@@ -167,6 +167,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(null, mapDispatchToProps)(IncomingItem);
-
-
-// export default IncomingItem;
