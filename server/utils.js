@@ -20,30 +20,6 @@ module.exports.convertTimeToNumber = (timeAsString) => {
   return time;
 };
 
-// module.exports.convertTimeToNumber = (timeAsString) => {
-//   console.log(timeAsString);
-//   let time;
-//   if (timeAsString[timeAsString.length - 2] === 'A') {
-//     if (timeAsString[1] === 'A') {
-//       time = Number(timeAsString[0]);
-//     } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
-//       time = Number(timeAsString[0] + timeAsString[1]);
-//     } else {
-//       time = 24;
-//     }
-//   } else if (timeAsString[timeAsString.length - 2] === 'P') {
-//     if (timeAsString[1] === 'P') {
-//       time = Number(timeAsString[0]) + 12;
-//     } else if (Number(timeAsString[0] + timeAsString[1]) !== 12) {
-//       time = Number(timeAsString[0] + timeAsString[1]) + 12;
-//     } else {
-//       time = 12;
-//     }
-//   }
-//   console.log(time);
-//   return time;
-// };
-
 module.exports.convertOrderItemsToOrder = orderItems => {
   const orders = [];
   const ordersHash = {};

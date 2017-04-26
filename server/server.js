@@ -1,13 +1,12 @@
 /* eslint-disable global-require */
 if (process.env.PORT === undefined) {
-  require('dotenv').config(); // imports environment vars from .env file, keep at top
+  // imports environment vars from .env file, keep at top
+  require('dotenv').config();
 }
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const truckData = require('./truckListData.js');
 const requestHandler = require('./requestHandler.js');
-const truckLocs = require('./truckLocations.js');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -40,18 +39,6 @@ app.post('/userSignup', requestHandler.userSignup);
 app.post('/stripe', requestHandler.stripe);
 
 app.get('/authenticate', requestHandler.authenticate);
-
-app.get('/truckLocations', (req, res) => {
-  res.send(truckLocs.truckLocs.trucks);
-});
-
-app.get('/trucklist', (req, res) => {
-  res.send(truckData.truckList.trucks);
-});
-
-app.get('/truckInfo', (req, res) => {
-  res.send(truckData.truckList.trucks[0]);
-});
 
 app.post('/checkout', requestHandler.checkout);
 

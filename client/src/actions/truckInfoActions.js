@@ -20,7 +20,6 @@ export function truckInfoFetchDataSuccess(truckInfo) {
 }
 
 export function truckInfoFetchData(truckCategory) {
-
   return (dispatch) => {
     dispatch(truckInfoIsLoading(true));
     const options = {

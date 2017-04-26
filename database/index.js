@@ -13,7 +13,6 @@ const loadDb = (database) => {
   return schema(database);
 };
 
-// if (process.env.NODE_ENV !== 'test') {
 loadDb(db)
   .then(() => {
     console.log('Successfully connected to database');
@@ -21,6 +20,5 @@ loadDb(db)
   .catch(() => {
     console.error('Error connecting to database.');
   });
-// }
 
 module.exports = { db, loadDb };

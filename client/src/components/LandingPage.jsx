@@ -9,9 +9,6 @@ import VendorAnalytics from './VendorAnalytics.jsx';
 import PastOrders from './VendorPastOrders.jsx';
 import MenuSelection from './VendorMenuSelection.jsx';
 
-// import OwnerSignup from './OwnerSignup.jsx';
-// import TruckInfo from './TruckInfo.jsx';
-
 class LandingPage extends React.Component {
   render() {
     return (
@@ -24,10 +21,6 @@ class LandingPage extends React.Component {
         <Route path="/pastOrders" component={PastOrders} />
         <Route path="/menuSelection" component={MenuSelection} />
         <Route path="/orderSuccess" component={OrderSuccess} />
-
-
-        {/* ADD ADDITIONAL ROUTES HERE */}
-        {/* TODO: INTEGRATE PATHNAME ARGUMENT IN ROUTES*/}
       </div>
     );
   }

@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
@@ -64,5 +63,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VendorPastOrders);
-
-// export default VendorPastOrders;

@@ -16,4 +16,3 @@ module.exports.foodCategories = () => {
 module.exports.menuData = (food_category) => {
   return db.many('SELECT * FROM menu_items WHERE food_category = $1', [food_category]);
 };
-

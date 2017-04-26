@@ -10,15 +10,10 @@ import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
 import TruckListItem from './TruckListItem.jsx';
 
-// import $ from 'jquery';
-
-
 class TruckList extends Component {
 
   componentWillReceiveProps() {
-    // this.props.truckListFetchData('/truckList');
     this.props.truckList;
-    // console.log('got trucks for list');
   }
 
   render() {
