@@ -1,5 +1,5 @@
 const Search = require('../models/search.js');
-const utils = require('./utils.js');
+const utils = require('../utils.js');
 
 module.exports = (req, res) => {
   const timeAsNum = utils.convertTimeToNumber(req.body.date.time);
