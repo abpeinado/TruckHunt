@@ -88,7 +88,6 @@ class Map extends React.Component {
           accessToken="pk.eyJ1Ijoic3pvbGwiLCJhIjoiY2oxanIwcHI4MDFicDMzcG1wenNmbXlqbCJ9.oRYXUrA-6QSwq2tYGLN2xw"
           containerStyle={mapStyles}
           center={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
-
           zoom={[12]}
           pitch={50}
           light={{
@@ -97,10 +96,7 @@ class Map extends React.Component {
             intensity: 0.4
           }}
         >
-          {
-
-
-            (this.props.truckList.length) ? (
+          { (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
                 const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${2}.png`;
@@ -143,7 +139,8 @@ class Map extends React.Component {
           >
             <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/mapMarkerLocation(reduced).gif'} alt="mapCenter" />
           </Marker>
-          <ZoomControl />
+          <ZoomControl zoomDiff={2} onControlClick={(ReactMapboxGl, zoomDiff) => {console.log('zoom test', zoomDiff)}}>
+          </ZoomControl>
           <ScaleControl />
         </ReactMapboxGl>
       </div>
