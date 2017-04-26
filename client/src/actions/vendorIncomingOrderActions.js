@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: "off"*/
+
 export function vendorIncomingOrderHasErrored(bool) {
   return {
     type: 'VENDOR_INCOMING_ORDER_HAS_ERRORED',
@@ -67,4 +69,3 @@ export function vendorIncomingOrderFetchData(url, vendorId) {
       });
   };
 }
-

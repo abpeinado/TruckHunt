@@ -18,13 +18,6 @@ export function mapMarkerSelected(mapMarker) {
   };
 }
 
-// export function mapMarkerUnselected() {
-//   return {
-//     type: 'MAP_MARKER_UNSELECTED',
-//     mapMarkerUnselected
-//   };
-// }
-
 export function mapMarkerUpdate(mapMarker) {
   return (dispatch) => {
     dispatch(mapMarkerSelected(mapMarker));
@@ -37,13 +30,6 @@ export function mapDate(date) {
     date
   };
 }
-
-// export function mapMarkerUnselected() {
-//   return {
-//     type: 'MAP_MARKER_UNSELECTED',
-//     mapMarkerUnselected
-//   };
-// }
 
 export function mapDateUpdate(date) {
   return (dispatch) => {

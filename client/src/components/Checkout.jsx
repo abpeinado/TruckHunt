@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */ // ignore 'stripeCheckout is undefined'
+/* eslint-disable no-undef */
+
 import React from 'react';
 import { Loader, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
@@ -69,7 +70,7 @@ export class CheckoutComponent extends React.Component {
       return (
         <div>
           <h2 style={{ textAlign: 'center' }}>You're order is processing</h2>
-          <Loader active inline='centered' />
+          <Loader active inline="centered" />
         </div>
       );
     } else if (submittedOrder) {
@@ -81,7 +82,7 @@ export class CheckoutComponent extends React.Component {
             }}
           />
         </div>
-        );
+      );
     }
     return (
       <Button fluid basic color="green" onClick={this.onCheckoutClicked}>
