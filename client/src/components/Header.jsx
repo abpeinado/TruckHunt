@@ -1,5 +1,6 @@
-
+/* eslint-disable prefer-const */
 /* eslint-disable operator-assignment */
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -60,13 +61,14 @@ class Header extends Component {
     // const date = 'MM/DD/YYYY';
     const currentTime = new Date();
     let hour = currentTime.getHours();
-    const min = currentTime.getMinutes();
+    let min = currentTime.getMinutes();
     let ampm = '';
     let timeFormatted = `${hour}:${min} ${ampm}`;
     if (hour > 12) {
       ampm = 'PM';
       if (min < 10) {
-        timeFormatted = `${hour}:0${min} ${ampm}`;
+        timeFormatted = `${hour - 12}:0${min} ${ampm}`;
+        console.log('time here', timeFormatted);
       } else {
         timeFormatted = `${hour - 12}:${min} ${ampm}`;
       }
@@ -77,7 +79,7 @@ class Header extends Component {
       } else {
         timeFormatted = `${hour}:${min} ${ampm}`;
       }
-    } else {
+    } else if (hour < 12) {
       ampm = 'AM';
       if (min < 10) {
         timeFormatted = `${hour}:0${min} ${ampm}`;

@@ -64,15 +64,15 @@ class ReadyItem extends Component {
         <Panel header={readyOrderHeader} bsStyle={statusColor[order.order_status]} className="incomingOrderHeaderStyle">
           <Row style={{ color: 'black' }} >
             <Col xs={8}>
-            <h2>
-              {order.customer_email}
-            </h2>
-             <h5>
-            Ordered
-            </h5>
-            <h2>
-              {order.items.length} Items
-            </h2>
+              <h2>
+                {order.customer_email}
+              </h2>
+              <h5>
+              Ordered
+              </h5>
+              <h2>
+                {order.items.length} Items
+              </h2>
               {this.props.incomingOrder.items.map((item, i) =>
                 <MenuItem incomingOrder={item} key={i} />
               )}
