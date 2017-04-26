@@ -23,7 +23,7 @@ export class CheckoutComponent extends React.Component {
       zipCode: false, // set to true for greater security
       billingAddress: false, // set to true to collect billing Address
       panelLabel: 'Place order of {{amount}}',
-      // opened: () => console.log('opened checkout'),
+      // opened: () => console.log('opened checkut'),
       // closed: () => console.log('closed checkout')
       token: this.submitOrder.bind(this)
     });
