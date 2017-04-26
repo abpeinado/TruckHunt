@@ -84,7 +84,6 @@ export class CheckoutComponent extends React.Component {
               pathname: '/orderSuccess'
             }}
           />
-
         </div>
       );
     }
@@ -110,7 +109,6 @@ const mapDispatchToProps = (dispatch) => ({
   clearCart: () => dispatch(clearCart()),
   clearCartTotal: () => dispatch(clearCartTotal()),
   clearSubmitOrderSuccess: () => dispatch(clearSubmitOrderSuccess())
-
 });
 
 const Checkout = connect(mapStateToProps, mapDispatchToProps)(CheckoutComponent);
