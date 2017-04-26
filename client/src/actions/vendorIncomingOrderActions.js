@@ -43,7 +43,6 @@ export function vendorIncomingOrderFetchData(url, vendorId) {
     })
   };
   return (dispatch) => {
-    console.log('about to execute dispatch');
     dispatch(vendorIncomingOrderIsLoading(true));
     fetch(url, init)
       .then((res) => {
@@ -54,19 +53,16 @@ export function vendorIncomingOrderFetchData(url, vendorId) {
           return res;
         }
       })
-      .then(res => res.json()) // convert res.body stream to object
+      .then(res => res.json())
       .then(res => {
-        console.log('WHAT IS THIS vendor incoming actions', res);
         if (res.ignore) {
             // do nothing
-          console.log('mystery call', res);
         } else {
           const truckList = res;
           dispatch(vendorIncomingOrderFetchDataSuccess(truckList));
         }
       })
       .catch((err) => {
-        console.log('error caught in vendor order actions', err);
         dispatch(vendorIncomingOrderHasErrored(true));
       });
   };
