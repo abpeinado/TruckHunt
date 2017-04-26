@@ -2,18 +2,13 @@ const Orders = require('../models/orders.js');
 const convertOrderItemsToOrder = require('../utils.js').convertOrderItemsToOrder;
 
 module.exports = (req, res) => {
-  console.log('HERE------------------------>>>>>', req.body);
   const vendorId = req.body.vendorId;
   if (vendorId === 0) {
     res.status(200).send({ ignore: true });
   } else {
-    console.log('this hsould be vendor id', vendorId);
-    console.log('this hsould be vendor id type ', typeof vendorId);
     Orders.getIncomingOrderItems(vendorId)
     .then(orderItems => {
-      console.log('this is where it is', orderItems);
       const orders = convertOrderItemsToOrder(orderItems);
-      console.log('orders: ', JSON.stringify(orders));
       res.status(200).send(orders);
     })
     .catch(err => {

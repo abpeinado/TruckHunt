@@ -4,7 +4,7 @@
 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
 'Cold Truck: Hamburger: cheeseburgers: hot dogs: hot sandwiches: cold sandwiches: egg muffins: cup of noodles: corn dogs: canned soup: coffee: hot cocoa: hot tea: gatorade: juice: milk: soda: water: fruits: fruit salad: rice pudding: yogurt: candy bars: chips: cookies: donuts: granola bars: muffins'
 'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages'
-'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
 'Hot dogs: condiments: soft pretzels: soft drinks: coffee: cold beverages: pastries: bakery goods: cookies: ice cream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.'
 'Hot Dogs: Hamburgers: Nachos: Steaks: Pastas: Asian Dishes: Tri-Tip Sandwiches: Sodas & Water'
 */
@@ -108,77 +108,77 @@ module.exports.menuItems = [
     item_description: 'Roast turkey, honey ham, bacon, Monterey Jack cheese, lettuce, tomato and dijonaisse',
     price: 775,
     course: 'Wraps',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Chicken Caesar',
     item_description: 'Grilled chicken, romaine lettuce, parmesan cheese and creamy Caesar dressing',
     price: 775,
     course: 'Wraps',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Dijon Shrimp Salad',
     item_description: 'Large shrimp, mayo, mixed seasonings, lettuce and tomato',
     price: 775,
     course: 'Wraps',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Bleu Cheese & Beef',
     item_description: 'Seasoned beef, sliced onions, lettuce tomato and bleu cheese dressing',
     price: 775,
     course: 'Wraps',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Pit Sandwich',
     item_description: 'Pit style smoked turkey, honey ham and rop round roast beef piled high with cheese, lettuce and tomato on freshly baked Kaiser rolls.  Served with spicy mustard, mayo, BBQ sauce and horseradish on the side',
     price: 800,
     course: 'Sandwiches',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Italian',
     item_description: 'Genoa salami, pepperoni, honey ham, parmesan cheese, lettuce, tomato, onion, banana peppers and Italian dressing',
     price: 800,
     course: 'Sandwiches',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Black Russian',
     item_description: 'Seasoned beef, roasted turkey, Swiss cheese, lettuce tomato, onion and Russian dressing',
     price: 800,
     course: 'Sandwiches',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Country Style Chicken Salad',
     item_description: 'Made with roasted chicken, lettuce and tomato',
     price: 800,
     course: 'Sandwiches',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Fresh baked cookies',
     item_description: 'Chocolate chip, sugar and oatmeal raisin',
     price: 175,
     course: 'Desserts',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Dessert tray',
     item_description: 'Fresh baked cookies, cream puffs & brownies',
     price: 225,
     course: 'Desserts',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
   {
     name: 'Fresh Fruit Salad ',
     item_description: 'Seasonal selection of fruit',
     price: 325,
     course: 'Desserts',
-    food_category: 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+    food_category: 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
   },
 /* --------------------------------Cold Truck 2------------------------------*/
   {
