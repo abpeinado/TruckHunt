@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { vendorIncomingOrderFetchData } from '../actions/vendorIncomingOrderActions.js';
 import VendorHeader from './VendorHeader.jsx';
-import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
+import PastOrder from './VendorPastOrdersItem.jsx';
 
 class VendorPastOrders extends Component {
 
   componentDidMount() {
-    this.props.FetchVendorOrders('/vendorIncomingOrders', 74);
+    this.props.FetchVendorOrders('/vendorIncomingOrders', this.props.setUserID);
   }
 
   render() {
@@ -34,8 +34,8 @@ class VendorPastOrders extends Component {
         <Col xs={12} >
           <h2 style={{ textAlign: 'center' }}>COMPLETED ORDERS</h2>
           {this.props.vendorIncomingOrder.map((item, i) => {
-            if (item.order_status) {
-              return <IncomingItem incomingOrder={item} key={i} />;
+            if (item.order_status === 3) {
+              return <PastOrder incomingOrder={item} key={i} />;
             }
           }
           )}
