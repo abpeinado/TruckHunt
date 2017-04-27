@@ -80,3 +80,15 @@ module.exports.convertOrderItemsToOrder = orderItems => {
 
   return ordersWithItems;
 };
+
+module.exports.removeDuplicateOrders = (menuItems) => {
+  const menuItemsFiltered = [];
+  const foodNames = {};
+  for (let i = 0; i < menuItems.length; i++) {
+    if (!foodNames[menuItems[i].name]) {
+      foodNames[menuItems[i].name] = menuItems[i].name;
+      menuItemsFiltered.push(menuItems[i]);
+    }
+  }
+  return menuItemsFiltered;
+};

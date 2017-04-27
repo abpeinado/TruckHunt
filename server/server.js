@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+
 if (process.env.PORT === undefined) {
   // imports environment vars from .env file, keep at top
   require('dotenv').config();
