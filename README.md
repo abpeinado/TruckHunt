@@ -13,13 +13,15 @@ Browse nearby food trucks in San Francisco; order food ahead of time so that it'
 
 ## Table of Contents
 
-1. [Usage](#Usage)
+1. [Data](#Data)
+1. [Tech Stack](#Tech-stack)
+1. [Payments](#payments)
+1. [Database](#database)
+1. [Testing](#testing)
 1. [Requirements](#requirements)
-1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Roadmap](#roadmap)
 1. [Contributing](#contributing)
+1. [Liscense](#license)
 
 ## Data
 
@@ -28,17 +30,18 @@ The data for this application comes from [SF Open Data], which publishes permits
 If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data) folder of this repo.  Once you have installed PostgreSQL you must seed the database. See PostgreSQL below. 
 
 ## Tech Stack
-[React] with [React-Router] & [Redux] client side
-[Node] & [Express] server side
-[PostgreSQL] with [pg-promise] database
-[Semantic-UI-React] for responsive UI/CSS
-[Jest] with [Supertest] & [Enzyme] for testing
+  - [React] with [React-Router] & [Redux] client side
+  - [Node] & [Express] server side
+  - [PostgreSQL] with [pg-promise] database
+  - [Semantic-UI-React] for responsive UI/CSS
+  - [Jest] with [Supertest] & [Enzyme] for testing
 
-## Stripe API
 
-This application utilizes the Stripe API to allow payments for both vendors and customers. Stripe allows charging and payign customers in a variety of formats without payment information ever touching your server. For those interested in using this repo for their own project please register your app with Stripe to obtain your own keys, which you can store in your .env file (private keys) and in the webpack environmentplugin (public keys). 
+## Payments
 
-## PostgreSQL
+This application utilizes the Stripe API to allow payments for both vendors and customers. Stripe allows charging and paying customers in a variety of formats without payment information ever touching the server; https encryption is all that is required. For those interested in using this repo for their own project please register your app with Stripe to obtain your own API keys, which you can store in your .env file (private keys) and in the webpack environmentplugin (public keys). 
+
+## Database
 
 This application uses a PostgreSQL database to access vendor and customer information. 
 
