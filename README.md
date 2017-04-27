@@ -1,6 +1,6 @@
 # Truck Hunt
 
-Geolocate nearby food trucks in San Francisco and place orders online.  Vendors are instantly notified when an order is placed and users get real time updates when their orders are ready. Customers no longer have to wait in line for food trucks, and vendors can harness untapped revenues.
+Find nearby food trucks in San Francisco and place orders online.  Vendors are able to see orders that have been placed and mark them as complete once the order is fultilled.
 
 ## Team
 
@@ -25,13 +25,14 @@ In order to use this repo please fork it to your own github account then clone i
 
 ## Data
 
-The data for this application comes from the SF Open Data organization at https://datasf.org/opendata/.  Here the City of San Francisco publically shares the permit status for all mobile food vendors throughout the city, along with their location data and scheduling information.  Utilizing this data set we were able to populate the location of each vendor throughout the city and filter that information based upon which truck is permitted and scheduled for the queried time.  Please note that this data is not dynamically updating and is current as on April 25th, 2017.
+The data for this application comes from the SF Open Data organization at https://datasf.org/opendata/.  Here the City of San Francisco publically shares the permit status for all mobile food vendors throughout the city, along with their location data and scheduling information.  Utilizing this data set we were able to populate the location of each vendor throughout the city and filter that information based upon which truck is permitted and scheduled for the queried time.  Please note that this data is not yet dynamically updating and is current as on April 25th, 2017.
 
-If you are interested in using this data can find the JSON objects from two large datasets within the database/data folder of this repo.  Once you have installed postgresql on your server or development environment you must seed the database by running the npm run seed script as found within the package.json file.  This will populate your local db and will allow trucks to properly rendor on the map.
+If you are interested in using this data you can find the JSON objects from two large datasets within the database/data folder of this repo.  Once you have installed PostgreSQL on your server or development environment you must seed the database. More information on seeding your database below. 
 
 ## Stripe API
 
 This application utilizes the Stripe API to allow payments for both vendors and customers.  For those interested in using this repo for their own project please register your app with Stripe to obtain your own keys, which you can store in your .env file.
+
 ## PostgreSQL
 
 This application rely's upon having PostgreSQL installed locally on your machine. For OSX we recommend using brew for your installation needs.
@@ -40,9 +41,9 @@ If you want to install postgres locally:
 brew tap homebrew/services
 brew install postgres
 brew services start postgresql
-createdb { database name here }
+createdb toads
 
-Once you've created your db run "npm run start-dev" to create all the db tables, follow by "npm run seed" to populate your db with real truck data. The menu and review data is fake and should not be taken as an accurate depiction of real food trucks.
+Once you've created your db run "npm run start-dev" to create all the db tables. Next navigate to the seedDatabase folder and running node seedVendors.js, then node seedSchedules.js. then node seedMenus.js then node seedReviews.js.  This will populate your local db with real truck data and will allow trucks to properly rendor on the map. The menu and review data is dummy data as we are currently building out functionality to allow vendors to enter their own menus and for users to review food trucks.
 
 If you decide to modify the schema you must run "dropdb { database name here }" followed by the steps above.
 
