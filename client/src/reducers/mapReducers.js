@@ -19,15 +19,6 @@ export const mapMarkerSelected = (state = {}, action) => {
   }
 };
 
-// export const mapMarkerUnselected = (state = {}, action) => {
-//   switch (action.type) {
-//     case 'MAP_MARKER_UNSELECTED':
-//       return action.mapMarkerUnselected;
-//     default:
-//       return state;
-//   }
-// };
-
 const currentTime = new Date();
 let hour = currentTime.getHours();
 const min = currentTime.getMinutes();

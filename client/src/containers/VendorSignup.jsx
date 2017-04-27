@@ -1,4 +1,3 @@
-// Signup page for truck owners
 import React from 'react';
 import { FormControl, Button, FormGroup, Form, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
