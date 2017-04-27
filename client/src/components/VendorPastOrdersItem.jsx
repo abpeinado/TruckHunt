@@ -5,14 +5,10 @@ import MenuItem from './vendorOrderMenuItem.jsx';
 import utils from '../utils.js';
 
 class PastItem extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const time = moment(this.props.incomingOrder.order_time).format('llll');
     const timeFormatted = moment(time).fromNow();
-
     const order = this.props.incomingOrder;
     const incomingOrderHeader = (
       <Col xs={12}>

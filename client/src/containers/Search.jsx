@@ -61,17 +61,9 @@ class Search extends Component {
 
     this.props.mapCenterUpdate(newCoordinates);
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
-
-    // remove for Production... this should help for development
-    // return (
-    //   <div className="alert alert-success" role="alert">
-    //     <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
-    //   </div>
-    // );
   }
 
   render() {
-    // included with autocomplete... will revise styles at later date
     const cssClasses = {
       root: 'form-group',
       input: 'Demo__search-input',
@@ -88,8 +80,6 @@ class Search extends Component {
       type: 'text',
       value: this.state.address,
       onChange: this.handleChange,
-      // onBlur: () => { console.log('Blur event!'); },
-      // onFocus: () => { console.log('Focused!'); },
       autoFocus: true,
       placeholder: 'Search Places'
     };
@@ -130,77 +120,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
-
-
-// OLD SEARCH FOR SERVER CALL REFERENCE-- WILL TAKE OUT WHEN CONNECTED
-// class Search extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       address: 'San Francisco, CA'
-//     };
-//     // this.onChange = (address) => this.setState({ address });
-//     this.handleChange = this.handleChange.bind(this);
-//     this.findFoodTrucks = this.findFoodTrucks.bind(this);
-//   }
-
-//   handleChange(event) {
-//     this.setState({
-//       address: event.target.value
-//     });
-//   }
-
-//   findFoodTrucks(address) {
-//     const init = {
-//       method: 'POST',
-//       headers: {
-//         'content-type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         text: address
-//       })
-//     };
-//     fetch('/search', init)
-//       .then((response) => {
-//         console.log('here ', response.statusText);
-//       })
-//       .catch((error) => {
-//         console.log('fetch failed, error: ', error);
-//       });
-//   }
-
-//   // handleFormSubmit(event) {
-//   //   event.preventDefault();
-
-//   //   geocodeByAddress(this.state.address, (err, latLng) => {
-//   //     if (err) { console.log('Oh no!', err); }
-
-//   //     console.log(`Yay! Got latitude and longitude for ${this.state.address}`, latLng);
-//   //   });
-//   // }
-
-
-//   render() {
-//     // const inputProps = {
-//     //   value: this.state.address,
-//     //   onChange: this.onChange
-//     // };
-
-//     return (
-//       <Navbar.Form pullRight>
-//         <FormGroup>
-//           <FormControl bsSize="large" type="text" placeholder="Search" onChange={this.handleChange} />
-//         </FormGroup>
-//         {' '}
-//         <Button bsSize="large" type="submit" onClick={() => this.findFoodTrucks(this.state.address)}>Find Trucks!</Button>
-//       </Navbar.Form>
-//     );
-//   }
-// }
-
-// export default Search;
-
-      // <form onSubmit={this.handleFormSubmit}>
-        // <PlacesAutocomplete inputProps={inputProps} />
-        // <button type="submit">Submit</button>
-      // </form>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import TruckMenuItem from '../../client/src/components/TruckMenuItem';
+// import { mount } from 'enzyme';
+// import TruckMenuItem from '../../client/src/components/TruckMenuItem';
 
 // describe('TruckMenuItem Component Test', () => {
 //   let truckMenuItem;

@@ -7,11 +7,10 @@ import { connect } from 'react-redux';
 import Datetime from 'react-datetime';
 import { Menu } from 'semantic-ui-react';
 import moment from 'moment';
-import Logo from './Logo.jsx';
+import Logo from '../components/Logo.jsx';
 import Search from './Search.jsx';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import { mapDateUpdate } from '../actions/mapActions.js';
-
 
 class Header extends Component {
   constructor(props) {

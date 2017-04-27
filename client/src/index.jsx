@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 import createHistory from 'history/createBrowserHistory';
-import LandingPage from './components/LandingPage.jsx';
+import LandingPage from './containers/LandingPage.jsx';
 import configureStore from './store/configureStore.js';
 
 // Browser history for Router

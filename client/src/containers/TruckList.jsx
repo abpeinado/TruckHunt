@@ -8,7 +8,7 @@ import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
-import TruckListItem from './TruckListItem.jsx';
+import TruckListItem from '../components/TruckListItem.jsx';
 
 class TruckList extends Component {
 

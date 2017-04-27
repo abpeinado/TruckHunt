@@ -25,5 +25,4 @@ const menuItem = (props) => (
   </Well>
 );
 
-
 export default menuItem;

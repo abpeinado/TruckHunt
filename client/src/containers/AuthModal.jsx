@@ -5,7 +5,6 @@ import Signup from './Signup.jsx';
 import Login from './Login.jsx';
 import Header from '../components/HeaderLimited.jsx';
 
-
 class AuthModal extends React.Component {
   constructor(props) {
     super(props);

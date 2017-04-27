@@ -3,18 +3,16 @@ import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import TruckMenuGroup from './TruckMenuGroup.jsx';
 
-export const TruckMenuComponent = (props) => {
-  return (
-    <Row className="TruckMenuClass">
-      {props.truckInfo.map((menuGroup, i) =>
-        <TruckMenuGroup
-          menuGroup={menuGroup}
-          key={i}
-        />
-      )}
-    </Row>
-  );
-};
+export const TruckMenuComponent = (props) => (
+  <Row className="TruckMenuClass">
+    {props.truckInfo.map((menuGroup, i) =>
+      <TruckMenuGroup
+        menuGroup={menuGroup}
+        key={i}
+      />
+    )}
+  </Row>
+);
 
 const mapStateToProps = (state) => {
   return {

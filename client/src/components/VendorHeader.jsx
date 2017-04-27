@@ -38,4 +38,4 @@ const VendorHeader = () => (
 
 export default VendorHeader;
 
-//      <Nav bsStyle="pills" activeKey={1} className="NavbarVendor" pullRight navbar>
+// <Nav bsStyle="pills" activeKey={1} className="NavbarVendor" pullRight navbar>

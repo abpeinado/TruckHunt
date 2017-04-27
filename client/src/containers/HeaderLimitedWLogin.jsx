@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
-import Logo from './Logo.jsx';
-
+import Logo from '../components/Logo.jsx';
 
 class Header extends Component {
   constructor(props) {
@@ -46,6 +45,5 @@ const mapStateToProps = (state) => {
     setUserID: state.setUserID
   };
 };
-
 
 export default connect(mapStateToProps)(Header);

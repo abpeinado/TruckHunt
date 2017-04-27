@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router';
-import ConsumerHomepage from './ConsumerHomepage.jsx';
+import ConsumerHomepage from '../components/ConsumerHomepage.jsx';
 import Login from '../containers/AuthModal.jsx';
 import TruckInfo from './TruckInfo.jsx';
 import TruckDetail from './TruckDetail.jsx';
 import OrderSuccess from './OrderSuccess.jsx';
 import Vendor from './VendorHomepage.jsx';
-import VendorAnalytics from './VendorAnalytics.jsx';
+import VendorAnalytics from '../components/VendorAnalytics.jsx';
 import PastOrders from './VendorPastOrders.jsx';
-import MenuSelection from './VendorMenuSelection.jsx';
+import MenuSelection from '../components/VendorMenuSelection.jsx';
 
 class LandingPage extends React.Component {
   render() {

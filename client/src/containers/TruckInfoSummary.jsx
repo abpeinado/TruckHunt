@@ -4,11 +4,6 @@ import { connect } from 'react-redux';
 
 
 class TruckInfoSummary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const truck = this.props.truckSelected;
 
@@ -28,7 +23,6 @@ class TruckInfoSummary extends React.Component {
           <Rating icon="star" defaultRating={truck.rating} maxRating={5} size="huge" />
         </Header>
       </Segment>
-
     );
   }
 }
