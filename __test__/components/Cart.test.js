@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import configureStore from '../client/src/store/configureStore.js';
-import Cart from '../client/src/components/Cart';
+import Cart from '../../client/src/components/Cart';
 
 describe('Cart Component Test', () => {
   const items = [

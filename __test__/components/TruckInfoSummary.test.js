@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import configureStore from '../client/src/store/configureStore.js';
-import TruckInfoSummary from '../client/src/components/TruckInfoSummary';
+import configureStore from '../../client/src/store/configureStore.js';
+import TruckInfoSummary from '../../client/src/components/TruckInfoSummary';
 
 describe('TruckInfoSummary Component Test', () => {
   let truckInfoSummary;

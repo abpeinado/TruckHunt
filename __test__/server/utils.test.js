@@ -1,5 +1,5 @@
-const { convertOrderItemsToOrder, convertTimeToNumber } = require('../server/utils.js');
-const rawOrders = require('./testData/rawOrders.js');
+const { convertOrderItemsToOrder, convertTimeToNumber } = require('../../server/utils.js');
+const rawOrders = require('../testData/rawOrders.js');
 
 describe('convertOrderItemsToOrder', () => {
   let orders;
