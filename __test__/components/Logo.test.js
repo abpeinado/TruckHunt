@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
+import { StaticRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import React from 'react';
-import { StaticRouter } from 'react-router-dom';
 import Logo from '../../client/src/components/Logo.jsx';
 
 
