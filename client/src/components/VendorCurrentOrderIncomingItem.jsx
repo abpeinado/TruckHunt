@@ -15,7 +15,6 @@ class IncomingItem extends Component {
   }
 
   handleReady() {
-    console.log('inside handleReady');
     const init = {
       method: 'POST',
       headers: {
@@ -40,7 +39,6 @@ class IncomingItem extends Component {
   }
 
   handleDelay() {
-    console.log('inside handleDelay');
     const init = {
       method: 'POST',
       headers: {
@@ -65,8 +63,6 @@ class IncomingItem extends Component {
   }
 
   handleOnTime() {
-    console.log('inside handleOnTime', event.target);
-    console.log('inside handleOnTime', this);
     const init = {
       method: 'POST',
       headers: {
@@ -81,12 +77,13 @@ class IncomingItem extends Component {
     fetch('/orderStatus', init)
       .then(res => res.json())
       .then((response) => {
-        console.log('response from fetch', response);
         return response;
       })
-      .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
+      .then((vendorIncomingOrders) => {
+        this.props.vendorIncomingOrderUpdate(vendorIncomingOrders);
+      })
       .catch((err) => {
-        console.log('error from fetch vendorcurrentorder', err);
+        console.error(err);
       });
   }
 
