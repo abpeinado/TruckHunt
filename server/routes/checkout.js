@@ -12,8 +12,6 @@ module.exports = (req, res) => {
     order_note,
     menuItems
   };
-  // TODO: validate order - make sure there are some menu items, for example
-
   Orders.addOrder(order)
   .then(order_ID => {
     const description = `Truck Hunt SF, order ${order_ID} with vendor ${vendor_id}`;
@@ -23,10 +21,9 @@ module.exports = (req, res) => {
       amount: total,
       description
     };
-    Vendors.getVendorToken(vendor_id) // get vendor token from db
+    Vendors.getVendorToken(vendor_id)
     .then(result => {
       const vendor_token = result.stripe_user_id; // change to 'acct_1ACGNQGa2IsVgA8q' to test with a specific vendor account;
-      // console.log('vendor_token:', vendor_token);
       if (vendor_token) {
         chargeParams.destination = {
           account: vendor_token
@@ -34,7 +31,7 @@ module.exports = (req, res) => {
       }
       stripe.charges.create(chargeParams, (err, charge) => { // eslint-disable-line no-unused-vars
         if (err) {
-          // const { message, statusCode, requestId } = err.raw; // get more info on order
+          // const { message, statusCode, requestId } = err.raw; // uncomment to get more info on order
           console.log('error charging card charge', err);
           res.statusMessage = 'Error processing payment';
           res.sendStatus(402);
@@ -43,8 +40,7 @@ module.exports = (req, res) => {
             console.log('error cancelling order: ', updateStatusErr);
           });
         } else {
-          res.status(201).send({ order_ID }); // success
-          console.log('order placed successfuly: ', charge);
+          res.status(201).send({ order_ID, total }); // success
         }
       });
     })

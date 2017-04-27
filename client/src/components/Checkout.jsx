@@ -4,7 +4,7 @@ import React from 'react';
 import { Loader, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { submitOrder } from '../actions/checkoutActions.js';
+import { submitOrder, clearCart, clearCartTotal, clearSubmitOrderSuccess } from '../actions/checkoutActions.js';
 
 let handler;
 
@@ -29,6 +29,9 @@ export class CheckoutComponent extends React.Component {
     });
   }
   componentWillUnmount() {
+    this.props.clearCart();
+    this.props.clearCartTotal();
+    this.props.clearSubmitOrderSuccess();
     handler.close(); // close modal upon leaving page
   }
   onCheckoutClicked(event) {
@@ -63,7 +66,7 @@ export class CheckoutComponent extends React.Component {
   }
 
   render() {
-    const { submittedOrder, submitOrderError, submitOrderProcessing } = this.props;
+    const { cartItems, submittedOrder, submitOrderError, submitOrderProcessing } = this.props;
     if (submitOrderError) {
       return <div>{this.errorMessage(submitOrderError)}</div>;
     } else if (submitOrderProcessing) {
@@ -85,7 +88,7 @@ export class CheckoutComponent extends React.Component {
       );
     }
     return (
-      <Button fluid basic color="green" onClick={this.onCheckoutClicked}>
+      <Button fluid basic color="green" disabled={!cartItems.length} onClick={this.onCheckoutClicked}>
       Checkout
       </Button>
     );
@@ -102,7 +105,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitOrder: (orderInfo) => dispatch(submitOrder(orderInfo))
+  submitOrder: (orderInfo) => dispatch(submitOrder(orderInfo)),
+  clearCart: () => dispatch(clearCart()),
+  clearCartTotal: () => dispatch(clearCartTotal()),
+  clearSubmitOrderSuccess: () => dispatch(clearSubmitOrderSuccess())
 });
 
 const Checkout = connect(mapStateToProps, mapDispatchToProps)(CheckoutComponent);
