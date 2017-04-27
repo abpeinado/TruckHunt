@@ -1,6 +1,8 @@
-# Truck Hunt
+# TruckHunt SF
 
-Find nearby food trucks in San Francisco and place orders online.  Vendors are able to see orders that have been placed and mark them as complete once the order is fultilled.
+Browse nearby food trucks in San Francisco; order food ahead of time so that it's ready for pickup at a time of your choosing. Our vendor portal allows vendors to signup up, accept payment, see and manage incoming orders. 
+
+[Live Site]
 
 ## Team
 
@@ -19,33 +21,50 @@ Find nearby food trucks in San Francisco and place orders online.  Vendors are a
 1. [Roadmap](#roadmap)
 1. [Contributing](#contributing)
 
-## Usage
-
-In order to use this repo please fork it to your own github account then clone it to your local machine.  Then cd into the corresonding folder, and add us as a remote upstream if you'd like to make contributions or submit a PR.
-
 ## Data
 
-The data for this application comes from the SF Open Data organization at https://datasf.org/opendata/.  Here the City of San Francisco publically shares the permit status for all mobile food vendors throughout the city, along with their location data and scheduling information.  Utilizing this data set we were able to populate the location of each vendor throughout the city and filter that information based upon which truck is permitted and scheduled for the queried time.  Please note that this data is not yet dynamically updating and is current as on April 25th, 2017.
+The data for this application comes from [SF Open Data], which publishes permits and schedules for mobile food vendors in SF.
 
-If you are interested in using this data you can find the JSON objects from two large datasets within the database/data folder of this repo.  Once you have installed PostgreSQL on your server or development environment you must seed the database. More information on seeding your database below. 
+If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data) folder of this repo.  Once you have installed PostgreSQL you must seed the database. See PostgreSQL below. 
+
+## Tech Stack
+[React] with [React-Router] & [Redux] client side
+[Node] & [Express] server side
+[PostgreSQL] with [pg-promise] database
+[Semantic-UI-React] for responsive UI/CSS
+[Jest] with [Supertest] & [Enzyme] for testing
 
 ## Stripe API
 
-This application utilizes the Stripe API to allow payments for both vendors and customers.  For those interested in using this repo for their own project please register your app with Stripe to obtain your own keys, which you can store in your .env file.
+This application utilizes the Stripe API to allow payments for both vendors and customers. Stripe allows charging and payign customers in a variety of formats without payment information ever touching your server. For those interested in using this repo for their own project please register your app with Stripe to obtain your own keys, which you can store in your .env file (private keys) and in the webpack environmentplugin (public keys). 
 
 ## PostgreSQL
 
-This application rely's upon having PostgreSQL installed locally on your machine. For OSX we recommend using brew for your installation needs.
+This application uses a PostgreSQL database to access vendor and customer information. 
 
-If you want to install postgres locally:
+To install postgres locally on OSX:
 brew tap homebrew/services
 brew install postgres
 brew services start postgresql
 createdb toads
 
-Once you've created your db run "npm run start-dev" to create all the db tables. Next navigate to the seedDatabase folder and running node seedVendors.js, then node seedSchedules.js. then node seedMenus.js then node seedReviews.js.  This will populate your local db with real truck data and will allow trucks to properly rendor on the map. The menu and review data is dummy data as we are currently building out functionality to allow vendors to enter their own menus and for users to review food trucks.
+Once you've created your db run "npm run start-dev" to create all the db tables. Next navigate to the seedDatabase folder and run 
 
-If you decide to modify the schema you must run "dropdb { database name here }" followed by the steps above.
+node seedVendors.js
+node seedSchedules.js.
+node seedMenus.js
+node seedReviews.js.  
+
+This will populate your local db with real food-truck data and allow trucks to properly rendor on the map. The menu and review data is dummy data as we are currently building out functionality to allow vendors to upload their menus and customers to review trucks.
+
+If you decide to modify the schema you must run "dropdb toads" followed by the steps above.
+
+## Testing
+
+From within the root directory:
+```
+npm test
+```
 
 ## Requirements
 
@@ -53,22 +72,12 @@ If you decide to modify the schema you must run "dropdb { database name here }" 
 - Express 4.x
 - Webpack 2.x
 
-## Development
-
-
-
 ### Installing Dependencies
 
 From within the root directory:
-
 ```
-npm install -g bower
 npm install
 ```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_DOC)
 
 ## Contributing
 
@@ -77,3 +86,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 ## License
 
 MIT
+
+[Live Site]:http://www.truckhuntsf.com
+[SF Open Data]:https://datasf.org/opendata/
+[React-Router]:https://github.com/ReactTraining/react-router
+[React]:https://github.com/facebook/react
+[Redux]:https://github.com/reactjs/redux
+[Node]:https://github.com/nodejs
+[Express]:https://github.com/expressjs/express
+[PostgreSQL]:https://www.postgresql.org/
+[pg-promise]:https://github.com/vitaly-t/pg-promise
+[Semantic-UI-React]:https://github.com/Semantic-Org/Semantic-UI-React
+[Jest]:https://github.com/facebook/jest
+[Supertest]:https://github.com/visionmedia/supertest
+[Enzyme]:https://github.com/airbnb/enzyme
