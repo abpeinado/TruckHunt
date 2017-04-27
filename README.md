@@ -1,6 +1,6 @@
 # TruckHunt SF
 
-Browse nearby food trucks in San Francisco; order food ahead of time so that it's ready for pickup at a time of your choosing. Our vendor portal allows vendors to signup up, accept payment, see and manage incoming orders. 
+Browse nearby food trucks in San Francisco; order food ahead of time so that it's ready for pickup at a time of your choosing. Vendors can sign up through our vendor portal to accept payment and manage new and past orders. 
 
 [Live Site]
 
@@ -13,29 +13,28 @@ Browse nearby food trucks in San Francisco; order food ahead of time so that it'
 
 ## Table of Contents
 
-1. [Data](#Data)
-1. [Tech Stack](#Tech-stack)
+1. [Data](#data)
+1. [Tech Stack](#tech-stack)
 1. [Payments](#payments)
 1. [Database](#database)
 1. [Testing](#testing)
 1. [Requirements](#requirements)
     1. [Installing Dependencies](#installing-dependencies)
 1. [Contributing](#contributing)
-1. [Liscense](#license)
+1. [License](#license)
 
 ## Data
 
-The data for this application comes from [SF Open Data], which publishes permits and schedules for mobile food vendors in SF.
+Truck schedules and permit information comes from [SF Open Data], which publishes a variety of data for mobile food vendors in SF.
 
-If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data) folder of this repo.  Once you have installed PostgreSQL you must seed the database. See PostgreSQL below. 
+If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data).  Once you have installed PostgreSQL you must seed the database. See PostgreSQL below. 
 
 ## Tech Stack
-  - [React] with [React-Router] & [Redux] client side
-  - [Node] & [Express] server side
-  - [PostgreSQL] with [pg-promise] database
-  - [Semantic-UI-React] for responsive UI/CSS
-  - [Jest] with [Supertest] & [Enzyme] for testing
-
+  - [React] with [React-Router] & [Redux]
+  - [Node] & [Express]
+  - [PostgreSQL] with [pg-promise]
+  - [Semantic-UI-React]
+  - [Jest] with [Supertest] & [Enzyme]
 
 ## Payments
 
