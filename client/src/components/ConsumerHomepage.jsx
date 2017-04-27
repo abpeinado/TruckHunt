@@ -12,7 +12,6 @@ class ConsumerHomepage extends React.Component {
     this.state = {};
   }
 
-
   render() {
     return (
       <div >
@@ -32,14 +31,3 @@ class ConsumerHomepage extends React.Component {
 
 export default ConsumerHomepage;
 
-      // <div className="mainroot">
-      //   <Header className="headerWrapper" />
-      //   <Grid className="gridWrapper">
-      //     <Col xs={12} md={8} className="gridLeftWrapper">
-      //       <MainMap className="mapWrapper" />
-      //     </Col>
-      //     <Col xs={12} md={4} className="gridRightWrapper">
-      //       <TruckList className="truckListWrapper" />
-      //     </Col>
-      //   </Grid>
-      // </div>

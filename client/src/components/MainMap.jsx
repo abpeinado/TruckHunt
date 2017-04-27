@@ -139,8 +139,7 @@ class Map extends React.Component {
           >
             <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/mapMarkerLocation(reduced).gif'} alt="mapCenter" />
           </Marker>
-          <ZoomControl zoomDiff={2} onControlClick={(ReactMapboxGl, zoomDiff) => {console.log('zoom test', zoomDiff)}}>
-          </ZoomControl>
+          <ZoomControl />
           <ScaleControl />
         </ReactMapboxGl>
       </div>

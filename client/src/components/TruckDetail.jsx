@@ -55,26 +55,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TruckDetail);
-
-
-
-
-// export default TruckInfo;
-
-
-
-//     return (
-//       <div>
-//         <Header />
-//         <Grid fluid>
-//           <Col lg={8} smHidden={12} >
-//             <TruckInfoLeftPane />
-//           </Col>
-//           <Col lg={4} sm={12} >
-//             <TruckList />
-//           </Col>
-//         </Grid>
-//       </div>
-//     );
-//   }
-// }

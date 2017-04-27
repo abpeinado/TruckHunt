@@ -28,17 +28,17 @@ class TruckList extends Component {
 
     return (
       <div>
-       <Row className="truckListScroll">
-           {this.props.truckList === undefined ? null :
-              (this.props.truckList.map((item, i) =>
-                <Link to="/truckDetail" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-                  <Col md={6} sm={6}>
-                    <TruckListItem restaurant={item} />
-                  </Col>
-                </Link>
-              ))
-            }
-      </Row>
+        <Row className="truckListScroll">
+          {this.props.truckList === undefined ? null :
+            (this.props.truckList.map((item, i) =>
+              <Link to="/truckDetail" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
+                <Col md={6} sm={6}>
+                  <TruckListItem restaurant={item} />
+                </Col>
+              </Link>
+            ))
+          }
+        </Row>
       </div>
     );
   }

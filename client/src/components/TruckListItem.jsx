@@ -19,17 +19,27 @@ class TruckListItem extends Component {
     let foodDescription = '';
 
     if (food.length < 50) {
-      food.forEach((item => {foodDescription += item}));
+      food.forEach((item => {
+        if (item === ':') {
+          foodDescription += ',';
+        } else {
+          foodDescription += item;
+        }
+      }
+    ));
     } else {
-      for ( let i = 0; i < 50; i++ ) {
-        foodDescription += food[i];
-      };
+      for (let i = 0; i < 50; i++) {
+        if (food[i] === ':') {
+          foodDescription += ',';
+        } else {
+          foodDescription += food[i];
+        }
+      }
     }
-    console.log('food length', foodDescription)
 
     return (
       <div className="truckCard">
-      <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/200X.png" shape='rounded' label={labelContent} fluid />
+        <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/200X.png" shape="rounded" label={labelContent} fluid />
         <div className="truckCardtext">
           { foodDescription }
         </div>
@@ -41,21 +51,3 @@ class TruckListItem extends Component {
 
 export default TruckListItem;
 
-  // <Card className="animated slideInUp trucklist-group" >
-  //         <Card.Content>
-  //           <Image src={image} style={{ maxHeight: '90px' }} alt={`${info.vendor_name}-img`} />
-  //           <Card.Header>
-  //             { info.vendor_name }
-  //           </Card.Header>
-  //           <Card.Description>
-  //             { info.food_category }
-  //           </Card.Description>
-  //         </Card.Content>
-  //         <Card.Content extra>
-  //           <a>
-  //             <Icon name="like outline" />
-  //             Rating
-  //           </a>
-  //           <Rating maxRating={5} defaultRating={info.rating} icon="star" size="large" />
-  //         </Card.Content>
-  //       </Card>
