@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Header from './HeaderLimitedWLogin.jsx';
 import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
@@ -26,9 +26,13 @@ class TruckInfo extends React.Component {
     return (
       <div>
         <Header />
-        <Grid className="gridWrapper">
-          <TruckInfoLeftPane />
-          <CartContainer />
+        <Grid fluid>
+          <Col lg={8} smHidden={12} >
+            <TruckInfoLeftPane />
+          </Col>
+          <Col lg={4} smHidden={12} >
+            <CartContainer />
+          </Col>
         </Grid>
       </div>
     );
@@ -51,4 +55,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TruckInfo);
-// export default TruckInfo;
