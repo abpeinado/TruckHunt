@@ -257,10 +257,15 @@ input.form-control {
   padding-bottom: 0rem;
 }*/
 
-/*.menuHeader {
-  height: 200px;
-  background-image: url('http://i2.cdn.cnn.com/cnnnext/dam/assets/120405183406-stacked-sandwich-super-169.jpg')
-}*/
+.truckSummary {
+  padding-bottom: 1em;
+}
+
+.TruckMenuClass.row {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 .ui.grid.TruckMenuClass {
   margin: 1rem;

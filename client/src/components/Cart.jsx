@@ -1,7 +1,8 @@
 /* eslint no-param-reassign: "off" */
 
 import React from 'react';
-import { Grid, Segment, Divider, Header } from 'semantic-ui-react';
+import { Row } from 'react-bootstrap';
+import { Segment, Divider, Header } from 'semantic-ui-react';
 import CartItem from './CartItem.jsx';
 import Checkout from './Checkout.jsx';
 
@@ -58,7 +59,7 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal, orderSubm
   );
 
   return (
-    <Grid.Column className="animated slideInRight gridLeftWrapper cart" width={6}>
+    <Row>
       <Segment>
         <Header as="h2" className="cart-title">Cart</Header>
         <Divider section />
@@ -68,7 +69,7 @@ const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal, orderSubm
           description={'you\'re tastebuds are waiting...'}
         />
       </Segment>
-    </Grid.Column>
+    </Row>
   );
 };
 

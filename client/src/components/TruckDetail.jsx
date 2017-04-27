@@ -27,10 +27,10 @@ class TruckDetail extends React.Component {
       <div>
         <Header />
         <Grid fluid>
-          <Col lg={8} smHidden={12} >
+          <Col md={8} sm={12}>
             <TruckInfoLeftPane />
           </Col>
-          <Col lg={4} smHidden={12} >
+          <Col md={4} smHidden={12}>
             <TruckList />
           </Col>
         </Grid>
