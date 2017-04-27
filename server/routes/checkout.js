@@ -1,6 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Orders = require('../models/orders.js');
 const Vendors = require('../models/vendors.js');
+const utils = require('../utils.js');
 
 module.exports = (req, res) => {
   const { tokenID, customer_email, vendor_id, customer_id, menuItems, total, order_note } = req.body.orderInfo; // eslint-disable-line no-unused-vars
@@ -12,6 +13,11 @@ module.exports = (req, res) => {
     order_note,
     menuItems
   };
+  // TODO: validate order - make sure there are some menu items, for example
+
+  const filteredMenuItems = utils.removeDuplicateOrders(menuItems);
+  order.menuItems = filteredMenuItems;
+
   Orders.addOrder(order)
   .then(order_ID => {
     const description = `Truck Hunt SF, order ${order_ID} with vendor ${vendor_id}`;

@@ -1,4 +1,5 @@
 /* eslint no-param-reassign: "off" */
+
 import React from 'react';
 import { Grid, Segment, Divider, Header } from 'semantic-ui-react';
 import CartItem from './CartItem.jsx';

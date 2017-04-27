@@ -24,10 +24,7 @@ export function truckListFetchData(url, coordinates, date) {
     dispatch(truckListIsLoading(true));
     const dateParsed = date;
     const coordinatesParsed = coordinates;
-    // console.log('action coordinates', coordinatesParsed);
-    // console.log('action date', dateParsed);
     const reqBody = { coordinates: coordinatesParsed, date: dateParsed };
-    // console.log('reqBody', reqBody);
     const options = {
       method: 'POST',
       headers: {
@@ -35,7 +32,6 @@ export function truckListFetchData(url, coordinates, date) {
       },
       body: JSON.stringify(reqBody)
     };
-    // console.log('OPTIONS', options);
     fetch(url, options)
       .then((response) => {
         if (!response.ok) {

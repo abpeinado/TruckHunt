@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Label, Panel, Accordion, Row } from 'react-bootstrap';
 import moment from 'moment';
 import MenuItem from './vendorOrderMenuItem.jsx';
+import utils from '../utils.js';
 
 class PastItem extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class PastItem extends Component {
           Total
           </h5>
           <h2>
-            ${order.price_total}
+            ${utils.formatCentsToDollars(order.price_total)}
           </h2>
         </Col>
         <Col xs={6}>

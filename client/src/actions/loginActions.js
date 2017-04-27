@@ -31,13 +31,6 @@ export function vendorLoginSuccess(bool) {
   };
 }
 
-// export function setUserID (userID) {
-//   return {
-//     type: 'SET_USERID',
-//     setUserID: userID
-//   }
-// }
-
 export function loginAttempt(userInfo) {
   const url = userInfo.url;
   const init = {
@@ -59,9 +52,6 @@ export function loginAttempt(userInfo) {
           // 200 Successful User Login
           dispatch(loginSuccess(true));
           console.log('inside successful login beudy', response);
-          // console.log('inside successful login beudy',  response.customer_id);
-          // console.log(typeof dispatch);
-          // console.log(typeof dispatch(setUserID));
         } else if (response.status === 202) {
           // 202 Successful Vendor Login
           dispatch(vendorLoginSuccess(true));

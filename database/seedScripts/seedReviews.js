@@ -1,6 +1,5 @@
 const Vendors = require('../../server/models/vendors.js');
 const Reviews = require('../../server/models/reviews.js');
-const utils = require('../../server/utils.js');
 
 Vendors.findVendorIds()
   .then((vendorIds) => {
@@ -15,9 +14,6 @@ Vendors.findVendorIds()
       Reviews.newReview(initialReview);
     }
   })
-  // .then(() => {
-  //   pgp.end();
-  // })
   .catch((error) => {
     console.log('error: ', error);
   });

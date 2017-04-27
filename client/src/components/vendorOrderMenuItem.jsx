@@ -1,6 +1,6 @@
 import React from 'react';
 import { Well, Col } from 'react-bootstrap';
-
+import utils from '../utils.js';
 
 const menuItem = (props) => (
   <Well className="incomingOrderMenuItem">
@@ -19,10 +19,11 @@ const menuItem = (props) => (
     </Col>
     <Col xs={3}>
       <h2>
-        ${ props.incomingOrder.price }
+        ${ utils.formatCentsToDollars(props.incomingOrder.price) }
       </h2>
     </Col>
   </Well>
 );
+
 
 export default menuItem;
