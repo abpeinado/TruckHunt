@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import React from 'react';
 import Logo from '../../client/src/components/Logo.jsx';
 
@@ -16,4 +17,9 @@ describe('Logo Component Tests', () => {
     expect(logo.find('img').length).toEqual(1);
   });
 
+  // test('Logo matches snapshot', () => {
+  //   const component = renderer.create(<Logo />);
+  //   const tree = component.toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 });
