@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Col, Grid } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
@@ -27,7 +27,8 @@ class TruckList extends Component {
     // });
 
     return (
-       <Grid fluid>
+      <div>
+       <Row className="truckListScroll">
            {this.props.truckList === undefined ? null :
               (this.props.truckList.map((item, i) =>
                 <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
@@ -37,7 +38,8 @@ class TruckList extends Component {
                 </Link>
               ))
             }
-      </Grid>
+      </Row>
+      </div>
     );
   }
 }

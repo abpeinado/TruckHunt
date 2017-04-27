@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 import React, { Component } from 'react';
-import { Rating } from 'semantic-ui-react';
-import { ListGroupItem, Panel, Thumbnail, Button } from 'react-bootstrap';
+// import { Rating } from 'semantic-ui-react';
+import { Image, Label } from 'semantic-ui-react';
 
 
 class TruckListItem extends Component {
@@ -14,17 +14,15 @@ class TruckListItem extends Component {
     const panelCss = {
       maxHeight: '200px'
     };
+    const labelContent = { as: 'a', color: 'orange', content: info.vendor_name, icon: 'hotel', ribbon: true };
 
     return (
-
-      <Thumbnail src={image} alt={`img-${info.vendor_name}`} style={{ 'padding-bottom': '25px' }} >
-        <div >
-          <h3>{ info.vendor_name }</h3>
-          <p>{ info.food_category }</p>
-          <Rating maxRating={5} defaultRating={info.rating} icon="star" size="large" />
+      <div className="truckCard">
+      <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/200X.png" shape='rounded' label={labelContent} fluid />
+        <div className="truckCardtext">
+        { info.food_category }
         </div>
-      </Thumbnail>
-
+      </div>
     );
   }
 }
