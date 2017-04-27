@@ -15,8 +15,16 @@ module.exports = (req, res) => {
   };
   // TODO: validate order - make sure there are some menu items, for example
 
+<<<<<<< HEAD
   const filteredMenuItems = utils.removeDuplicateOrders(menuItems);
   order.menuItems = filteredMenuItems;
+=======
+  console.log('order', order);
+  const filteredMenuItems = utils.removeDuplicateOrders(menuItems);
+  console.log('filtered order', filteredMenuItems);
+  order.menuItems = filteredMenuItems;
+  console.log('filtered order', order);
+>>>>>>> (bug) fix formatting price and duplicate orders bugs
 
   Orders.addOrder(order)
   .then(order_ID => {
