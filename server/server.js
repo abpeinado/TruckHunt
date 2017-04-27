@@ -49,8 +49,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
-const server = app.listen(port, () => {
-  console.log(`Express Service live and listening on: ${port}`);
-});
-
-module.exports = server;
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Express Service live and listening on: ${port}`);
+  });
+} else {
+  module.exports = app;
+}

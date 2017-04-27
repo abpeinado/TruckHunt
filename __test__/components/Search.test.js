@@ -3,8 +3,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
-import configureStore from '../client/src/store/configureStore.js';
-import Search from '../client/src/components/Search.jsx';
+import configureStore from '../../client/src/store/configureStore.js';
+import Search from '../../client/src/components/Search.jsx';
 
 describe('Search Component Test', () => {
   let search;
