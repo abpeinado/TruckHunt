@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Col, Label, Button, ButtonToolbar, ButtonGroup, Panel, Accordion, Row } from 'react-bootstrap';
 import moment from 'moment';
 import { vendorIncomingOrderUpdate } from '../actions/vendorIncomingOrderActions.js';
-import MenuItem from './vendorOrderMenuItem.jsx';
+import MenuItem from '../components/vendorOrderMenuItem.jsx';
 import utils from '../utils.js';
 
 class IncomingItem extends Component {

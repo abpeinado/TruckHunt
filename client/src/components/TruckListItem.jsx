@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 // import { Rating } from 'semantic-ui-react';
 import { Image, Label } from 'semantic-ui-react';
 
-
 class TruckListItem extends Component {
 
   render() {
@@ -48,6 +47,4 @@ class TruckListItem extends Component {
   }
 }
 
-
 export default TruckListItem;
-

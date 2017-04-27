@@ -1,7 +1,7 @@
 import React from 'react';
 import { Message, Card, Header, Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import TruckMenuItem from './TruckMenuItem.jsx';
+import TruckMenuItem from '../components/TruckMenuItem.jsx';
 import { addToCart, addToTotal } from '../actions/cartActions.js';
 import { clearSubmitOrderSuccess } from '../actions/checkoutActions.js';
 

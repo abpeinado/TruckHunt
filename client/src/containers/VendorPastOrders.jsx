@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { vendorIncomingOrderFetchData } from '../actions/vendorIncomingOrderActions.js';
-import VendorHeader from './VendorHeader.jsx';
-import PastOrder from './VendorPastOrdersItem.jsx';
+import VendorHeader from '../components/VendorHeader.jsx';
+import PastOrder from '../components/VendorPastOrdersItem.jsx';
 
 class VendorPastOrders extends Component {
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { Row } from 'react-bootstrap';
 import { Segment, Divider, Header } from 'semantic-ui-react';
 import CartItem from './CartItem.jsx';
-import Checkout from './Checkout.jsx';
+import Checkout from '../containers/Checkout.jsx';
 
 const Cart = ({ items, total, removeItemFromCart, removeItemFromTotal, orderSubmitted }) => {
   let totalWithDecimals = '0.00';

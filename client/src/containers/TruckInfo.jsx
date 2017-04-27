@@ -4,17 +4,11 @@ import React from 'react';
 import { Grid, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Header from './HeaderLimitedWLogin.jsx';
-import TruckInfoLeftPane from './TruckInfoLeftPane.jsx';
+import TruckInfoLeftPane from '../components/TruckInfoLeftPane.jsx';
 import CartContainer from './CartContainer.jsx';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
 
 class TruckInfo extends React.Component {
-
-  componentDidMount() {
-    // const category = this.props.truckSelected.food_category;
-    this.props.truckInfo;
-  }
-
   render() {
     const { truckInfoHasErrored, truckInfoIsLoading, truckInfo } = this.props;
     if (truckInfoHasErrored) {
