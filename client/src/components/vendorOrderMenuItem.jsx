@@ -2,7 +2,6 @@ import React from 'react';
 import { Well, Col } from 'react-bootstrap';
 import utils from '../utils.js';
 
-
 const menuItem = (props) => (
   <Well className="incomingOrderMenuItem">
     <Col xs={3}>
