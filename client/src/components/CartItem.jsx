@@ -3,7 +3,7 @@ import { Button, Label, Message, Grid, Header } from 'semantic-ui-react';
 import utils from '../utils.js';
 
 const CartItem = ({ name, price, quantity, onRemoveClicked }) => (
-  <Message size="small" className="animated slideInRight">
+  <Message size="small" className="animated slideInUp">
     <Grid>
       <Grid.Row>
         <Grid.Column width={3} textAlign="center">

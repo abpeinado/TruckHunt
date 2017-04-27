@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+
 
 const TruckMenuItem = ({ item, onAddToCartClicked }) => {
   const { name, item_description, price } = item;
@@ -14,7 +16,9 @@ const TruckMenuItem = ({ item, onAddToCartClicked }) => {
         <Card.Description>{item_description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button basic floated="right" size="mini" icon="plus" color="orange" onClick={onAddToCartClicked} />
+        <Link to="/truckMenu" >
+          <Button basic floated="right" size="mini" icon="plus" color="orange" onClick={onAddToCartClicked} />
+        </Link>
       </Card.Content>
     </Card>
   );

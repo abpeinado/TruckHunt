@@ -15,12 +15,23 @@ class TruckListItem extends Component {
       maxHeight: '200px'
     };
     const labelContent = { as: 'a', color: 'orange', content: info.vendor_name, icon: 'hotel', ribbon: true };
+    const food = info.food_category.split('');
+    let foodDescription = '';
+
+    if (food.length < 50) {
+      food.forEach((item => {foodDescription += item}));
+    } else {
+      for ( let i = 0; i < 50; i++ ) {
+        foodDescription += food[i];
+      };
+    }
+    console.log('food length', foodDescription)
 
     return (
       <div className="truckCard">
       <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/200X.png" shape='rounded' label={labelContent} fluid />
         <div className="truckCardtext">
-        { info.food_category }
+          { foodDescription }
         </div>
       </div>
     );

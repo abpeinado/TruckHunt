@@ -88,7 +88,7 @@ class Map extends React.Component {
           accessToken="pk.eyJ1Ijoic3pvbGwiLCJhIjoiY2oxanIwcHI4MDFicDMzcG1wenNmbXlqbCJ9.oRYXUrA-6QSwq2tYGLN2xw"
           containerStyle={mapStyles}
           center={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
-          zoom={[12]}
+          zoom={[13.5]}
           pitch={50}
           light={{
             anchor: 'viewport',

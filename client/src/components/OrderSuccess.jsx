@@ -4,7 +4,6 @@ import React from 'react';
 import { Grid, Segment, Header, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import HeaderBar from './HeaderLimitedWLogin.jsx';
-import CartContainer from './CartContainer.jsx';
 
 class OrderSuccess extends React.Component {
 
@@ -12,8 +11,8 @@ class OrderSuccess extends React.Component {
     return (
       <div>
         <HeaderBar />
-        <Grid className="gridWrapper">
-          <Grid.Column className="animated tada gridLeftWrapper truck-info-left-pane" width={10}>
+        <Grid className="gridWrapper" textAlign="center">
+          <Grid.Column className="animated tada gridLeftWrapper truck-info-left-pane" width={12}>
             <Segment inverted color="green" className="menuHeader" style={{ 'min-height': '12em' }}>
               <Header as="h1" icon textAlign="center">
                 <Header.Content style={{ 'padding-top': '1.2em' }}>
@@ -35,7 +34,6 @@ class OrderSuccess extends React.Component {
               </Header>
             </Segment>
           </Grid.Column>
-          <CartContainer />
         </Grid>
       </div>
     );

@@ -18,7 +18,7 @@ class ConsumerHomepage extends React.Component {
       <div >
         <Header />
         <Grid fluid>
-          <Col lg={8} smHidden={12} >
+          <Col lg={8} mdHidden={12} smHidden={12} xsHidden={12}>
             <MainMap />
           </Col>
           <Col lg={4} sm={12} >

@@ -31,8 +31,8 @@ class TruckList extends Component {
        <Row className="truckListScroll">
            {this.props.truckList === undefined ? null :
               (this.props.truckList.map((item, i) =>
-                <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-                  <Col lg={6} md={12}>
+                <Link to="/truckDetail" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
+                  <Col md={6} sm={6}>
                     <TruckListItem restaurant={item} />
                   </Col>
                 </Link>
@@ -63,22 +63,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TruckList);
-
-
-
-
-
-
-      // <Grid className="truckListCards">
-      //   <Grid.Column className="grid-sizer">
-      //     <Card.Group itemsPerRow={2}>
-      //       {this.props.truckList === undefined ? null :
-      //       (this.props.truckList.map((item, i) =>
-      //         <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-      //           <TruckListItem className="grid-item" restaurant={item} />
-      //         </Link>
-      //       ))
-      //     }
-      //     </Card.Group>
-      //   </Grid.Column>
-      // </Grid>

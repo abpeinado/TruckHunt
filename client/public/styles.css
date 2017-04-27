@@ -555,7 +555,8 @@ td.rdtYear:hover {
 
 .truckListScroll.row {
   height: 92vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .truckCard {
@@ -563,13 +564,18 @@ td.rdtYear:hover {
 }
 
 .truckCardtext {
-  width: 82%;
+  width: 92%;
   height: 2em;
   margin-top: -3em;
-  margin-left: 1em;
+  margin-left: .8em;
   font-size: 1.2em;
   font-family: Avenir, Helvetica;
   color: white;
   font-weight: bold;
   position: absolute;
 }
+
+.flexbox { display: flex; }
+
+
+.flexbox .stretch { flex: 1; }

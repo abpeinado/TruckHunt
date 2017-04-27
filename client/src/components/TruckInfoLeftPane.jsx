@@ -5,7 +5,7 @@ import TrunkInfoSummary from './TruckInfoSummary.jsx';
 
 const TruckInfoLeftPane = () => {
   return (
-    <Grid.Column className="animated slideInLeft gridLeftWrapper truck-info-left-pane" width={10}>
+    <Grid.Column className="animated fadeInUp gridLeftWrapper truck-info-left-pane" width={10}>
       <TrunkInfoSummary />
       <TruckMenu />
     </Grid.Column>
