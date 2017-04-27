@@ -27,7 +27,7 @@ Browse nearby food trucks in San Francisco; order food ahead of time so that it'
 
 Truck schedules and permit information comes from [SF Open Data], which publishes a variety of data for mobile food vendors in SF.
 
-If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data).  Once you have installed PostgreSQL you must seed the database. See PostgreSQL below. 
+If you are interested in testing and developement you can find sample data in JSON format within [database/data](database/data).  Once you have installed PostgreSQL you must seed the database. See Database section below. 
 
 ## Tech Stack
   - [React] with [React-Router] & [Redux]
