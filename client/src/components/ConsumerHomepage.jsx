@@ -1,6 +1,6 @@
 import React from 'react';
 // import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Col } from 'react-bootstrap';
 import Header from './Header.jsx';
 import MainMap from './MainMap.jsx';
 import TruckList from './TruckList.jsx';
@@ -12,44 +12,34 @@ class ConsumerHomepage extends React.Component {
     this.state = {};
   }
 
-  // componentWillUpdate() {
-  //   this.props.truckListIsLoading;
-  // }
-
 
   render() {
-    // if (this.props.truckListIsLoading) {
-    //   return (
-    //     <div className="mapLoader">
-    //       <h2>
-    //     Finding the best trucks around...
-    //       </h2>
-    //       <img src={'https://s3-us-west-1.amazonaws.com/zollstorage/loading.gif'} alt="loader" />
-    //     </div>);
-    // }
-
     return (
-      <div className="mainroot">
-        <Header className="headerWrapper" />
-        <Grid className="gridWrapper">
-          <Grid.Column className="gridLeftWrapper" width={10}>
-            <MainMap className="mapWrapper" />
-          </Grid.Column>
-          <Grid.Column width={6} className="gridRightWrapper">
-            <TruckList className="truckListWrapper" />
-          </Grid.Column>
+      <div >
+        <Header />
+        <Grid fluid>
+          <Col lg={8} smHidden={12} >
+            <MainMap />
+          </Col>
+          <Col lg={4} sm={12} >
+            <TruckList />
+          </Col>
         </Grid>
       </div>
     );
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     truckListIsLoading: state.truckListIsLoading
-//   };
-// };
-
-// export default connect(mapStateToProps)(ConsumerHomepage);
 export default ConsumerHomepage;
 
+      // <div className="mainroot">
+      //   <Header className="headerWrapper" />
+      //   <Grid className="gridWrapper">
+      //     <Col xs={12} md={8} className="gridLeftWrapper">
+      //       <MainMap className="mapWrapper" />
+      //     </Col>
+      //     <Col xs={12} md={4} className="gridRightWrapper">
+      //       <TruckList className="truckListWrapper" />
+      //     </Col>
+      //   </Grid>
+      // </div>

@@ -54,7 +54,7 @@ class Map extends React.Component {
     }
 
     const mapStyles = {
-      height: '88vh'
+      height: '92vh'
     };
 
     let start = '';

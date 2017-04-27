@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Grid, Card } from 'semantic-ui-react';
+import { Col, Grid } from 'react-bootstrap';
 import { truckListFetchData } from '../actions/truckListActions.js';
 import { truckSelectedUpdate } from '../actions/truckSelectedActions.js';
 import { truckInfoFetchData } from '../actions/truckInfoActions.js';
@@ -27,18 +27,16 @@ class TruckList extends Component {
     // });
 
     return (
-      <Grid className="truckListCards">
-        <Grid.Column className="grid-sizer">
-          <Card.Group itemsPerRow={2}>
-            {this.props.truckList === undefined ? null :
-            (this.props.truckList.map((item, i) =>
-              <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
-                <TruckListItem className="grid-item" restaurant={item} />
-              </Link>
-            ))
-          }
-          </Card.Group>
-        </Grid.Column>
+       <Grid fluid>
+           {this.props.truckList === undefined ? null :
+              (this.props.truckList.map((item, i) =>
+                <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
+                  <Col lg={6} md={12}>
+                    <TruckListItem restaurant={item} />
+                  </Col>
+                </Link>
+              ))
+            }
       </Grid>
     );
   }
@@ -63,3 +61,22 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TruckList);
+
+
+
+
+
+
+      // <Grid className="truckListCards">
+      //   <Grid.Column className="grid-sizer">
+      //     <Card.Group itemsPerRow={2}>
+      //       {this.props.truckList === undefined ? null :
+      //       (this.props.truckList.map((item, i) =>
+      //         <Link to="/truckMenu" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
+      //           <TruckListItem className="grid-item" restaurant={item} />
+      //         </Link>
+      //       ))
+      //     }
+      //     </Card.Group>
+      //   </Grid.Column>
+      // </Grid>
