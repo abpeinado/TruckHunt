@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Truck Menu Item  Component Tests Truck Menu Item matches snapshot 1`] = `
+<div
+  className="ui orange card animated slideInUp"
+  href={undefined}
+  onClick={[Function]}
+>
+  <div
+    className="content"
+  >
+    <div
+      className="header"
+    >
+      All American Club
+    </div>
+    <div
+      className="meta"
+    >
+      $
+      7.75
+    </div>
+    <div
+      className="description"
+    >
+      Roast turkey, honey ham, bacon, Monterey Jack cheese, lettuce, tomato and dijonaisse
+    </div>
+  </div>
+  <div
+    className="extra content"
+  >
+    <a
+      href="/truckMenu"
+      onClick={[Function]}
+    >
+      <button
+        className="ui orange mini basic icon button right floated"
+        onClick={[Function]}
+        tabIndex={undefined}
+      >
+        <i
+          aria-hidden="true"
+          className="plus icon"
+        />
+         
+      </button>
+    </a>
+  </div>
+</div>
+`;

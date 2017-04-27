@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartItem Component Tests CartItem matches snapshot 1`] = `
+exports[`Truck List Irem Component Tests Truck List Item matches snapshot 1`] = `
 <div
   className="truckCard"
 >

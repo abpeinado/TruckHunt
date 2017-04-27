@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo Component Tests Logo matches snapshot 1`] = `
+<a
+  className="navbar-brand"
+  href="/"
+  onClick={[Function]}
+>
+  <div
+    className="logo-inline"
+  >
+    <img
+      alt="logo"
+      className="logo-img"
+      src="https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png"
+    />
+  </div>
+</a>
+`;

@@ -13,11 +13,13 @@ const restaurant = {
   rating: 4
 };
 
-describe('CartItem Component Tests', () => {
-  test('CartItem matches snapshot', () => {
-    const component = renderer.create(<TruckListItem
-      restaurant={restaurant}
-    />);
+describe('Truck List Irem Component Tests', () => {
+  test('Truck List Item matches snapshot', () => {
+    const component = renderer.create(
+      <TruckListItem
+        restaurant={restaurant}
+      />
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
