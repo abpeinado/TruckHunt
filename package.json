@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "antd": "^2.9.2",
     "babel-core": "6.24.0",
     "babel-jest": "19.0.0",
     "babel-loader": "6.4.1",

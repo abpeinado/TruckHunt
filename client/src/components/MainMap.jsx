@@ -54,7 +54,7 @@ class Map extends React.Component {
     }
 
     const mapStyles = {
-      height: '88vh'
+      height: '92vh'
     };
 
     let start = '';
@@ -88,8 +88,7 @@ class Map extends React.Component {
           accessToken="pk.eyJ1Ijoic3pvbGwiLCJhIjoiY2oxanIwcHI4MDFicDMzcG1wenNmbXlqbCJ9.oRYXUrA-6QSwq2tYGLN2xw"
           containerStyle={mapStyles}
           center={[this.props.mapCenter.lng, this.props.mapCenter.lat]}
-
-          zoom={[12]}
+          zoom={[13.5]}
           pitch={50}
           light={{
             anchor: 'viewport',
@@ -97,10 +96,7 @@ class Map extends React.Component {
             intensity: 0.4
           }}
         >
-          {
-
-
-            (this.props.truckList.length) ? (
+          { (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
                 const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${2}.png`;

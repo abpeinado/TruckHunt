@@ -552,3 +552,30 @@ td.rdtYear:hover {
   font-size: 1.2em;
   margin-top: 37px;
 }
+
+.truckListScroll.row {
+  height: 92vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.truckCard {
+  padding-bottom: 2em;
+}
+
+.truckCardtext {
+  width: 90%;
+  height: 2em;
+  margin-top: -3em;
+  margin-left: .8em;
+  font-size: 1.2em;
+  font-family: Avenir, Helvetica;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+}
+
+.flexbox { display: flex; }
+
+
+.flexbox .stretch { flex: 1; }

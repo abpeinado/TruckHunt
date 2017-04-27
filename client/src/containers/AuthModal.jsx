@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import VendorSignup from './VendorSignup.jsx';
 import Signup from './Signup.jsx';
 import Login from './Login.jsx';
-import Header from '../components/Header.jsx';
+import Header from '../components/HeaderLimited.jsx';
 
 
 class AuthModal extends React.Component {
