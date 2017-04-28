@@ -42,7 +42,17 @@ export function truckListFetchData(url, coordinates, date) {
       })
       .then(response => response.json())
       .then(truckList => {
-        dispatch(truckListFetchDataSuccess(truckList));
+        // NO DUPLICATE TRUCK FILTERING
+        const names = truckList.map((truck) => truck.vendor_name);
+
+        const noDupes = truckList.reduce((acc, truck, index) => {
+          if (names.lastIndexOf(truck.vendor_name) > index) {
+            return acc;
+          }
+          return [...acc, truck];
+        }, []);
+
+        dispatch(truckListFetchDataSuccess(noDupes));
       })
       .catch(() => dispatch(truckListHasErrored(true)));
   };

@@ -8,7 +8,7 @@ class TruckInfoSummary extends React.Component {
     const truck = this.props.truckSelected;
 
     return (
-      <Segment inverted color="orange" className="animated fadeInDown menuHeader">
+      <Segment inverted color="orange" className="animated fadeIn menuHeader">
         <Header as="h1" icon textAlign="center">
           <Header.Content>
             {truck.vendor_name}

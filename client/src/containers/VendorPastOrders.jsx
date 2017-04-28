@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col } from 'react-bootstrap';
+import { Grid, Col, Image, Row } from 'react-bootstrap';
 import { vendorIncomingOrderFetchData } from '../actions/vendorIncomingOrderActions.js';
 import VendorHeader from '../components/VendorHeader.jsx';
 import PastOrder from '../components/VendorPastOrdersItem.jsx';
@@ -17,16 +17,30 @@ class VendorPastOrders extends Component {
     if (this.props.vendorIncomingOrderHasErrored) {
       return (
         <div>
-          <VendorHeader />
-          <p>Oops! There was an error loading the incoming order</p>;
+          <Header />
+          <Grid fluid >
+            <Row style={{textAlign:"center", paddingTop: "2em"}}>
+              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
+              <h2 style={{ textAlign:"center" }}>
+                Oops! There was an error loading the incoming orders!
+              </h2>
+            </Row>
+          </Grid>
         </div>
       );
     }
     if (this.props.vendorIncomingOrderIsLoading) {
       return (
         <div>
-          <VendorHeader />
-          <p>Loading Incoming Orders…</p>;
+          <Header />
+          <Grid fluid >
+            <Row style={{textAlign:"center", paddingTop: "2em"}}>
+              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
+              <h2 style={{ textAlign:"center" }}>
+                Loading Orders...
+              </h2>
+            </Row>
+          </Grid>
         </div>
       );
     }

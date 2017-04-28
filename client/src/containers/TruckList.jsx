@@ -17,14 +17,7 @@ class TruckList extends Component {
   }
 
   render() {
-    // PER THE ORIGINAL MASONRY DOCS -> doesn't play nice with react
-    // document.getElementByClassName('grid').masonry({
-    //   // set itemSelector so .grid-sizer is not used in layout
-    //   itemSelector: '.grid-item',
-    //   // use element for option
-    //   columnWidth: '.grid-sizer',
-    //   percentPosition: true
-    // });
+    const random = (Math.floor(Math.random() * 3) + 1);
 
     return (
       <div>
@@ -33,7 +26,7 @@ class TruckList extends Component {
             (this.props.truckList.map((item, i) =>
               <Link to="/truckDetail" key={i} onMouseOver={() => { this.props.mapMarkerUpdate(item); }} onClick={() => { this.props.truckSelectedUpdate(item); this.props.truckInfoFetchData(item.food_category); }}>
                 <Col md={6} sm={6}>
-                  <TruckListItem restaurant={item} />
+                  <TruckListItem restaurant={item} key={i} random={random} />
                 </Col>
               </Link>
             ))
