@@ -19,4 +19,3 @@ const ConsumerHomepage = () => (
 );
 
 export default ConsumerHomepage;
-

@@ -95,10 +95,10 @@ class Header extends Component {
           <Menu.Item >
             {this.props.setUserID === 0 ?
               (<Link to="/auth" className="NavBarFoodTruck">
-                  Login
+                Login
               </Link>) :
-             (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
-                  Logout
+              (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
+                Logout
               </Link>)
             }
           </Menu.Item>

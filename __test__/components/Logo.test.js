@@ -1,6 +1,9 @@
 import { shallow } from 'enzyme';
+import { StaticRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
 import React from 'react';
 import Logo from '../../client/src/components/Logo.jsx';
+
 
 describe('Logo Component Tests', () => {
   let logo;
@@ -16,4 +19,13 @@ describe('Logo Component Tests', () => {
     expect(logo.find('img').length).toEqual(1);
   });
 
+  test('Logo matches snapshot', () => {
+    const component = renderer.create(
+      <StaticRouter>
+        <Logo />
+      </StaticRouter>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

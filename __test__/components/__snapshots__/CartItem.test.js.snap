@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem Component Tests CartItem matches snapshot 1`] = `
+<div
+  className="ui small message animated slideInUp"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="center aligned three wide column"
+      >
+        <div
+          className="ui orange large basic circular label"
+          onClick={[Function]}
+        >
+          1
+        </div>
+      </div>
+      <div
+        className="ten wide column"
+      >
+        <h2
+          className="ui header"
+        >
+          Burrito
+        </h2>
+        <div
+          className="ui orange basic label"
+          onClick={[Function]}
+        >
+          $
+          6.99
+        </div>
+      </div>
+      <div
+        className="center aligned three wide column"
+      >
+        <button
+          className="ui orange small circular icon button"
+          onClick={[Function]}
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="minus icon"
+          />
+           
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
