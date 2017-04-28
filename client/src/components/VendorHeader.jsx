@@ -28,21 +28,21 @@ class VendorHeader extends Component {
         <Menu.Menu position="right">
           <Menu.Item >
             <Link to="/vendor">
-              <h3 style={{color: '#fff'}}>Current Orders</h3>
+              <h3 className="textWhite">Current Orders</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
             <Link to="pastOrders">
-              <h3 style={{color: '#fff'}}>Past Orders</h3>
+              <h3 className="textWhite">Past Orders</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
             <Link to="/analytics">
-              <h3 style={{color: '#fff'}}>Analytics</h3>
+              <h3 className="textWhite">Analytics</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
-             {this.props.setUserID === 0 ?
+            {this.props.setUserID === 0 ?
               (<Link to="/auth" className="NavBarFoodTruck">
                 <Button>Login</Button>
               </Link>) :

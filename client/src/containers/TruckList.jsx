@@ -24,8 +24,8 @@ class TruckList extends Component {
         <Row className="truckListScroll">
           {this.props.truckList === undefined || this.props.truckList.length < 1 ? (
             <Well>
-              <Image style={{ textAlign: "center" }} src={'https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/truck_error.gif'}/>
-              <h1 style={{ textAlign: "center", color: "#db6606" }}>
+              <Image className="textCenter" src={'https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/truck_error.gif'} />
+              <h1 className="truckListText">
               Looks like theres no trucks currently available! Try searching again with a different time!
               </h1>
             </Well>

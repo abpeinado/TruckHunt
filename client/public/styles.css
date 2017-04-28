@@ -10,6 +10,92 @@ html {
 /*  font-family: 'Patua One', cursive;
 */  /*background-color: #7d64d6;*/
 }
+
+.textblack {
+  color: black;
+}
+
+.text2 {
+  font-size: 2em;
+}
+
+.text25 {
+  font-size: 2.5em;
+}
+
+.text12 {
+  height: 12em;
+}
+
+.text6 {
+  font-size: 6em;
+}
+
+.text11 {
+  font-size: 11.2em;
+}
+
+.truckListText {
+  text-align: center;
+  color: #db6606;
+}
+
+.truckDetailText {
+  text-align: center;
+  padding-top: 2em;
+}
+
+.vendorOrderText {
+  padding-top: 16px;
+  padding-left: 3em;
+}
+
+.vendorOrderText2 {
+  padding-top: 16px;
+}
+
+.vendorOrderTextLeft {
+  text-align: left
+}
+
+.minHeight {
+  padding-bottom: 4em;
+}
+
+.textPadding {
+  padding-bottom: 4em;
+}
+
+.textPadding2 {
+  padding-bottom: 4em;
+}
+
+.textPadding3 {
+  padding-top: 1.2em;
+}
+
+.textCenter {
+  text-align: center
+}
+
+.textWhite {
+  color: #fff
+}
+
+.analyticsText {
+  text-align: center;
+  padding-bottom: 1em
+}
+
+.analyticsMessage {
+  height: 10em
+}
+
+.analyticsMessage2 {
+  text-align: center;
+  padding-bottom: 4em
+}
+
 .panel-primary>.panel-heading {
      color: #fff;
      background-color: #DB661E !important;

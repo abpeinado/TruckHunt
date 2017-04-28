@@ -82,7 +82,7 @@ class Header extends Component {
         </Menu.Item>
         <Menu.Menu position="right">
           <div className="ui right aligned category search item">
-              <i className="search link icon" />
+            <i className="search link icon" />
             <div className="flexbox ui transparent icon input">
               <Search className="stretch" />
             </div>

@@ -5,7 +5,7 @@ const VendorItemAvailability = () => (
   <div>
     <VendorHeader />
     <div>
-      <h2 style={{ textAlign: 'center' }}>
+      <h2 className="textCenter">
         Menu Selection Coming Soon!
       </h2>
     </div>

@@ -3,7 +3,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col } from 'react-bootstrap';
+import { Grid, Col, Image, Row } from 'react-bootstrap';
+import Header from '../components/VendorHeader.jsx';
 import { vendorIncomingOrderFetchData, foundOrders } from '../actions/vendorIncomingOrderActions.js';
 import IncomingItem from './VendorCurrentOrderIncomingItem.jsx';
 import ReadyItem from './VendorCurrentOrderReadyItem.jsx';
@@ -24,9 +25,9 @@ class VendorCurrentOrders extends Component {
         <div>
           <Header />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Oops! There was an error loading the incoming orders!
               </h2>
             </Row>
@@ -39,9 +40,9 @@ class VendorCurrentOrders extends Component {
         <div>
           <Header />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Loading Orders...
               </h2>
             </Row>
@@ -52,7 +53,7 @@ class VendorCurrentOrders extends Component {
     return (
       <div>
         <Col xs={12} md={8}>
-          <h2 style={{ textAlign: 'center' }}>INCOMING ORDERS</h2>
+          <h2 className="textCenter">INCOMING ORDERS</h2>
           {this.props.vendorIncomingOrder.map((item, i) => {
             if (item.order_status < 2) {
               return <IncomingItem incomingOrder={item} key={i} />;
@@ -60,7 +61,7 @@ class VendorCurrentOrders extends Component {
           }
           )}
         </Col>
-        <Col style={{ textAlign: 'center' }} xs={12} md={4}>
+        <Col className="textCenter" xs={12} md={4}>
           <h2>READY FOR PICKUP</h2>
           {this.props.vendorIncomingOrder.map((item, i) => {
             if (item.order_status === 2) {

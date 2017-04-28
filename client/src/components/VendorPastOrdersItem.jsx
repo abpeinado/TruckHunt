@@ -37,8 +37,8 @@ class PastItem extends Component {
               {order.items.length} Items
             </h2>
           </Col>
-          <Col xs={6} style={{ 'padding-top': '16px', 'padding-left': '3em' }}>
-            <Label bsStyle="success" style={{ fontSize: '2em' }}>
+          <Col xs={6} className="vendorOrderText">
+            <Label bsStyle="success" className="text2" >
               {timeFormatted}
             </Label>
           </Col>

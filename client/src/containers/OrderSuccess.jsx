@@ -26,19 +26,19 @@ class OrderSuccess extends React.Component {
         <HeaderBar />
         <Grid className="gridWrapper" textAlign="center">
           <Grid.Column className="gridLeftWrapper truck-info-left-pane" width={12}>
-            <Segment color="orange" className="animated fadeIn menuHeader" style={{ minHeight: '12em' }}>
+            <Segment color="orange" className="animated fadeIn minHeight menuHeader" >
               <Header as="h1" icon textAlign="center">
-                <Header.Content style={{ paddingTop: '1.2em' }} className="animated tada" >
+                <Header.Content className="animated tada textPadding3" >
                   <Icon.Group >
                     <Icon color="green" size="large" name="checkmark" />
                   </Icon.Group>
-                  <div style={{ paddingBottom: '2em' }}>
+                  <div className="textPadding2">
                   Order Complete!
                   </div>
                 </Header.Content>
               </Header>
               <Header as="h2" textAlign="center" >
-                <Header.Content style={{ paddingBottom: '1.2em' }}>
+                <Header.Content className="textPadding3">
                   <div>
                   Your order from <Label color="orange" size="huge" horizontal>{this.props.truckSelected.vendor_name}</Label> will be ready soon!
                   </div>
@@ -46,7 +46,7 @@ class OrderSuccess extends React.Component {
                   Don't forget to pickup your order by <Label color="orange" horizontal>{formattedTime}</Label>!
                 </Header.Content>
                 <Divider />
-                <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/LogoV2.png' size='medium' />
+                <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/LogoV2.png" size="medium" />
                 <div>
                   <Label color="orange" size="large" horizontal>Thanks for ordering with Truck Hunt!</Label>
                 </div>

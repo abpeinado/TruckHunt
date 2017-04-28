@@ -17,11 +17,11 @@ class VendorPastOrders extends Component {
     if (this.props.vendorIncomingOrderHasErrored) {
       return (
         <div>
-          <Header />
+          <VendorHeader />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Oops! There was an error loading the incoming orders!
               </h2>
             </Row>
@@ -32,11 +32,11 @@ class VendorPastOrders extends Component {
     if (this.props.vendorIncomingOrderIsLoading) {
       return (
         <div>
-          <Header />
+          <VendorHeader />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Loading Orders...
               </h2>
             </Row>
@@ -48,7 +48,7 @@ class VendorPastOrders extends Component {
       <div>
         <VendorHeader />
         <Col xs={12} >
-          <h2 style={{ textAlign: 'center' }}>COMPLETED ORDERS</h2>
+          <h2 className="textCenter">COMPLETED ORDERS</h2>
           {this.props.vendorIncomingOrder.map((item, i) => {
             if (item.order_status === 3) {
               return <PastOrder incomingOrder={item} key={i} />;

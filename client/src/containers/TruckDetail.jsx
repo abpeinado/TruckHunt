@@ -16,9 +16,9 @@ class TruckDetail extends React.Component {
         <div>
           <Header />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Sorry! There was an error loading this trucks data!
               </h2>
             </Row>
@@ -31,9 +31,9 @@ class TruckDetail extends React.Component {
         <div>
           <Header />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row className="truckDetailText">
+              <Image src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif" />
+              <h2 className="textCenter">
                 Loading..
               </h2>
             </Row>
