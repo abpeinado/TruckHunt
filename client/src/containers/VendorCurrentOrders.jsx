@@ -12,7 +12,6 @@ class VendorCurrentOrders extends Component {
 
   componentWillUpdate() {
     if (!this.props.foundOrders) {
-      console.log('SET USER ID', this.props.setUserID);
       this.props.FetchVendorOrders('/vendorIncomingOrders', this.props.setUserID);
       this.props.FoundOrdersOnce(true);
     }

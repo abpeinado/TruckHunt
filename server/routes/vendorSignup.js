@@ -8,7 +8,6 @@ module.exports = (req, res) => {
   VendorSignup.checkUsername(user)
     .then((response) => {
       if (response.length !== 0) {
-        console.log('invalid username inside throw', response);
         throw new Error('invalid username');
       }
       return VendorSignup.checkPermitNumberIsValid(permit);

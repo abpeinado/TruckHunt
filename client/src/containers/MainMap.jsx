@@ -38,7 +38,6 @@ class Map extends React.Component {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     const newCoordinates = { lng, lat };
-    console.log('current position', newCoordinates);
     this.props.mapCenterUpdate(newCoordinates);
   }
 

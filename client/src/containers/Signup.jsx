@@ -50,10 +50,7 @@ class Signup extends React.Component {
     });
 
     if (user !== null && pass !== null && verify === pass) {
-      // send userInfo to server
       this.props.signupFetch(userInfo);
-
-      // reset field values
       this.setState({
         username: '',
         password: '',
@@ -61,7 +58,6 @@ class Signup extends React.Component {
       });
     } else {
       // TODO: conditional render passwords don't match
-      console.log('inside handleSubmit LOGIN, bad combo');
     }
   }
 
