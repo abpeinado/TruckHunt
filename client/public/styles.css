@@ -10,7 +10,34 @@ html {
 /*  font-family: 'Patua One', cursive;
 */  /*background-color: #7d64d6;*/
 }
+.panel-primary>.panel-heading {
+     color: #fff;
+     background-color: #DB661E !important;
+     border-color: #fff !important;
+}
 
+i.search.link.icon {
+    opacity: .9;
+    margin: -14px .35714286em 0 0 !important;
+    position: sticky !important;
+}
+
+div#PlacesAutocomplete__root {
+    padding: 6px;
+    border: 2px solid white !important;
+    border-radius: 5px;
+    color: white;
+}
+
+.ui.orange.inverted.segment.animated.fadeIn.menuHeader {
+    background: #db6606 !important;
+}
+
+.ui.card.truckCard {
+    background: #db6606;
+    margin-bottom: 2em !important;
+    color: #fff !important;
+}
 
 .trucklist-group {
   min-height: 140px;
@@ -110,25 +137,7 @@ div.navbar-form {
 a.navbar-brand {
   padding: 0;
 }
-/*
-.NavbarStyled {
-  min-height: 6em;
-}*/
 
-/*.cart {
-  height: 600px;
-  border: 1px solid #111;
-}*/
-
-/*.truck-info-summary {
-  border: 1px solid blue;
-}
-
-.truck-menu-group {
-  background-color: #d8d8d8;
-  border: 1px solid green;
-}
-*/
 .truck-rating {
   text-align: center;
 }
@@ -175,12 +184,12 @@ input.Demo__search-input {
 .modal-footer {
   text-align: center !important;
   font-family: 'Quicksand', sans-serif;
-  background-color: orange;
+  background-color: #db6606;
 }
 
 .modal-header {
   padding: 15px;
-  background-color: orange;
+  background-color: #db6606;
   color: white;
 }
 
@@ -201,16 +210,6 @@ input.form-control {
   padding-top: 2em;
 }
 
-/*map popup styles... not working correctly*/
-/*mapboxgl-popup-content {
-  color: #fff;
-  background: rgb(255, 106, 0);
-}*/
-/*t {
-  color: #fff;
-  background: rgb(255, 106, 0);
-}*/
-
 .truckListCards {
   height: 1055px;
   overflow: scroll;
@@ -221,17 +220,9 @@ input.form-control {
   z-index: 88888;
   left: 13%;
   top: 2%;
-  background-color: rgba(212, 212, 212, 0.08);
   border-radius: 5%;
+  color: white;
 }
-
-/*.grid-sizer,
-.grid-item { width: 50%; }*/
-
-/*.ui.grid>.column:not(.row) {
-  padding: 0;
-}
-*/
 
 .mainroot {
   border: 1px solid rebeccapurple;
@@ -247,17 +238,6 @@ input.form-control {
 .ui.grid {
   margin: 1rem;
 }
-
-/*.ui.grid.gridWrapper {
-  position: fixed;
-  border: 1px solid red;
-  height: 100%;
-}
-
-.ui.grid>.column:not(.row) {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}*/
 
 .truckSummary {
   padding-bottom: 1em;
@@ -294,61 +274,7 @@ input.form-control {
   display: block;
 }
 
-
-
-
-
-
-/*
-* { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
-
-
-
-/*-------TESTING FOR MASONRY LAYOUT-------*/
-/*-------NOT USEFUL IF IMPLEMENTING REACT_MASONRY_LAYOUT, only native MASONRY-------*/
-
-/* ---- grid ---- */
-/*/*
-.grid {
-  background: #EEE;
-  max-width: 1200px;
-}
-
-/* clearfix */
-/*.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}*/
-
-/* ---- grid-item ---- */
-
-/*.grid-sizer,
-.grid-item {
-  width: 20%;
-}
-
-.grid-item {
-  height: 120px;
-  float: left;
-  background: #D26;
-  border: 2px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 5px;
-}
-
-.grid-item--width2 { width:  40%; }
-.grid-item--width3 { width:  60%; }
-
-.grid-item--height2 { height: 200px; }
-.grid-item--height3 { height: 260px; }
-.grid-item--height4 { height: 360px; }*/
-/*/
-/*
-==============================TIME PICKER=====================================*/
-
+/* ==============================TIME PICKER=====================================*/
 
 .rdt {
   position: relative;
@@ -586,3 +512,25 @@ td.rdtYear:hover {
 
 
 .flexbox .stretch { flex: 1; }
+
+.ui.large.borderless.menu {
+    background: #db6606;
+    color: #fff;
+}
+
+a.NavBarFoodTruck {
+    color: white;
+}
+
+button.ui.button {
+    font-family: sans-serif;
+    border: 2px solid white;
+    color: white;
+    background-color: #db6606;
+}
+
+.truckText {
+  position: absolute;
+  background: white;
+}
+

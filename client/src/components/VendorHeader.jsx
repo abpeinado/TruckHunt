@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 import Logo from './Logo.jsx';
 
 class VendorHeader extends Component {
@@ -28,26 +28,26 @@ class VendorHeader extends Component {
         <Menu.Menu position="right">
           <Menu.Item >
             <Link to="/vendor">
-              Current Orders
+              <h3 style={{color: '#fff'}}>Current Orders</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
             <Link to="pastOrders">
-              Past Orders
+              <h3 style={{color: '#fff'}}>Past Orders</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
             <Link to="/analytics">
-              Analytics
+              <h3 style={{color: '#fff'}}>Analytics</h3>
             </Link>
           </Menu.Item>
           <Menu.Item >
-            {this.props.setUserID === 0 ?
+             {this.props.setUserID === 0 ?
               (<Link to="/auth" className="NavBarFoodTruck">
-                  Login
+                <Button>Login</Button>
               </Link>) :
-             (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
-                  Logout
+              (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
+                <Button>Logout</Button>
               </Link>)
             }
           </Menu.Item>
