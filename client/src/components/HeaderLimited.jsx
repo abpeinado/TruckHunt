@@ -1,16 +1,25 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
+/* eslint-disable operator-assignment */
+
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
 import Logo from './Logo.jsx';
 
-const Header = () => (
-  <div className="NavbarStyled">
-    <Navbar>
-      <Navbar.Header>
-        <Logo />
-        <Navbar.Toggle />
-      </Navbar.Header>
-    </Navbar>
-  </div>
-);
+
+class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+  render() {
+    return (
+      <Menu size="large" borderless>
+        <Menu.Item>
+          <Logo />
+        </Menu.Item>
+      </Menu>
+    );
+  }
+}
 
 export default Header;

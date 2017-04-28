@@ -99,7 +99,7 @@ class Login extends React.Component {
       <Form horizontal onSubmit={this.handleSubmit} className="loginForm">
         <FormGroup controlId="formHorizontalEmail">
           <Col sm={12}>
-            <h3>Username</h3>
+            <h5>Username</h5>
           </Col>
           <Col sm={12}>
             <FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange} />
@@ -108,7 +108,7 @@ class Login extends React.Component {
 
         <FormGroup controlId="formHorizontalPassword">
           <Col sm={12}>
-            <h3>Password</h3>
+            <h5>Password</h5>
           </Col>
           <Col sm={12}>
             <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange} />
