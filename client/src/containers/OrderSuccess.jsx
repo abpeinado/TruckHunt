@@ -26,10 +26,10 @@ class OrderSuccess extends React.Component {
         <HeaderBar />
         <Grid className="gridWrapper" textAlign="center">
           <Grid.Column className="gridLeftWrapper truck-info-left-pane" width={12}>
-            <Segment  color="orange" className="animated fadeIn menuHeader" style={{ minHeight: '12em' }}>
+            <Segment color="orange" className="animated fadeIn menuHeader" style={{ minHeight: '12em' }}>
               <Header as="h1" icon textAlign="center">
                 <Header.Content style={{ paddingTop: '1.2em' }} className="animated tada" >
-                  <Icon.Group  >
+                  <Icon.Group >
                     <Icon color="green" size="large" name="checkmark" />
                   </Icon.Group>
                   <div style={{ paddingBottom: '2em' }}>

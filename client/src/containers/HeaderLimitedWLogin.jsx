@@ -27,10 +27,10 @@ class Header extends Component {
           <Menu.Item >
             {this.props.setUserID === 0 ?
               (<Link to="/auth" className="NavBarFoodTruck">
-                  <Button>Login</Button>
+                <Button>Login</Button>
               </Link>) :
-             (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
-                  <Button>Logout</Button>
+              (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
+                <Button>Logout</Button>
               </Link>)
             }
           </Menu.Item>

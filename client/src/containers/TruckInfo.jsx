@@ -31,9 +31,9 @@ class TruckInfo extends React.Component {
         <div>
           <Header />
           <Grid fluid >
-            <Row style={{textAlign:"center", paddingTop: "2em"}}>
-              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
-              <h2 style={{ textAlign:"center" }}>
+            <Row style={{ textAlign: 'center', paddingTop: '2em' }}>
+              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif' />
+              <h2 style={{ textAlign: 'center' }}>
                 Loading..
               </h2>
             </Row>

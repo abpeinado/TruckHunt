@@ -23,16 +23,12 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.getLocation();
-    // TODO: ADD DATE PARAM TO REQUEST
     this.props.truckListFetchData('/search', this.props.mapCenter, this.props.mapDate);
-    // console.log('trucks list recieved');
   }
 
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition);
-      // const location = navigator.geolocation.getCurrentPosition(this.showPosition);
-      // console.log('current location test', location);
     } else {
       console.log('Geolocation is not supported by this browser');
     }
@@ -41,8 +37,6 @@ class Map extends React.Component {
   showPosition(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    // console.log('current location lat', lat);
-    // console.log('current location long', lng);
     const newCoordinates = { lng, lat };
     console.log('current position', newCoordinates);
     this.props.mapCenterUpdate(newCoordinates);
@@ -99,7 +93,7 @@ class Map extends React.Component {
           { (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
-                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/TruckHuntMarker.png`;
+                const image = 'https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/TruckHuntMarker.png';
                 return (
                   <Marker
                     coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
@@ -120,9 +114,6 @@ class Map extends React.Component {
           <Popup
             coordinates={[this.props.mapMarkerSelected.coordinates.long, this.props.mapMarkerSelected.coordinates.lat]}
             anchor="top-left"
-            // offset={{
-            //   'bottom-left': [12, -38], bottom: [0, -38], 'bottom-right': [-12, -38]
-            // }}
           >
 
             <h4>

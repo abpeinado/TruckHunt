@@ -10,12 +10,6 @@ import ReadyItem from './VendorCurrentOrderReadyItem.jsx';
 
 class VendorCurrentOrders extends Component {
 
-  // componentDidMount() {
-  //   this.props.FetchVendorOrders('/vendorIncomingOrders', 74);
-  //   this.props.FoundOrdersOnce(true);
-  //   console.log('found orders: ', this.props.foundOrders);
-  // }
-
   componentWillUpdate() {
     if (!this.props.foundOrders) {
       console.log('SET USER ID', this.props.setUserID);
