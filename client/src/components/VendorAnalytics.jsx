@@ -1,52 +1,83 @@
 import React, { Component } from 'react';
 import { Col, Row, Grid } from 'react-bootstrap';
+import { Statistic, Message } from 'semantic-ui-react';
 import { AreaChart, Legend, BarChart, Bar, Area, CartesianGrid, Tooltip, YAxis, XAxis } from 'recharts';
 import { connect } from 'react-redux';
 import VendorHeader from './VendorHeader.jsx';
+import utils from '../utils.js';
+
 
 class VendorAnalytics extends Component {
 
   render() {
+    const data = this.props.vendorIncomingOrder
+    let totalRev = 0;
+    let totalOrders = 0;
+    data.map((item) => {
+      totalOrders += 1;
+      totalRev += item.price_total;
+    })
+
     return (
       <div>
         <VendorHeader />
         <Grid>
         <Row>
-         <h2 style={{textAlign:"center"}}>
+         <h1 style={{textAlign:"center",  "padding-bottom": "1em"}}>
             Analytics
-          </h2>
+          </h1>
         </Row>
         <Row>
-        <Col md={6}>
-         <h2 style={{textAlign:"center"}}>
-            Average Price
-          </h2>
-           <AreaChart
-            width={600}
-            height={400}
-            data={this.props.vendorIncomingOrder}
-            margin={{top: 10, right: 30, left: 0, bottom: 0}}
-          >
-            <Area type='monotone' dataKey='price_total' stroke='#8884d8' fill='#8884d8' />
-            <Tooltip/>
-            <CartesianGrid strokeDasharray="3 3" />
-          </AreaChart>
+          <Message style={{ height: "8vh" }}>
+            <Col md={6} style={{textAlign:"center", "padding-bottom": "4em"}}>
+              <Statistic size="huge">
+                <Statistic.Value>${utils.formatCentsToDollars(totalRev)}</Statistic.Value>
+                <Statistic.Label>Monthly Revenue</Statistic.Label>
+              </Statistic>
+            </Col>
+            <Col md={6} style={{textAlign:"center"}}>
+              <Statistic size="huge">
+                <Statistic.Value>{totalOrders}</Statistic.Value>
+                <Statistic.Label>Orders This Month</Statistic.Label>
+              </Statistic>
+            </Col>
+          </Message>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Message>
+              <AreaChart
+                width={500}
+                height={300}
+                data={data}
+                margin={{top: 10, right: 30, left: 0, bottom: 0}}
+              >
+                <Area type='monotone' dataKey='price_total' stroke='#8884d8' fill='#8884d8' />
+                <Tooltip/>
+                <CartesianGrid strokeDasharray="3 3" />
+              </AreaChart>
+              <h2 style={{textAlign:"center"}}>
+                Average Price
+              </h2>
+            </Message>
 
-        </Col>
-        <Col md={6}>
-          <h2 style={{textAlign:"center"}}>
-            Average Order Delivery Status
-          </h2>
-          <BarChart width={600} height={400} data={this.props.vendorIncomingOrder}>
-            <XAxis dataKey="order_status" />
-            <YAxis dataKey="order_time" />
-            <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="order_time" fill="#8884d8" />
-          </BarChart>
+          </Col>
+          <Col md={6}>
+            <Message>
+              <BarChart width={500} height={300} data={data}>
+                <XAxis dataKey="order_status" />
+                <YAxis dataKey="order_time" />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="order_time" fill="#8884d8" />
+              </BarChart>
 
-        </Col>
+              <h2 style={{textAlign:"center"}}>
+                Average Order Delivery Status
+              </h2>
+            </Message>
+          </Col>
         </Row>
         </Grid>
       </div>
