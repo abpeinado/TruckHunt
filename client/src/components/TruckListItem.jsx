@@ -63,7 +63,7 @@ class TruckListItem extends Component {
 
     return (
       <div className="truckCard">
-        <Image src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${1}.jpg`} shape="rounded" label={labelContent} fluid />
+        <Image src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${2}.jpg`} shape="rounded" label={labelContent} fluid />
         <div className="truckCardtext">
           { foodDescription }
         </div>
