@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Image, Label, Card, Grid, Rating } from 'semantic-ui-react';
 
 class TruckListItem extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       randomNum: this.props.random
@@ -26,7 +26,7 @@ class TruckListItem extends Component {
 
     const catObj = {
       'Burgers: melts: hot dogs: burritos:sandwiches: fries: onion rings: drinks': 1,
-      'Cold Truck: Hot & Cold Sandwiches: Bagels: Burritos: Soups: Hot Dogs: Tacos: Pork Buns: BBQ Meat: Fruit: Various Beverages: Pasties: Pre-Packaged Snacks: Candy: Salads: Muffins: Scones: Brownies: Croissants: Energy Bars: Noodle Bowls' : 2,
+      'Cold Truck: Hot & Cold Sandwiches: Bagels: Burritos: Soups: Hot Dogs: Tacos: Pork Buns: BBQ Meat: Fruit: Various Beverages: Pasties: Pre-Packaged Snacks: Candy: Salads: Muffins: Scones: Brownies: Croissants: Energy Bars: Noodle Bowls': 2,
       'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages': 3,
       'Cold Truck: Hamburger: cheeseburgers: hot dogs: hot sandwiches: cold sandwiches: egg muffins: cup of noodles: corn dogs: canned soup: coffee: hot cocoa: hot tea: gatorade: juice: milk: soda: water: fruits: fruit salad: rice pudding: yogurt: candy bars: chips: cookies: donuts: granola bars: muffins': 4,
       'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages': 5,
@@ -102,23 +102,23 @@ class TruckListItem extends Component {
     }
 
     return (
-        <Card className="truckCard">
-          <Image fluid src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${3}.jpg`} />
-          <Card.Content>
-            <Card.Header style={{ color: "#fff" }}>{ vendor }</Card.Header>
-            <Card.Meta>{ foodDescription }...</Card.Meta>
-          </Card.Content>
-          <Card.Content extra>
+      <Card className="truckCard">
+        <Image fluid src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${3}.jpg`} />
+        <Card.Content>
+          <Card.Header className="textWhite" >{ vendor }</Card.Header>
+          <Card.Meta>{ foodDescription }...</Card.Meta>
+        </Card.Content>
+        <Card.Content extra>
           <Grid>
             <Grid.Column width={6}>
-              <Rating icon='star' defaultRating={info.rating} maxRating={5} />
+              <Rating icon="star" defaultRating={info.rating} maxRating={5} />
             </Grid.Column>
             <Grid.Column width={10}>
               <Label color="orange" >Open {start} to {end}</Label>
             </Grid.Column>
           </Grid>
-          </Card.Content>
-        </Card>
+        </Card.Content>
+      </Card>
     );
   }
 }

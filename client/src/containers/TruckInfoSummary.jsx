@@ -2,13 +2,12 @@ import React from 'react';
 import { Segment, Header, Rating } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-
 class TruckInfoSummary extends React.Component {
   render() {
     const truck = this.props.truckSelected;
 
     return (
-      <Segment inverted color="orange" className="animated fadeIn menuHeader" style={{ backgroundImage: "https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/wide/1_1.jpg" }}>
+      <Segment inverted color="orange" className="animated fadeIn menuHeader" >
         <Header as="h1" icon textAlign="center">
           <Header.Content>
             {truck.vendor_name}

@@ -70,7 +70,7 @@ export class CheckoutComponent extends React.Component {
     } else if (submitOrderProcessing) {
       return (
         <div>
-          <h2 style={{ textAlign: 'center' }}>You're order is processing</h2>
+          <h2 className="textCenter" >You're order is processing</h2>
           <Loader active inline="centered" />
         </div>
       );
