@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Datetime from 'react-datetime';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 import moment from 'moment';
 import Logo from '../components/Logo.jsx';
 import Search from './Search.jsx';
@@ -82,9 +82,9 @@ class Header extends Component {
         </Menu.Item>
         <Menu.Menu position="right">
           <div className="ui right aligned category search item">
+              <i className="search link icon" />
             <div className="flexbox ui transparent icon input">
               <Search className="stretch" />
-              <i className="search link icon" />
             </div>
           </div>
         </Menu.Menu>
@@ -95,10 +95,10 @@ class Header extends Component {
           <Menu.Item >
             {this.props.setUserID === 0 ?
               (<Link to="/auth" className="NavBarFoodTruck">
-                Login
+                <Button>Login</Button>
               </Link>) :
               (<Link to="/" onClick={this.handleLogout} className="NavBarFoodTruck">
-                Logout
+                <Button>Logout</Button>
               </Link>)
             }
           </Menu.Item>

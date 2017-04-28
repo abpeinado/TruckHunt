@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Rating } from 'semantic-ui-react';
+import { Icon, Rating, Label } from 'semantic-ui-react';
 import mapboxgl from 'mapbox-gl'; // eslint-disable-line no-unused-vars
 import ReactMapboxGl, { Marker, ZoomControl, ScaleControl, Popup } from 'react-mapbox-gl';
 import { mapMarkerUpdate, mapCenterUpdate } from '../actions/mapActions.js';
@@ -99,7 +99,7 @@ class Map extends React.Component {
           { (this.props.truckList.length) ? (
               this.props.truckList.map((item, i) => {
                 const random = (Math.floor(Math.random() * 4) + 1);
-                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/MapMarkerV${2}.png`;
+                const image = `https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/TruckHuntMarker.png`;
                 return (
                   <Marker
                     coordinates={[Number(item.coordinates.long), Number(item.coordinates.lat)]}
@@ -128,8 +128,7 @@ class Map extends React.Component {
             <h4>
               {this.props.mapMarkerSelected.vendor_name} <Icon link color="orange" name="close" onClick={() => { this.props.mapMarkerUpdate({}); }} />
             </h4>
-            <Rating maxRating={5} defaultRating={this.props.mapMarkerSelected.rating} icon="star" size="small" />
-            <p> Open {start} to {end}</p>
+            <Label color="orange" >Open {start} to {end}</Label>
           </Popup>
             )}
 

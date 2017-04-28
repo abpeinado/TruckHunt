@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import React, { Component } from 'react';
-// import { Rating } from 'semantic-ui-react';
-import { Image, Label } from 'semantic-ui-react';
+import { Image, Label, Card, Grid, Rating } from 'semantic-ui-react';
 
 class TruckListItem extends Component {
     constructor(props) {
@@ -10,7 +9,6 @@ class TruckListItem extends Component {
     this.state = {
       randomNum: this.props.random
     };
-
   }
 
   render() {
@@ -22,7 +20,9 @@ class TruckListItem extends Component {
     };
     const labelContent = { as: 'a', color: 'orange', content: info.vendor_name, icon: 'hotel', ribbon: true };
     const food = info.food_category.split('');
+    const vendorName = info.vendor_name.split('');
     let foodDescription = '';
+    let vendor = '';
 
     const catObj = {
       'Burgers: melts: hot dogs: burritos:sandwiches: fries: onion rings: drinks': 1,
@@ -34,9 +34,27 @@ class TruckListItem extends Component {
       'Hot dogs: condiments: soft pretzels: soft drinks: coffee: cold beverages: pastries: bakery goods: cookies: ice cream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.': 7,
       'Hot Dogs: Hamburgers: Nachos: Steaks: Pastas: Asian Dishes: Tri-Tip Sandwiches: Sodas & Water': 8
     };
-    console.log('IMAGE TEST', catObj[info.food_category]);
 
-    if (food.length < 50) {
+    if (vendorName.length < 20) {
+      vendorName.forEach((item => {
+        if (item === ':') {
+          vendor += ',';
+        } else {
+          vendor += item;
+        }
+      }
+    ));
+    } else {
+      for (let i = 0; i < 20; i++) {
+        if (vendorName[i] === ':') {
+          vendor += ',';
+        } else {
+          vendor += vendorName[i];
+        }
+      }
+    }
+
+    if (food.length < 20) {
       food.forEach((item => {
         if (item === ':') {
           foodDescription += ',';
@@ -46,7 +64,7 @@ class TruckListItem extends Component {
       }
     ));
     } else {
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 20; i++) {
         if (food[i] === ':') {
           foodDescription += ',';
         } else {
@@ -55,21 +73,55 @@ class TruckListItem extends Component {
       }
     }
 
+
     let foodCategory = catObj[info.food_category];
 
     if (typeof foodCategory !== 'number') {
-      foodCategory = 1;
+      foodCategory = 2;
+    }
+
+    let start = info.start_time;
+    let end = info.end_time;
+
+    if (start < 12) {
+      start += ' AM';
+    } else if (start === 12) {
+      start += ' PM';
+    } else {
+      start -= 12;
+      start += ' PM';
+    }
+
+    if (end < 12) {
+      end += ' AM';
+    } else if (end === 12) {
+      end += ' PM';
+    } else {
+      end -= 12;
+      end += ' PM';
     }
 
     return (
-      <div className="truckCard">
-        <Image src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${2}.jpg`} shape="rounded" label={labelContent} fluid />
-        <div className="truckCardtext">
-          { foodDescription }
-        </div>
-      </div>
+        <Card className="truckCard">
+          <Image fluid src={`https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/${foodCategory}_${3}.jpg`} />
+          <Card.Content>
+            <Card.Header style={{ color: "#fff" }}>{ vendor }</Card.Header>
+            <Card.Meta>{ foodDescription }...</Card.Meta>
+          </Card.Content>
+          <Card.Content extra>
+          <Grid>
+            <Grid.Column width={6}>
+              <Rating icon='star' defaultRating={info.rating} maxRating={5} />
+            </Grid.Column>
+            <Grid.Column width={10}>
+              <Label color="orange" >Open {start} to {end}</Label>
+            </Grid.Column>
+          </Grid>
+          </Card.Content>
+        </Card>
     );
   }
 }
 
 export default TruckListItem;
+
