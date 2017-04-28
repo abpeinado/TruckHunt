@@ -2,33 +2,122 @@
 
 exports[`Truck List Irem Component Tests Truck List Item matches snapshot 1`] = `
 <div
-  className="truckCard"
+  className="ui card truckCard"
+  href={undefined}
+  onClick={[Function]}
 >
+  <img
+    alt={undefined}
+    className="ui fluid image"
+    height={undefined}
+    src="https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/square/3_3.jpg"
+    width={undefined}
+  />
   <div
-    className="ui rounded fluid image"
-    href={undefined}
+    className="content"
   >
-    <a
-      className="ui orange ribbon label"
-      onClick={[Function]}
+    <div
+      className="header"
+      style={
+        Object {
+          "color": "#fff",
+        }
+      }
     >
-      <i
-        aria-hidden="true"
-        className="hotel icon"
-      />
       BH & MT LLC
-    </a>
-    <img
-      alt={undefined}
-      height={undefined}
-      src="https://s3-us-west-1.amazonaws.com/zollstorage/200X.png"
-      width={undefined}
-    />
+    </div>
+    <div
+      className="meta"
+    >
+      Cold Truck, Breakfas
+      ...
+    </div>
   </div>
   <div
-    className="truckCardtext"
+    className="extra content"
   >
-    Cold Truck, Breakfast, Sandwiches, Salads, Pre-Pac
+    <div
+      className="ui grid"
+    >
+      <div
+        className="six wide column"
+      >
+        <div
+          className="ui star rating"
+          onMouseLeave={[Function]}
+          role="radiogroup"
+        >
+          <div
+            aria-checked={false}
+            aria-posinset={1}
+            aria-setsize={5}
+            className="active icon"
+            onClick={[Function]}
+            onKeyUp={[Function]}
+            onMouseEnter={[Function]}
+            role="radio"
+            tabIndex={0}
+          />
+          <div
+            aria-checked={false}
+            aria-posinset={2}
+            aria-setsize={5}
+            className="active icon"
+            onClick={[Function]}
+            onKeyUp={[Function]}
+            onMouseEnter={[Function]}
+            role="radio"
+            tabIndex={0}
+          />
+          <div
+            aria-checked={false}
+            aria-posinset={3}
+            aria-setsize={5}
+            className="active icon"
+            onClick={[Function]}
+            onKeyUp={[Function]}
+            onMouseEnter={[Function]}
+            role="radio"
+            tabIndex={0}
+          />
+          <div
+            aria-checked={true}
+            aria-posinset={4}
+            aria-setsize={5}
+            className="active icon"
+            onClick={[Function]}
+            onKeyUp={[Function]}
+            onMouseEnter={[Function]}
+            role="radio"
+            tabIndex={0}
+          />
+          <div
+            aria-checked={false}
+            aria-posinset={5}
+            aria-setsize={5}
+            className="icon"
+            onClick={[Function]}
+            onKeyUp={[Function]}
+            onMouseEnter={[Function]}
+            role="radio"
+            tabIndex={0}
+          />
+        </div>
+      </div>
+      <div
+        className="ten wide column"
+      >
+        <div
+          className="ui orange label"
+          onClick={[Function]}
+        >
+          Open 
+          11 AM
+           to 
+          3 PM
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

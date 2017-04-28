@@ -2,7 +2,7 @@
 
 exports[`Truck Menu Item  Component Tests Truck Menu Item matches snapshot 1`] = `
 <div
-  className="ui orange card animated slideInUp"
+  className="ui orange card animated fadeIn"
   href={undefined}
   onClick={[Function]}
 >
