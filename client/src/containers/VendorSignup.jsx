@@ -118,10 +118,11 @@ class VendorSignup extends React.Component {
   render() {
     if (this.props.signupSuccess) {
       return (
-        <div>
-          <h2> time to sign up buddy! </h2>
+        <div className="stripeSignup">
+          <h2> Time to get Paid </h2>
+          <h5> The final step is creating or logging into a stripe business account. </h5>
           <form action={`/stripe?user=${this.props.setUserID}`} method="post">
-            <input type="submit" value="signup with stripe" />
+            <input className="stripeSignupButton" type="submit" value="signup with stripe" />
           </form>
         </div>
       );

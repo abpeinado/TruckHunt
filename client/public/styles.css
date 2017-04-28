@@ -5,7 +5,6 @@ html, body, h1, h2, h3, h4, h5, h6, ul, li, ol, div {
   margin: 0;
 }
 
-
 html {
 /*  font-family: 'Patua One', cursive;
 */  /*background-color: #7d64d6;*/
@@ -620,3 +619,27 @@ button.ui.button {
   background: white;
 }
 
+
+input.stripeSignupButton {
+  background-color: #fbffda;
+  border-radius: 5px;
+  font-size: 1.5em;
+}
+
+input.stripeSignupButton:hover {
+  background-color: #ff9800;
+  color: white;
+}
+
+.stripeSignup h2 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.stripeSignup h5 {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.stripeSignup {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}
