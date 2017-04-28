@@ -2,8 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
-import { LocaleProvider } from 'antd';
-import enUS from 'antd/lib/locale-provider/en_US';
 import createHistory from 'history/createBrowserHistory';
 import LandingPage from './containers/LandingPage.jsx';
 import configureStore from './store/configureStore.js';
@@ -17,9 +15,7 @@ const store = configureStore();
 render(
   <Router history={history}>
     <Provider store={store}>
-      <LocaleProvider locale={enUS}>
-        <LandingPage />
-      </LocaleProvider>
+      <LandingPage />
     </Provider>
   </Router>,
   document.getElementById('app'));

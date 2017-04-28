@@ -26,10 +26,34 @@ class VendorCurrentOrders extends Component {
 
   render() {
     if (this.props.vendorIncomingOrderHasErrored) {
-      return <p>Oops! There was an error loading the incoming order</p>;
+      return (
+        <div>
+          <Header />
+          <Grid fluid >
+            <Row style={{textAlign:"center", paddingTop: "2em"}}>
+              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
+              <h2 style={{ textAlign:"center" }}>
+                Oops! There was an error loading the incoming orders!
+              </h2>
+            </Row>
+          </Grid>
+        </div>
+      );
     }
     if (this.props.vendorIncomingOrderIsLoading) {
-      return <p>Loading Incoming Orders…</p>;
+      return (
+        <div>
+          <Header />
+          <Grid fluid >
+            <Row style={{textAlign:"center", paddingTop: "2em"}}>
+              <Image src='https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/Truck_Loading.gif'/>
+              <h2 style={{ textAlign:"center" }}>
+                Loading Orders...
+              </h2>
+            </Row>
+          </Grid>
+        </div>
+      );
     }
     return (
       <div>

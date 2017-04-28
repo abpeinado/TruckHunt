@@ -6,7 +6,7 @@ const Logo = () => (
   <Navbar.Brand>
     <Link to="/" >
       <div className="logo-inline">
-        <img className="logo-img" src={'https://s3-us-west-1.amazonaws.com/zollstorage/thesis/LogoV1.png'} alt="logo" />
+        <img className="logo-img" src={'https://s3-us-west-1.amazonaws.com/zollstorage/truckhunt/LogoV2.png'} alt="logo" />
       </div>
     </Link>
   </Navbar.Brand>

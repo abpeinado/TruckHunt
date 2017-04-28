@@ -9,7 +9,7 @@ const TruckMenuItem = ({ item, onAddToCartClicked }) => {
   const priceWithDecimals = `${priceAsString.slice(0, priceAsString.length - 2)}.${priceAsString.slice(priceAsString.length - 2)}`;
 
   return (
-    <Card color="orange" className="animated slideInUp">
+    <Card color="orange" className="animated fadeIn">
       <Card.Content>
         <Card.Header>{name}</Card.Header>
         <Card.Meta>&#36;{priceWithDecimals}</Card.Meta>
