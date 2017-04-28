@@ -1,12 +1,12 @@
 /*
-'Burgers: melts: hot dogs: burritos:sandwiches: fries: onion rings: drinks'
-'Cold Truck: Hot & Cold Sandwiches: Bagels: Burritos: Soups: Hot Dogs: Tacos: Pork Buns: BBQ Meat: Fruit: Various Beverages: Pasties: Pre-Packaged Snacks: Candy: Salads: Muffins: Scones: Brownies: Croissants: Energy Bars: Noodle Bowls'
-'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
-'Cold Truck: Hamburger: cheeseburgers: hot dogs: hot sandwiches: cold sandwiches: egg muffins: cup of noodles: corn dogs: canned soup: coffee: hot cocoa: hot tea: gatorade: juice: milk: soda: water: fruits: fruit salad: rice pudding: yogurt: candy bars: chips: cookies: donuts: granola bars: muffins'
-'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages'
-'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
-'Hot dogs: condiments: soft pretzels: soft drinks: coffee: cold beverages: pastries: bakery goods: cookies: ice cream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.'
-'Hot Dogs: Hamburgers: Nachos: Steaks: Pastas: Asian Dishes: Tri-Tip Sandwiches: Sodas & Water'
+1 - 'Burgers: melts: hot dogs: burritos:sandwiches: fries: onion rings: drinks'
+2 - 'Cold Truck: Hot & Cold Sandwiches: Bagels: Burritos: Soups: Hot Dogs: Tacos: Pork Buns: BBQ Meat: Fruit: Various Beverages: Pasties: Pre-Packaged Snacks: Candy: Salads: Muffins: Scones: Brownies: Croissants: Energy Bars: Noodle Bowls'
+3 - 'Cold Truck: Breakfast: Sandwiches: Salads: Pre-Packaged Snacks: Beverages'
+4 - 'Cold Truck: Hamburger: cheeseburgers: hot dogs: hot sandwiches: cold sandwiches: egg muffins: cup of noodles: corn dogs: canned soup: coffee: hot cocoa: hot tea: gatorade: juice: milk: soda: water: fruits: fruit salad: rice pudding: yogurt: candy bars: chips: cookies: donuts: granola bars: muffins'
+5- 'Cold Truck: Pre-packaged sandwiches: snacks: fruit: various beverages'
+6 - 'Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages'
+7 - 'Hot dogs: condiments: soft pretzels: soft drinks: coffee: cold beverages: pastries: bakery goods: cookies: ice cream: candy: soups: churros: chestnuts: nuts: fresh fruit: fruit juices: desserts: potato chips and popcorn.'
+8 - 'Hot Dogs: Hamburgers: Nachos: Steaks: Pastas: Asian Dishes: Tri-Tip Sandwiches: Sodas & Water'
 */
 
 module.exports.menuItems = [
