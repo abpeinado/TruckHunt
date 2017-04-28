@@ -41,7 +41,6 @@ class Header extends Component {
   }
 
   handleLogout() {
-    console.log('inside handleLogout');
     this.props.setUserID(0);
   }
 

@@ -8,7 +8,6 @@ module.exports = (req, res) => {
       if (response.length === 0) {
         throw new Error('Invalid user/pass');
       }
-      console.log('response from successful login serverside', response);
       res.status(200).send(response);
     })
     .catch((error) => {

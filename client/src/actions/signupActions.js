@@ -131,7 +131,6 @@ export function loginAttempt(userInfo) {
         if (response.status === 200) {
           // 200 Successful User Login
           dispatch(loginSuccess(true));
-          console.log('inside successful login beudy', response);
         } else if (response.status === 202) {
           // 202 Successful Vendor Login
           dispatch(vendorLoginSuccess(true));
@@ -143,7 +142,6 @@ export function loginAttempt(userInfo) {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log('inside loginAttempt, response', data[0].customer_id);
         if (data[0].customer_id) {
           dispatch(setUserID(data[0].customer_id));
         } else {

@@ -27,13 +27,11 @@ class Search extends Component {
 
     geocodeByAddress(address, (err, { lat, lng }) => {
       if (err) {
-        console.log('Geocoding Error', err);
         this.setState({
           geocodeResults: this.renderGeocodeFailure(err),
           loading: false
         });
       }
-      console.log(`Success -> latitude and longitude for ${address}`, { lat, lng });
       this.setState({
         geocodeResults: this.renderGeocodeSuccess(lat, lng),
         loading: false

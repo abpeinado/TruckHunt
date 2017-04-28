@@ -4,7 +4,6 @@ const Vendors = require('../models/vendors.js');
 module.exports = (req, res) => {
   const code = req.query.code;
   const user = req.query.state;
-  console.log('appending user_id in oauth2 request', user);
 
   const options = { method: 'GET',
     url: 'https://connect.stripe.com/oauth/token',
@@ -19,7 +18,6 @@ module.exports = (req, res) => {
     }
   };
 
-  // console.log('inside authenticate, auth token:', code);
   request.post(options, (error, response, body) => {
     if (error) throw new Error(error);
     const accessToken = JSON.parse(body).stripe_user_id;

@@ -30,7 +30,6 @@ class IncomingItem extends Component {
     fetch('/orderStatus', init)
       .then(res => res.json())
       .then((response) => {
-        console.log('response from fetch', response);
         return response;
       })
       .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
@@ -54,7 +53,6 @@ class IncomingItem extends Component {
     fetch('/orderStatus', init)
       .then(res => res.json())
       .then((response) => {
-        console.log('response from fetch', response);
         return response;
       })
       .then((vendorIncomingOrders) => { this.props.vendorIncomingOrderUpdate(vendorIncomingOrders); })
