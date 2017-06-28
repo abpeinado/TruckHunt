@@ -8,8 +8,8 @@ Browse nearby food trucks in San Francisco; order food ahead of time so that it'
 
   - Matt Schmitz
   - Benicio Peinado
-  - Sam Zoll
   - Michael Burton
+  - Sam Zoll
 
 ## Table of Contents
 
